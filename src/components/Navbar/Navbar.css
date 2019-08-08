@@ -1,0 +1,18 @@
+#navbar {
+  width: 100%;
+  background: #2d2e48;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#navbar img {
+  width: 40px;
+  height: 40px;
+  margin-left: 50px;
+}
+#navbar a {
+  margin-right: 50px;
+  text-decoration: none;
+  color: #fff;
+}
