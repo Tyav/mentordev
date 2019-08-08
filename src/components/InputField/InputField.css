@@ -18,14 +18,16 @@
 }
 #inputField input {
   padding: 10px;
-  border: 1px solid #e6e6e6;
-  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid #e6e6e6;
   color: rgb(85, 85, 85);
   font-weight: 500;
   outline: none;
+  transition: all linear 0.3s;
 }
 #inputField input:focus {
   border-bottom: 2px solid #34a853;
+  transition: all linear 0.3s;
 }
 #inputField label {
   color: #717171;
