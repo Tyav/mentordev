@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
 
-import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
 import Navbar from './components/Navbar';
-
+import Login from './pages/Login';
 //Testing login route
 function App() {
   return (
     <div>
       <Navbar />
-      <Login />
+      <ForgotPassword />
     </div>
   );
 }

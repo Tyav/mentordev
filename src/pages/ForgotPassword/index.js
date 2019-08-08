@@ -5,12 +5,12 @@ import Button from '../../components/Button';
 import FormHeader from '../../components/FormHeader';
 
 //Stylings
-import './Login.css';
+import './ForgotPassword.css';
 
-function Login() {
+function ForgotPassword() {
   return (
     <div id="loginForm">
-      <FormHeader title="Login" />
+      <FormHeader title="Forgot Password" />
       <form>
         <InputField
           label="Email"
@@ -19,16 +19,9 @@ function Login() {
           placeholder="Eg. xyz@abc.com"
           value="oketega@gmail.com"
         />
-        <InputField
-          label="Password"
-          type="password"
-          id="email"
-          placeholder="Eg. pasword"
-          value="xxxxxxxxxx"
-        />
         <Button
           className="btn-success-solid"
-          text="Login"
+          text="Send password reset email"
           onButtonClick="do somethin"
         />
       </form>
@@ -36,4 +29,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgotPassword;
