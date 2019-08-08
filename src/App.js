@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 
 import Navbar from './components/Navbar';
-import ResetPassword from './pages/ResetPassword';
+import Signup from './pages/Signup';
 //Testing login route
 function App() {
   return (
     <div>
       <Navbar />
-      <ResetPassword />
+      <Signup />
     </div>
   );
 }
