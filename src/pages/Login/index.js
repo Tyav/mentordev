@@ -31,6 +31,9 @@ function Login() {
           text="Login"
           onButtonClick="do somethin"
         />
+        <p>
+          Don't have an account? <a href="/">Singup</a>
+        </p>
       </form>
     </div>
   );
