@@ -1,8 +1,8 @@
 body {
-  background: #ebebeb;
+  background: #e8edf1;
 }
 #loginForm {
-  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
   width: 30%;
   margin: 0 auto;
   display: flex;
