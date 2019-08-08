@@ -7,6 +7,7 @@ import MenteeDashboard from './pages/MenteeDashboard';
 function App() {
   return (
     <div>
+      {/* <Login/> */}
       <MenteeDashboard />
     </div>
   );
