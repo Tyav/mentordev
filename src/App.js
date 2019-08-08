@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 
 import Login from './pages/Login';
-//Testing login route
+import MenteeDashboard from './pages/MenteeDashboard';
+
 function App() {
   return (
     <div>
-      <Login />
+      <MenteeDashboard />
     </div>
   );
 }
