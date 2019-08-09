@@ -2,13 +2,19 @@ import React from 'react';
 import './App.css';
 
 import Navbar from './components/Navbar';
-import ResetPassword from './pages/ResetPassword';
-//Testing login route
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import MenteeDashboard from './pages/MenteeDashboard';
+
+
+
 function App() {
   return (
     <div>
       <Navbar />
-      <ResetPassword />
+      {/* <Login /> */}
+      <MenteeDashboard />
+      <Signup />
     </div>
   );
 }

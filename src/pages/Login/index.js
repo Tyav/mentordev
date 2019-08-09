@@ -8,6 +8,9 @@ import FormHeader from '../../components/FormHeader';
 import './Login.css';
 
 function Login() {
+  const loginFormHandler = (e) => {
+    e.preventDefault()
+  }
   return (
     <div id="loginForm">
       <FormHeader title="Login" />
@@ -29,8 +32,7 @@ function Login() {
         <Button
           className="btn-success-solid"
           text="Login"
-          onButtonClick="do somethin"
-        />
+          onButtonClick={loginFormHandler}/>
         <p>
           Don't have an account? <a href="/">Singup</a>
         </p>
