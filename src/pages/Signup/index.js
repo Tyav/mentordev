@@ -8,6 +8,9 @@ import Checkbox from '../../components/Checkbox';
 import './Signup.css';
 
 function Signup() {
+  const signUpFormHandler = (e) => {
+    e.preventDefault()
+  }
   return (
     <div id="loginForm">
       <FormHeader title="Register" />
@@ -48,9 +51,9 @@ function Signup() {
           value=""
         />
         <Button
-          className="btn-success-solid"
+          className="btn-success-solid register"
           text="Register"
-          onButtonClick="do somethin"
+          onButtonClick={signUpFormHandler}
         />
         <p>
           Already have an account? <a href="/">Login</a>
