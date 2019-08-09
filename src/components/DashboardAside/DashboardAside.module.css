@@ -12,7 +12,7 @@
   height: 95%;
   /* background-color: #161a24; */
   /* background-color: #04060b; */
-  background-color: #032e18;
+  background: #34a853;
 
   color: #eaf2fc;
   border-top-right-radius: 30px;
@@ -56,7 +56,7 @@
 .link {
   padding: 1rem;
   font-weight: 500;
-  margin: 2rem 5px;
+  margin: 1.5rem 5px;
 }
 
 .profile, /* for now untill we use router active */
@@ -64,7 +64,7 @@
   cursor: pointer;
   background-color: #e8edf1;
   border-radius: 5px;
-  color: #204d35;
+  color: #34a853;
 }
 
 .user_icon,

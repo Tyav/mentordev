@@ -27,12 +27,12 @@ body {
   transition: color 0.2s;
   text-align: center;
   font-family: 'Monda', sans-serif;
-  color: #204d35;
+  color: #34a853;
 }
 
 /* Change color on hover */
 .bm-item:hover {
-  color: #949e96;
+  color: #8ebd9b;
 }
 
 /* The rest copied directly from react-burger-menu docs */
@@ -53,7 +53,7 @@ body {
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #204d35;
+  background: #34a853;
 }
 
 /* Position and sizing of clickable cross button */
@@ -104,3 +104,5 @@ body {
     display: none;
   }
 }
+
+/* background: #34a853; */
