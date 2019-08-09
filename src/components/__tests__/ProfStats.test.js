@@ -8,8 +8,5 @@ afterEach(cleanup);
 describe('Profile Stats', () => {
     it('should render the Profile Status', () => {
         const {container, getAllByText}  = render( <ProfStats />);
-
-        exportAllDeclaration(getByText())
-        console.log(ProfStats)
     })
 })
