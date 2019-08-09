@@ -6,19 +6,19 @@ export default props => {
     // Pass on our props
     <Menu {...props}>
       <a className="menu-item" href="/">
-        Home
+        HOME
       </a>
 
       <a className="menu-item" href="/burgers">
-        Burgers
+        DASHBOARD
       </a>
 
       <a className="menu-item" href="/pizzas">
-        Pizzas
+        PROFILE
       </a>
 
       <a className="menu-item" href="/desserts">
-        Desserts
+        REQUEST
       </a>
     </Menu>
   );

@@ -23,10 +23,11 @@ body {
 
   /* Our sidebar item styling */
   text-decoration: none;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
   color: #d1d1d1;
   transition: color 0.2s;
   text-align: center;
+  font-family: 'Monda', sans-serif;
 }
 
 /* Change color on hover */
@@ -91,13 +92,15 @@ body {
 @media (min-width: 850px) {
   .bm-menu,
   .bm-burger-bars,
-  .bm-cross {
-    display: none;
+  .bm-cross,
+  .bm-overlay,
+  .bm-menu-wrap,
+  .hamburger {
+    position: absolute;
+    right: -50000px !important;
+    top: -500000px !important;
   }
   .container:nth-child(2) {
-    display: none;
-  }
-  .hamburger {
     display: none;
   }
 }
