@@ -21,7 +21,7 @@ const DashboardHeader = () => {
                 <i className="fas fa-users-cog" />
               </a>
             </p>
-            <p style={{ fontStyle: 'italic', fontSize: '1rem', paddingTop: '1.5rem' }}>
+            <p style={{ fontStyle: 'italic', fontSize: '1rem', paddingTop: '1.5rem' }} className={styles.just_name}>
               Rukee, Victor
             </p>
           </li>
