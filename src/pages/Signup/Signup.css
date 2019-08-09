@@ -3,7 +3,7 @@ body {
 }
 #loginForm {
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-  width: 30%;
+  width: 35%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@ body {
   padding: 50px 20px;
   border-radius: 4px;
   background: #fff;
-  margin-top: 100px;
+  margin-top: 30px;
 }
 form {
   width: 70%;
@@ -31,7 +31,8 @@ form button {
 @media only screen and (min-width: 160px) and (max-width: 450px) {
   #loginForm {
     width: 80%;
-    margin-top: 70px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
 @media only screen and (min-width: 450px) and (max-width: 750px) {
