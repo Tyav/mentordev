@@ -1,0 +1,93 @@
+.wrapper {
+  height: 100vh;
+  /* background-color: #032e18; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+}
+
+.container {
+  /* height: 100vh; */
+  height: 95%;
+  /* background-color: #161a24; */
+  /* background-color: #04060b; */
+  background: #34a853;
+
+  color: #eaf2fc;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-radius: 30px;
+  margin-left: 5px;
+  /* margin-top: 1rem; */
+}
+
+.inner_container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+}
+
+.logo,
+.log_out {
+  margin: 20px auto;
+  margin: 3rem 1.5rem 2.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.logo {
+  color: #eaf2fc;
+  font-size: 1.3rem;
+  font-family: 'Atomic Age', cursive;
+  font-weight: 300;
+}
+.logo_mentor {
+  font-family: 'Monda', sans-serif;
+  text-transform: lowercase !important;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  padding: 1rem;
+  font-weight: 500;
+  margin: 1.5rem 5px;
+}
+
+.profile, /* for now untill we use router active */
+.link:hover {
+  cursor: pointer;
+  background-color: #e8edf1;
+  border-radius: 5px;
+  color: #34a853;
+}
+
+.user_icon,
+.user_icon:visited {
+  text-decoration: none;
+  color: inherit;
+  color: #eaf2fc;
+}
+
+.user_icon > span {
+  margin-left: 10px;
+  font-size: 0.8rem;
+}
+
+.go_out_icon {
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.user_icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
