@@ -63,6 +63,7 @@ body {
   margin: 2rem 5px;
 }
 
+.profile, /* for now untill we use router active */
 .link:hover {
   cursor: pointer;
   background-color: #e8edf1;

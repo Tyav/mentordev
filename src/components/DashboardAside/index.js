@@ -10,7 +10,7 @@ const DashboardAside = () => {
             DEV<span className={styles.logo_mentor}>MENTOR</span>
           </div>
           <div className={styles.navigation}>
-            <div className={styles.link}>DashBoard</div>
+            <div className={`${styles.link} ${styles.profile}`}>DashBoard</div>
             <div className={styles.link}>Profile</div>
             <div className={styles.link}>Requests</div>
           </div>
