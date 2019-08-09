@@ -43,6 +43,19 @@
     margin: 1em;
     padding: 5px;
     width: 100%;
+    margin:20px !important;
+    
     /* margin-left: auto !important;
 margin-right:auto !important; */
+}
+
+
+.mentor-card-div{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.helloagain{
+    margin: 20px;
 }

@@ -3,6 +3,7 @@ import './App.css';
 
 import Login from './pages/Login';
 import Tag from './components/Tag';
+import MentorsProfileCard from './components/MentorsProfileCard/index';
 import ProfileHeader from './components/ProfileHeader';
 //Testing login route
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <div>
       <ProfileHeader />
+      <MentorsProfileCard />
     </div>
   );
 }
