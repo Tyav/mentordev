@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 
+import Navbar from './components/Navbar';
+import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Tag from './components/Tag';
-import MentorsProfileCard from './components/MentorsProfileCard/index';
-import ProfileHeader from './components/ProfileHeader';
-//Testing login route
+import MentorsProfileCard from './components/MentorsProfileCard'
+import ProfileHeader from './components/ProfileHeader/index'
+
+import MenteeDashboard from './pages/MenteeDashboard';
+
 function App() {
   const style = {
     background: '#fff',
@@ -18,6 +21,10 @@ function App() {
     <div>
       <ProfileHeader />
       <MentorsProfileCard />
+      <Navbar />
+      {/* <Login /> */}
+      <MenteeDashboard />
+      <Signup />
     </div>
   );
 }

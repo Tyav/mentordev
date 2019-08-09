@@ -5,15 +5,15 @@ import Button from '../../components/Button';
 import FormHeader from '../../components/FormHeader';
 
 //Stylings
-import './Login.css';
+import './ForgotPassword.css';
 
-function Login() {
-  const loginFormHandler = (e) => {
-    e.preventDefault()
-  }
+function ForgotPassword() {
+  const submitFormHandler = e => {
+    e.preventDefault();
+  };
   return (
     <div id="loginForm">
-      <FormHeader title="Login" />
+      <FormHeader title="Forgot Password" />
       <form>
         <InputField
           label="Email"
@@ -22,23 +22,14 @@ function Login() {
           placeholder="Eg. xyz@abc.com"
           value="oketega@gmail.com"
         />
-        <InputField
-          label="Password"
-          type="password"
-          id="email"
-          placeholder="Eg. pasword"
-          value="xxxxxxxxxx"
-        />
         <Button
           className="btn-success-solid"
-          text="Login"
-          onButtonClick={loginFormHandler}/>
-        <p>
-          Don't have an account? <a href="/">Singup</a>
-        </p>
+          text="Send password reset email"
+          onButtonClick={submitFormHandler}
+        />
       </form>
     </div>
   );
 }
 
-export default Login;
+export default ForgotPassword;
