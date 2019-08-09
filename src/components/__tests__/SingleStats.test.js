@@ -19,5 +19,6 @@ describe('SingleStats', () => {
 
    expect(statFigureNode).toBeDefined();
    expect(statNameNode).toBeDefined();
+   
   });
 });

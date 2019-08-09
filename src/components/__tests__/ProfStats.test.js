@@ -1,15 +1,16 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
-import ProfStats from '../SingleStats';
-import { exportAllDeclaration } from '@babel/types';
+import { render, cleanup, queryByAttribute } from '@testing-library/react';
+import { toHaveClass, toBeInTheDOM } from '@testing-library/jest-dom';
+import ProfStats from '../ProfStats';
+import SingleStats from '../SingleStats';
 
 afterEach(cleanup);
 
-describe('Profile Stats', () => {
-    it('should render the Profile Status', () => {
-        const {container, getAllByText}  = render( <ProfStats />);
+const getByClass = queryByAttribute.bind(null, 'class');
 
-        exportAllDeclaration(getByText())
-        console.log(ProfStats)
-    })
-})
+describe('Profile Stats', () => {
+  it('should render the Profile Status', () => {
+    const { container } = render(<ProfStats />);
+    expect(getByClass(container, /profStats/i)).toBeTruthy();
+  });
+});

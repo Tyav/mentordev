@@ -32,6 +32,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.0.0",
     "bs-jest-dom": "^2.0.1"
   }
 }
