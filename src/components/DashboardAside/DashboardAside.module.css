@@ -1,10 +1,29 @@
-.container {
+body {
+  background-color: white;
+}
+
+.wrapper {
   height: 100vh;
-  background-color: #131720;
+  /* background-color: #032e18; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+}
+
+.container {
+  /* height: 100vh; */
+  height: 95%;
+  /* background-color: #161a24; */
   /* background-color: #04060b; */
+  background-color: #032e18;
+
   color: #eaf2fc;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+  border-radius: 30px;
+  margin-left: 5px;
+  /* margin-top: 1rem; */
 }
 
 .inner_container {
@@ -24,8 +43,13 @@
 
 .logo {
   color: #eaf2fc;
-  font-family: 'Yatra One', cursive;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-family: 'Atomic Age', cursive;
+  font-weight: 300;
+}
+.logo_mentor {
+  font-family: 'Monda', sans-serif;
+  text-transform: lowercase !important;
 }
 
 .navigation {
@@ -34,20 +58,23 @@
 }
 
 .link {
-  margin: 2rem 0px;
   padding: 1rem;
+  font-weight: 500;
+  margin: 2rem 5px;
 }
 
 .link:hover {
   cursor: pointer;
-  background-color: #262a35;
+  background-color: #e8edf1;
+  border-radius: 5px;
+  color: #204d35;
 }
 
 .user_icon,
 .user_icon:visited {
   text-decoration: none;
   color: inherit;
-  color: #eaf2fc !important;
+  color: #eaf2fc;
 }
 
 .user_icon > span {
@@ -56,7 +83,7 @@
 }
 
 .go_out_icon {
-  display: inline-block !important;
+  display: inline-block;
   font-size: 2rem;
 }
 
