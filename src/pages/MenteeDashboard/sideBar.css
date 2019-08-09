@@ -96,11 +96,6 @@ body {
   .bm-overlay,
   .bm-menu-wrap,
   .hamburger {
-    position: absolute;
-    right: -50000px !important;
-    top: -500000px !important;
-  }
-  .container:nth-child(2) {
     display: none;
   }
 }

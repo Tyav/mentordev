@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './DashboardHeader.module.css';
+import profile_avatar from '../../assets/images/profile_two.png';
 
 const DashboardHeader = () => {
   return (
@@ -18,10 +19,13 @@ const DashboardHeader = () => {
             </p>
             <p>
               <a href="/" rel="noopener noreferrer" className={styles.user_icon}>
-                <i className="fas fa-users-cog" />
+                <img src={profile_avatar} alt="user avatar" className={styles.profile_avatar} />
               </a>
             </p>
-            <p style={{ fontStyle: 'italic', fontSize: '1rem', paddingTop: '1.5rem' }} className={styles.just_name}>
+            <p
+              style={{ fontStyle: 'italic', fontSize: '1rem', paddingTop: '1.5rem' }}
+              className={styles.just_name}
+            >
               Rukee, Victor
             </p>
           </li>
