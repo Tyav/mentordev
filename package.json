@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/react": "^8.0.8",
+    "fetch": "^1.1.0",
     "jest": "24.7.1",
     "react": "^16.8.6",
     "react-burger-menu": "^2.6.11",
