@@ -19,3 +19,12 @@
   text-transform: uppercase;
   font-weight: 500;
 }
+#navbar a.navLogo {
+  font-family: 'Poppins', sans-serif;
+  text-transform: none;
+  font-size: 1.9rem;
+  font-weight: bold;
+}
+.navTog {
+  flex: 0 0 20%;
+}
