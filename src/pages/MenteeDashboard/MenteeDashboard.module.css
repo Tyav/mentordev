@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  color: #204d35;
+  background-color: white;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 850px) {
+  .aside {
+    display: none;
+  }
+}
