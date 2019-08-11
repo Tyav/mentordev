@@ -6,15 +6,13 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import MenteeDashboard from './pages/MenteeDashboard';
 
-
-
 function App() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Login /> */}
       <MenteeDashboard />
-      <Signup />
+      {/* <Signup /> */}
     </div>
   );
 }
