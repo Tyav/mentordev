@@ -1,9 +1,6 @@
-body {
-  background: #e8edf1;
-}
 #loginForm {
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-  width: 35%;
+  width: 35% !important;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -11,7 +8,7 @@ body {
   padding: 50px 20px;
   border-radius: 4px;
   background: #fff;
-  margin-top: 30px;
+  margin-top: 30px !important;
 }
 form {
   width: 70%;
