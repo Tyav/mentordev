@@ -19,7 +19,7 @@ function Signup() {
   });
 
   const [values, setValues] = useState({});
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
