@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import InputField from '../../components/InputField';
@@ -17,6 +17,8 @@ function Login() {
     show: false,
     type: '',
   });
+
+  const [auth, setAuth] = useState(false);
 
   const [values, setValues] = useState({
     email: '',
@@ -38,6 +40,13 @@ function Login() {
           show: true,
           type: 'form-alert-danger',
         });
+        setTimeout(() => {
+          setLoginResponse({
+            message: '',
+            show: false,
+            type: '',
+          });
+        }, 4000);
         return;
       }
       localStorage.setItem('token', response.data.token);
@@ -54,9 +63,15 @@ function Login() {
           show: false,
           type: '',
         });
+        setAuth(true);
       }, 4000);
     });
   };
+
+  if (auth) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
     <>
       <Navbar />
