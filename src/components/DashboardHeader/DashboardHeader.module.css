@@ -1,5 +1,9 @@
+.container {
+  /* position: sticky; */
+  /* background-color: #fff; */
+  /* overflow-x: hidden; */
+}
 .navHeader {
-  /* margin-left: 10%; */
   padding-right: 2rem;
   font-family: 'Monda', sans-serif;
   background-color: white;
