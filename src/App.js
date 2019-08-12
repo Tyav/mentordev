@@ -1,32 +1,24 @@
 import React from 'react';
 import './App.css';
 
-import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Tag from './components/Tag';
-import MentorsProfileCard from './components/MentorsProfileCard/index';
-import ProfileHeader from './components/ProfileHeader';
-//Testing login route
-import MenteeDashboard from './pages/MenteeDashboard';
+import Forgot from './pages/ForgotPassword';
+import Dashboard from './pages/MenteeDashboard';
+
+import About from './pages/About';
 
 function App() {
-  const style = {
-    background: '#fff',
-    height: '370px',
-    borderBottom: '1px solid #efefef',
-    display: 'flex',
-    alignItems: 'center'
-  };
   return (
-    <div>
-      <ProfileHeader />
-      <MentorsProfileCard />
-      <Navbar />
-      {/* <Login /> */}
-      <MenteeDashboard />
-      <Signup />
-    </div>
+    <Router>
+      <Route path="/" exact component={About} />
+      <Route path="/register" component={Signup} />
+      <Route path="/about" component={About} />
+      <Route path="/login" component={Login} />
+      <Route path="/forgotpassword" component={Forgot} />
+      <Route path="/dashboard" component={Dashboard} />
+    </Router>
   );
 }
 
