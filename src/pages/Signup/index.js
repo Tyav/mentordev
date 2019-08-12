@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 import InputField from '../../components/InputField';
 import Button from '../../components/Button';
@@ -10,6 +10,17 @@ import Navbar from '../../components/Navbar';
 import './Signup.css';
 
 function Signup() {
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    const auth = localStorage.getItem('auth');
+    if (auth) {
+      setAuth(true);
+    }
+  }, [auth]);
+  if (auth) {
+    return <Redirect to="/dashboard" />;
+  }
+
   const signUpFormHandler = e => {
     e.preventDefault();
   };

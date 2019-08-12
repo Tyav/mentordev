@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 //Stylings
 import './About.css';
 
 function About() {
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    const auth = localStorage.getItem('auth');
+    if (auth) {
+      setAuth(true);
+    }
+  }, [auth]);
+  if (auth) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <>
       <Navbar link="/register" text="Register" />

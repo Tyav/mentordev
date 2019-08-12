@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -68,6 +68,12 @@ function Login() {
     });
   };
 
+  useEffect(() => {
+    const auth = localStorage.getItem('auth');
+    if (auth) {
+      setAuth(true);
+    }
+  }, [auth]);
   if (auth) {
     return <Redirect to="/dashboard" />;
   }
