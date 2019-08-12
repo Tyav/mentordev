@@ -8,7 +8,7 @@ import Forgot from './pages/ForgotPassword';
 import Dashboard from './pages/MenteeDashboard';
 
 import About from './pages/About';
-//Testing login route
+
 function App() {
   return (
     <Router>

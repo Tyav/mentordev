@@ -1,0 +1,77 @@
+.navHeader {
+  /* margin-left: 10%; */
+  padding-right: 2rem;
+  font-family: 'Monda', sans-serif;
+  background-color: white;
+  margin-top: 0;
+  padding: 1rem;
+  padding-top: 0;
+  color: #34a853;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerTitle {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.headerTitle > h2 {
+  font-size: 2rem;
+}
+
+.otherNav {
+  display: flex;
+  justify-content: space-between;
+  margin: auto inherit;
+  text-align: center;
+  padding-right: 2rem;
+  font-weight: 800;
+}
+
+.otherNav p {
+  margin-left: 2rem;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+.welcome {
+  font-style: 'italic';
+  font-size: '1rem';
+}
+
+.bell_icon {
+  font-size: 1.5rem;
+  color: inherit;
+}
+
+.user_icon {
+  font-size: 2.5rem;
+  color: inherit;
+  /* border: 1px solid transparent; */
+  border-radius: 30px;
+}
+
+.profile_avatar {
+  /* border: 1px solid transparent;
+  border-radius: 20px;
+  height: 70%;
+  width: 50px; */
+  
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  background-size: cover;
+}
+
+@media (max-width: 850px) {
+  .navHeader {
+    margin-left: 7rem;
+  }
+  .just_name {
+    display: none;
+  }
+}
