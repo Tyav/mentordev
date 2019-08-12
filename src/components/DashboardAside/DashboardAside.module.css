@@ -59,7 +59,7 @@
   margin: 1.5rem 5px;
 }
 
-.profile, /* for now untill we use router active */
+.activeNav, /* for now untill we use router active */
 .link:hover {
   cursor: pointer;
   background-color: #e8edf1;
@@ -91,3 +91,12 @@
   justify-content: center;
   align-items: center;
 }
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* a:hover {
+  color: #34a853;
+} */

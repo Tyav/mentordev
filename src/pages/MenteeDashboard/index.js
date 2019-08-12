@@ -1,8 +1,10 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 import DashboardHeader from '../../components/DashboardHeader';
 import DashboardAside from '../../components/DashboardAside';
 import DashboardMain from '../../components/DashboardMain';
+import Profile from '../../components/DashBoardProfile';
 import styles from './MenteeDashboard.module.css';
 import SideBar from '../../components/SideBar';
 import './sideBar.css';
@@ -20,7 +22,11 @@ const MenteeDashboard = () => {
 
       <div className={styles.content} id="page-wrap">
         <DashboardHeader />
-        <DashboardMain />
+        <div>
+          <Route exact path="/dashboard" component={DashboardMain} />
+          <Route path="/dashboard/profile" component={Profile} />
+          <Route path="/dashboard/requests" component={DashboardMain} />
+        </div>
       </div>
     </div>
   );

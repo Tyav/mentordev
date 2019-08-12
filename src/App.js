@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Signup from './pages/Signup';
@@ -19,15 +20,17 @@ function App() {
     alignItems: 'center'
   };
   return (
-    <div>
+    <BrowserRouter>
       {/* <Navbar /> */}
       {/* <ProfileHeader /> */}
       {/* <MentorsProfileCard /> */}
       {/* <Navbar /> */}
       {/* <Login /> */}
-      <MenteeDashboard />
+      {/* <MenteeDashboard /> */}
       {/* <Signup /> */}
-    </div>
+      <Route exact path="/" component={Login} />
+      <Route path="/dashboard" component={MenteeDashboard} />
+    </BrowserRouter>
   );
 }
 
