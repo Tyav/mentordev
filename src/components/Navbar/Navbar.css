@@ -28,3 +28,8 @@
 .navTog {
   flex: 0 0 20%;
 }
+@media only screen and (min-width: 160px) and (max-width: 700px) {
+  #navbar a.navLogo {
+    display: none;
+  }
+}
