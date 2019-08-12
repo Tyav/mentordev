@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import styles from './DashboardMain.module.css';
 import SearchBar from '../SearchBar';
+import ProfileHeader from '../ProfileHeader';
+import MentorsProfileCard from '../MentorsProfileCard';
 
 const DashboardMain = () => {
+  const [mentors, setMentors] = useState([]);
+  useEffect(() => {
+    getMentors();
+  }, []);
+
+  function getMentors() {
+    axios
+      .get('http://localhost:6060/api/v1/user')
+      .then(response => {
+        setMentors(response.data.payload);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   return (
     <div className={styles.container}>
-      <SearchBar />
+      <div className={styles.search_container}>
+        <SearchBar />
+      </div>
+      <div className={styles.profile_container}>
+        <ProfileHeader />
+      </div>
+      <div className={styles.mentors_container}>
+        <MentorsProfileCard mentors={mentors} />;
+      </div>
     </div>
   );
 };

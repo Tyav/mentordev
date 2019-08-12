@@ -10,11 +10,12 @@ import './ProfileHeader.css';
 function ProfileHeader() {
   const style = {
     background: '#fff',
-    height: '300px',
-    borderBottom: '1px solid #efefef',
+    // height: '300px',
+    // borderBottom: '1px solid #efefef',
     display: 'flex',
     alignItems: 'center',
-    paddingTop: '30px'
+    padding: '20px',
+    borderRadius: '5px'
   };
   return (
     <div>
@@ -34,9 +35,7 @@ function ProfileHeader() {
             <Tag tagname="Javascript" />
           </div>
           <ProfStats />
-          <ProfBio>
-            Software Engineer at Facebook. Mailbox: xxx@xxx.com. *A fan of PHP*
-          </ProfBio>
+          <ProfBio>Software Engineer at Facebook. Mailbox: xxx@xxx.com. *A fan of PHP*</ProfBio>
         </div>
       </Card>
     </div>

@@ -21,9 +21,9 @@ function App() {
   return (
     <div>
       {/* <Navbar /> */}
-      <ProfileHeader />
-      <MentorsProfileCard />
-      <Navbar />
+      {/* <ProfileHeader /> */}
+      {/* <MentorsProfileCard /> */}
+      {/* <Navbar /> */}
       {/* <Login /> */}
       <MenteeDashboard />
       {/* <Signup /> */}
