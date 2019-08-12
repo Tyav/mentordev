@@ -9,7 +9,8 @@ function CheckBox(props) {
         id={props.id}
         type={props.type}
         placeholder={props.placeholder}
-        value={props.value}
+        checked={props.value}
+        onChange={props.change}
       />
       <label htmlFor={props.id}>{props.label}</label>
     </div>
