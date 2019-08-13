@@ -20,6 +20,7 @@ function App() {
       <Route path="/forgot-password" component={Forgot} />
       <Route path="/reset-password" component={ResetPassword} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/reset-password" component={ResetPassword} />
     </Router>
   );
 }
