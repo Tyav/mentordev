@@ -84,7 +84,7 @@ function Signup() {
         setSignupResponse({
           message: response.data.errors
             ? Object.values(response.data.errors)[0]
-            : response.data.error,
+            : response.data.error.msg,
           show: true,
           type: 'form-alert-danger'
         });
