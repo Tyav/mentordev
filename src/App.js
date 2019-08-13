@@ -1,18 +1,26 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
-import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
 
-import Login from './pages/Login';
+import ResetPassword from './pages/ResetPassword';
+import Dashboard from './pages/MenteeDashboard';
+import Forgot from './pages/ForgotPassword';
 import Signup from './pages/Signup';
-import MenteeDashboard from './pages/MenteeDashboard';
+import About from './pages/About';
+import Login from './pages/Login';
+import './App.css';
+
 
 function App() {
   return (
-    <BrowserRouter>
-      <Route exact path="/" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-      <Route path="/dashboard" component={MenteeDashboard} />
-    </BrowserRouter>
+    <Router>
+      <Route path="/" exact component={About} />
+      <Route path="/register" component={Signup} />
+      <Route path="/about" component={About} />
+      <Route path="/login" component={Login} />
+      <Route path="/forgot-password" component={Forgot} />
+      <Route path="/reset-password" component={ResetPassword} />
+      <Route path="/dashboard" component={Dashboard} />
+    </Router>
   );
 }
 

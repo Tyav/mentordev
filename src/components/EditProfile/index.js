@@ -65,7 +65,7 @@ const EditProfile = () => {
                   placeholder="Eg. John Doe"
                   value={values.fullname}
                   style={`${styles.input}`}
-                  onChange={handleChange}
+                  change={handleChange}
                   name="fullname"
                   onBlur={handleBlur}
                 />
@@ -79,7 +79,7 @@ const EditProfile = () => {
                   placeholder="Eg. xyz@abc.com"
                   value={values.email}
                   style={`${styles.input}`}
-                  onChange={handleChange}
+                  change={handleChange}
                   name="email"
                   onBlur={handleBlur}
                 />
@@ -94,7 +94,7 @@ const EditProfile = () => {
                 placeholder="Eg. 08060...."
                 value={values.phone}
                 style={`${styles.input} ${styles.first_input}`}
-                onChange={handleChange}
+                change={handleChange}
                 name="phone"
               />
               <InputField
@@ -104,7 +104,7 @@ const EditProfile = () => {
                 placeholder="Eg. lagos"
                 value={values.location}
                 style={`${styles.input} ${styles.second_input}`}
-                onChange={handleChange}
+                change={handleChange}
                 name="location"
               />
             </div>
@@ -115,7 +115,7 @@ const EditProfile = () => {
               placeholder="Eg. Javascript, React, PHP..."
               value={values.skills}
               style={styles.input}
-              onChange={handleChange}
+              change={handleChange}
               name="skills"
             />
             <Fieldset text="Social Handles" style={styles.connection_container}>
@@ -127,7 +127,7 @@ const EditProfile = () => {
                     label="Twitter"
                     value={values.twitter}
                     style={`${styles.input}`}
-                    onChange={handleChange}
+                    change={handleChange}
                     name="twitter"
                   />
                 </div>
@@ -138,7 +138,7 @@ const EditProfile = () => {
                     label="LinkedIn"
                     value={values.linkedIn}
                     style={`${styles.input}`}
-                    onChange={handleChange}
+                    change={handleChange}
                     name="linkedIn"
                   />
                 </div>
@@ -151,7 +151,7 @@ const EditProfile = () => {
                     label="GitHub"
                     value={values.github}
                     style={`${styles.input}`}
-                    onChange={handleChange}
+                    change={handleChange}
                     name="github"
                   />
                 </div>
@@ -162,7 +162,7 @@ const EditProfile = () => {
                     label="Facebook"
                     value={values.facebook}
                     style={`${styles.input}`}
-                    onChange={handleChange}
+                    change={handleChange}
                     name="facebook"
                   />
                 </div>
