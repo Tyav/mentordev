@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './DashboardAside.module.css';
 import { NavLink } from 'react-router-dom';
+import styles from './DashboardAside.module.css';
 
 const DashboardAside = () => {
   return (

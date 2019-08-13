@@ -24,7 +24,7 @@
 }
 
 .searchButton {
-  width: 20px;
+  width: 15%;
   height: 45px;
   background: #34a853;
   text-align: center;
@@ -34,6 +34,7 @@
   font-size: 20px;
   display: flex;
   justify-content: center;
+  border: 1px solid #fff;
 }
 
 .searchButton:hover {

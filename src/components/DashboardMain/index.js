@@ -32,7 +32,8 @@ const DashboardMain = () => {
           <ProfileHeader />
         </div>
         <div className={styles.mentors_container}>
-          <MentorsProfileCard mentors={mentors} />;
+          <h3 style={{ marginTop: '10px' }}>Your Mentors</h3>
+          <MentorsProfileCard mentors={mentors} />
         </div>
       </div>
     </div>
