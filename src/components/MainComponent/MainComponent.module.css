@@ -1,10 +1,13 @@
 .outer_container {
   background: #e8edf1;
-  height: 94%;
+  height: 100%;
   margin: 0rem 2rem 2rem 1.5rem;
   border-radius: 5px;
   padding: 1rem;
   overflow: hidden;
+
+  position: relative;
+  top: 100px;
 }
 
 .container {
@@ -15,10 +18,4 @@
 
 .search_container {
   margin-bottom: 1rem;
-}
-.profile_container {
-  /* margin-bottom: 1rem; */
-}
-.mentors_container {
-  /* margin-bottom: 1rem; */
 }

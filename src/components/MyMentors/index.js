@@ -21,9 +21,11 @@ const MyMentors = ({ mentors }) => {
                 World class developer with 7 years industrial experience. Contact me at your own
                 risk
               </p>
-              <p className={styles.email}>omolayovictor@gahoo.com</p>
-              <div className={styles.location_div}>
-                <span className={styles.location}>Lagos, Nigeria</span>
+              <div className={styles.group_element}>
+                <p className={styles.email}>omolayovictor@gahoo.com</p>
+                <div className={styles.location_div}>
+                  <span className={styles.location}>Lagos, Nigeria</span>
+                </div>
               </div>
               <div className={styles.skills}>
                 <Tag tagname="JavaScript" />

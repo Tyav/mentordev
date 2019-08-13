@@ -8,6 +8,10 @@ body {
 
   /* Give app full page to work with */
   height: 100vh;
+
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
 }
 
 #page-wrap {
