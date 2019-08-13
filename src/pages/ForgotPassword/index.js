@@ -35,17 +35,12 @@ function ForgotPassword() {
       url: 'http://localhost:6060/api/v1/auth/forgot-password',
       data: { ...value },
     }).then(response => {
-      if (
-        response.data.statusCode !== 200 ||
-        response.data.statusCode === 200
-      ) {
-        setValue({
-          email: '',
-          response: response.data.message,
-          show: !value.show,
-          type: 'form-alert-success',
-        });
-      }
+      setValue({
+        email: '',
+        response: response.data.message,
+        show: !value.show,
+        type: 'form-alert-success',
+      });
     });
   };
 
