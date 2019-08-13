@@ -109,8 +109,8 @@ function Login() {
           />
           <Button className="btn-success-solid" text="Login" />
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> or
-            <Link to="/forgotpassword">Forgot your Password?</Link>
+            Don't have an account? <Link to="/register">Singup</Link> or{' '}
+            <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
         </form>
       </div>

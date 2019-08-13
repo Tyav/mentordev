@@ -35,7 +35,6 @@ function ForgotPassword() {
       url: 'http://localhost:6060/api/v1/auth/forgot-password',
       data: { ...value },
     }).then(response => {
-      console.log(response.data.message);
       if (
         response.data.statusCode !== 200 ||
         response.data.statusCode === 200
