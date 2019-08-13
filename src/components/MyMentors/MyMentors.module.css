@@ -7,15 +7,21 @@
   padding: 10px 3px;
   margin: 1rem 0;
   transition: ease-in-out 0.2s;
+  border: 1px solid #fff;
 }
 .container:hover {
   /* transform: scale(0.9); */
-  background: #d0eee2;
+  background: #d3f1e5;
 }
 
 .container:hover .link {
   /* transform: scale(0.9); */
   color: #fff;
+}
+
+.container:hover .social {
+  /* transform: scale(0.9); */
+  border: 1px solid #fff;
 }
 
 .image {
@@ -29,8 +35,8 @@
   height: 100%;
 }
 .mentor_avatar {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   border-radius: 100%;
   margin-top: 1.5rem;
 }

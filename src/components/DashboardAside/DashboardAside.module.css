@@ -35,6 +35,7 @@
   margin: 20px auto;
   margin: 3rem 1.5rem 2.5rem 1.5rem;
   cursor: pointer;
+  font-family: 'Monda', sans-serif;
 }
 
 .logo {
@@ -55,8 +56,9 @@
 
 .link {
   padding: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   margin: 1.5rem 5px;
+  font-family: 'Monda', sans-serif;
 }
 
 .activeNav, /* for now untill we use router active */

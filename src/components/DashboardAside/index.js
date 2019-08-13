@@ -8,8 +8,10 @@ const DashboardAside = () => {
       <div className={styles.container}>
         <div className={styles.inner_container}>
           <div className={styles.logo}>
-            <img src="/assets/img/logo.png" alt="logo" /> <br />
-            DEV<span className={styles.logo_mentor}>MENTOR</span>
+            <NavLink to="/">
+              <img src="/assets/img/logo.png" alt="logo" /> <br />
+              DEV<span className={styles.logo_mentor}>MENTOR</span>
+            </NavLink>
           </div>
           <div className={styles.navigation}>
             <NavLink
