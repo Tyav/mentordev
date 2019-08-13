@@ -1,0 +1,53 @@
+body {
+  background: #fff;
+}
+.aboutHeader {
+  width: 95%;
+  height: 300px;
+  display: flex;
+  padding: 70px 0 10px 0;
+  justify-content: space-around;
+  margin: 30px auto 50px auto;
+  padding: 50px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+.aboutImg,
+.aboutDescription {
+  flex: 0 0 40%;
+}
+.aboutDescription article {
+  padding: 30px 20px 20px 50px;
+}
+.aboutDescription article h1 {
+  font-size: 2rem;
+}
+.aboutDescription article h1 span {
+  background: #12aa52;
+  color: #fff;
+  padding: 0 10px;
+}
+.aboutImg {
+  text-align: center;
+}
+.aboutImg img {
+  width: 100% !important;
+  height: auto !important;
+}
+.menteeDescription {
+  width: 95%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  margin: 100px auto;
+}
+.menteeDescription .aboutImg img {
+  width: 300px;
+}
+.callToAction {
+  width: 100%;
+  height: fit-content;
+  min-height: 200px;
+  padding: 10px 0;
+  background: #12aa52;
+}
