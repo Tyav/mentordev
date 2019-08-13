@@ -11,10 +11,7 @@ export default function formatBeforeUpdate(values) {
     github,
     linkedIn
   } = values;
-  skills = skills.split(',').filter(item => {
-    item = item.trim();
-    if (item.length > 1) return item;
-  });
+  skills = skills.split(',').filter(item => item.trim().length > 1);
   const data = {
     fullname,
     email,

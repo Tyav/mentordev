@@ -48,7 +48,7 @@ const EditProfile = () => {
         errors: { ...values.errors, [name]: `${name} is not valid.` }
       });
 
-    return setValues({ ...values, errors: { fullname: '', email: '' } });
+    return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
 
   return (

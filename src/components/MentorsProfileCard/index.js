@@ -4,7 +4,6 @@ import '../MentorsProfileCard/MentorsProfile.css';
 import Tag from '../Tag/index';
 
 function MentorCard({ mentors }) {
-  // const { avatar, name } = mentor;
   return (
     <div className="mentor-card-div">
       {mentors.map((mentor, key) => (

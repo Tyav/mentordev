@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import RequestDashboard from '../../components/RequestDashboard';
 import DashboardHeader from '../../components/DashboardHeader';
 import DashboardAside from '../../components/DashboardAside';
 import DashboardMain from '../../components/DashboardMain';
@@ -25,7 +26,7 @@ const MenteeDashboard = () => {
         <div>
           <Route exact path="/dashboard" component={DashboardMain} />
           <Route path="/dashboard/profile" component={Profile} />
-          <Route path="/dashboard/requests" component={DashboardMain} />
+          <Route path="/dashboard/requests" component={RequestDashboard} />
         </div>
       </div>
     </div>
