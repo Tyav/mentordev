@@ -21,12 +21,13 @@
 .searchTerm:focus {
   color: #032e18;
   width: 100%;
+  border-radius: 5px 0 0 5px;
 }
 
 .searchButton {
-  width: 15%;
+  width: 12%;
   height: 45px;
-  background: #34a853;
+  background: #38bc8a;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -35,10 +36,11 @@
   display: flex;
   justify-content: center;
   border: 1px solid #fff;
+  transition: ease-in-out 0.2s;
 }
 
 .searchButton:hover {
-  background-color: #34a853;
+  background-color: #66c09e;
 }
 
 /*Resize the wrap to see the search bar change!*/

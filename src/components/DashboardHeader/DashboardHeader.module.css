@@ -10,7 +10,7 @@
   margin-top: 0;
   padding: 1rem;
   padding-top: 0;
-  color: #34a853;
+  color: #38bc8a;
 }
 .header {
   display: flex;
@@ -23,7 +23,7 @@
 }
 
 .headerTitle > h2 {
-  color: #34a853;
+  color: #38bc8a;
 }
 
 .headerTitle > h2 {
