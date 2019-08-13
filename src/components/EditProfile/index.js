@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import InputField from '../InputField';
-import styles from './EditProfile.module.css';
-import Button from '../Button';
-import Fieldset from '../FieldSet';
 import formatBeforeUpdate from '../../helper/formatUpdateData';
+import styles from './EditProfile.module.css';
+import InputField from '../InputField';
 import '../InputField/InputField.css';
+import Fieldset from '../FieldSet';
+import Button from '../Button';
 
 const EditProfile = () => {
   const [values, setValues] = useState({
@@ -118,7 +118,7 @@ const EditProfile = () => {
               onChange={handleChange}
               name="skills"
             />
-            <Fieldset text="Connections" style={styles.connection_container}>
+            <Fieldset text="Social Handles" style={styles.connection_container}>
               <div className={styles.input_group}>
                 <div className={`${styles.first_input}`}>
                   <InputField

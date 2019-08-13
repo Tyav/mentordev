@@ -10,6 +10,12 @@
 }
 .container:hover {
   /* transform: scale(0.9); */
+  background: #d0eee2;
+}
+
+.container:hover .link {
+  /* transform: scale(0.9); */
+  color: #fff;
 }
 
 .image {
@@ -34,6 +40,7 @@
   display: flex;
   margin: auto;
   margin-right: 1rem;
+  font-family: 'Atomic Age', sans-serif;
 }
 
 .details {
@@ -44,13 +51,15 @@
   font-size: 18px;
   font-weight: 700;
   margin: 10px 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .bio,
 .location {
-  font-weight: 300;
+  font-weight: 100;
   margin: 5px 0;
-  font-size: 15px;
+  font-size: 14px;
+  font-family: 'Monda', sans-serif;
 }
 
 .email {

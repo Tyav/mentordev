@@ -1,5 +1,4 @@
 import React from 'react';
-import Tags from '../Tag/index';
 import '../MentorsProfileCard/MentorsProfile.css';
 import Tag from '../Tag/index';
 

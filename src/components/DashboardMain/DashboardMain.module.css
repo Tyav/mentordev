@@ -7,18 +7,11 @@
   overflow: hidden;
 }
 
-.container {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-}
-
-.search_container {
-  margin-bottom: 1rem;
-}
-.profile_container {
-  /* margin-bottom: 1rem; */
-}
-.mentors_container {
-  /* margin-bottom: 1rem; */
+.mentors_heading {
+  margin-top: 10px;
+  font-size: 25px;
+  position: relative;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-family: 'Monda', sans-serif;
 }

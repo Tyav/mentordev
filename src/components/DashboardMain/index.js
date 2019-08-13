@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import styles from '../MainComponent/MainComponent.module.css';
-import MentorsProfileCard from '../MentorsProfileCard';
-import MyMentors from '../MyMentors';
+import externalStyles from '../MainComponent/MainComponent.module.css';
+import styles from './DashboardMain.module.css';
 import MainComponent from '../MainComponent';
 import ProfileHeader from '../ProfileHeader';
+import MyMentors from '../MyMentors';
 import SearchBar from '../SearchBar';
 
 const DashboardMain = () => {
@@ -26,14 +26,14 @@ const DashboardMain = () => {
   }
   return (
     <MainComponent>
-      <div className={styles.search_container}>
+      <div className={externalStyles.search_container}>
         <SearchBar />
       </div>
-      <div className={styles.profile_container}>
+      <div className={externalStyles.profile_container}>
         <ProfileHeader />
       </div>
-      <div className={styles.mentors_container}>
-        <h3 style={{ marginTop: '10px' }}>Your Mentors</h3>
+      <div className={externalStyles.mentors_container}>
+        <h3 className={styles.mentors_heading}>Your Mentors</h3>
         <div>
           <MyMentors mentors={mentors} />
         </div>
