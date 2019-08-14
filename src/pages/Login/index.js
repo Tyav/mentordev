@@ -15,14 +15,14 @@ function Login() {
   const [loginResponse, setLoginResponse] = useState({
     message: '',
     show: false,
-    type: '',
+    type: ''
   });
 
   const [auth, setAuth] = useState(false);
 
   const [values, setValues] = useState({
     email: '',
-    password: '',
+    password: ''
   });
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -32,19 +32,19 @@ function Login() {
     axios({
       method: 'POST',
       url: 'http://localhost:6060/api/v1/auth/login',
-      data: { ...values },
+      data: { ...values }
     }).then(response => {
       if (response.data.statusCode !== 200) {
         setLoginResponse({
           message: 'Email or password incorrect',
           show: true,
-          type: 'form-alert-danger',
+          type: 'form-alert-danger'
         });
         setTimeout(() => {
           setLoginResponse({
             message: '',
             show: false,
-            type: '',
+            type: ''
           });
         }, 4000);
         return;
@@ -55,13 +55,13 @@ function Login() {
       setLoginResponse({
         message: 'Login Successful',
         show: true,
-        type: 'form-alert-success',
+        type: 'form-alert-success'
       });
       setTimeout(() => {
         setLoginResponse({
           message: '',
           show: false,
-          type: '',
+          type: ''
         });
         setAuth(true);
       }, 4000);
@@ -109,8 +109,8 @@ function Login() {
           />
           <Button className="btn-success-solid" text="Login" />
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> or{' '}
-            <Link to="/forgot-password"> Forgot your Password?</Link>
+            {/* Don't have an account? <Link to="/register">Singup</Link> or{' '}
+            <Link to="/forgot-password"> Forgot your Password?</Link> */}
           </p>
         </form>
       </div>
