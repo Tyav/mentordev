@@ -83,3 +83,22 @@
     display: none;
   }
 }
+
+@media (max-width: 800px) {
+  .container {
+    width: 100vw;
+    background: #fff;
+  }
+}
+
+@media (max-width: 420px) {
+  .headerTitle > h2 {
+    font-size: 1.2rem;
+  }
+  .user_icon {
+    display: none;
+  }
+  .header {
+    flex: 1;
+  }
+}

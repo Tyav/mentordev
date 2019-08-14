@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import formatBeforeUpdate from '../../helper/formatUpdateData';
 import styles from './EditProfile.module.css';
@@ -188,7 +189,9 @@ const EditProfile = () => {
               <div className={styles.button}>
                 <Button className="btn-success-solid register" text="Save Changes" />
               </div>
-              <Button className="btn-danger-solid register" text="Discard Changes" />
+              <Link to="/dashboard">
+                <Button className="btn-danger-solid register" text="Discard Changes" />
+              </Link>
             </div>
           </div>
         </form>

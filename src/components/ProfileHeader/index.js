@@ -6,21 +6,13 @@ import ProfBio from '../ProfBio';
 import profile_avatar from '../../assets/images/profile_two.png';
 
 import Tag from '../Tag';
+import './cardStyle.css';
 import './ProfileHeader.css';
-//Testing login route
+
 function ProfileHeader() {
-  const style = {
-    background: '#fff',
-    // height: '300px',
-    // borderBottom: '1px solid #efefef',
-    display: 'flex',
-    alignItems: 'center',
-    padding: '20px',
-    borderRadius: '5px'
-  };
   return (
     <div>
-      <Card style={style}>
+      <Card styles="card_style">
         <div className="profileImage">
           <img src={profile_avatar} alt="" className="image" />
         </div>

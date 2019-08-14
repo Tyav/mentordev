@@ -24,8 +24,7 @@ const MenteeDashboard = () => {
 
         <div className={styles.content} id="page-wrap">
           <div className={styles.sticky_header}>
-
-          <DashboardHeader />
+            <DashboardHeader />
           </div>
           <div>
             <Route exact path="/dashboard" component={DashboardMain} />

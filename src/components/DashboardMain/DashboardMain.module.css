@@ -5,6 +5,9 @@
   border-radius: 5px;
   padding: 1rem;
   overflow: hidden;
+
+  position: relative;
+  top: 80px;
 }
 
 .mentors_heading {
@@ -14,4 +17,10 @@
   margin-bottom: 15px;
   font-weight: 700;
   font-family: 'Monda', sans-serif;
+}
+
+@media (max-width: 700px) {
+  .outer_container {
+    margin: 0;
+  }
 }
