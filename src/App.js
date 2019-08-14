@@ -1,14 +1,14 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
+
+import ResetPassword from './pages/ResetPassword';
+import Dashboard from './pages/MenteeDashboard';
+import Forgot from './pages/ForgotPassword';
+import Signup from './pages/Signup';
+import About from './pages/About';
+import Login from './pages/Login';
 import './App.css';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import Forgot from './pages/ForgotPassword';
-import Dashboard from './pages/MenteeDashboard';
-import ResetPassword from './pages/ResetPassword';
-
-import About from './pages/About';
 
 function App() {
   return (

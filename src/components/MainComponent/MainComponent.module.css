@@ -7,16 +7,17 @@
   overflow: hidden;
 
   position: relative;
-  top: 80px;
+  top: 100px;
 }
 
-.mentors_heading {
-  margin-top: 10px;
-  font-size: 25px;
-  position: relative;
-  margin-bottom: 15px;
-  font-weight: 700;
-  font-family: 'Monda', sans-serif;
+.container {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.search_container {
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 700px) {
