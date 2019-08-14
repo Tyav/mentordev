@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, cleanup, queryByAttribute } from '@testing-library/react';
 import { toHaveClass, toBeInTheDOM } from '@testing-library/jest-dom';
-import ProfStats from '../ProfStats';
-import SingleStats from '../SingleStats';
+import ProfStats from '../components/ProfStats';
+import SingleStats from '../components/SingleStats';
 
 afterEach(cleanup);
 

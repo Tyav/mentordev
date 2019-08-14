@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, queryByAttribute } from '@testing-library/react';
-import Card from '../Card/index';
+import Card from '../components/Card/index';
 
 afterEach(cleanup);
 
