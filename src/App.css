@@ -2,3 +2,35 @@ body {
   background: #fff !important;
 }
 
+.verify-page {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.verify-page-img {
+  width: 100%;
+  text-align: center;
+}
+.verify-page-img img {
+  width: 90%;
+}
+@media screen and (min-width: 780px) {
+  .verify-page {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .verify-page-img {
+    width: 100%;
+    text-align: center;
+  }
+  .verify-page-img img {
+    width: 50%;
+  }
+}
