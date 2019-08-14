@@ -2,7 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './DashboardAside.module.css';
 
+import logOut from '../../helper/logOut';
+
 const DashboardAside = () => {
+  const handleLogout = async () => {
+    return logOut();
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -39,7 +44,7 @@ const DashboardAside = () => {
               Requests
             </NavLink>
           </div>
-          <div className={styles.log_out}>
+          <div className={styles.log_out} onClick={handleLogout}>
             <a href="/" rel="noopener noreferrer" className={styles.user_icon}>
               <div className={styles.go_out_icon}>
                 <i className="fas fa-sign-out-alt" />
