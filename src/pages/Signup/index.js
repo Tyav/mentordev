@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 
 import InputField from '../../components/InputField';
 import Button from '../../components/Button';
@@ -20,6 +20,7 @@ function Signup() {
 
   const [values, setValues] = useState({});
   const [checked, setChecked] = useState(false);
+  const [getstarted, setGetstarted] = useState(false);
 
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -27,17 +28,6 @@ function Signup() {
   const handleCheck = e => {
     setChecked(!checked);
   };
-
-  const [auth, setAuth] = useState(false);
-  useEffect(() => {
-    const auth = localStorage.getItem('auth');
-    if (auth) {
-      setAuth(true);
-    }
-  }, [auth]);
-  if (auth) {
-    return <Redirect to="/dashboard" />;
-  }
 
   const signUpFormHandler = async e => {
     e.preventDefault();
@@ -97,9 +87,6 @@ function Signup() {
         return;
       }
 
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('tokenID', response.data.payload.id);
-      localStorage.setItem('auth', true);
       setSignupResponse({
         message: 'Signup Successful',
         show: true,
@@ -111,10 +98,9 @@ function Signup() {
           show: false,
           type: ''
         });
-        setAuth(true);
+        setGetstarted(true);
       }, 4000);
     } catch (error) {
-      console.error('Server error: ', error);
       setSignupResponse({
         message: 'Signup Failed, Please try again',
         show: true,
@@ -130,8 +116,15 @@ function Signup() {
     }
   };
 
-  if (auth) {
-    return <Redirect to="/dashboard" />;
+  if (getstarted) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/getstarted',
+          state: { email: values.email }
+        }}
+      />
+    );
   }
   return (
     <>
@@ -196,4 +189,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default withRouter(Signup);

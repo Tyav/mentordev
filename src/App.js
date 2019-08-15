@@ -7,6 +7,7 @@ import Forgot from './pages/ForgotPassword';
 import Signup from './pages/Signup';
 import About from './pages/About';
 import Login from './pages/Login';
+import GetStarted from './pages/GetStarted'
 import './App.css';
 
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/reset-password" component={ResetPassword} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/reset-password" component={ResetPassword} />
+      <Route path="/getstarted" component={GetStarted} />
     </Router>
   );
 }
