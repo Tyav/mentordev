@@ -17,7 +17,7 @@ const DashboardAside = () => {
           <div className={styles.log_out}>
             <a href="/" rel="noopener noreferrer" className={styles.user_icon}>
               <div className={styles.go_out_icon}>
-                <i class="fas fa-sign-out-alt" />
+                <i className="fas fa-sign-out-alt" />
               </div>
               <span>Go Out</span>
             </a>
