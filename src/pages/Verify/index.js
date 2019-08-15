@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-import FormAlert from '../../components/Alerts/FormAlert';
+import Navbar from '../../components/Navbar';
+import Button from '../../components/Button';
 
 import getParams from '../../helper/getParams';
 
@@ -14,7 +15,10 @@ function Verify() {
     show: false,
     type: '',
   });
+
+  const [loading, setLoading] = useState(false);
   const [redirectRegister, setRedirectRegister] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   const [redirectDashboard, setRedirectDashboard] = useState(false);
 
   const auth = {
@@ -25,11 +29,11 @@ function Verify() {
   };
 
   useEffect(() => {
-    setAlert({
-      message: 'Loading...',
-      show: true,
-      type: 'form-alert-success',
-    });
+    setLoading(true);
+    if (!token) {
+      setNotFound(true);
+      setLoading(false);
+    }
     axios({
       method: 'POST',
       url: 'http://localhost:6060/api/v1/auth/verify',
@@ -38,57 +42,89 @@ function Verify() {
       .then(response => {
         if (response.data.statusCode !== 200) {
           setAlert({
-            message: response.data.message,
+            message: 'This link may have expired',
             show: true,
             type: 'form-alert-danger',
           });
           setTimeout(() => {
-            setRedirectRegister(true);
-          }, 4000);
+            setNotFound(true);
+            setLoading(false);
+          }, 9000);
           return;
         }
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('tokenID', response.data.payload.id);
         localStorage.setItem('auth', true);
         setAlert({
-          message: 'Redirecting',
+          message: 'Redirecting...',
           show: true,
           type: 'form-alert-success',
         });
+        setNotFound(false);
+        setLoading(false);
         setTimeout(() => {
           setRedirectDashboard(true);
-        }, 4000);
+        }, 2000);
       })
       .catch(() => {
+        setNotFound(true);
+        setLoading(false);
         setAlert({
-          message: 'An error occured. Please try again later',
+          message:
+            'An error occured. Please click on the link sent to you via email again',
           show: true,
           type: 'form-alert-danger',
         });
-        setTimeout(() => {
-          setRedirectRegister(true);
-        }, 4000);
+        setRedirectRegister(true);
       });
   }, []);
 
-  if (!token) {
-    return <Redirect to="/register" />;
-  }
-  if (redirectRegister) {
-    return <Redirect to="/register" />;
-  }
+  const duringLoad = () => {
+    return <img src="/assets/img/loading-icon.svg" alt="loading" />;
+  };
+
+  const afterLoading = () => {
+    return !notFound ? (
+      <>
+        <div className="verify-page-img">
+          <img src="/assets/img/verify-page.svg" alt="verify-page" />
+        </div>
+        <br />
+        <p>{alert.message}</p>
+        <br />
+      </>
+    ) : (
+      <>
+        <div className="verify-page-img">
+          <img src="/assets/img/404.svg" alt="verify-page" />
+        </div>
+        <br />
+        <p>{alert.message}</p>
+        <br />
+        <Link to="/login">
+          <Button className="btn-success-solid" text="Login" />
+        </Link>
+        <span className="msgPipes">|</span>
+        <Link to="/register">
+          <Button className="btn-success-solid" text="Register" />
+        </Link>
+      </>
+    );
+  };
+
+  //   if (redirectRegister) {
+  //     return <Redirect to="/register" />;
+  //   }
   if (redirectDashboard) {
     return <Redirect to="/dashboard" />;
   }
 
   return (
     <>
+      <Navbar />
       <div className="verify-page">
-        <FormAlert type={alert.type}>{alert.message}</FormAlert>
         <br />
-        <div className="verify-page-img">
-          <img src="/assets/img/verify-page.svg" alt="verify-page" />
-        </div>
+        {loading ? duringLoad() : afterLoading()}
       </div>
     </>
   );

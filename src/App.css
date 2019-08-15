@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 .verify-page-img {
   width: 100%;
@@ -17,6 +17,9 @@ body {
 .verify-page-img img {
   width: 90%;
 }
+.msgPipes {
+  color: #ccc;
+}
 @media screen and (min-width: 780px) {
   .verify-page {
     width: 100%;
@@ -24,13 +27,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
   }
   .verify-page-img {
     width: 100%;
     text-align: center;
   }
   .verify-page-img img {
-    width: 50%;
+    width: 30%;
   }
 }
