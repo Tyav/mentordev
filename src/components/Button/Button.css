@@ -8,20 +8,20 @@ button {
 }
 
 .btn-success-solid {
-  background: #12aa52;
+  background: #45cc89;
   color: #fff;
 }
 
 .btn-success-outline {
-  border: 1px solid #12aa52;
-  color: #12aa52;
+  border: 1px solid #45cc89;
+  color: #45cc89;
+  background: none;
   transition: all linear 0.2s;
 }
 .btn-success-outline:hover {
   border: none;
-  background: #12aa52;
+  background: #45cc89;
   color: #fff;
-  border: 2px solid #12aa52;
   transition: all linear 0.2s;
 }
 
