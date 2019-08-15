@@ -23,7 +23,7 @@ function MainAbout() {
             <span>/>eveloper</span>
           </h1>
           <p>
-            Trainee students find and connect with Willing mentors for
+            Trainee students find and connect with Willing Mentors for
             mentorship relationships.
             <br />
             <Link to="/register">
@@ -42,7 +42,7 @@ function MainAbout() {
           <div className="main-about-sm-card">
             <i className="mdi mdi-school" />
             <p>
-              Mentors regiter on the platform and create scheduled time forwhen
+              Mentors register on the platform and create scheduled time for when
               they would be available.
               <br />
               <Link to="/register">Mentor a />ev</Link>
@@ -52,7 +52,7 @@ function MainAbout() {
             <i className="mdi mdi-account" />
             <p>
               Mentees register and book opened mentors slots that would be
-              approved my the mentor.
+              approved by the mentor.
               <br />
               <Link to="/register">Get a />ev mentor</Link>
             </p>
