@@ -19,7 +19,8 @@ function MainAbout() {
       <div className="main-about-card">
         <div className="main-about-side-content">
           <h1>
-            Mentor a <span>/>eveloper</span>
+            Mentor a <br />
+            <span>/>eveloper</span>
           </h1>
           <p>
             Trainee students find and connect with Willing mentors for
@@ -70,7 +71,8 @@ function MainAbout() {
       <div className="main-about-card">
         <div className="main-about-side-content">
           <h1>
-            Find a <span>Mentor</span>
+            Find a <br />
+            <span>Mentor</span>
           </h1>
           <p>
             Trainee students find and connect with Willing mentors for
