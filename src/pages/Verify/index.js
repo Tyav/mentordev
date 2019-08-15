@@ -21,12 +21,10 @@ function Verify() {
   const [notFound, setNotFound] = useState(false);
   const [redirectDashboard, setRedirectDashboard] = useState(false);
 
-  const auth = {
-    headers: {
+  const headers = {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
-    },
-  };
+      Authorization: `Bearer ${token}`,
+    };
 
   useEffect(() => {
     setLoading(true);
@@ -35,9 +33,9 @@ function Verify() {
       setLoading(false);
     }
     axios({
-      method: 'POST',
+      method: 'PUT',
       url: 'http://localhost:6060/api/v1/auth/verify',
-      auth,
+      headers
     })
       .then(response => {
         if (response.data.statusCode !== 200) {
