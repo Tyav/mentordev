@@ -5,7 +5,6 @@ import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/MenteeDashboard';
 import Forgot from './pages/ForgotPassword';
 import Signup from './pages/Signup';
-import About from './pages/About';
 import Login from './pages/Login';
 import GetStarted from './pages/GetStarted';
 import Verify from './pages/Verify';
