@@ -8,21 +8,24 @@ import Signup from './pages/Signup';
 import About from './pages/About';
 import Login from './pages/Login';
 import GetStarted from './pages/GetStarted'
-import './App.css';
+import Verify from './pages/Verify';
+import MainAbout from './pages/MainAbout';
 
+import './App.css';
 
 function App() {
   return (
     <Router>
-      <Route path="/" exact component={About} />
+      <Route path="/" exact component={MainAbout} />
       <Route path="/register" component={Signup} />
-      <Route path="/about" component={About} />
+      <Route path="/abouts" component={About} />
+      <Route path="/about" component={MainAbout} />
       <Route path="/login" component={Login} />
       <Route path="/forgot-password" component={Forgot} />
       <Route path="/reset-password" component={ResetPassword} />
       <Route path="/dashboard" component={Dashboard} />
-      <Route path="/reset-password" component={ResetPassword} />
       <Route path="/getstarted" component={GetStarted} />
+      <Route path="/verify" component={Verify} />
     </Router>
   );
 }

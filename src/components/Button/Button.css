@@ -3,26 +3,25 @@ button {
   border: none;
   border-radius: 4px;
   font-size: 0.8rem;
-  font-weight: 700;
   outline: none;
   cursor: pointer;
 }
 
 .btn-success-solid {
-  background: #12aa52;
+  background: #45cc89;
   color: #fff;
 }
 
 .btn-success-outline {
-  border: 1px solid #12aa52;
-  color: #12aa52;
+  border: 1px solid #45cc89;
+  color: #45cc89;
+  background: none;
   transition: all linear 0.2s;
 }
 .btn-success-outline:hover {
   border: none;
-  background: #12aa52;
+  background: #45cc89;
   color: #fff;
-  border: 2px solid #12aa52;
   transition: all linear 0.2s;
 }
 
@@ -35,7 +34,7 @@ button {
   color: #d64242;
 }
 
-@media (max-width: 700px) {
+@media only screen and (max-width: 700px) {
   button {
     padding: 10px;
   }

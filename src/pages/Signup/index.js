@@ -15,7 +15,7 @@ function Signup() {
   const [signupResponse, setSignupResponse] = useState({
     message: '',
     show: false,
-    type: ''
+    type: '',
   });
 
   const [values, setValues] = useState({});
@@ -36,12 +36,12 @@ function Signup() {
       setSignupResponse({
         message: 'Passwords Should Match',
         show: true,
-        type: 'form-alert-danger'
+        type: 'form-alert-danger',
       });
 
       setTimeout(() => {
         setSignupResponse({
-          show: false
+          show: false,
         });
       }, 4000);
       return;
@@ -49,25 +49,25 @@ function Signup() {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     };
     const { fullname: name, email, password, isMentor } = {
       ...values,
-      isMentor: checked
+      isMentor: checked,
     };
     const body = JSON.stringify({
       name,
       email,
       password,
-      isMentor
+      isMentor,
     });
 
     try {
       const response = await axios.post(
         'http://localhost:6060/api/v1/user',
         body,
-        config
+        config,
       );
 
       if (response.data.statusCode !== 200) {
@@ -76,12 +76,12 @@ function Signup() {
             ? Object.values(response.data.errors)[0]
             : response.data.error.msg,
           show: true,
-          type: 'form-alert-danger'
+          type: 'form-alert-danger',
         });
 
         setTimeout(() => {
           setSignupResponse({
-            show: false
+            show: false,
           });
         }, 4000);
         return;
@@ -90,13 +90,13 @@ function Signup() {
       setSignupResponse({
         message: 'Signup Successful',
         show: true,
-        type: 'form-alert-success'
+        type: 'form-alert-success',
       });
       setTimeout(() => {
         setSignupResponse({
           message: '',
           show: false,
-          type: ''
+          type: '',
         });
         setGetstarted(true);
       }, 4000);
@@ -104,13 +104,13 @@ function Signup() {
       setSignupResponse({
         message: 'Signup Failed, Please try again',
         show: true,
-        type: 'form-alert-danger'
+        type: 'form-alert-danger',
       });
       setTimeout(() => {
         setSignupResponse({
           message: '',
           show: false,
-          type: ''
+          type: '',
         });
       }, 4000);
     }
