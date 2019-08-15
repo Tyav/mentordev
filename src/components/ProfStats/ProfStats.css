@@ -1,5 +1,6 @@
 .profStats {
   display: flex;
+  margin: 1rem 0;
 }
 .profStats p {
   padding: 0;

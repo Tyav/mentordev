@@ -12,7 +12,7 @@
   height: 95%;
   /* background-color: #161a24; */
   /* background-color: #04060b; */
-  background: #34a853;
+  background: #38bc8a;
 
   color: #eaf2fc;
   border-top-right-radius: 30px;
@@ -35,6 +35,7 @@
   margin: 20px auto;
   margin: 3rem 1.5rem 2.5rem 1.5rem;
   cursor: pointer;
+  font-family: 'Monda', sans-serif;
 }
 
 .logo {
@@ -55,16 +56,17 @@
 
 .link {
   padding: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   margin: 1.5rem 5px;
+  font-family: 'Monda', sans-serif;
 }
 
-.profile, /* for now untill we use router active */
+.activeNav, /* for now untill we use router active */
 .link:hover {
   cursor: pointer;
   background-color: #e8edf1;
   border-radius: 5px;
-  color: #34a853;
+  color: #38bc8a;
 }
 
 .user_icon,
@@ -91,3 +93,12 @@
   justify-content: center;
   align-items: center;
 }
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* a:hover {
+  color: #34a853;
+} */

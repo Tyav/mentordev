@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import InputField from '../../components/InputField';
@@ -109,8 +109,8 @@ function Login() {
           />
           <Button className="btn-success-solid" text="Login" />
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> or
-            <Link to="/forgotpassword">Forgot your Password?</Link>
+            Don't have an account? <Link to="/register">Singup</Link> or{' '}
+            <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
         </form>
       </div>

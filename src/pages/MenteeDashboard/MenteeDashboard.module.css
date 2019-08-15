@@ -1,7 +1,13 @@
+.dashboard_container {
+  /* position: relative; */
+  /* height: 100%; */
+}
 .container {
   display: flex;
   color: #204d35;
   background-color: white;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .content {
@@ -14,4 +20,10 @@
   .aside {
     display: none;
   }
+}
+
+.sticky_header {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
 }

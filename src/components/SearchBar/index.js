@@ -8,7 +8,7 @@ const SearchBar = () => {
       <div className={styles.search}>
         <input type="text" className={styles.searchTerm} placeholder="What are you looking for?" />
         <button type="submit" className={styles.searchButton}>
-          <i class="fa fa-search" />
+          <i className="fa fa-search" />
         </button>
       </div>
     </div>

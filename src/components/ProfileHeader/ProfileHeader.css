@@ -7,9 +7,10 @@
 .profileImage img {
   width: 150px;
   height: 150px;
-  background: #38bc8a;
+  /* background: #38bc8a; */
   border-radius: 50%;
 }
+
 .profileHeaderItems {
   display: flex;
   flex: 0 0 85%;
@@ -29,9 +30,17 @@
 .profileDetails p.userEmail {
   padding: 0;
   margin: 0;
+  margin-top: 5px;
 }
 .profileDetails p.username {
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-right: 2rem;
+}
+
+.stars {
+  margin-left: 2rem;
 }
 .profileDetails p.username i {
   color: #ffbb01;
@@ -39,4 +48,34 @@
 .profileDetails p.userEmail {
   color: #6f787e;
   font-size: 12px;
+  margin-top: 15px;
+  display: inline-flex;
+}
+
+.name_star {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.userEmail {
+  margin-left: 2rem;
+}
+
+.rank_bio {
+  display: flex;
+  flex-direction: column;
+}
+
+.card_style {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+@media (max-width: 850px) {
+  .card_style {
+    flex-direction: column;
+  }
 }

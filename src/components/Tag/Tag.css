@@ -7,4 +7,10 @@
   border-radius: 4px;
   height: fit-content;
   margin-right: 5px;
+  font-family: 'Atomic Age', sans-serif;
+}
+
+#tag:hover {
+  background: #e2e8f5;
+  cursor: pointer;
 }
