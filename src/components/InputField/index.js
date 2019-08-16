@@ -11,7 +11,7 @@ function InputField(props) {
         type={props.type}
         name={props.id}
         placeholder={props.placeholder}
-        // name={props.name}
+        value={props.value}
         onChange={props.change}
         onBlur={props.onBlur}
       />
