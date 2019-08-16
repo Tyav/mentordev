@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
 import RequestDashboard from '../../components/RequestDashboard';
@@ -10,11 +10,8 @@ import styles from './MenteeDashboard.module.css';
 import SideBar from '../../components/SideBar';
 import './sideBar.css';
 import './reset.css';
-import UserObject from '../../Context';
 
 const MenteeDashboard = () => {
-  const { user, setUser } = useContext(UserObject);
-
   return (
     <div className={styles.dashboard_container}>
       <div className={styles.container} id="container">
@@ -30,7 +27,7 @@ const MenteeDashboard = () => {
             <DashboardHeader />
           </div>
           <div>
-            <Route exact path="/dashboard" render={DashboardMain} />
+            <Route exact path="/dashboard" component={DashboardMain} />
             <Route path="/dashboard/profile" component={Profile} />
             <Route path="/dashboard/requests" component={RequestDashboard} />
           </div>
@@ -41,10 +38,3 @@ const MenteeDashboard = () => {
 };
 
 export default MenteeDashboard;
-
-//<Route path="/" component={(props)=> <DashBoard {...props} userdata={{name: "victor"}}/>}/>
-// this rerender components every single time, which is not what we really want
-
-//<Route path="/" render={(props)=> <DashBoard {...props} isAuthed={true}/>}/>
-
-// this prop is made available by react router - and the components wont have to re-render

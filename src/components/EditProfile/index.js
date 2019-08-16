@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import formatBeforeUpdate from '../../helper/formatUpdateData';
+import { formatBeforeUpdate, formatLocalUser } from '../../helper/formatUpdateData';
 import styles from './EditProfile.module.css';
 import InputField from '../InputField';
 import '../InputField/InputField.css';
 import Fieldset from '../FieldSet';
 import Button from '../Button';
+import { UserObject } from '../../Context';
 
 const EditProfile = () => {
+  const { user, setUser } = useContext(UserObject);
+  console.log('user from before', user);
+  let localUser = window.localStorage.getItem('user');
+  localUser = JSON.parse(localUser);
+  setUser(() => formatLocalUser(localUser));
+
+ 
+
+  console.log('user from profile', user);
   const [values, setValues] = useState({
-    fullname: '',
-    email: '',
-    phone: '',
-    location: '',
-    skills: '',
-    bio: '',
-    linkedIn: '',
-    facebook: '',
-    twitter: '',
-    github: '',
+    ...user,
     errors: {
       fullname: '',
       email: ''
     }
   });
+
+  console.log('values from profile', values);
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -201,3 +204,15 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+
+// id: "5d53201d137ef40415ecf2c6", name: "Omolayo Victor", email: "Remymartins0398@yahoo.com", avatar: "//www.gravatar.com/avatar/d415f0e30c471dfdd9bc4f827329ef48?s=200&r=pg&d=mm", isAdmin: false, …}
+// avatar: "//www.gravatar.com/avatar/d415f0e30c471dfdd9bc4f827329ef48?s=200&r=pg&d=mm"
+// createdAt: "2019-08-13T20:39:57.350Z"
+// deleted: false
+// email: "Remymartins0398@yahoo.com"
+// id: "5d53201d137ef40415ecf2c6"
+// isAdmin: false
+// isMentor: true
+// isVerified: true
+// name: "Omolayo Victor"
+// skills: []

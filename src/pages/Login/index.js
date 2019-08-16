@@ -54,7 +54,7 @@ function Login() {
       }
       setUser(response.data.payload); // make user object available with usecontext
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('tokenID', response.data.payload.id);
+      localStorage.setItem('user', JSON.stringify(response.data.payload));
       localStorage.setItem('auth', true);
       setLoginResponse({
         message: 'Login Successful',

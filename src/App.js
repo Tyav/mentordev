@@ -15,7 +15,7 @@ import { UserObject } from './Context';
 import './App.css';
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({ hello: 'there' });
 
   return (
     <UserObject.Provider value={{ user, setUser }}>
