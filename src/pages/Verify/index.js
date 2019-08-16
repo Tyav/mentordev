@@ -13,7 +13,7 @@ function Verify() {
   const [alert, setAlert] = useState({
     message: '',
     show: false,
-    type: '',
+    type: ''
   });
 
   const [loading, setLoading] = useState(false);
@@ -24,8 +24,8 @@ function Verify() {
   const auth = {
     headers: {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
-    },
+      authorization: `Bearer ${token}`
+    }
   };
 
   useEffect(() => {
@@ -35,16 +35,16 @@ function Verify() {
       setLoading(false);
     }
     axios({
-      method: 'POST',
+      method: 'PUT',
       url: 'http://localhost:6060/api/v1/auth/verify',
-      auth,
+      auth
     })
       .then(response => {
         if (response.data.statusCode !== 200) {
           setAlert({
             message: 'This link may have expired',
             show: true,
-            type: 'form-alert-danger',
+            type: 'form-alert-danger'
           });
           setTimeout(() => {
             setNotFound(true);
@@ -58,7 +58,7 @@ function Verify() {
         setAlert({
           message: 'Redirecting...',
           show: true,
-          type: 'form-alert-success',
+          type: 'form-alert-success'
         });
         setNotFound(false);
         setLoading(false);
@@ -70,14 +70,13 @@ function Verify() {
         setNotFound(true);
         setLoading(false);
         setAlert({
-          message:
-            'An error occured. Please click on the link sent to you via email again',
+          message: 'An error occured. Please click on the link sent to you via email again',
           show: true,
-          type: 'form-alert-danger',
+          type: 'form-alert-danger'
         });
         setRedirectRegister(true);
       });
-  }, []);
+  }, [auth, token]);
 
   const duringLoad = () => {
     return <img src="/assets/img/loading-icon.svg" alt="loading" />;

@@ -38,3 +38,10 @@ const MenteeDashboard = () => {
 };
 
 export default MenteeDashboard;
+
+//<Route path="/" component={(props)=> <DashBoard {...props} userdata={{name: "victor"}}/>}/>
+// this rerender components every single time, which is not what we really want
+
+//<Route path="/" render={(props)=> <DashBoard {...props} isAuthed={true}/>}/>
+
+// this prop is made available by react router - and the components wont have to re-render
