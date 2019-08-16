@@ -1,0 +1,17 @@
+.inner_container {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+  top: 100px;
+}
+
+.formTitle {
+  font-size: 25px;
+  position: relative;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-family: 'Monda', sans-serif;
+}

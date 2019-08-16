@@ -1,0 +1,14 @@
+.form-alert-danger,
+.form-alert-success {
+  padding: 10px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 70%;
+}
+.form-alert-danger {
+  background: #e64242;
+}
+.form-alert-success {
+  background: #12aa52;
+}

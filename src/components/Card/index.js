@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Card(props) {
-  return <div style={props.style} className="card">{props.children}</div>;
+  return <div className={`card ${props.styles}`}>{props.children}</div>;
 }
 
 export default Card;

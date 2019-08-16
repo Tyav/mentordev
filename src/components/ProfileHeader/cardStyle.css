@@ -1,0 +1,18 @@
+.card_style {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+@media (max-width: 850px) {
+  .card_style,
+  .profileDetails,
+  .name_star,
+  p.userEmail {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}

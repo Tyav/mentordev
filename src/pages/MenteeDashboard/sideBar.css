@@ -8,6 +8,10 @@ body {
 
   /* Give app full page to work with */
   height: 100vh;
+
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
 }
 
 #page-wrap {
@@ -101,3 +105,16 @@ body {
 }
 
 /* background: #34a853; */
+
+fieldset {
+  border: 1px solid #bdbaba;
+}
+
+legend {
+  font-family: 'Monda', sans-serif;
+}
+
+textarea {
+  font-size: 1rem;
+  padding: 1rem;
+}
