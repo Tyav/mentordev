@@ -21,11 +21,9 @@ function Verify() {
   const [notFound, setNotFound] = useState(false);
   const [redirectDashboard, setRedirectDashboard] = useState(false);
 
-  const auth = {
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`
-    }
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`
   };
 
   useEffect(() => {
@@ -37,7 +35,7 @@ function Verify() {
     axios({
       method: 'PUT',
       url: 'http://localhost:6060/api/v1/auth/verify',
-      auth
+      headers
     })
       .then(response => {
         if (response.data.statusCode !== 200) {
@@ -76,7 +74,7 @@ function Verify() {
         });
         setRedirectRegister(true);
       });
-  }, [auth, token]);
+  }, [headers, token]);
 
   const duringLoad = () => {
     return <img src="/assets/img/loading-icon.svg" alt="loading" />;
