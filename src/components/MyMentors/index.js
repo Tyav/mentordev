@@ -1,8 +1,8 @@
 import React from 'react';
 
 import styles from './MyMentors.module.css';
-import profile_avatar from '../../assets/images/profile_three.jpg';
 import Tag from '../Tag';
+const avatarSource = '/assets/img/profile_three.jpg';
 
 const MyMentors = ({ mentors }) => {
   return (
@@ -11,7 +11,7 @@ const MyMentors = ({ mentors }) => {
         <div className={styles.container} key={key}>
           <div className={styles.image}>
             <a href="/" rel="noopener noreferrer" className={styles.mentor_image}>
-              <img src={profile_avatar} alt="mentor avatar" className={styles.mentor_avatar} />
+              <img src={avatarSource} alt="mentor avatar" className={styles.mentor_avatar} />
             </a>
           </div>
           <div className={styles.content}>
