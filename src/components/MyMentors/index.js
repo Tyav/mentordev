@@ -18,8 +18,7 @@ const MyMentors = ({ mentors }) => {
             <div className={styles.details}>
               <h3 className={styles.name}>Omolayo Victor</h3>
               <p className={styles.bio}>
-                World class developer with 7 years industrial experience. Contact me at your own
-                risk
+                <strong>Schedule</strong> Day: Tuesday Time: 13:00
               </p>
               <div className={styles.group_element}>
                 <p className={styles.email}>omolayovictor@gahoo.com</p>
