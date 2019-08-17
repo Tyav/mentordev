@@ -15,3 +15,11 @@
   font-weight: 700;
   font-family: 'Monda', sans-serif;
 }
+
+.form_header {
+  display: inline-flex;
+}
+
+.button {
+  margin-left: 4rem;
+}
