@@ -14,6 +14,7 @@ function InputField(props) {
         value={props.value}
         onChange={props.change}
         onBlur={props.onBlur}
+        disabled={props.disabled}
       />
     </div>
   );
