@@ -7,10 +7,8 @@ import styles from './DashboardProfile.module.css';
 const Profile = () => {
   const [edit, setEdit] = useState(true);
 
-  const handleEdit = () => {
-    setEdit(() => !edit);
-  };
-  const handleColor = () => (edit ? { color: '' } : { color: '#38bc8a' });
+  const handleEdit = () => setEdit(() => !edit);
+  const handleColor = () => (edit ? {} : { color: '#38bc8a' });
 
   return (
     <div className={`${external_styles.outer_container} ${styles.top}`}>
