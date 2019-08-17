@@ -209,6 +209,7 @@ const EditProfile = ({ edit }) => {
                 className={styles.textarea}
                 onChange={handleChange}
                 disabled={edit}
+                style={edit ? {} : { borderBottom: '2px solid rgb(85, 85, 85)' }}
               />
             </div>
 

@@ -47,7 +47,7 @@
   transition: all linear 0.3s;
 }
 .textarea:focus {
-  border-bottom: 2px solid #34a853;
+  border-bottom: 2px solid #34a853 !important;
   transition: all linear 0.3s;
 }
 

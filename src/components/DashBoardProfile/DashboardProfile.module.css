@@ -31,6 +31,10 @@
   font-size: 1.2rem;
 }
 
+.icon {
+  transition: all linear 0.3s;
+}
+
 .icon:hover {
   color: #38bc8a;
   cursor: pointer;
