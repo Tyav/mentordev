@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from './DashboardHeader.module.css';
-// import profile_avatar from '../../../public/assets/img/profile_two.png';
 const profile_avatar = '/assets/img/profile_three.jpg';
 
 const DashboardHeader = () => {
-
   return (
     <div className={styles.container}>
       <nav className={`${styles.navHeader}`}>
