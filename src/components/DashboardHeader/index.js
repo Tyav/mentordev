@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import styles from './DashboardHeader.module.css';
-// import profile_avatar from '../../../public/assets/img/profile_two.png';
 const profile_avatar = '/assets/img/profile_three.jpg';
 
 const DashboardHeader = () => {
+  const [toggle, setToggle] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -14,22 +15,22 @@ const DashboardHeader = () => {
             <p className={styles.welcome}>Welcome, Rukee Victor</p>
           </li>
           <li className={styles.otherNav}>
-            <p>
+            <p className={styles.bell}>
               <a href="/" rel="noopener noreferrer" className={styles.bell_icon}>
-                <i className="far fa-bell" />
+                <i className={`far fa-bell ${styles.bell_icon}`} />
               </a>
             </p>
-            <p>
-              <a href="/" rel="noopener noreferrer" className={styles.user_icon}>
-                <img src={profile_avatar} alt="user avatar" className={styles.profile_avatar} />
-              </a>
-            </p>
-            <p
-              style={{ fontStyle: 'italic', fontSize: '1rem', paddingTop: '1.5rem' }}
-              className={styles.just_name}
-            >
-              Rukee, Victor
-            </p>
+            <div className={styles.toggle}>
+              <p>
+                <div className={styles.user_icon}>
+                  <img src={profile_avatar} alt="user avatar" className={styles.profile_avatar} />
+                </div>
+              </p>
+              <div className={styles.drop_down}>
+                <i className={`fas fa-caret-down ${styles.drop_down_icon}`} />
+              </div>
+              {/* <DropDownDiv /> */}
+            </div>
           </li>
         </ul>
       </nav>
