@@ -33,7 +33,7 @@ function ForgotPassword() {
     axios({
       method: 'POST',
       url: 'http://localhost:6060/api/v1/auth/forgot-password',
-      data: { ...value },
+      data: { email: value.email },
     }).then(response => {
       setValue({
         email: '',
