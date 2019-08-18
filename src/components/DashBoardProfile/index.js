@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import EditProfile from '../EditProfile';
 import external_styles from '../DashboardMain/DashboardMain.module.css';
 import styles from './DashboardProfile.module.css';
+import Toggle from '../Toggle';
 
 const Profile = () => {
   const [edit, setEdit] = useState(true);
 
   const handleEdit = () => setEdit(() => !edit);
-  const handleColor = () => (edit ? {} : { color: '#38bc8a' });
 
   return (
     <div className={`${external_styles.outer_container} ${styles.top}`}>
@@ -16,8 +16,8 @@ const Profile = () => {
         <div>
           <div className={styles.form_header}>
             <h4 className={styles.formTitle}>My Profile</h4>
-            <div className={styles.button} onClick={handleEdit} style={handleColor()}>
-              <i className={`fas fa-edit ${styles.icon}`} />
+            <div className={styles.button}>
+              <Toggle handleClick={handleEdit} />
             </div>
           </div>
           <div>
