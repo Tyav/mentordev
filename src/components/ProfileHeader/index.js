@@ -3,11 +3,12 @@ import React from 'react';
 import Card from '../Card';
 import ProfStats from '../ProfStats';
 import ProfBio from '../ProfBio';
-import profile_avatar from '../../assets/images/profile_two.png';
+
 
 import Tag from '../Tag';
 import './cardStyle.css';
 import './ProfileHeader.css';
+const profile_avatar = '/assets/img/profile_three.jpg';
 
 function ProfileHeader() {
   return (

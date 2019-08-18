@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
-import formatBeforeUpdate from '../../helper/formatUpdateData';
+import { formatBeforeUpdate, formatLocalUser } from '../../helper/formatUpdateData';
 import styles from './EditProfile.module.css';
 import InputField from '../InputField';
 import '../InputField/InputField.css';
 import Fieldset from '../FieldSet';
 import Button from '../Button';
+import { UserObject } from '../../Context';
 
-const EditProfile = () => {
+const EditProfile = ({ edit }) => {
+  const token = window.localStorage.getItem('token');
+  let localUser = JSON.parse(window.localStorage.getItem('user'));
+  const userValue = formatLocalUser({ ...localUser });
+  const { user, setUser } = useContext(UserObject);
   const [values, setValues] = useState({
-    fullname: '',
-    email: '',
-    phone: '',
-    location: '',
-    skills: '',
-    bio: '',
-    linkedIn: '',
-    facebook: '',
-    twitter: '',
-    github: '',
+    ...userValue,
     errors: {
       fullname: '',
       email: ''
@@ -31,10 +28,31 @@ const EditProfile = () => {
     setValues({ ...values, [name]: value });
   };
 
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
     const data = formatBeforeUpdate(values);
-    alert(JSON.stringify(data, null, 2));
+    axios({
+      method: 'PUT',
+      url: `http://localhost:6060/api/v1/user/me`,
+      headers,
+      data: { ...data }
+    })
+      .then(response => {
+        console.log(response);
+        if (response.data.payload.statusCode !== 200) {
+          localUser = { ...localUser, ...response.data.payload };
+          window.localStorage.setItem('user', JSON.stringify(localUser));
+          return <Redirect to="/dashboard/profile" />;
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   const handleBlur = event => {
@@ -48,7 +66,6 @@ const EditProfile = () => {
         ...values,
         errors: { ...values.errors, [name]: `${name} is not valid.` }
       });
-
     return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
 
@@ -69,6 +86,7 @@ const EditProfile = () => {
                   change={handleChange}
                   name="fullname"
                   onBlur={handleBlur}
+                  disabled={edit}
                 />
                 <p style={{ color: 'red', marginBottom: '5px' }}>{values.errors.fullname}</p>
               </div>
@@ -83,6 +101,7 @@ const EditProfile = () => {
                   change={handleChange}
                   name="email"
                   onBlur={handleBlur}
+                  disabled={edit}
                 />
                 <p style={{ color: 'red', marginBottom: '5px' }}>{values.errors.email}</p>
               </div>
@@ -97,27 +116,30 @@ const EditProfile = () => {
                 style={`${styles.input} ${styles.first_input}`}
                 change={handleChange}
                 name="phone"
+                disabled={edit}
               />
               <InputField
                 label="Location"
                 type="text"
-                id="skill"
+                id="location"
                 placeholder="Eg. lagos"
                 value={values.location}
                 style={`${styles.input} ${styles.second_input}`}
                 change={handleChange}
                 name="location"
+                disabled={edit}
               />
             </div>
             <InputField
               label="Skills"
               type="text"
-              id="skill"
+              id="skills"
               placeholder="Eg. Javascript, React, PHP..."
               value={values.skills}
               style={styles.input}
               change={handleChange}
               name="skills"
+              disabled={edit}
             />
             <Fieldset text="Social Handles" style={styles.connection_container}>
               <div className={styles.input_group}>
@@ -130,6 +152,7 @@ const EditProfile = () => {
                     style={`${styles.input}`}
                     change={handleChange}
                     name="twitter"
+                    disabled={edit}
                   />
                 </div>
                 <div className={`${styles.second_input}`}>
@@ -141,6 +164,7 @@ const EditProfile = () => {
                     style={`${styles.input}`}
                     change={handleChange}
                     name="linkedIn"
+                    disabled={edit}
                   />
                 </div>
               </div>
@@ -154,6 +178,7 @@ const EditProfile = () => {
                     style={`${styles.input}`}
                     change={handleChange}
                     name="github"
+                    disabled={edit}
                   />
                 </div>
                 <div className={`${styles.second_input}`}>
@@ -165,6 +190,7 @@ const EditProfile = () => {
                     style={`${styles.input}`}
                     change={handleChange}
                     name="facebook"
+                    disabled={edit}
                   />
                 </div>
               </div>
@@ -182,6 +208,8 @@ const EditProfile = () => {
                 value={values.bio}
                 className={styles.textarea}
                 onChange={handleChange}
+                disabled={edit}
+                style={edit ? {} : { borderBottom: '2px solid rgb(85, 85, 85)' }}
               />
             </div>
 

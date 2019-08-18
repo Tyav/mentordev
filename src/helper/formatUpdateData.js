@@ -1,6 +1,6 @@
-export default function formatBeforeUpdate(values) {
+export function formatBeforeUpdate(values) {
   let {
-    fullname,
+    fullname: name,
     email,
     phone,
     location,
@@ -11,9 +11,9 @@ export default function formatBeforeUpdate(values) {
     github,
     linkedIn
   } = values;
-  skills = skills.split(',').filter(item => item.trim().length > 1);
+  skills = skills.split(',').map(item => item.trim());
   const data = {
-    fullname,
+    name,
     email,
     phone,
     location,
@@ -23,4 +23,16 @@ export default function formatBeforeUpdate(values) {
   };
 
   return data;
+}
+
+export function formatLocalUser(user) {
+  let { name: fullname, email, phone, location, skills, bio, connection } = user || '';
+
+  const facebook = !connection ? '' : connection.facebook,
+    twitter = !connection ? '' : connection.twitter,
+    github = !connection ? '' : connection.github,
+    linkedIn = !connection ? '' : connection.linkedIn;
+
+  skills = !skills ? '' : skills.join(', ');
+  return { fullname, email, phone, location, skills, bio, facebook, twitter, github, linkedIn };
 }

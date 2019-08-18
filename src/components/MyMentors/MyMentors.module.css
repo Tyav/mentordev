@@ -8,17 +8,6 @@
   transition: ease-in-out 0.2s;
   border: 1px solid #fff;
 }
-.container:hover {
-  background: #d3f1e5;
-}
-
-.container:hover .link {
-  color: #fff;
-}
-
-.container:hover .social {
-  border: 1px solid #fff;
-}
 
 .image {
   width: 100px;
