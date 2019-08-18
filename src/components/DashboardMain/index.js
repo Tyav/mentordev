@@ -28,7 +28,6 @@ const DashboardMain = () => {
       headers
     })
       .then(response => {
-        console.log(response);
         setMentors(response.data.payload);
       })
       .catch(error => {
