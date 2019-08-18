@@ -32,55 +32,79 @@
 
 .otherNav {
   display: flex;
-  justify-content: space-between;
-  margin: auto inherit;
   text-align: center;
   padding-right: 2rem;
   font-weight: 800;
 }
 
 .otherNav p {
-  margin-left: 2rem;
   font-size: 2rem;
   margin-top: 0.5rem;
 }
 
 .welcome {
-  font-style: 'italic';
-  font-size: '1rem';
+  font-style: italic;
+  font-size: 1rem;
 }
 
 .bell_icon {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: inherit;
+  margin-top: 1.5rem;
+  margin-right: 0.8rem;
 }
 
 .user_icon {
   font-size: 2.5rem;
   color: inherit;
-  /* border: 1px solid transparent; */
-  border-radius: 30px;
+  border-radius: 50%;
+  margin-right: 1rem;
 }
 
 .profile_avatar {
-  /* border: 1px solid transparent;
-  border-radius: 20px;
-  height: 70%;
-  width: 50px; */
-
   vertical-align: middle;
   width: 50px;
   height: 50px;
-  border-radius: 30%;
+  border-radius: 50%;
   background-size: cover;
+}
+
+.drop_down_icon {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.toggle {
+  margin-right: 11rem;
+  display: flex;
+  position: relative;
+}
+
+.drop_down {
+  font-size: 1rem;
+  padding-top: 1.5rem;
+  color: initial;
 }
 
 @media (max-width: 850px) {
   .navHeader {
     margin-left: 7rem;
   }
-  .just_name {
+
+  .toggle {
     display: none;
+  }
+  .otherNav {
+    padding-right: 0rem;
+  }
+  .otherNav > p {
+    margin-top: 0rem;
+  }
+}
+
+@media (max-width: 1450) {
+  .toggle {
+    margin-right: 10rem;
   }
 }
 
@@ -100,5 +124,9 @@
   }
   .header {
     flex: 1;
+  }
+  .bell_icon {
+    margin-top: 1rem;
+    margin-right: 0rem;
   }
 }
