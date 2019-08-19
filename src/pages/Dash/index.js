@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import UserProfile from '../../components/UserProfile';
 import UserSearch from '../../components/UserSearch';
@@ -12,6 +12,7 @@ import EditProfile from './EditProfile';
 
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
+  const token = localStorage.getItem('token');
 
   const sideNavHandler = e => {
     e.preventDefault();
@@ -28,6 +29,10 @@ function Dashboard() {
     sideNav.classList.remove('show-side-nav');
     navToggler.classList.remove('cross-bar');
   };
+
+  if (!token) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>
