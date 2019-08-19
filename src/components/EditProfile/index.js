@@ -2,7 +2,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-import { formatBeforeUpdate, formatLocalUser } from '../../helper/formatUpdateData';
+import {
+  formatBeforeUpdate,
+  formatLocalUser,
+} from '../../helper/formatUpdateData';
 import styles from './EditProfile.module.css';
 import InputField from '../InputField';
 import '../InputField/InputField.css';
@@ -19,8 +22,8 @@ const EditProfile = ({ edit }) => {
     ...userValue,
     errors: {
       fullname: '',
-      email: ''
-    }
+      email: '',
+    },
   });
 
   const handleChange = event => {
@@ -30,7 +33,7 @@ const EditProfile = ({ edit }) => {
 
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
+    Authorization: `Bearer ${token}`,
   };
 
   const handleSubmit = event => {
@@ -40,7 +43,7 @@ const EditProfile = ({ edit }) => {
       method: 'PUT',
       url: `http://localhost:6060/api/v1/user/me`,
       headers,
-      data: { ...data }
+      data: { ...data },
     })
       .then(response => {
         console.log(response);
@@ -58,13 +61,16 @@ const EditProfile = ({ edit }) => {
   const handleBlur = event => {
     const { name, value } = event.target;
     if (!value)
-      return setValues({ ...values, errors: { ...values.errors, [name]: `${name} is required` } });
+      return setValues({
+        ...values,
+        errors: { ...values.errors, [name]: `${name} is required` },
+      });
 
     const emailRegexp = /\S+@\S+\.\S+/;
     if (name === 'email' && emailRegexp.test(value) === false)
       return setValues({
         ...values,
-        errors: { ...values.errors, [name]: `${name} is not valid.` }
+        errors: { ...values.errors, [name]: `${name} is not valid.` },
       });
     return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
@@ -88,7 +94,9 @@ const EditProfile = ({ edit }) => {
                   onBlur={handleBlur}
                   disabled={edit}
                 />
-                <p style={{ color: 'red', marginBottom: '5px' }}>{values.errors.fullname}</p>
+                <p style={{ color: 'red', marginBottom: '5px' }}>
+                  {values.errors.fullname}
+                </p>
               </div>
               <div className={styles.validate_input}>
                 <InputField
@@ -103,7 +111,9 @@ const EditProfile = ({ edit }) => {
                   onBlur={handleBlur}
                   disabled={edit}
                 />
-                <p style={{ color: 'red', marginBottom: '5px' }}>{values.errors.email}</p>
+                <p style={{ color: 'red', marginBottom: '5px' }}>
+                  {values.errors.email}
+                </p>
               </div>
             </div>
             <div className={styles.input_group}>
@@ -209,16 +219,24 @@ const EditProfile = ({ edit }) => {
                 className={styles.textarea}
                 onChange={handleChange}
                 disabled={edit}
-                style={edit ? {} : { borderBottom: '2px solid rgb(85, 85, 85)' }}
+                style={
+                  edit ? {} : { borderBottom: '2px solid rgb(85, 85, 85)' }
+                }
               />
             </div>
 
             <div className={styles.buttons}>
               <div className={styles.button}>
-                <Button className="btn-success-solid register" text="Save Changes" />
+                <Button
+                  className="btn-success-solid register"
+                  text="Save Changes"
+                />
               </div>
               <Link to="/dashboard">
-                <Button className="btn-danger-solid register" text="Discard Changes" />
+                <Button
+                  className="btn-danger-solid register"
+                  text="Discard Changes"
+                />
               </Link>
             </div>
           </div>

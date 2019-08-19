@@ -15,7 +15,7 @@ function InputField(props) {
         onChange={props.change}
         onBlur={props.onBlur}
         disabled={props.disabled}
-        style={props.disabled ? {} : { borderBottom: '2px solid rgb(85, 85, 85)' }}
+        style={props.disabled ? {} : { borderBottom: '1px solid #e6ecf5' }}
       />
     </div>
   );

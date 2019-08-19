@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 
 import UserProfile from '../../components/UserProfile';
 import UserSearch from '../../components/UserSearch';
@@ -7,6 +8,7 @@ import UserDashHeading from '../../components/UserDashHeading';
 import UserScheduleList from '../../components/UserSchedule';
 import UserContactList from '../../components/UserContactList';
 import UserConnects from '../../components/UserConnects';
+import EditProfile from './EditProfile';
 
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
@@ -48,11 +50,8 @@ function Dashboard() {
           <UserProfile />
         </div>
         <div className="new-dash-mentor-list">
-          <UserDashHeading
-            text="Your most recent Mentors"
-            icon="checkbox-marked-circle-outline"
-          />
-          <UserConnects />
+          <Route exact path="/dashboard" component={UserConnects} />
+          <Route path="/dashboard/profile" component={EditProfile} />
         </div>
         <div className="new-dash-right">
           <UserScheduleList />

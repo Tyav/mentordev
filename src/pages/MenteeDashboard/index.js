@@ -28,8 +28,11 @@ const MenteeDashboard = () => {
           </div>
           <div>
             <Route exact path="/dashboard" component={DashboardMain} />
-            <Route path="/dashboard/profile" component={Profile} />
-            <Route path="/dashboard/requests" component={RequestDashboard} />
+            <Route path="/formerdashboard/profile" component={Profile} />
+            <Route
+              path="/formerdashboard/requests"
+              component={RequestDashboard}
+            />
           </div>
         </div>
       </div>

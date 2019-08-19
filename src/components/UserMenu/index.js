@@ -13,7 +13,7 @@ function UserMenu() {
       <Link to="/dashboard">
         <li>Manage Contacts</li>
       </Link>
-      <Link to="/dashboard">
+      <Link to="/dashboard/profile">
         <li>Profile Settings</li>
       </Link>
     </ul>
