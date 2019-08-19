@@ -10,11 +10,11 @@
 #inputField label {
   width: 100%;
 }
-#inputField label {
+/* #inputField label {
   margin-left: -17px;
-}
+} */
 #inputField input {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 #inputField input {
   padding: 10px;
@@ -26,10 +26,10 @@
   transition: all linear 0.3s;
 }
 #inputField input:focus {
-  border-bottom: 2px solid #34a853 !important;
+  border-bottom: 1px solid #45cc89 !important;
   transition: all linear 0.3s;
 }
 #inputField label {
   color: #717171;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
