@@ -9,6 +9,7 @@ import UserScheduleList from '../../components/UserSchedule';
 import UserContactList from '../../components/UserContactList';
 import UserConnects from '../../components/UserConnects';
 import EditProfile from './EditProfile';
+import ScheduleRequests from '../../components/ScheduleRequest';
 
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
@@ -52,6 +53,7 @@ function Dashboard() {
         <div className="new-dash-mentor-list">
           <Route exact path="/dashboard" component={UserConnects} />
           <Route path="/dashboard/profile" component={EditProfile} />
+          <Route path="/dashboard/mentor/requests/:requestId" component={ScheduleRequests} />
         </div>
         <div className="new-dash-right">
           <UserScheduleList />
