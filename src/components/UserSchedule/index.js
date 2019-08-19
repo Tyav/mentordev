@@ -42,8 +42,8 @@ function UserSchedule() {
   );
 }
 
-function viewSchedule(schedules) {
-  if (schedules.data.length < 1) {
+function viewSchedule({ data }) {
+  if (data.length < 1) {
     return (
       <>
         <p className="new-dash-user-mentor-sch" style={{ marginTop: '3rem', marginBottom: '1rem' }}>
@@ -57,7 +57,7 @@ function viewSchedule(schedules) {
   }
   return (
     <>
-      {schedules.data.map((schedule, index) => (
+      {data.map((schedule, index) => (
         <Link
           to={`/dashboard/mentor/requests/${schedule._id}`}
           className="schedule-list-items"
