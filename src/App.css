@@ -682,3 +682,15 @@ Desktop
     flex-direction: column;
   }
 }
+
+.conditional-buttons {
+  display: 'inline-flex';
+}
+
+.button0 {
+  margin-right: 1em !important;
+}
+
+.button1 {
+  background: rgb(243, 78, 78) !important;
+}
