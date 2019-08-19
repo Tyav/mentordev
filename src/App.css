@@ -270,6 +270,9 @@ p.new-dash-user-mentor-sch {
   margin: 10px auto;
   width: 100%;
 }
+a.schedule-list-items:hover {
+  opacity: 0.6;
+}
 p.new-dash-user-mentor-sch span {
   color: #000;
   width: 100%;
