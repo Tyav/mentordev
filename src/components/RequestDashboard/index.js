@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import MainComponent from '../MainComponent';
 import MentorsProfileCard from '../MentorsProfileCard';
-import styles from './RequestDashboard.module.css';
 
 const RequestDashboard = () => {
   const [mentors, setMentors] = useState([]);
