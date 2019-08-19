@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-
 import UserProfile from '../../components/UserProfile';
 import UserSearch from '../../components/UserSearch';
 import UserMenu from '../../components/UserMenu';

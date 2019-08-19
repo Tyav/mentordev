@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import UserSingleContact from '../UserSingleContact';
 
@@ -7,32 +8,40 @@ import UserSingleContact from '../UserSingleContact';
  */
 
 function UserContactList() {
+  const [contacts, setContacts] = useState([]);
+  const token = localStorage.getItem('token');
+
+  useEffect(async () => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    try {
+      const response = await axios.get(
+        'http://localhost:6060/api/v1/contact',
+        config
+      );
+      setContacts(response.data.payload);
+    } catch (error) {}
+    console.log('UseEffect');
+  }, [token]);
+
   return (
     <div className="new-dash-contact">
-      <UserSingleContact
-        image="/assets/img/email-sent.svg"
-        name="Brendan Eiche"
-        email="brendan@javascript.com"
-        schedule="Mondays 5:00 AM to 3:30 PM"
-      />
-      <UserSingleContact
-        image="/assets/img/mentee.svg"
-        name="Tolu Adesina"
-        email="toluadesina59@gmail.com"
-        schedule="Mondays 5:00 AM to 3:30 PM"
-      />
-      <UserSingleContact
-        image="/assets/img/workflow.png"
-        name="Ibrahim Joseph"
-        email="joe@zo.com"
-        schedule="Mondays 5:00 AM to 3:30 PM"
-      />
-      <UserSingleContact
-        image="/assets/img/mentorDev.svg"
-        name="Izu Eiche"
-        email="izu@kaba.com"
-        schedule="Mondays 5:00 AM to 3:30 PM"
-      />
+      {contacts.map(contact => {
+        const { contact: user, schedule } = contact;
+        return <UserSingleContact
+          image={user.avatar}
+          name={user.name}
+          email={user.email}
+          schedule={`${schedule.day} From ${schedule.time.from} To ${
+            schedule.time.to
+          }`}
+        />;
+      })}
     </div>
   );
 }
