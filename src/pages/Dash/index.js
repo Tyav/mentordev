@@ -57,7 +57,7 @@ function Dashboard() {
         <div className="new-dash-mentor-list">
           <Route exact path="/dashboard" component={UserConnects} />
           <Route path="/dashboard/profile" component={EditProfile} />
-          <Route path="/dashboard/search" component={Search} />
+          <Route exact path="/dashboard/search" component={Search} />
         </div>
         <div className="new-dash-right">
           <UserScheduleList />

@@ -16,14 +16,14 @@ function UserContactList() {
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
 
       try {
         const response = await axios.get(
           'http://localhost:6060/api/v1/contact',
-          config
+          config,
         );
         setContacts([...response.data.payload]);
       } catch (error) {}

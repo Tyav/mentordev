@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 
-function UserSearch() {
+function UserSearch({ history }) {
+  const searchFormHandler = e => {
+    e.preventDefault();
+    const query = e.target.elements[0].value;
+    history.push(`/dashboard/search?search=${query}`);
+  };
+  useEffect(() => {
+    console.log(1);
+  }, [window.location]);
   return (
-    <form method="get" action="/dashboard/search">
+    <form method="get" action="/dashboard/search" onSubmit={searchFormHandler}>
       <input
         type="text"
         name="search"
@@ -16,4 +25,4 @@ function UserSearch() {
   );
 }
 
-export default UserSearch;
+export default withRouter(UserSearch);

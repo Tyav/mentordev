@@ -13,11 +13,16 @@ function Search() {
     axios({
       method: 'POST',
       url: `http://localhost:6060/api/v1/user/search?search=${queryParams}`,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
     }).then(response => {
+      console.log(response.data);
       setSearchResults([...response.data.payload]);
     });
-  }, [queryParams]);
-  console.log(searchResults);
+    console.log(window.location);
+  }, [queryParams, window.location.href]);
 
   return (
     <>
@@ -25,19 +30,19 @@ function Search() {
         text={`${searchResults.length} ${
           searchResults.length !== 1 ? 'Mentors' : 'Mentor'
         } Found`}
+        icon="account-search"
       />
       <div className="new-recent-mentor-list">
-        {searchResults.map(result => {
+        {searchResults.map((result, index) => {
           return (
-            <>
-              <UserLatestConnect
-                image={result.avatar}
-                name={result.name}
-                email={result.email}
-                tags={result.skills}
-                userlocation={result.location}
-              />
-            </>
+            <UserLatestConnect
+              key={index}
+              image={result.avatar}
+              name={result.name}
+              email={result.email}
+              tags={result.skills}
+              userlocation={result.location}
+            />
           );
         })}
       </div>
