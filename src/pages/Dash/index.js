@@ -32,7 +32,7 @@ function Dashboard() {
   };
 
   if (!token) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/login" />
   }
 
   return (
