@@ -11,22 +11,24 @@ function UserContactList() {
   const [contacts, setContacts] = useState([]);
   const token = localStorage.getItem('token');
 
-  useEffect(async () => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    };
-
-    try {
-      const response = await axios.get(
-        'http://localhost:6060/api/v1/contact',
-        config
-      );
-      setContacts(response.data.payload);
-    } catch (error) {}
-    console.log('UseEffect');
+  useEffect(() =>{
+    async function fetchData() {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      };
+  
+      try {
+        const response = await axios.get(
+          'http://localhost:6060/api/v1/contact',
+          config
+        );
+        setContacts(response.data.payload);
+      } catch (error) {}
+    }
+    fetchData();
   }, [token]);
 
   return (
