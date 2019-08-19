@@ -10,7 +10,7 @@ function UserLatestConnect({
   userlocation,
 }) {
   return (
-    <div className="new-dash-user-profile">
+    <div className="new-dash-user-profile" key={props.key}>
       <div className="new-dash-card-header">
         <img src={image} alt="user profile" />
         <i className="mdi mdi-dots-vertical" />
@@ -26,8 +26,19 @@ function UserLatestConnect({
         <span>{schedule}</span>
       </p>
       <p>{userlocation}</p>
+      <div className="conditional-buttons">{addButtons(props.buttons)}</div>
     </div>
   );
 }
 
+function addButtons(buttons) {
+  if (buttons.length < 1) {
+    return '';
+  }
+  return buttons.map((button, index) => (
+    <a className={`new-dash-schedule-link button${index}`} href="/" key={index}>
+      <i className="mdi lg-green-ic" /> {button}
+    </a>
+  ));
+}
 export default UserLatestConnect;
