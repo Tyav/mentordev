@@ -5,7 +5,7 @@ function UserLatestConnect(props) {
   return (
     <div className="new-dash-user-profile">
       <div className="new-dash-card-header">
-        <img src={props.image} alt="user profile" />
+        <img className = "new-dash-profile-img" src={props.image} alt="user profile" />
         <i className="mdi mdi-dots-vertical" />
       </div>
       <p className="new-dash-username">{props.name}</p>
