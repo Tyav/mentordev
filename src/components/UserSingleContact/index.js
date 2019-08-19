@@ -6,12 +6,19 @@ import React from 'react';
 
 function UserSingleContact(props) {
   return (
-    <div className="new-dash-single-contact">
-      <img src={props.image} alt={props.name} />
-      <p>
-        {props.name}
-        <br /> <span>{props.email}</span>
-      </p>
+    <div className="new-dash-single-contact-container">
+      <img
+        className="new-dash-contact-img"
+        src={props.image}
+        alt={props.name}
+      />
+      <div className="new-dash-single-contact">
+        <p>
+          {props.name}
+          <br /> <span>{props.email}</span>
+          <br /> <span className="schedule">{props.schedule}</span>
+        </p>
+      </div>
     </div>
   );
 }
