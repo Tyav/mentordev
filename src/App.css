@@ -1,4 +1,5 @@
 body {
+  /* background: #edf2f6; */
   background: #fff;
 }
 
@@ -100,7 +101,7 @@ body {
   background: #fff;
   border-radius: 4px;
   padding: 10px 20px;
-  box-shadow: -3px 3px 5px -1px #c4cbce;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 .main-about-sm-card i {
   color: #51585e;
@@ -112,6 +113,280 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
+/*
+===============
+Dashboard
+===============
+*/
+.new-dash-nav {
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  background: #fff;
+  z-index: 9;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.new-dash-nav form {
+  display: none;
+}
+.new-dash-body {
+  width: 100%;
+  height: fit-content;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  background: #edf2f6;
+  margin: 70px auto 0 auto;
+}
+.new-dash-search {
+  width: 100%;
+  height: 50px;
+  margin: 0 auto 30px auto;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  border-radius: 4px;
+  border: 1px solid #e6ecf5;
+  background: #fff;
+}
+.new-dash-search form {
+  width: 100%;
+  height: 47.5px;
+  display: flex;
+  justify-content: space-between;
+}
+.new-dash-search input {
+  padding: 0 10px;
+  height: 100%;
+  width: 85%;
+  font-size: 0.8rem;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+}
+.new-dash-search button {
+  width: 15%;
+  height: 100%;
+  background: no-repeat;
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 10px;
+}
+.new-dash-user-profile {
+  width: 100%;
+  min-height: 300px;
+  height: fit-content;
+  border: 1px solid #e6ecf5;
+  border-radius: 4px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+.new-dash-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  background: #fff;
+}
+.new-dash-card-header i {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  color: #c0c4d8;
+}
+p.new-dash-username {
+  color: #515365;
+  font-weight: 500;
+}
+p.new-dash-user-description {
+  font-size: 14px;
+  color: #898da9;
+  padding: 10px;
+}
+.new-dash-user-profile img {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #e6ecf5;
+  border-radius: 50%;
+}
+p.new-dash-account-brief {
+  padding: 15px 0 5px 0;
+}
+p.new-dash-account-brief span i {
+  font-size: 12px;
+  font-style: normal;
+  color: #898da9;
+  font-weight: 500;
+}
+.new-dash-user-tags {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+.new-dash-user-tags #tag {
+  font-family: 'Poppins', sans-serif;
+}
+a.new-dash-profile-link {
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  margin: 5px auto;
+  transition: all linear 0.2s;
+  background: #45cc89;
+}
+a.new-dash-profile-link:hover {
+  padding: 5px;
+  transition: all linear 0.2s;
+}
+h1.new-dash-section-title {
+  margin: 20px 0;
+  border: 1px solid #e6ecf5;
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+  text-align: center;
+}
+h1.new-dash-section-title i {
+  color: #45cc89;
+  font-size: 1.5rem;
+}
+p.new-dash-user-mentor-sch {
+  margin: 10px auto;
+  width: 100%;
+}
+p.new-dash-user-mentor-sch span {
+  color: #000;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #e6ecf5;
+  display: block;
+}
+i.lg-green-ic {
+  color: #45cc89;
+}
+.new-dash-contact {
+  background: #fff;
+  padding: 10px 20px;
+  height: fit-content;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.new-dash-single-contact {
+  display: flex;
+}
+.new-dash-single-contact {
+  padding: 10px 0;
+  border-bottom: 1px solid #e6ecf5;
+}
+.new-dash-single-contact:last-child {
+  border-bottom: none;
+}
+.new-dash-single-contact img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #e6ecf5;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.new-dash-single-contact p span {
+  color: #898da9;
+  font-size: 0.8rem;
+}
+a.new-dash-schedule-link {
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  margin: 5px auto;
+  transition: all linear 0.2s;
+  background: #45cc89;
+}
+a.new-dash-schedule-link:hover {
+  padding: 5px;
+  transition: 0.2s;
+}
+.new-dash-menu-toggler {
+  margin: 1em;
+  margin-left: 0;
+  width: 23px;
+}
+.new-dash-menu-toggler::before,
+.new-dash-menu-toggler::after,
+.new-dash-menu-toggler div {
+  background: #16075d;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 1px;
+  margin: 5px 0;
+  transition: all 0.2s ease-in-out;
+}
+.new-dash-menu-toggler.cross-bar::before {
+  transform: translateY(6px) rotate(135deg);
+}
+.new-dash-menu-toggler.cross-bar::after {
+  transform: translateY(-6px) rotate(-135deg);
+}
+a.new-dash-nav-logo {
+  color: #000;
+  font-size: 1.3rem;
+}
+a.new-dash-nav-logo span {
+  background: #45cc89;
+  padding: 0 5px;
+  color: #fff;
+  border-radius: 4px;
+}
+ul.new-dash-menu {
+  position: fixed;
+  background: #fff;
+  left: -80%;
+  top: 70px;
+  min-height: 100vh;
+  height: fit-content;
+  z-index: 1;
+  width: 80%;
+  padding: 20px 0 20px 50px;
+  border-right: 1px solid #e6ecf5;
+  border-top: 1px solid #e6ecf5;
+  transition: all linear 0.2s;
+}
+.show-side-nav {
+  left: 0 !important;
+  transition: all linear 0.2s;
+}
+ul.new-dash-menu a {
+  color: #000;
+}
+ul.new-dash-menu li {
+  padding: 15px 0;
+  font-size: 0.9rem;
+}
+/* 
+===============
+Desktop
+===============
+*/
 @media screen and (min-width: 780px) {
   .verify-page {
     width: 100%;
@@ -232,7 +507,7 @@ body {
     background: #fff;
     border-radius: 4px;
     padding: 10px 20px;
-    box-shadow: -3px 3px 5px -1px #c4cbce;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
   .main-about-sm-card i {
     color: #51585e;
@@ -243,5 +518,110 @@ body {
     color: #45cc89;
     text-decoration: underline;
     cursor: pointer;
+  }
+  /*
+  Dashboard
+  */
+  .new-dash-body {
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px 20px;
+    background: #edf2f6;
+    margin: 70px auto 0 auto;
+  }
+  .new-dash-left {
+    flex: 0 0 20%;
+  }
+  .new-dash-mentor-list {
+    flex: 0 0 50%;
+  }
+  .new-recent-mentor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h1.new-dash-section-title {
+    margin: 0 auto 10px auto;
+  }
+  .new-recent-mentor-list .new-dash-user-profile {
+    width: 48%;
+    /* margin-right: 1.5%; */
+  }
+  a.new-dash-schedule-link {
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    margin: 5px auto;
+    transition: all linear 0.2s;
+    background: #45cc89;
+  }
+  a.new-dash-schedule-link:hover {
+    padding: 5px;
+    transition: 0.2s;
+  }
+  .new-dash-user-profile {
+    transition: 0.2s;
+  }
+  .new-dash-user-profile:hover {
+    transition: 0.2s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+  }
+  ul.new-dash-menu {
+    position: relative;
+    background: none;
+    left: 0;
+    top: 0;
+    min-height: 0;
+    height: fit-content;
+    z-index: 1;
+    width: auto;
+    padding: 0;
+    border: none;
+    margin-left: 10px;
+  }
+  ul.new-dash-menu a {
+    color: #000;
+  }
+  ul.new-dash-menu li {
+    padding: 20px 10px;
+    font-size: 0.8rem;
+    display: inline-block;
+    transition: 0.2s;
+  }
+  ul.new-dash-menu li:hover {
+    border-bottom: 2px solid #45cc89;
+    transition: 0.2s;
+  }
+  .new-dash-nav form {
+    width: auto;
+    border: 1px solid #e6ecf5;
+    border-radius: 4px;
+    margin: 0 20px;
+    width: 40%;
+    display: block;
+  }
+  .new-dash-nav form input {
+    padding: 10px;
+    width: 85%;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+  }
+  .new-dash-search {
+    display: none;
+  }
+}
+@media screen and (min-width: 823px) and (max-width: 1000px) {
+  .new-dash-body {
+    display: flex;
+    flex-direction: column;
   }
 }

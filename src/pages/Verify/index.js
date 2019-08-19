@@ -17,7 +17,7 @@ function Verify() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [redirectRegister, setRedirectRegister] = useState(false);
+  // const [redirectRegister, setRedirectRegister] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [redirectDashboard, setRedirectDashboard] = useState(false);
 
@@ -35,7 +35,7 @@ function Verify() {
     axios({
       method: 'PUT',
       url: 'http://localhost:6060/api/v1/auth/verify',
-      headers
+      headers,
     })
       .then(response => {
         if (response.data.statusCode !== 200) {
@@ -72,7 +72,7 @@ function Verify() {
           show: true,
           type: 'form-alert-danger'
         });
-        setRedirectRegister(true);
+        // setRedirectRegister(true);
       });
   }, [headers, token]);
 
