@@ -15,3 +15,27 @@
   font-weight: 700;
   font-family: 'Monda', sans-serif;
 }
+
+.form_header {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.button {
+  margin-left: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.icon {
+  transition: all linear 0.3s;
+}
+
+.icon:hover {
+  color: #38bc8a;
+  cursor: pointer;
+}
