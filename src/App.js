@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import GetStarted from './pages/GetStarted';
 import Verify from './pages/Verify';
 import MainAbout from './pages/MainAbout';
+import Dash from './pages/Dash';
 
 import './App.css';
 
@@ -21,9 +22,10 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/forgot-password" component={Forgot} />
       <Route path="/reset-password" component={ResetPassword} />
-      <Route path="/dashboard" component={Dashboard} />
+      {/* <Route path="/dashboard" component={Dashboard} /> */}
       <Route path="/getstarted" component={GetStarted} />
       <Route path="/verify" component={Verify} />
+      <Route path="/dashboard" component={Dash} />
     </Router>
   );
 }
