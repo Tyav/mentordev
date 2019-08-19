@@ -382,6 +382,16 @@ ul.new-dash-menu li {
   padding: 15px 0;
   font-size: 0.9rem;
 }
+.new-textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e6ecf5;
+  outline: none;
+  font-size: 0.8rem;
+}
+.btn-success-solid {
+  margin: auto;
+}
 /* 
 ===============
 Desktop
@@ -617,6 +627,33 @@ Desktop
   }
   .new-dash-search {
     display: none;
+  }
+  .new-half-input {
+    display: flex;
+    justify-content: space-between;
+  }
+  .new-half-input #inputField {
+    width: 48%;
+  }
+  .new-input-set {
+    padding: 20px;
+    border: 1px solid #e6ecf5;
+    border-radius: 4px;
+  }
+  .new-form-label {
+    color: #717171;
+    font-size: 0.8rem;
+    margin-top: 20px;
+  }
+  .new-edit-form-toggle {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .new-edit-form-toggle span {
+    margin-top: 3px;
+    margin-right: 5px;
   }
 }
 @media screen and (min-width: 823px) and (max-width: 1000px) {
