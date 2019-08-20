@@ -38,6 +38,7 @@ function UserContactList() {
         return (
           <UserSingleContact
             key={contact.id}
+            contactId={contact.id}
             image={user.avatar}
             name={user.name}
             email={user.email}
