@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 /**
  * This component is for showing a single contact
@@ -37,6 +38,15 @@ function UserSingleContact(props) {
   };
 
   return (
+    <>
+      {deleteContact.status ? (
+        <p className="contact-deleted">
+          <i className="mdi mdi-checkbox-marked-circle-outline" />{' '}
+          {deleteContact.message}
+        </p>
+      ) : (
+        ''
+      )}
     <div className="new-dash-single-contact-container">
       <img
         className="new-dash-contact-img"
