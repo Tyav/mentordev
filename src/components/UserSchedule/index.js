@@ -22,7 +22,7 @@ function UserSchedule() {
   const getSchedule = () => {
     return axios({
       method: 'GET',
-      url: `http://localhost:6060/api/v1/schedule`,
+      url: `http://localhost:6060/api/v1/user/me/schedules`,
       headers
     })
       .then(response => {
@@ -42,7 +42,19 @@ function UserSchedule() {
   );
 }
 
+const formatParam = data => {
+  return data
+    .map(schedule => {
+      return schedule._id;
+    })
+    .join(',');
+};
+
 function viewSchedule({ data }) {
+  if (!data) return;
+
+  const schedulesParam = formatParam(data);
+
   if (data.length < 1) {
     return (
       <>
@@ -70,9 +82,15 @@ function viewSchedule({ data }) {
           </p>
         </Link>
       ))}
-      <a className="new-dash-schedule-link" href="/">
-        <i className="mdi mdi-plus lg-green-ic" /> Schedule
-      </a>
+      <Link
+        to={{
+          pathname: '/dashboard/mentor/allRequests',
+          state: { scheduleIds: schedulesParam }
+        }}
+        className="new-dash-schedule-link"
+      >
+        <i className="mdi mdi-plus lg-green-ic" /> View All
+      </Link>
     </>
   );
 }
