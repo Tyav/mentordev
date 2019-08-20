@@ -18,10 +18,8 @@ function Search() {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     }).then(response => {
-      console.log(response.data);
       setSearchResults([...response.data.payload]);
     });
-    console.log(window.location);
   }, [queryParams, window.location.href]);
 
   return (
