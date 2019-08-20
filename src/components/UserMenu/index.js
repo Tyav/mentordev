@@ -1,21 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function UserMenu() {
   return (
     <ul className="new-dash-menu">
-      <Link to="/dashboard">
+      <NavLink to="/dashboard" activeClassName="new-dash-menu-active">
         <li>Dashboard</li>
-      </Link>
-      <Link to="/dashboard">
+      </NavLink>
+      <NavLink to="/dashboard/schedule" activeClassName="new-dash-menu-active">
         <li>Manage Schedule</li>
-      </Link>
-      <Link to="/dashboard">
+      </NavLink>
+      <NavLink to="/dashboard/contact" activeClassName="new-dash-menu-active">
         <li>Manage Contacts</li>
-      </Link>
-      <Link to="/dashboard/profile">
+      </NavLink>
+      <NavLink to="/dashboard/profile" activeClassName="new-dash-menu-active">
         <li>Profile Settings</li>
-      </Link>
+      </NavLink>
     </ul>
   );
 }

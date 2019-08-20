@@ -629,6 +629,7 @@ Desktop
   }
   ul.new-dash-menu a {
     color: #000;
+    padding: 20px 10px;
   }
   ul.new-dash-menu li {
     padding: 20px 10px;
@@ -636,8 +637,13 @@ Desktop
     display: inline-block;
     transition: 0.2s;
   }
-  ul.new-dash-menu li:hover {
+  ul.new-dash-menu a:hover {
     border-bottom: 2px solid #45cc89;
+    transition: 0.2s;
+  }
+  .new-dash-menu-active {
+    border-bottom: 2px solid #45cc89;
+    color: #45cc89;
     transition: 0.2s;
   }
   .new-dash-nav form {
