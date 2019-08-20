@@ -10,9 +10,4 @@ function Fieldset(props) {
   );
 }
 
-export function FieldsetSpan(props) {
-  const { text, style } = props;
-  return <span className={style}>{text}</span>;
-}
-
 export default Fieldset;

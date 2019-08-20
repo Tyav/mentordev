@@ -17,14 +17,14 @@ function Verify() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [redirectRegister, setRedirectRegister] = useState(false);
+  // const [redirectRegister, setRedirectRegister] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [redirectDashboard, setRedirectDashboard] = useState(false);
 
   const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    };
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -35,7 +35,7 @@ function Verify() {
     axios({
       method: 'PUT',
       url: 'http://localhost:6060/api/v1/auth/verify',
-      headers
+      headers,
     })
       .then(response => {
         if (response.data.statusCode !== 200) {
@@ -73,9 +73,9 @@ function Verify() {
           show: true,
           type: 'form-alert-danger',
         });
-        setRedirectRegister(true);
+        // setRedirectRegister(true);
       });
-  }, []);
+  }, [token]);
 
   const duringLoad = () => {
     return <img src="/assets/img/loading-icon.svg" alt="loading" />;
@@ -114,7 +114,7 @@ function Verify() {
   //     return <Redirect to="/register" />;
   //   }
   if (redirectDashboard) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/dashboard/profile" />;
   }
 
   return (

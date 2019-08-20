@@ -32,7 +32,7 @@ function MainAbout() {
           </p>
         </div>
         <div className="main-about-card-img">
-          <img src="/assets/img/frustrated.png" />
+          <img src="/assets/img/frustrated.png" alt="mentee" />
         </div>
       </div>
       '
@@ -42,8 +42,8 @@ function MainAbout() {
           <div className="main-about-sm-card">
             <i className="mdi mdi-school" />
             <p>
-              Mentors register on the platform and create scheduled time for when
-              they would be available.
+              Mentors register on the platform and create scheduled time for
+              when they would be available.
               <br />
               <Link to="/register">Mentor a />ev</Link>
             </p>
@@ -84,7 +84,10 @@ function MainAbout() {
           </p>
         </div>
         <div className="main-about-card-img">
-          <img src="/assets/img/celebrate.png" />
+          <img
+            src="/assets/img/celebrate.png"
+            alt="celebrate with your mentor"
+          />
         </div>
       </div>
       <div className="main-about-card">

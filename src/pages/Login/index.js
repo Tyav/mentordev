@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -7,11 +7,14 @@ import Button from '../../components/Button';
 import FormHeader from '../../components/FormHeader';
 import Navbar from '../../components/Navbar';
 import FormAlert from '../../components/Alerts/FormAlert';
+import { UserObject } from '../../Context';
 
 //Stylings
 import './Login.css';
 
 function Login() {
+  const { user, setUser } = useContext(UserObject);
+
   const [loginResponse, setLoginResponse] = useState({
     message: '',
     show: false,
@@ -49,9 +52,8 @@ function Login() {
         }, 4000);
         return;
       }
+      setUser(response.data.payload); // make user object available with usecontext
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('tokenID', response.data.payload.id);
-      localStorage.setItem('auth', true);
       setLoginResponse({
         message: 'Login Successful',
         show: true,
@@ -69,8 +71,8 @@ function Login() {
   };
 
   useEffect(() => {
-    const auth = localStorage.getItem('auth');
-    if (auth) {
+    const token = localStorage.getItem('token');
+    if (token) {
       setAuth(true);
     }
   }, [auth]);

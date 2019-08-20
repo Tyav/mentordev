@@ -11,9 +11,11 @@ function InputField(props) {
         type={props.type}
         name={props.id}
         placeholder={props.placeholder}
-        // name={props.name}
+        value={props.value}
         onChange={props.change}
         onBlur={props.onBlur}
+        disabled={props.disabled}
+        style={props.disabled ? {} : { borderBottom: '1px solid #a7a7a7' }}
       />
     </div>
   );
