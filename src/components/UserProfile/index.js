@@ -29,9 +29,9 @@ function Userprofile() {
         <Tag tagname="PHP" />
         <Tag tagname="Javascript" />
       </div>
-      <a className="new-dash-profile-link" href="/">
+      <NavLink className="new-dash-profile-link" to="/dashboard/profile">
         <i className="mdi mdi-circle-edit-outline" /> Edit Profile
-      </a>
+      </NavLink>
     </div>
   );
 }
