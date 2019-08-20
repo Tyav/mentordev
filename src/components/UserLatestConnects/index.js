@@ -1,16 +1,10 @@
 import React from 'react';
 import Tag from '../Tag';
 
-function UserLatestConnect({
-  image,
-  name,
-  email,
-  tags = [],
-  schedule,
-  userlocation,
-}) {
+function UserLatestConnect({ image, name, email, tags, schedule, userlocation, key, buttons }) {
+  tags = tags || [];
   return (
-    <div className="new-dash-user-profile" key={props.key}>
+    <div className="new-dash-user-profile" key={key}>
       <div className="new-dash-card-header">
         <img src={image} alt="user profile" />
         <i className="mdi mdi-dots-vertical" />
@@ -18,7 +12,7 @@ function UserLatestConnect({
       <p className="new-dash-username">{name}</p>
       <p className="new-dash-username">{email}</p>
       <div className="new-dash-user-tags">
-        {props.tags.map((tag, index) => (
+        {tags.map((tag, index) => (
           <Tag tagname={tag} key={index} />
         ))}
       </div>
@@ -26,7 +20,7 @@ function UserLatestConnect({
         <span>{schedule}</span>
       </p>
       <p>{userlocation}</p>
-      <div className="conditional-buttons">{props.buttons ? addButtons(props.buttons) : ''}</div>
+      <div className="conditional-buttons">{buttons ? addButtons(buttons) : ''}</div>
     </div>
   );
 }
