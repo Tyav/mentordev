@@ -5,6 +5,37 @@ import React from 'react';
  */
 
 function UserSingleContact(props) {
+  const token = localStorage.getItem('token');
+  const [deleteContact, setDeleteContact] = useState({
+    status: false,
+    message: '',
+  });
+
+  const deleteContactHandler = () => {
+    const contactId = props.contactId;
+    axios({
+      url: `http://localhost:6060/api/v1/contact/${contactId}`,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(response => {
+      if (response.data.statusCode === 200) {
+        setDeleteContact({ status: true, message: 'Contact Deleted' });
+      }
+    });
+  };
+
+  const toggleDelete = e => {
+    const deleteBar = e.target.firstElementChild;
+    if (deleteBar.classList.contains('unhide')) {
+      deleteBar.classList.remove('unhide');
+      return;
+    }
+    deleteBar.classList.add('unhide');
+  };
+
   return (
     <div className="new-dash-single-contact-container">
       <img
