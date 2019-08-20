@@ -18,5 +18,5 @@ describe('<Card />', () => {
     const propsChildrenNode = getByText(props.children);
 
     expect(propsChildrenNode).toBeDefined();
-  });
+  }); 
 });

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import UserProfile from '../../components/UserProfile';
 import UserSearch from '../../components/UserSearch';
 import UserMenu from '../../components/UserMenu';
@@ -10,9 +9,11 @@ import UserContactList from '../../components/UserContactList';
 import UserConnects from '../../components/UserConnects';
 import EditProfile from './EditProfile';
 import ScheduleRequests from '../../components/ScheduleRequest';
+import Search from '../Search';
 
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
+  const token = localStorage.getItem('token');
 
   const sideNavHandler = e => {
     e.preventDefault();
@@ -29,6 +30,10 @@ function Dashboard() {
     sideNav.classList.remove('show-side-nav');
     navToggler.classList.remove('cross-bar');
   };
+
+  if (!token) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <>
@@ -54,6 +59,7 @@ function Dashboard() {
           <Route exact path="/dashboard" component={UserConnects} />
           <Route path="/dashboard/profile" component={EditProfile} />
           <Route path="/dashboard/mentor/requests/:requestId" component={ScheduleRequests} />
+          <Route exact path="/dashboard/search" component={Search} />
         </div>
         <div className="new-dash-right">
           <UserScheduleList />

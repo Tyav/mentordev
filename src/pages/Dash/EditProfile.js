@@ -217,21 +217,19 @@ function EditProfile() {
       </form>
       <Card styles={style}>
         <h2>Change Password</h2>
+        <InputField
+          label="Current Password"
+          type="password"
+          id="currentPassword"
+          name="currentPassword"
+        />
         <div className="new-half-input">
-          <InputField
-            label="Current Password"
-            type="password"
-            id="currentPassword"
-            name="currentPassword"
-          />
           <InputField
             label="New Password"
             type="password"
             id="newPassword"
             name="newPassword"
           />
-        </div>
-        <div className="new-half-input">
           <InputField
             label="Confirm New Password"
             type="password"
