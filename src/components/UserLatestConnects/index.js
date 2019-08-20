@@ -1,5 +1,6 @@
 import React from 'react';
 import Tag from '../Tag';
+import axios from 'axios';
 
 function UserLatestConnect({
   image,
@@ -38,12 +39,27 @@ function UserLatestConnect({
 }
 
 const requestApproval = e => {
+  const token = window.localStorage.getItem('token');
   e.preventDefault();
   const requestId = e.target.id;
   //grab the action from the classList.... the action is either  "Approve" or "Reject"
-  const action = Array.from(e.target.classList)[1];
-  
+  const action = Array.from(e.target.classList)[1] === 'Approve'? 'Approved' : 'Rejected';
 
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`
+  };
+
+  axios({
+    method: 'PUT',
+    url: `http://localhost:6060/api/v1/request/${requestId}?status=${action}`, headers
+  })
+    .then(response => {
+      console.log(response,'hello this is the response')
+    })
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 // the addButtons function with two parameters. the buttons array ['Approve', 'Reject'], and the requestId
