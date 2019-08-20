@@ -207,6 +207,13 @@ Dashboard
   font-size: 20px;
   color: #c0c4d8;
 }
+.new-dash-card-header img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid #e6ecf5;
+  margin: 10px auto 20px auto;
+}
 p.new-dash-username {
   color: #515365;
   font-weight: 500;
@@ -314,7 +321,7 @@ i.lg-green-ic {
   justify-content: left;
 }
 
-.new-dash-single-contact .schedule{
+.new-dash-single-contact .schedule {
   color: #45cc89;
   font-weight: 500;
 }
@@ -641,6 +648,9 @@ Desktop
     font-size: 0.8rem;
     border: none;
     outline: none;
+  }
+  .new-dash-nav form button {
+    width: 15%;
   }
   .new-dash-search {
     display: none;
