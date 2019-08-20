@@ -14,10 +14,7 @@ import UserDashHeading from '../UserDashHeading';
 function UserConnects() {
   return (
     <>
-      <UserDashHeading
-        text="Your most recent Mentors"
-        icon="checkbox-marked-circle-outline"
-      />
+      <UserDashHeading text="Your most recent Mentors" icon="checkbox-marked-circle-outline" />
       <div className="new-recent-mentor-list">
         <UserLatestConnect
           image="/assets/img/frustrated.png"
