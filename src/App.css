@@ -330,6 +330,7 @@ i.lg-green-ic {
 .new-dash-single-contact p i {
   position: absolute;
   right: 0;
+  cursor: pointer;
 }
 .new-dash-single-contact p i div {
   width: 100px;
@@ -339,11 +340,24 @@ i.lg-green-ic {
   background: #fff;
   border: 1px solid #e6ecf5;
   border-radius: 4px;
-  position: relative;
+  position: absolute;
   font-size: 0.63rem;
   font-style: normal;
   text-align: center;
   color: #f34e4e;
+  cursor: pointer;
+  top: 30px;
+  right: 15%;
+  display: none;
+  transition: all linear 0.2s;
+}
+p.contact-deleted {
+  font-size: 0.8rem;
+  color: #45cc89;
+}
+.unhide {
+  display: block !important;
+  transition: all linear 0.2s;
 }
 .new-dash-single-contact p i div::before {
   content: '';
@@ -353,7 +367,7 @@ i.lg-green-ic {
   border-right: 5px solid transparent;
   border-bottom: 10px solid #edf2f6;
   top: -10px;
-  left: 2px;
+  right: 2px;
   position: absolute;
 }
 .new-dash-single-contact p i div i {
