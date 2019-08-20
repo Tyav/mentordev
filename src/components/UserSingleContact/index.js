@@ -14,7 +14,14 @@ function UserSingleContact(props) {
       />
       <div className="new-dash-single-contact">
         <p>
-          {props.name}
+          {props.name}{' '}
+          <i className="mdi mdi-dots-vertical contact-toggle">
+            <div>
+              <i className="mdi mdi-delete" />
+              <br />
+              Delete Contact
+            </div>
+          </i>
           <br /> <span>{props.email}</span>
           <br /> <span className="schedule">{props.schedule}</span>
         </p>

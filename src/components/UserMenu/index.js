@@ -10,8 +10,8 @@ function UserMenu() {
       <NavLink to="/dashboard/schedule" activeClassName="new-dash-menu-active">
         <li>Manage Schedule</li>
       </NavLink>
-      <NavLink to="/dashboard/contact" activeClassName="new-dash-menu-active">
-        <li>Manage Contacts</li>
+      <NavLink to="/dashboard/request" activeClassName="new-dash-menu-active">
+        <li>Manage Requests</li>
       </NavLink>
       <NavLink to="/dashboard/profile" activeClassName="new-dash-menu-active">
         <li>Profile Settings</li>
