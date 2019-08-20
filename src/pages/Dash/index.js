@@ -48,7 +48,7 @@ function Dashboard() {
           Mentor <span>/>ev</span>
         </a>
         <UserSearch />
-        <UserMenu />
+        <UserMenu validateType={isMentor} />
       </nav>
       <main className="new-dash-body">
         <div className="new-dash-left">
