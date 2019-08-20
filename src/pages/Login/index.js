@@ -54,6 +54,8 @@ function Login() {
       }
       setUser(response.data.payload); // make user object available with usecontext
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('validateType', response.data.payload.isMentor);
+
       setLoginResponse({
         message: 'Login Successful',
         show: true,
