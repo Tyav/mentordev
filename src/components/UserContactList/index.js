@@ -37,6 +37,7 @@ function UserContactList() {
         const { contact: user, schedule } = contact;
         return (
           <UserSingleContact
+            key={contact.id}
             image={user.avatar}
             name={user.name}
             email={user.email}
