@@ -16,6 +16,7 @@ import ScheduleList from './ScheduleList';
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
   const token = localStorage.getItem('token');
+  const isMentor = localStorage.getItem('validateType');
 
   const sideNavHandler = e => {
     e.preventDefault();
