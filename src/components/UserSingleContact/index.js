@@ -33,8 +33,10 @@ function UserSingleContact(props) {
     if (deleteBar.classList.contains('unhide')) {
       deleteBar.classList.remove('unhide');
       return;
+    } else {
+      deleteBar.classList.add('unhide');
+      return;
     }
-    deleteBar.classList.add('unhide');
   };
 
   return (
