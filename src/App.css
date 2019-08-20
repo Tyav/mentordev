@@ -322,6 +322,7 @@ i.lg-green-ic {
   display: flex;
   flex-direction: column;
   justify-content: left;
+  width: -webkit-fill-available;
 }
 .new-dash-single-contact p {
   position: relative;
