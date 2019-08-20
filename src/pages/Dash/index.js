@@ -72,7 +72,7 @@ function Dashboard() {
           />
         </div>
         <div className="new-dash-right">
-          <UserScheduleList />
+          {!isMentor ? '' : <UserScheduleList />}
           <div className="new-dash-contact-list">
             <UserDashHeading text="Your Contact List" icon="contacts" />
             <UserContactList />
