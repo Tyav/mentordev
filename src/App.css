@@ -317,7 +317,7 @@ i.lg-green-ic {
   justify-content: left;
 }
 
-.new-dash-single-contact .schedule{
+.new-dash-single-contact .schedule {
   color: #45cc89;
   font-weight: 500;
 }
@@ -405,9 +405,12 @@ ul.new-dash-menu li {
 .new-textarea {
   width: 100%;
   border: none;
-  border-bottom: 1px solid #e6ecf5;
+  border: 1px solid #e6ecf5;
   outline: none;
   font-size: 0.8rem;
+}
+.new-textarea:focus {
+  border-bottom: 1px solid #45cc89 !important;
 }
 .btn-success-solid {
   margin: auto;
@@ -670,6 +673,8 @@ Desktop
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
   }
   .new-edit-form-toggle span {
     margin-top: 3px;
@@ -693,4 +698,12 @@ Desktop
 
 .button1 {
   background: rgb(243, 78, 78) !important;
+}
+
+.center-element {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
