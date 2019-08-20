@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import UserLatestConnect from '../UserLatestConnects';
+import { viewRequests } from '../UserLatestConnects';
 import UserDashHeading from '../UserDashHeading';
 
 /**
@@ -13,6 +13,7 @@ import UserDashHeading from '../UserDashHeading';
  * schedule => the schedule the meentee booked for this particular mentor
  * The list below should be converted to a single loop on db data
  */
+
 function ScheduleRequests({ match }) {
   const { scheduleId } = match.params;
   const token = window.localStorage.getItem('token');
@@ -50,27 +51,3 @@ function ScheduleRequests({ match }) {
 }
 
 export default ScheduleRequests;
-
-function viewRequests({ data }) {
-  if (data.length < 1) {
-    return <p>No request today</p>;
-  }
-
-  return (
-    <div className="new-recent-mentor-list">
-      {data.map((request, index) => (
-        <UserLatestConnect
-          image={request.mentee.avatar}
-          name={request.mentee.name}
-          email={request.mentee.email}
-          tags={request.mentee.skills}
-          schedule={`${request.schedule.day}  ${request.schedule.time.from} to ${
-            request.schedule.time.to
-          }`}
-          key={index}
-          buttons={['Approve', 'Reject']}
-        />
-      ))}
-    </div>
-  );
-}
