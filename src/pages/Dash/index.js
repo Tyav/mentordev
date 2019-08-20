@@ -10,6 +10,7 @@ import UserConnects from '../../components/UserConnects';
 import EditProfile from './EditProfile';
 import ScheduleRequests from '../../components/ScheduleRequest';
 import Search from '../Search';
+import AllMentorRequests from '../../components/AllMentorRequests';
 
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
@@ -32,7 +33,7 @@ function Dashboard() {
   };
 
   if (!token) {
-    return <Redirect to="/login" />
+    return <Redirect to="/login" />;
   }
 
   return (
@@ -58,8 +59,9 @@ function Dashboard() {
         <div className="new-dash-mentor-list">
           <Route exact path="/dashboard" component={UserConnects} />
           <Route path="/dashboard/profile" component={EditProfile} />
-          <Route path="/dashboard/mentor/requests/:requestId" component={ScheduleRequests} />
           <Route exact path="/dashboard/search" component={Search} />
+          <Route path="/dashboard/mentor/requests/:scheduleId" component={ScheduleRequests} />
+          <Route path="/dashboard/mentor/allRequests" component={AllMentorRequests} />
         </div>
         <div className="new-dash-right">
           <UserScheduleList />

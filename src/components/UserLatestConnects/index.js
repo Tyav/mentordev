@@ -18,15 +18,15 @@ function UserLatestConnect({
       <p className="new-dash-username">{name}</p>
       <p className="new-dash-username">{email}</p>
       <div className="new-dash-user-tags">
-        {tags.map((tag, index) => (
-          <Tag key={index} tagname={tag} />
+        {props.tags.map((tag, index) => (
+          <Tag tagname={tag} key={index} />
         ))}
       </div>
       <p className="new-dash-user-mentor-sch">
         <span>{schedule}</span>
       </p>
       <p>{userlocation}</p>
-      <div className="conditional-buttons">{addButtons(props.buttons)}</div>
+      <div className="conditional-buttons">{props.buttons ? addButtons(props.buttons) : ''}</div>
     </div>
   );
 }
@@ -40,5 +40,30 @@ function addButtons(buttons) {
       <i className="mdi lg-green-ic" /> {button}
     </a>
   ));
+}
+
+export function viewRequests({ data }) {
+  if (!data) return;
+  if (data.length < 1) {
+    return <p>No request today</p>;
+  }
+
+  return (
+    <div className="new-recent-mentor-list">
+      {data.map((request, index) => (
+        <UserLatestConnect
+          image={request.mentee.avatar}
+          name={request.mentee.name}
+          email={request.mentee.email}
+          tags={request.mentee.skills}
+          schedule={`${request.schedule.day}  ${request.schedule.time.from} to ${
+            request.schedule.time.to
+          }`}
+          key={index}
+          buttons={['Approve', 'Reject']}
+        />
+      ))}
+    </div>
+  );
 }
 export default UserLatestConnect;
