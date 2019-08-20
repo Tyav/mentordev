@@ -7,10 +7,7 @@ import InputField from '../../components/InputField';
 import Button from '../../components/Button';
 import UserDashHeading from '../../components/UserDashHeading';
 import { UserObject } from '../../Context';
-import {
-  formatBeforeUpdate,
-  formatLocalUser,
-} from '../../helper/formatUpdateData';
+import { formatBeforeUpdate, formatLocalUser } from '../../helper/formatUpdateData';
 
 function EditProfile() {
   const [edit, setEdit] = useState(true);
@@ -22,8 +19,8 @@ function EditProfile() {
     ...userValue,
     errors: {
       fullname: '',
-      email: '',
-    },
+      email: ''
+    }
   });
 
   const handleEdit = () => setEdit(() => !edit);
@@ -34,7 +31,7 @@ function EditProfile() {
 
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${token}`
   };
 
   const handleSubmit = event => {
@@ -44,7 +41,7 @@ function EditProfile() {
       method: 'PUT',
       url: `http://localhost:6060/api/v1/user/me`,
       headers,
-      data: { ...data },
+      data: { ...data }
     })
       .then(response => {
         console.log(response);
@@ -64,14 +61,14 @@ function EditProfile() {
     if (!value)
       return setValues({
         ...values,
-        errors: { ...values.errors, [name]: `${name} is required` },
+        errors: { ...values.errors, [name]: `${name} is required` }
       });
 
     const emailRegexp = /\S+@\S+\.\S+/;
     if (name === 'email' && emailRegexp.test(value) === false)
       return setValues({
         ...values,
-        errors: { ...values.errors, [name]: `${name} is not valid.` },
+        errors: { ...values.errors, [name]: `${name} is not valid.` }
       });
     return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
@@ -82,7 +79,7 @@ function EditProfile() {
     borderRadius: '4px',
     border: '1px solid #e6ecf5',
     padding: '20px',
-    marginBottom: '20px',
+    marginBottom: '20px'
   };
   return (
     <>
@@ -90,12 +87,7 @@ function EditProfile() {
       <form style={{ width: '100%' }} onSubmit={handleSubmit}>
         <Card styles={style}>
           <div className="new-edit-form-toggle">
-            <input
-              type="checkbox"
-              id="form-toggle"
-              className="offscreen"
-              onClick={handleEdit}
-            />
+            <input type="checkbox" id="form-toggle" className="offscreen" onClick={handleEdit} />
             Enable Editing <label htmlFor="form-toggle" className="switch" />
           </div>
           <div className="new-half-input">
@@ -210,13 +202,14 @@ function EditProfile() {
             value={values.bio}
             onChange={handleChange}
             disabled={edit}
+            style={edit ? {} : { borderBottom: '1px solid rgb(128, 120, 120)' }}
           />
           <br />
-          <Button className="btn-success-solid" text="Save Changes" />
+          <Button className="btn-success-solid center-element" text="Save Changes" />
         </Card>
       </form>
       <Card styles={style}>
-        <h2>Change Password</h2>
+        <h2 className="center-element">Change Password</h2>
         <InputField
           label="Current Password"
           type="password"
@@ -224,12 +217,7 @@ function EditProfile() {
           name="currentPassword"
         />
         <div className="new-half-input">
-          <InputField
-            label="New Password"
-            type="password"
-            id="newPassword"
-            name="newPassword"
-          />
+          <InputField label="New Password" type="password" id="newPassword" name="newPassword" />
           <InputField
             label="Confirm New Password"
             type="password"
@@ -237,7 +225,7 @@ function EditProfile() {
             name="confirmNewPassword"
           />
         </div>
-        <Button className="btn-success-solid" text="Change Password" />
+        <Button className="btn-success-solid center-element" text="Change Password" />
       </Card>
     </>
   );
