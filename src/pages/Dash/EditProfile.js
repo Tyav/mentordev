@@ -8,6 +8,7 @@ import Button from '../../components/Button';
 import UserDashHeading from '../../components/UserDashHeading';
 import { UserObject } from '../../Context';
 import { formatBeforeUpdate, formatLocalUser } from '../../helper/formatUpdateData';
+import ChangePassword from '../../components/ChangePassword';
 
 function EditProfile() {
   const [edit, setEdit] = useState(true);
@@ -208,25 +209,8 @@ function EditProfile() {
           <Button className="btn-success-solid center-element" text="Save Changes" />
         </Card>
       </form>
-      <Card styles={style}>
-        <h2 className="center-element">Change Password</h2>
-        <InputField
-          label="Current Password"
-          type="password"
-          id="currentPassword"
-          name="currentPassword"
-        />
-        <div className="new-half-input">
-          <InputField label="New Password" type="password" id="newPassword" name="newPassword" />
-          <InputField
-            label="Confirm New Password"
-            type="password"
-            id="confirmNewPassword"
-            name="confirmNewPassword"
-          />
-        </div>
-        <Button className="btn-success-solid center-element" text="Change Password" />
-      </Card>
+
+      <ChangePassword />
     </>
   );
 }
