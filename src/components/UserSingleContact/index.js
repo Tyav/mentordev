@@ -47,15 +47,15 @@ function UserSingleContact(props) {
       ) : (
         ''
       )}
-    <div className="new-dash-single-contact-container">
-      <img
-        className="new-dash-contact-img"
-        src={props.image}
-        alt={props.name}
-      />
-      <div className="new-dash-single-contact">
-        <p>
-          {props.name}{' '}
+      <div className="new-dash-single-contact-container">
+        <img
+          className="new-dash-contact-img"
+          src={props.image}
+          alt={props.name}
+        />
+        <div className="new-dash-single-contact">
+          <p>
+            {props.name}{' '}
             <i
               className="mdi mdi-dots-vertical"
               id="contact-toggle"
@@ -72,6 +72,7 @@ function UserSingleContact(props) {
           </p>
         </div>
       </div>
+    </>
   );
 }
 
