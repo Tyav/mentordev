@@ -9,7 +9,7 @@ function UserSingleContact(props) {
   const token = localStorage.getItem('token');
   const [deleteContact, setDeleteContact] = useState({
     status: false,
-    message: '',
+    message: ''
   });
 
   const deleteContactHandler = () => {
@@ -19,8 +19,8 @@ function UserSingleContact(props) {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     }).then(response => {
       if (response.data.statusCode === 200) {
         setDeleteContact({ status: true, message: 'Contact Deleted' });
@@ -43,26 +43,17 @@ function UserSingleContact(props) {
     <>
       {deleteContact.status ? (
         <p className="contact-deleted">
-          <i className="mdi mdi-checkbox-marked-circle-outline" />{' '}
-          {deleteContact.message}
+          <i className="mdi mdi-checkbox-marked-circle-outline" /> {deleteContact.message}
         </p>
       ) : (
         ''
       )}
       <div className="new-dash-single-contact-container">
-        <img
-          className="new-dash-contact-img"
-          src={props.image}
-          alt={props.name}
-        />
+        <img className="new-dash-contact-img" src={props.image} alt={props.name} />
         <div className="new-dash-single-contact">
           <p>
             {props.name}{' '}
-            <i
-              className="mdi mdi-dots-vertical"
-              id="contact-toggle"
-              onClick={toggleDelete}
-            >
+            <i className="mdi mdi-dots-vertical" id="contact-toggle" onClick={toggleDelete}>
               <div onClick={deleteContactHandler}>
                 <i className="mdi mdi-delete" />
                 <br />
@@ -70,9 +61,7 @@ function UserSingleContact(props) {
               </div>
             </i>
             <br /> <span>{props.email}</span>
-            <br /> {
-              props.schedule
-            }
+            <br /> {props.schedule}
           </p>
         </div>
       </div>

@@ -16,6 +16,10 @@ const ChangePassword = () => {
     success: ''
   });
 
+  const handleFocus = event => {
+    setValues({ ...values, errors: '' });
+  };
+
   const handleChange = event => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
@@ -86,6 +90,7 @@ const ChangePassword = () => {
           name="currentPassword"
           value={values.currentPassword}
           change={handleChange}
+          onFocus={handleFocus}
         />
         <div className="new-half-input">
           <InputField
@@ -95,6 +100,7 @@ const ChangePassword = () => {
             name="newPassword"
             value={values.newPassword}
             change={handleChange}
+            onFocus={handleFocus}
           />
           <InputField
             label="Confirm New Password"
@@ -103,6 +109,7 @@ const ChangePassword = () => {
             name="confirmNewPassword"
             value={values.confirmNewPassword}
             change={handleChange}
+            onFocus={handleFocus}
           />
         </div>
         <Button className="btn-success-solid center-element" text="Change Password" />

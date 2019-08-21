@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import Card from '../../components/Card';
@@ -13,16 +13,20 @@ import ChangePassword from '../../components/ChangePassword';
 function EditProfile() {
   const [edit, setEdit] = useState(true);
   const token = window.localStorage.getItem('token');
-  let localUser = JSON.parse(window.localStorage.getItem('user'));
-  const userValue = formatLocalUser({ ...localUser });
   const { user, setUser } = useContext(UserObject);
   const [values, setValues] = useState({
-    ...userValue,
+    ...user,
     errors: {
       fullname: '',
       email: ''
-    }
+    },
+    success: ''
   });
+
+  useEffect(() => {
+    setValues({ ...values, ...user });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const handleEdit = () => setEdit(() => !edit);
   const handleChange = event => {
@@ -45,10 +49,18 @@ function EditProfile() {
       data: { ...data }
     })
       .then(response => {
-        console.log(response);
         if (response.data.payload.statusCode !== 200) {
-          localUser = { ...localUser, ...response.data.payload };
-          window.localStorage.setItem('user', JSON.stringify(localUser));
+          setUser(() => formatLocalUser({ ...user, ...response.data.payload }));
+          setValues({
+            ...values,
+            success: 'Profile Updated Successfully'
+          });
+          setTimeout(() => {
+            setValues({
+              ...values,
+              success: ''
+            });
+          }, 3000);
           return <Redirect to="/dashboard/profile" />;
         }
       })
@@ -91,6 +103,10 @@ function EditProfile() {
             <input type="checkbox" id="form-toggle" className="offscreen" onClick={handleEdit} />
             Enable Editing <label htmlFor="form-toggle" className="switch" />
           </div>
+          <p style={{ color: '#45cc89', textAlign: 'center', marginBottom: '5px' }}>
+            {values.success}
+          </p>
+
           <div className="new-half-input">
             <InputField
               label="Fullname"

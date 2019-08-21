@@ -784,7 +784,7 @@ Desktop
     margin-top: 20px;
   }
   .new-edit-form-toggle {
-    font-size: 0.8rem;
+    font-size: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;

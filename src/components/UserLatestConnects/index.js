@@ -64,7 +64,6 @@ const requestApproval = e => {
 
 // the addButtons function with two parameters. the buttons array ['Approve', 'Reject'], and the requestId
 function addButtons(buttons, requestId) {
-  console.log(requestId);
   if (buttons.length < 1) {
     return '';
   }
@@ -81,29 +80,4 @@ function addButtons(buttons, requestId) {
   ));
 }
 
-export function viewRequests({ data }) {
-  if (!data) return;
-  if (data.length < 1) {
-    return <p>No request today</p>;
-  }
-
-  return (
-    <div className="new-recent-mentor-list">
-      {data.map((request, index) => (
-        <UserLatestConnect
-          image={request.mentee.avatar}
-          name={request.mentee.name}
-          email={request.mentee.email}
-          tags={request.mentee.skills}
-          schedule={`${request.schedule.day}  ${
-            request.schedule.time.from
-          } to ${request.schedule.time.to}`}
-          key={index}
-          buttons={['Approve', 'Reject']}
-          requestId={request._id}
-        />
-      ))}
-    </div>
-  );
-}
 export default UserLatestConnect;
