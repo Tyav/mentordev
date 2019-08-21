@@ -19,12 +19,14 @@ function EditProfile() {
     errors: {
       fullname: '',
       email: ''
-    }
+    },
+    success: ''
   });
 
-  useEffect(()=> {
-setValues({...values, ...user})
-  }, [user])
+  useEffect(() => {
+    setValues({ ...values, ...user });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const handleEdit = () => setEdit(() => !edit);
   const handleChange = event => {
@@ -48,7 +50,11 @@ setValues({...values, ...user})
     })
       .then(response => {
         if (response.data.payload.statusCode !== 200) {
-          setUser(()=>formatLocalUser({ ...user, ...response.data.payload }));
+          setUser(() => formatLocalUser({ ...user, ...response.data.payload }));
+          setValues({
+            ...values,
+            success: 'Profile Updated Successfully'
+          });
           return <Redirect to="/dashboard/profile" />;
         }
       })
@@ -91,6 +97,10 @@ setValues({...values, ...user})
             <input type="checkbox" id="form-toggle" className="offscreen" onClick={handleEdit} />
             Enable Editing <label htmlFor="form-toggle" className="switch" />
           </div>
+          <p style={{ color: '#45cc89', textAlign: 'center', marginBottom: '5px' }}>
+            {values.success}
+          </p>
+
           <div className="new-half-input">
             <InputField
               label="Fullname"
