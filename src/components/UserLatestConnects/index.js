@@ -64,7 +64,6 @@ const requestApproval = e => {
 
 // the addButtons function with two parameters. the buttons array ['Approve', 'Reject'], and the requestId
 function addButtons(buttons, requestId) {
-  console.log(requestId);
   if (buttons.length < 1) {
     return '';
   }
