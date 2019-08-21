@@ -22,11 +22,14 @@ function Request() {
         Authorization: `Bearer ${token}`,
       },
     }).then(response => {
-      response.data.payload.forEach(request => {
-        if (request.status === 'Pending') {
-          setRequests([request]);
-        }
-      });
+      if (response.data.payload) {
+        response.data.payload.forEach(request => {
+          if (request.status === 'Pending') {
+            setRequests([request]);
+          }
+        });
+        return;
+      }
     });
   }, []);
 
