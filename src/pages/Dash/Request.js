@@ -6,17 +6,10 @@ import SingleRequest from '../../components/SingleRequest';
 import { sendGetRequest } from '../../actions';
 
 function Request() {
-  const token = localStorage.getItem('token');
-
   const [requests, setRequests] = useState([]);
 
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-  };
-
   useEffect(() => {
-    sendGetRequest('/api/v1/request', headers).then(response => {
+    sendGetRequest('/api/v1/request').then(response => {
       let results = [];
       if (response.data.payload) {
         response.data.payload.forEach(request => {
