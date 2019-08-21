@@ -15,6 +15,7 @@ import UserDashHeading from '../UserDashHeading';
  * The list below should be converted to a single loop on db data
  */
 function AllScheduleRequests({ location }) {
+  console.log(location,'this is location')
   const { scheduleIds } = location.state;
   const token = window.localStorage.getItem('token');
   const [requests, setRequests] = useState({ data: [], loading: true });
