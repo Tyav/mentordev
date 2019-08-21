@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import Card from '../../components/Card';
@@ -13,16 +13,18 @@ import ChangePassword from '../../components/ChangePassword';
 function EditProfile() {
   const [edit, setEdit] = useState(true);
   const token = window.localStorage.getItem('token');
-  let localUser = JSON.parse(window.localStorage.getItem('user'));
-  const userValue = formatLocalUser({ ...localUser });
   const { user, setUser } = useContext(UserObject);
   const [values, setValues] = useState({
-    ...userValue,
+    ...user,
     errors: {
       fullname: '',
       email: ''
     }
   });
+
+  useEffect(()=> {
+setValues({...values, ...user})
+  }, [user])
 
   const handleEdit = () => setEdit(() => !edit);
   const handleChange = event => {
@@ -45,10 +47,8 @@ function EditProfile() {
       data: { ...data }
     })
       .then(response => {
-        console.log(response);
         if (response.data.payload.statusCode !== 200) {
-          localUser = { ...localUser, ...response.data.payload };
-          window.localStorage.setItem('user', JSON.stringify(localUser));
+          setUser(()=>formatLocalUser({ ...user, ...response.data.payload }));
           return <Redirect to="/dashboard/profile" />;
         }
       })
