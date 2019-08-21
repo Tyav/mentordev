@@ -42,9 +42,7 @@ function UserContactList() {
             image={user.avatar}
             name={user.name}
             email={user.email}
-            schedule={`${schedule.day} From ${schedule.time.from} To ${
-              schedule.time.to
-            }`}
+            schedules={schedule}
           />
         );
       })}

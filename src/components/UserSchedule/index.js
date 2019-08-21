@@ -6,6 +6,7 @@ import axios from 'axios';
  * For listing all schedules for a single mentor
  */
 
+
 function UserSchedule() {
   const token = window.localStorage.getItem('token');
   const [schedules, setSchedules] = useState({ data: [], loading: true });
@@ -18,6 +19,7 @@ function UserSchedule() {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`
   };
+
 
   const getSchedule = () => {
     return axios({
@@ -58,7 +60,10 @@ function viewSchedule({ data }) {
   if (data.length < 1) {
     return (
       <>
-        <p className="new-dash-user-mentor-sch" style={{ marginTop: '3rem', marginBottom: '1rem' }}>
+        <p
+          className="new-dash-user-mentor-sch"
+          style={{ marginTop: '3rem', marginBottom: '1rem' }}
+        >
           <span>You currently Dont have no Schedule </span>
         </p>
         <a className="new-dash-schedule-link" href="/">
@@ -82,9 +87,10 @@ function viewSchedule({ data }) {
           </p>
         </Link>
       ))}
+
       <Link
         to={{
-          pathname: '/dashboard/mentor/allRequests',
+          pathname: '/dashboard/mentor/all-requests',
           state: { scheduleIds: schedulesParam }
         }}
         className="new-dash-schedule-link"
