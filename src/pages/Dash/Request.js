@@ -3,28 +3,28 @@ import UserDashHeading from '../../components/UserDashHeading';
 import Card from '../../components/Card';
 import SingleRequest from '../../components/SingleRequest';
 
-import axios from 'axios';
+import { sendGetRequest } from '../../actions';
 
 function Request() {
   const token = localStorage.getItem('token');
 
   const [requests, setRequests] = useState([]);
 
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  };
+
   useEffect(() => {
-    axios({
-      url: `http://localhost:6060/api/v1/request`,
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    }).then(response => {
+    sendGetRequest('/api/v1/request', headers).then(response => {
+      let results = [];
       if (response.data.payload) {
         response.data.payload.forEach(request => {
           if (request.status === 'Pending') {
-            setRequests([request]);
+            results.push(request);
           }
         });
+        setRequests(results);
         return;
       }
     });
@@ -46,6 +46,7 @@ function Request() {
           return (
             <SingleRequest
               key={request._id}
+              requestId={request._id}
               status={request.status}
               mentor={request.schedule.mentor.name}
               scheduleDay={request.schedule.day}
