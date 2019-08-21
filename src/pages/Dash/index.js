@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import UserProfile from '../../components/UserProfile';
 import UserSearch from '../../components/UserSearch';
@@ -12,6 +12,7 @@ import ScheduleRequests from '../../components/ScheduleRequest';
 import Search from '../Search';
 import AllMentorRequests from '../../components/AllMentorRequests';
 import ScheduleList from './ScheduleList';
+import Request from './Request';
 
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
@@ -71,6 +72,7 @@ function Dashboard() {
             path="/dashboard/mentor/allRequests"
             component={AllMentorRequests}
           />
+          <Route path="/dashboard/request" component={Request} />
         </div>
         <div className="new-dash-right">
           {!isMentor ? '' : <UserScheduleList />}
