@@ -1,15 +1,27 @@
 import React from 'react';
 
+import { sendPutRequest } from '../../actions';
+
 import Tag from '../Tag';
 
 function SingleRequest(props) {
+  const token = localStorage.getItem('token');
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
+  };
+  const cancleRequestHandler = e => {
+    e.preventDefault();
+    sendPutRequest(
+      `/api/v1/request/${props.requestId}?status=Cancelled`,
+      headers,
+    );
+  };
   return (
     <>
       <div className="mentee-request">
         <div className="single-mentee-request">
-          <p className="request-pending">
-            <span>Status</span>: {props.status} &nbsp;
-          </p>
+          <p className="request-pending">{props.status} &nbsp;</p>
           <p className="request-mentor">
             &nbsp;<span>Mentor</span>: {props.mentor} &nbsp;
           </p>
@@ -23,9 +35,14 @@ function SingleRequest(props) {
               return <Tag tagname={tag} />;
             })}
           </p>
+          <a href="/">
+            <i
+              className="mdi mdi-close-circle"
+              onClick={cancleRequestHandler}
+            />
+          </a>
         </div>
         <br />
-        <a href="/">Cancle Request</a>
       </div>
     </>
   );
