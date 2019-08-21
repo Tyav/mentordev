@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { viewRequests } from '../UserLatestConnects';
+import UserLatestConnect from '../UserLatestConnects';
 import UserDashHeading from '../UserDashHeading';
 // import viewRequests from '../ScheduleRequest';
 
@@ -47,6 +47,32 @@ function AllScheduleRequests({ location }) {
       <UserDashHeading text="Your most recent Requests" icon="checkbox-marked-circle-outline" />
       {requests.loading ? <p>loading...</p> : viewRequests(requests)}
     </>
+  );
+}
+
+function viewRequests({ data }) {
+  if (!data) return;
+  if (data.length < 1) {
+    return <p>No request today</p>;
+  }
+
+  return (
+    <div className="new-recent-mentor-list">
+      {data.map((request, index) => (
+        <UserLatestConnect
+          image={request.mentee.avatar}
+          name={request.mentee.name}
+          email={request.mentee.email}
+          tags={request.mentee.skills}
+          schedule={`${request.schedule.day}  ${
+            request.schedule.time.from
+          } to ${request.schedule.time.to}`}
+          key={index}
+          buttons={['Approve', 'Reject']}
+          requestId={request._id}
+        />
+      ))}
+    </div>
   );
 }
 
