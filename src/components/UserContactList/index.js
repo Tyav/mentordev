@@ -35,7 +35,6 @@ function UserContactList() {
     <div className="new-dash-contact">
       {contacts.map(contact => {
         const { contact: user, schedule } = contact;
-        console.log(schedule);
         return (
           <UserSingleContact
             key={contact.id}

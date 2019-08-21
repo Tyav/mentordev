@@ -3,19 +3,16 @@ import UserDashHeading from '../../components/UserDashHeading';
 import Card from '../../components/Card';
 import SingleRequest from '../../components/SingleRequest';
 
-import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
 function Request() {
   const token = localStorage.getItem('token');
-  const { payload } = jwt.decode(token, { complete: true });
-  const { sub } = payload;
 
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
     axios({
-      url: `http://localhost:6060/api/v1/request/${sub}`,
+      url: `http://localhost:6060/api/v1/request`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
