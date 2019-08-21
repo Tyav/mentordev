@@ -323,6 +323,57 @@ i.lg-green-ic {
   flex-direction: column;
   justify-content: left;
 }
+.new-dash-single-contact p {
+  position: relative;
+  width: 100%;
+}
+.new-dash-single-contact p i {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+.new-dash-single-contact p i div {
+  width: 100px;
+  height: fit-content;
+  min-height: 20px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #e6ecf5;
+  border-radius: 4px;
+  position: absolute;
+  font-size: 0.63rem;
+  font-style: normal;
+  text-align: center;
+  color: #f34e4e;
+  cursor: pointer;
+  top: 30px;
+  right: 15%;
+  display: none;
+  transition: all linear 0.2s;
+}
+p.contact-deleted {
+  font-size: 0.8rem;
+  color: #45cc89;
+}
+.unhide {
+  display: block !important;
+  transition: all linear 0.2s;
+}
+.new-dash-single-contact p i div::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid #edf2f6;
+  top: -10px;
+  right: 2px;
+  position: absolute;
+}
+.new-dash-single-contact p i div i {
+  position: relative;
+  font-size: 1rem;
+}
 
 .new-dash-single-contact .schedule {
   color: #45cc89;
@@ -695,6 +746,9 @@ Desktop
   .new-edit-form-toggle span {
     margin-top: 3px;
     margin-right: 5px;
+  }
+  .new-dash-right {
+    flex: 0 0 20%;
   }
 }
 @media screen and (min-width: 823px) and (max-width: 1000px) {

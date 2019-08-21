@@ -16,6 +16,7 @@ import ScheduleList from './ScheduleList';
 function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
   const token = localStorage.getItem('token');
+  const isMentor = localStorage.getItem('validateType');
 
   const sideNavHandler = e => {
     e.preventDefault();
@@ -48,7 +49,7 @@ function Dashboard() {
           Mentor <span>/>ev</span>
         </a>
         <UserSearch />
-        <UserMenu />
+        <UserMenu validateType={isMentor} />
       </nav>
       <main className="new-dash-body">
         <div className="new-dash-left">
@@ -73,7 +74,7 @@ function Dashboard() {
           />
         </div>
         <div className="new-dash-right">
-          <UserScheduleList />
+          {!isMentor ? '' : <UserScheduleList />}
           <div className="new-dash-contact-list">
             <UserDashHeading text="Your Contact List" icon="contacts" />
             <UserContactList />
