@@ -26,7 +26,7 @@ export function formatBeforeUpdate(values) {
 }
 
 export function formatLocalUser(user) {
-  let { name: fullname, email, phone, location, skills, bio, connection } = user || '';
+  let { name: fullname, email, phone, location, skills, bio, connection, avatar } = user || '';
 
   const facebook = !connection ? '' : connection.facebook,
     twitter = !connection ? '' : connection.twitter,
@@ -34,5 +34,5 @@ export function formatLocalUser(user) {
     linkedIn = !connection ? '' : connection.linkedIn;
 
   skills = !skills ? '' : skills.join(', ');
-  return { fullname, email, phone, location, skills, bio, facebook, twitter, github, linkedIn };
+  return { fullname, email, phone, location, skills, bio, facebook, twitter, github, linkedIn, avatar };
 }
