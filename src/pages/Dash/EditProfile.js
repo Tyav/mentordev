@@ -55,6 +55,12 @@ function EditProfile() {
             ...values,
             success: 'Profile Updated Successfully'
           });
+          setTimeout(() => {
+            setValues({
+              ...values,
+              success: ''
+            });
+          }, 3000);
           return <Redirect to="/dashboard/profile" />;
         }
       })
