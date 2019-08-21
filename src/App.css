@@ -480,6 +480,8 @@ ul.new-dash-menu li {
   flex-direction: column;
   align-items: center;
   color: #515365;
+  border: 1px solid #e6ecf5;
+  border-radius: 4px;
 }
 .single-mentee-request p {
   border-bottom: 1px solid #e6ecf5;
@@ -504,19 +506,10 @@ p.request-pending {
   border-radius: 4px;
   border: none;
 }
-.mentee-request {
-  border: 1px solid #e6ecf5;
-  border-radius: 4px;
-  padding: 10px;
-  text-align: right;
-  text-align: center;
-}
 .mentee-request a {
   color: #dc4848;
-  font-size: 0.8rem;
-  border: 1px solid #dc4848;
+  font-size: 2rem;
   padding: 5px 10px;
-  border-radius: 4px;
 }
 /* 
 ===============
@@ -802,6 +795,8 @@ Desktop
     justify-content: center;
     align-items: center;
     color: #515365;
+    border: 1px solid #e6ecf5;
+    border-radius: 4px;
   }
   .single-mentee-request p {
     border-right: 1px solid #e6ecf5;
@@ -822,19 +817,13 @@ Desktop
     padding: 5px;
     border-radius: 4px;
     border: none;
-  }
-  .mentee-request {
     border: 1px solid #e6ecf5;
     border-radius: 4px;
-    padding: 10px;
-    text-align: right;
   }
   .mentee-request a {
     color: #dc4848;
-    font-size: 0.8rem;
-    border: 1px solid #dc4848;
+    font-size: 1.4rem;
     padding: 5px 10px;
-    border-radius: 4px;
   }
 }
 @media screen and (min-width: 823px) and (max-width: 1000px) {
