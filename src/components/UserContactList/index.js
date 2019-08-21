@@ -35,6 +35,7 @@ function UserContactList() {
     <div className="new-dash-contact">
       {contacts.map(contact => {
         const { contact: user, schedule } = contact;
+        console.log(schedule);
         return (
           <UserSingleContact
             key={contact.id}
@@ -42,7 +43,7 @@ function UserContactList() {
             image={user.avatar}
             name={user.name}
             email={user.email}
-            schedules={schedule}
+            schedules={[schedule]}
           />
         );
       })}
