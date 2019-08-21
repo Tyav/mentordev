@@ -70,7 +70,15 @@ function UserSingleContact(props) {
               </div>
             </i>
             <br /> <span>{props.email}</span>
-            <br /> <span className="schedule">{props.schedule}</span>
+            <br /> {
+              props.schedules.map((schedule)=>{
+                return (<>
+                  <span>
+                    {schedule.day} {schedule.time.from} to {schedule.time.to}
+                  </span><span ><i className="mdi mdi-delete" /></span>
+                <br /></>)
+              })
+            }
           </p>
         </div>
       </div>
