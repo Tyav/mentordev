@@ -830,6 +830,9 @@ Desktop
     font-size: 1.4rem;
     padding: 5px 10px;
   }
+  .new-dash-menu-toggler {
+    display: none;
+  }
 }
 @media screen and (min-width: 823px) and (max-width: 1000px) {
   .new-dash-body {
