@@ -69,7 +69,8 @@ function Dashboard() {
             component={ScheduleRequests}
           />
           <Route
-            path="/dashboard/mentor/allRequests"
+            // path="/dashboard/mentor/allRequests"
+            path="/dashboard/mentor/all-requests"
             component={AllMentorRequests}
           />
           <Route path="/dashboard/request" component={Request} />
