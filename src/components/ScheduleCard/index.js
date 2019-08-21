@@ -93,7 +93,6 @@ function ScheduleCard({ schedule }) {
       </>
     );
   };
-
   return (
     <Card styles={style}>
       <h2>
