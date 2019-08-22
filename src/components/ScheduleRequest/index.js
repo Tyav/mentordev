@@ -64,7 +64,6 @@ function ScheduleRequests({ match }) {
       headers
     })
       .then(response => {
-        console.log(response);
         setRequests(() => ({ data: response.data.payload, loading: false }));
       })
       .catch(error => {
