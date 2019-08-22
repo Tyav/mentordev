@@ -29,6 +29,34 @@ function ScheduleRequests({ match }) {
     Authorization: `Bearer ${token}`
   };
 
+  const requestApproval = e => {
+    e.preventDefault();
+    const token = window.localStorage.getItem('token');
+    const requestId = e.target.id;
+    const action =
+      Array.from(e.target.classList)[1] === 'Approve' ? 'Approved' : 'Rejected';
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    };
+
+    axios({
+      method: 'PUT',
+      url: `http://localhost:6060/api/v1/request/${requestId}?status=${action}`,
+      headers
+    })
+      .then(response => {
+        const newArray = requests.data.filter(
+          request => request._id !== requestId
+        );
+        setRequests({ ...requests, data: newArray });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   const getRequests = () => {
     return axios({
       method: 'GET',
@@ -36,44 +64,46 @@ function ScheduleRequests({ match }) {
       headers
     })
       .then(response => {
+        console.log(response);
         setRequests(() => ({ data: response.data.payload, loading: false }));
       })
       .catch(error => {
         console.log(error);
       });
   };
+
   return (
     <>
-      <UserDashHeading text="Your most recent Requests" icon="checkbox-marked-circle-outline" />
-      {requests.loading ? <p>loading...</p> : viewRequests(requests)}
+      <UserDashHeading
+        text="Your most recent Requests"
+        icon="checkbox-marked-circle-outline"
+      />
+      {requests.loading ? (
+        <p>loading...</p>
+      ) : requests.data.length < 1 ? (
+        <p>No request today</p>
+      ) : (
+        <div className="new-recent-mentor-list">
+          {requests.data.map((request, index) => (
+            <UserLatestConnect
+              image={request.mentee.avatar}
+              name={request.mentee.name}
+              email={request.mentee.email}
+              tags={request.mentee.skills}
+              schedule={`${request.schedule.day}  ${
+                request.schedule.time.from
+              } to ${request.schedule.time.to}`}
+              key={index}
+              buttons={['Approve', 'Reject']}
+              requestId={request._id}
+              requestApproval={requestApproval}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 }
 
-function viewRequests({ data }) {
-  if (!data) return;
-  if (data.length < 1) {
-    return <p>No request today</p>;
-  }
-
-  return (
-    <div className="new-recent-mentor-list">
-      {data.map((request, index) => (
-        <UserLatestConnect
-          image={request.mentee.avatar}
-          name={request.mentee.name}
-          email={request.mentee.email}
-          tags={request.mentee.skills}
-          schedule={`${request.schedule.day}  ${request.schedule.time.from} to ${
-            request.schedule.time.to
-          }`}
-          key={index}
-          buttons={['Approve', 'Reject']}
-          requestId={request._id}
-        />
-      ))}
-    </div>
-  );
-}
 
 export default ScheduleRequests;
