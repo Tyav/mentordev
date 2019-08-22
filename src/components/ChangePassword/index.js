@@ -52,7 +52,6 @@ const ChangePassword = () => {
       data: { password: currentPassword, newPassword }
     })
       .then(response => {
-        console.log(response);
         if (response.data.statusCode === 200) {
           setValues({
             ...values,
