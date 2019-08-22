@@ -12,7 +12,7 @@ function UserLatestConnect({
   key,
   buttons,
   requestId, //bringing in the requestId as a prop
-  doSomething
+  requestApproval //the function that handles the approval in the parent object...
 }) {
   tags = tags || [];
   return (
@@ -33,15 +33,14 @@ function UserLatestConnect({
       </p>
       <p>{userlocation}</p>
       <div className="conditional-buttons">
-        {buttons ? addButtons(buttons, requestId,doSomething) : ''}
+        {buttons ? addButtons(buttons, requestId, requestApproval) : ''}
       </div>
     </div>
   );
 }
 
-
 // the addButtons function with two parameters. the buttons array ['Approve', 'Reject'], and the requestId
-function addButtons(buttons, requestId,doSomething) {
+function addButtons(buttons, requestId, requestApproval) {
   if (buttons.length < 1) {
     return '';
   }
@@ -50,9 +49,8 @@ function addButtons(buttons, requestId,doSomething) {
       className={`new-dash-schedule-link ${button} button${index}`}
       href="/"
       key={index}
-      // onClick={requestApproval}
       id={requestId}
-      onClick={doSomething}
+      onClick={requestApproval}
     >
       <i className="mdi lg-green-ic" /> {button}
     </a>
