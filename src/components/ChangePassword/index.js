@@ -52,17 +52,30 @@ const ChangePassword = () => {
       data: { password: currentPassword, newPassword }
     })
       .then(response => {
-        console.log(response);
         if (response.data.statusCode === 200) {
-          return setValues({
+          setValues({
             ...values,
             success: 'Success'
           });
+          setTimeout(() => {
+            setValues({
+              ...values,
+              success: ''
+            });
+          }, 3000);
+          return;
         }
-        return setValues({
+        setValues({
           ...values,
           errors: 'Current password is incorrect'
         });
+        setTimeout(() => {
+          setValues({
+            ...values,
+            errors: ''
+          });
+        }, 3000);
+        return;
       })
       .catch(error => {
         console.log(error);
