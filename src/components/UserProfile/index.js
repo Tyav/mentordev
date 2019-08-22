@@ -13,10 +13,10 @@ function Userprofile() {
   useEffect(() => {
     fetchUser(token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [token]);
 
   const fetchUser = token => {
-    axios({
+    return axios({
       method: 'GET',
       url: `http://localhost:6060/api/v1/user/me`,
       headers: {
@@ -25,9 +25,8 @@ function Userprofile() {
       }
     })
       .then(response => {
-        if (response.data.payload.statusCode !== 200) {
+        if (response.data.statusCode === 200) {
           const userValue = formatLocalUser(response.data.payload);
-
           setUser(userValue);
         }
       })
@@ -58,7 +57,7 @@ function Userprofile() {
       <p className="new-dash-user-description">{user.bio}</p>
       <div className="new-dash-user-tags">
         {user.skills &&
-          user.skills.split(',').map((skill, index) => <Tag tagname={skill} key={index} />)}
+          user.skills.split(', ').map((skill, index) => <Tag tagname={skill} key={index} />)}
       </div>
       <button>click</button>
       <NavLink className="new-dash-profile-link" to="/dashboard/profile">
