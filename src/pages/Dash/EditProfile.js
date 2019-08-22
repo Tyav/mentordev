@@ -49,15 +49,16 @@ function EditProfile() {
       data: { ...data }
     })
       .then(response => {
-        if (response.data.payload.statusCode !== 200) {
-          setUser(() => formatLocalUser({ ...user, ...response.data.payload }));
+        if (response.data.statusCode === 200) {
+          const responseUser = formatLocalUser({ ...user, ...response.data.payload });
+          setUser(prev => ({ ...prev, ...responseUser }));
           setValues({
-            ...values,
+            ...responseUser,
             success: 'Profile Updated Successfully'
           });
           setTimeout(() => {
             setValues({
-              ...values,
+              ...responseUser,
               success: ''
             });
           }, 3000);
