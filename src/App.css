@@ -301,6 +301,16 @@ i.lg-green-ic {
   max-height: 500px;
   overflow-y: scroll;
 }
+
+.new-dash-single-schedule-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.new-dash-single-schedule-list-btns{
+  align-self: flex-end;
+}
+
 .new-dash-single-contact-container {
   display: flex;
   flex-direction: row;
@@ -774,7 +784,7 @@ Desktop
     margin-top: 20px;
   }
   .new-edit-form-toggle {
-    font-size: 0.8rem;
+    font-size: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
