@@ -30,11 +30,11 @@ function ScheduleRequests({ match }) {
   };
 
   const requestApproval = e => {
+   
     e.preventDefault();
     const token = window.localStorage.getItem('token');
     const requestId = e.target.id;
-    const action =
-      Array.from(e.target.classList)[1] === 'Approve' ? 'Approved' : 'Rejected';
+    const action = e.target.classList[1] === 'Approve' ? 'Approved' : 'Rejected';
 
     const headers = {
       'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ function ScheduleRequests({ match }) {
         setRequests({ ...requests, data: newArray });
       })
       .catch(error => {
-        console.log(error);
+        
       });
   };
 
@@ -67,7 +67,7 @@ function ScheduleRequests({ match }) {
         setRequests(() => ({ data: response.data.payload, loading: false }));
       })
       .catch(error => {
-        console.log(error);
+      
       });
   };
 
