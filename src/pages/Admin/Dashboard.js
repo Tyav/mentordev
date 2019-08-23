@@ -31,6 +31,7 @@ function Dashboard() {
       navLogo.classList.remove('hide');
     }, 100);
   };
+
   return (
     <div id="admin-dash-content">
       <nav id="admin-side-nav">
@@ -41,8 +42,11 @@ function Dashboard() {
           <i className="mdi mdi-menu-open" onClick={handleNavToggle} />
         </div>
         <div className="admin-side-nav-menu">
-          <ul>
-            <li>Hello World</li>
+          <ul className="admin-nav-menu-item">
+            <li>
+              <i className="mdi mdi-view-dashboard" />
+              <span>Dashboard</span>
+            </li>
           </ul>
         </div>
       </nav>

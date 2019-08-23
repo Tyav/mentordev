@@ -136,8 +136,28 @@
     min-height: 100vh;
     background: #1e1e2c;
     position: relative;
-    width: 90%;
+    width: 100%;
     left: 0;
     transition: 0.2s;
+    display: flex;
+    padding: 20px 0 0 0;
+  }
+  ul.admin-nav-menu-item {
+    width: 100%;
+  }
+  ul.admin-nav-menu-item li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #a2a3b7;
+    font-weight: 400;
+    font-size: 0.8rem;
+    padding: 20px;
+  }
+  ul.admin-nav-menu-item li:hover {
+    color: #45cc89;
+  }
+  ul.admin-nav-menu-item li i {
+    margin-right: 5px;
   }
 }
