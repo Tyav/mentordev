@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-export function sendGetRequest(endpoint, headers) {
+const token = localStorage.getItem('token');
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${token}`,
+};
+
+export function sendGetRequest(endpoint) {
   return axios({
     url: `http://localhost:6060${endpoint}`,
     method: 'GET',
@@ -8,7 +14,7 @@ export function sendGetRequest(endpoint, headers) {
   });
 }
 
-export function sendPostRequest(endpoint, headers) {
+export function sendPostRequest(endpoint) {
   return axios({
     url: `http://localhost:6060${endpoint}`,
     method: 'POST',
@@ -16,7 +22,7 @@ export function sendPostRequest(endpoint, headers) {
   });
 }
 
-export function sendPutRequest(endpoint, headers) {
+export function sendPutRequest(endpoint) {
   return axios({
     url: `http://localhost:6060${endpoint}`,
     method: 'PUT',

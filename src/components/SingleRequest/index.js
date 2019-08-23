@@ -5,17 +5,9 @@ import { sendPutRequest } from '../../actions';
 import Tag from '../Tag';
 
 function SingleRequest(props) {
-  const token = localStorage.getItem('token');
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-  };
   const cancleRequestHandler = e => {
     e.preventDefault();
-    sendPutRequest(
-      `/api/v1/request/${props.requestId}?status=Cancelled`,
-      headers,
-    );
+    sendPutRequest(`/api/v1/request/${props.requestId}?status=Cancelled`);
   };
   return (
     <>
