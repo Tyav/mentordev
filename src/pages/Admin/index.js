@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import Login from './login';
-import Dashboard from './Dashnoard';
+import Dashboard from './Dashboard';
 
 function Admin() {
   return (
