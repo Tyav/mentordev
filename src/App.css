@@ -302,12 +302,12 @@ i.lg-green-ic {
   overflow-y: scroll;
 }
 
-.new-dash-single-schedule-list{
+.new-dash-single-schedule-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.new-dash-single-schedule-list-btns{
+.new-dash-single-schedule-list-btns {
   align-self: flex-end;
 }
 
@@ -459,6 +459,9 @@ ul.new-dash-menu {
   border-right: 1px solid #e6ecf5;
   border-top: 1px solid #e6ecf5;
   transition: all linear 0.2s;
+}
+ul.new-dash-menu i {
+  color: #45cc89;
 }
 .show-side-nav {
   left: 0 !important;
@@ -735,6 +738,9 @@ Desktop
     font-size: 0.8rem;
     display: inline-block;
     transition: 0.2s;
+  }
+  ul.new-dash-menu i {
+    color: #45cc89;
   }
   ul.new-dash-menu a:hover {
     border-bottom: 2px solid #45cc89;

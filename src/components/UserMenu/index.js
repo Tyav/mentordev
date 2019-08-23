@@ -5,7 +5,9 @@ function UserMenu({ validateType }) {
   return (
     <ul className="new-dash-menu">
       <NavLink exact to="/dashboard" activeClassName="new-dash-menu-active">
-        <li>Dashboard</li>
+        <li>
+          <i className="mdi mdi-view-dashboard" /> Dashboard
+        </li>
       </NavLink>
       {validateType ? (
         <NavLink
@@ -13,7 +15,9 @@ function UserMenu({ validateType }) {
           to="/dashboard/schedule"
           activeClassName="new-dash-menu-active"
         >
-          <li>Manage Schedule</li>
+          <li>
+            <i className="mdi mdi-clock" /> Manage Schedule
+          </li>
         </NavLink>
       ) : (
         ''
@@ -23,14 +27,18 @@ function UserMenu({ validateType }) {
         to="/dashboard/request"
         activeClassName="new-dash-menu-active"
       >
-        <li>Manage Requests</li>
+        <li>
+          <i className="mdi mdi-bell" /> Manage Requests
+        </li>
       </NavLink>
       <NavLink
         exact
         to="/dashboard/profile"
         activeClassName="new-dash-menu-active"
       >
-        <li>Profile Settings</li>
+        <li>
+          <i className="mdi mdi-wrench" /> Profile Settings
+        </li>
       </NavLink>
     </ul>
   );
