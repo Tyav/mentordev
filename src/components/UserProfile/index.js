@@ -5,6 +5,7 @@ import axios from 'axios';
 import { formatLocalUser } from '../../helper/formatUpdateData';
 import { UserObject } from '../../Context';
 import Tag from '../Tag';
+import { isArray } from 'util';
 
 function Userprofile() {
   const token = window.localStorage.getItem('token');
@@ -55,10 +56,7 @@ function Userprofile() {
         </span>
       </p>
       <p className="new-dash-user-description">{user.bio}</p>
-      <div className="new-dash-user-tags">
-        {user.skills &&
-          user.skills.split(', ').map((skill, index) => <Tag tagname={skill} key={index} />)}
-      </div>
+      <div className="new-dash-user-tags">{displayTags(user)}</div>
       <button>click</button>
       <NavLink className="new-dash-profile-link" to="/dashboard/profile">
         <i className="mdi mdi-circle-edit-outline" /> Edit Profile
@@ -68,3 +66,8 @@ function Userprofile() {
 }
 
 export default Userprofile;
+
+function displayTags({ skills }) {
+  if (!skills || isArray(skills)) return '';
+  return skills.split(', ').map((skill, index) => <Tag tagname={skill} key={index} />);
+}
