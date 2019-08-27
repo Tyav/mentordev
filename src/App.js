@@ -25,6 +25,7 @@ function App() {
         <Route path="/register" component={Signup} />
         <Route path="/about" component={MainAbout} />
         <Route path="/login" component={Login} />
+        <Route path="/admin/login" component={Login} /> 
         <Route path="/forgot-password" component={Forgot} />
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/formerdashboard" component={Dashboard} />

@@ -15,6 +15,7 @@ import './Login.css';
 
 function Login() {
   const { user, setUser } = useContext(UserObject);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const [loginResponse, setLoginResponse] = useState({
     message: '',
@@ -53,9 +54,10 @@ function Login() {
         }, 4000);
         return;
       }
-      setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
-      localStorage.setItem('token', response.data.token);
       localStorage.setItem('validateType', response.data.payload.isMentor);
+      localStorage.setItem('token', response.data.token);
+      setIsAdmin(response.data.payload.isAdmin);
+      setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
 
       setLoginResponse({
         message: 'Login Successful',
@@ -80,7 +82,7 @@ function Login() {
     }
   }, [auth]);
   if (auth) {
-    return <Redirect to="/dashboard" />;
+    return isAdmin ? <Redirect to="/admin" /> : <Redirect to="/dashboard" />;
   }
 
   return (
