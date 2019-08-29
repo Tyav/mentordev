@@ -15,7 +15,6 @@ import './Login.css';
 
 function Login() {
   const { user, setUser } = useContext(UserObject);
-  const [isAdmin, setIsAdmin] = useState(false);
 
   const [loginResponse, setLoginResponse] = useState({
     message: '',
@@ -56,7 +55,6 @@ function Login() {
       }
       localStorage.setItem('validateType', response.data.payload.isMentor);
       localStorage.setItem('token', response.data.token);
-      setIsAdmin(response.data.payload.isAdmin);
       setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
 
       setLoginResponse({
@@ -82,7 +80,7 @@ function Login() {
     }
   }, [auth]);
   if (auth) {
-    return isAdmin ? <Redirect to="/admin" /> : <Redirect to="/dashboard" />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
