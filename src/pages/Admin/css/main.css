@@ -14,6 +14,14 @@
   position: fixed;
 }
 
+.admin-dash-tabs{
+  /* border: 1px solid red; */
+  margin-top: 30px;
+  color: #191924;
+  font-weight: 500;
+}
+
+
 #admin-main-page {
   width: 100%;
   display: flex;
