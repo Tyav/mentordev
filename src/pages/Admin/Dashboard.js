@@ -100,7 +100,9 @@ function Dashboard() {
                     <Tab>Admins</Tab>
                   </TabList>
                   <TabPanel>
-                    <Table />
+                    <div className="admin-user-display">
+                      <Table />
+                    </div>
                   </TabPanel>
                   <TabPanel>
                     <p>Manage all Mentors</p>
