@@ -17,6 +17,7 @@ function Dashboard() {
     const mainContent = document.querySelector('#admin-main-page');
     const mobileNav = document.querySelector('.admin-side-nav-menu');
     const navLogo = document.querySelector('.admin-nav-logo');
+    const menuItem = document.querySelectorAll('.admin-nav-menu-item li span');
     if (!showToggle) {
       sideNav.classList.add('admin-shrink-nav');
       mainContent.classList.add('admin-shrink-main');
@@ -24,6 +25,7 @@ function Dashboard() {
       sideNavIcon.classList.add('mdi-forwardburger');
       mobileNav.classList.add('admin-show-menu');
       navLogo.classList.add('hide');
+      menuItem.forEach(item => item.classList.add('hide'));
       return;
     }
     sideNav.classList.remove('admin-shrink-nav');
@@ -33,6 +35,7 @@ function Dashboard() {
     mobileNav.classList.remove('admin-show-menu');
     setTimeout(() => {
       navLogo.classList.remove('hide');
+      menuItem.forEach(item => item.classList.remove('hide'));
     }, 100);
   };
 
@@ -51,10 +54,23 @@ function Dashboard() {
               <i className="mdi mdi-view-dashboard" />
               <span>Dashboard</span>
             </li>
+            <li>
+              <i className="mdi mdi-account-group" />
+              <span>Manage Users</span>
+            </li>
+            <li>
+              <i className="mdi mdi-chart-timeline-variant" />
+              <span>Analytics</span>
+            </li>
+            <li>
+              <i className="mdi mdi-wrench" />
+              <span>Settings</span>
+            </li>
           </ul>
         </div>
       </nav>
       <main id="admin-main-page">
+        <header className="admin-nav-header" />
         <nav className="admin-main-title">
           <p>Admin Dashboard</p>
 
