@@ -25,14 +25,11 @@ td {
 }
 
 table {
-  margin-top: 30px;
   text-align: left;
   background: white;
   border-collapse: collapse;
   /* border: 1px solid #ddd; */
   width: 100%;
-  border-radius: 4px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
   font-size: 0.8rem;
 }
 thead {
@@ -45,7 +42,9 @@ thead {
 th,
 td {
   border-bottom: 1px solid #edf2f6 !important;
-  padding: 6px;
+}
+tr {
+  padding: 6px !important;
 }
 tr:last-child {
   border-bottom: none;
