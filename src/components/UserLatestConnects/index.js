@@ -11,7 +11,8 @@ function UserLatestConnect({
   userlocation,
   key,
   buttons,
-  requestId //bringing in the requestId as a prop
+  requestId, //bringing in the requestId as a prop
+  requestApproval //the function that handles the approval in the parent object...
 }) {
   tags = tags || [];
   return (
@@ -32,38 +33,14 @@ function UserLatestConnect({
       </p>
       <p>{userlocation}</p>
       <div className="conditional-buttons">
-        {buttons ? addButtons(buttons, requestId) : ''}
+        {buttons ? addButtons(buttons, requestId, requestApproval) : ''}
       </div>
     </div>
   );
 }
 
-const requestApproval = e => {
-  const token = window.localStorage.getItem('token');
-  e.preventDefault();
-  const requestId = e.target.id;
-  //grab the action from the classList.... the action is either  "Approve" or "Reject"
-  const action = Array.from(e.target.classList)[1] === 'Approve'? 'Approved' : 'Rejected';
-
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
-  };
-
-  axios({
-    method: 'PUT',
-    url: `http://localhost:6060/api/v1/request/${requestId}?status=${action}`, headers
-  })
-    .then(response => {
-      console.log(response,'hello this is the response')
-    })
-    .catch(error => {
-      console.log(error);
-    });
-};
-
 // the addButtons function with two parameters. the buttons array ['Approve', 'Reject'], and the requestId
-function addButtons(buttons, requestId) {
+function addButtons(buttons, requestId, requestApproval) {
   if (buttons.length < 1) {
     return '';
   }
@@ -72,8 +49,8 @@ function addButtons(buttons, requestId) {
       className={`new-dash-schedule-link ${button} button${index}`}
       href="/"
       key={index}
-      onClick={requestApproval}
       id={requestId}
+      onClick={requestApproval}
     >
       <i className="mdi lg-green-ic" /> {button}
     </a>

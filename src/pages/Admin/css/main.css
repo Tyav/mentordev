@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 #admin-dash-content {
   height: fit-content;
   min-height: 100vh;
@@ -13,6 +22,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: fixed;
 }
+
+.admin-dash-tabs{
+  /* border: 1px solid red; */
+  margin-top: 30px;
+  color: #191924;
+  font-weight: 500;
+}
+
 
 #admin-main-page {
   width: 100%;
@@ -152,12 +169,20 @@
     color: #a2a3b7;
     font-weight: 400;
     font-size: 0.8rem;
-    padding: 20px;
+    padding: 10px 20px 10px 26px;
   }
   ul.admin-nav-menu-item li:hover {
     color: #45cc89;
   }
   ul.admin-nav-menu-item li i {
-    margin-right: 5px;
+    margin-right: 15px;
+    padding-top: 3px;
+    font-size: 1rem;
+  }
+  .admin-nav-header {
+    width: 100%;
+    height: 65px;
+    background: #fff;
+    border-bottom: 1px solid #edf2f6;
   }
 }

@@ -1,0 +1,46 @@
+th {
+  padding: 10px;
+  width: 250px;
+  height: 45px;
+}
+
+td {
+  /* color: rgb(121, 119, 119); */
+  color: #191923;
+}
+
+.icon {
+  /* color: rgb(153, 151, 151); */
+  border: 0.5px solid #45CC89;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 4px;
+  margin-left: 5px;
+  background: #45CC89;
+}
+
+.icon:hover {
+  color: white;
+  cursor: pointer;
+}
+
+table {
+  margin-top: 30px;
+  text-align: left;
+  background: white;
+  border-collapse: collapse;
+  /* border: 1px solid #ddd; */
+  width: 100%;
+
+}
+thead {
+  padding: 24px;
+  color: #1E1E2B;
+  font-size: 14px
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 6px;
+}
