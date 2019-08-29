@@ -207,9 +207,9 @@ function EditProfile() {
               />
             </div>
           </div>
-          <lable className="new-form-label" htmlFor="inputField">
+          <label className="new-form-label" htmlFor="inputField">
             Bio
-          </lable>
+          </label>
           <textarea
             className="new-textarea"
             id="inputField"
