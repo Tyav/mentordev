@@ -23,13 +23,12 @@ body {
   position: fixed;
 }
 
-.admin-dash-tabs{
+.admin-dash-tabs {
   /* border: 1px solid red; */
   margin-top: 30px;
   color: #191924;
   font-weight: 500;
 }
-
 
 #admin-main-page {
   width: 100%;
@@ -184,5 +183,12 @@ body {
     height: 65px;
     background: #fff;
     border-bottom: 1px solid #edf2f6;
+  }
+  .beta {
+    background: #dd0d0d;
+    color: #fff;
+    font-size: 0.5rem;
+    padding: 1px 5px;
+    border-radius: 4px;
   }
 }

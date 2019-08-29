@@ -11,12 +11,12 @@ td {
 
 .icon {
   /* color: rgb(153, 151, 151); */
-  border: 0.5px solid #45CC89;
+  border: 0.5px solid #45cc89;
   width: fit-content;
   border-radius: 5px;
   padding: 4px;
   margin-left: 5px;
-  background: #45CC89;
+  background: #45cc89;
 }
 
 .icon:hover {
@@ -31,16 +31,22 @@ table {
   border-collapse: collapse;
   /* border: 1px solid #ddd; */
   width: 100%;
-
+  border-radius: 4px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
 }
 thead {
   padding: 24px;
-  color: #1E1E2B;
-  font-size: 14px
+  color: #1e1e2b;
+  font-size: 0.8rem;
+  font-size: 14px;
 }
 
 th,
 td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #edf2f6 !important;
   padding: 6px;
+}
+tr:last-child {
+  border-bottom: none;
 }
