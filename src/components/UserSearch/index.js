@@ -8,7 +8,6 @@ function UserSearch({ history }) {
     history.push(`/dashboard/search?search=${query}`);
   };
   useEffect(() => {
-    console.log(1);
   }, [window.location]);
   return (
     <form method="get" action="/dashboard/search" onSubmit={searchFormHandler}>
