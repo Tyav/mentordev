@@ -13,8 +13,7 @@ function Admin() {
 
   return (
     <>
-      <Route path="/admin" exact component={Dashboard} />
-      <Route path="/admin/login" exact component={Login} />
+      <Dashboard></Dashboard>
     </>
   );
 }

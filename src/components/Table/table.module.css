@@ -31,6 +31,7 @@ table {
   /* border: 1px solid #ddd; */
   width: 100%;
   font-size: 0.8rem;
+  margin-top: 0;
 }
 thead {
   padding: 24px;
