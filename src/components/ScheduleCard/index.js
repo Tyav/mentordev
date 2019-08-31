@@ -17,6 +17,7 @@ function ScheduleCard({ schedule }) {
   const [edit, setEdit] = useState(true);
   const [closed, setClosed] = useState(schedule.isClosed);
   const token = localStorage.getItem('token');
+  // const [schedule, ]
 
   const handleScheduleStatus = async () => {
     //this function handles closing and reopening os schedule
