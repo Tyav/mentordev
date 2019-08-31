@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { Route } from 'react-router-dom';
 
-import Table from '../../components/Table/table';
-import MentorshipTable from '../../components/MentorshipTable';
+import Users from './Users';
+import AdminSideNav from '../../components/AdminSideNav';
+
+import Login from './login';
+import AnalyticsSummary from './AnalyticsSummary';
+import Analytics from './Analytics';
+import Settings from './Settings';
+
 import './css/main.css';
 
 function Dashboard() {
@@ -52,68 +58,10 @@ function Dashboard() {
           <AdminSideNav></AdminSideNav>
         </div>
       </nav>
-      <main id="admin-main-page">
-        <header className="admin-nav-header" />
-        <nav className="admin-main-title">
-          <p>Admin Dashboard</p>
-
-          <div className="admin-dash-tabs">
-            <Tabs defaultIndex={0}>
-              <div className="tab">
-                <TabList>
-                  <Tab>Users</Tab>
-                  <Tab>Requests</Tab>
-                  <Tab>Mentorships</Tab>
-                  <Tab>Schedules</Tab>
-                </TabList>
-              </div>
-
-              <TabPanel>
-                <Tabs forceRenderTabPanel>
-                  <TabList>
-                    <Tab>All Users</Tab>
-                    <Tab>Mentors</Tab>
-                    <Tab>Mentees</Tab>
-                    <Tab>Admins</Tab>
-                  </TabList>
-                  <TabPanel>
-                    <div className="admin-user-display">
-                      <Table />
-                    </div>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>Manage all Mentors</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>Manage all Mentees</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>Mange all registered admin</p>
-                  </TabPanel>
-                </Tabs>
-              </TabPanel>
-              <TabPanel>
-                <p>Requests</p>
-              </TabPanel>
-              <TabPanel>
-                <Tabs forceRenderTabPanel>
-                  <TabList>
-                    <Tab>Completed</Tab>
-                    <Tab>Active</Tab>
-                  </TabList>
-                  <TabPanel>
-                    <MentorshipTable />
-                  </TabPanel>
-                  <TabPanel>
-                    <MentorshipTable />
-                  </TabPanel>
-                </Tabs>
-              </TabPanel>
-              <TabPanel>Schedules</TabPanel>
-            </Tabs>
-          </div>
-        </nav>
-      </main>
+      <Route exact path="/admin" component={AnalyticsSummary}></Route>
+      <Route path="/admin/users" component={Users}></Route>
+      <Route path="/admin/analytics" component={Analytics}></Route>
+      <Route path="/admin/settings" component={Settings}></Route>
     </div>
   );
 }
