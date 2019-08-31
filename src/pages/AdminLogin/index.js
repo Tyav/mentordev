@@ -15,6 +15,7 @@ import './Login.css';
 
 function Login() {
   const { user, setUser } = useContext(UserObject);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const [loginResponse, setLoginResponse] = useState({
     message: '',
@@ -35,7 +36,7 @@ function Login() {
     e.preventDefault();
     axios({
       method: 'POST',
-      url: 'http://localhost:6060/api/v1/auth/login',
+      url: 'http://localhost:6060/api/v1/auth/admin-login',
       data: { ...values }
     }).then(response => {
       if (response.data.statusCode !== 200) {
@@ -55,6 +56,7 @@ function Login() {
       }
       localStorage.setItem('validateType', response.data.payload.isMentor);
       localStorage.setItem('token', response.data.token);
+      setIsAdmin(response.data.payload.isAdmin);
       setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
 
       setLoginResponse({
@@ -79,8 +81,8 @@ function Login() {
       setAuth(true);
     }
   }, [auth]);
-  if (auth) {
-    return <Redirect to="/dashboard" />;
+  if (auth && isAdmin) {
+    return <Redirect to="/admin" />;
   }
 
   return (
