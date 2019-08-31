@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 function UserSearch({ history }) {
@@ -7,8 +7,6 @@ function UserSearch({ history }) {
     const query = e.target.elements[0].value;
     history.push(`/dashboard/search?search=${query}`);
   };
-  useEffect(() => {
-  }, [window.location]);
   return (
     <form method="get" action="/dashboard/search" onSubmit={searchFormHandler}>
       <input
