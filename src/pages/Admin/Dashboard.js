@@ -49,30 +49,7 @@ function Dashboard() {
           <i className="mdi mdi-menu-open" onClick={handleNavToggle} />
         </div>
         <div className="admin-side-nav-menu">
-          <ul className="admin-nav-menu-item">
-            <li>
-              <i className="mdi mdi-view-dashboard" />
-              <span>
-                Dashboard <sup className="beta">BETA</sup>
-              </span>
-            </li>
-            <li>
-              <i className="mdi mdi-account-group" />
-              <span>Manage Users</span>
-            </li>
-            <li>
-              <i className="mdi mdi-chart-timeline-variant" />
-              <span>
-                Analytics <sup className="beta">BETA</sup>
-              </span>
-            </li>
-            <li>
-              <i className="mdi mdi-wrench" />
-              <span>
-                Settings <sup className="beta">BETA</sup>
-              </span>
-            </li>
-          </ul>
+          <AdminSideNav></AdminSideNav>
         </div>
       </nav>
       <main id="admin-main-page">
