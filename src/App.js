@@ -10,7 +10,7 @@ import GetStarted from './pages/GetStarted';
 import Verify from './pages/Verify';
 import MainAbout from './pages/MainAbout';
 import Dash from './pages/Dash';
-import Admin from './pages/Admin';
+import Admin from './pages/Admin/Dashboard';
 import { UserObject } from './Context';
 
 import './App.css';
@@ -31,7 +31,7 @@ function App() {
         <Route path="/getstarted" component={GetStarted} />
         <Route path="/verify" component={Verify} />
         <Route path="/dashboard" component={Dash} />
-        <Route path="/admin" component={Admin} />
+        <Route path="/admin" component={Admin}></Route>
       </Router>
     </UserObject.Provider>
   );
