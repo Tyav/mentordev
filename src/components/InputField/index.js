@@ -19,7 +19,8 @@ function InputField(props) {
         style={props.disabled ? {} : { borderBottom: '1px solid #a7a7a7' }}
         onFocus={props.onFocus}
         autoComplete={props.label}
-        min=""
+        min={props.min}
+        required={props.required}
       />
     </div>
   );
