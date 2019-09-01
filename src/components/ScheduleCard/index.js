@@ -13,32 +13,53 @@ const style = {
   marginBottom: '20px'
 };
 
-function ScheduleCard({ schedule }) {
+function ScheduleCard(props) {
   const [edit, setEdit] = useState(true);
-  const [closed, setClosed] = useState(schedule.isClosed);
   const token = localStorage.getItem('token');
-  // const [schedule, ]
-
-  const handleScheduleStatus = async () => {
+  // const [schedule, ] 
+  const schedul= props.schedule;
+  const [schedule, setSchedule] = useState({
+    day: schedul.day,
+    from: schedul.time.from,
+    to: schedul.time.to,
+    slots: schedul.slots,
+    poolSize: schedul.poolSize,
+    isClosed: schedul.isClosed
+  })
+  const closeSchedule = (e)=>{
+    e.preventDefault();
+    setSchedule({
+      ...schedule, isClosed: !schedule.isClosed
+    })
+  }
+  function onChange(e){
+    setSchedule({
+      ...schedule, [e.target.name]: e.target.value
+    })
+}  const handleSchedule = async () => {
     //this function handles closing and reopening os schedule
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     };
 
-    const body = JSON.stringify({
-      isClosed: !closed
-    });
-
+    const body = {
+      ...schedule, time: {to: schedule.to, from: schedule.from}
+    };
+    delete body.from;
+    delete body.to;
+    // const body = JSON.stringify({
+    //   isClosed: !closed
+    // });
+    setEdit(!edit);
     try {
       const res = await axios({
         method: 'PUT',
-        url: `http://localhost:6060/api/v1/schedule/${schedule._id}`,
+        url: `http://localhost:6060/api/v1/schedule/${schedul._id}`,
         data: body,
         headers
       });
 
-      setClosed(!closed);
     } catch (error) {
       console.log(error.message);
     }
@@ -46,7 +67,6 @@ function ScheduleCard({ schedule }) {
 
   const handleScheduleEdit = () => {
     //edit logic goes here
-    setEdit(!edit);
   };
 
   const renderEditBtn = () => {
@@ -56,7 +76,7 @@ function ScheduleCard({ schedule }) {
           className="btn-success-solid"
           style={{ marginRight: '10px' }}
           text="Edit"
-          onButtonClick={() => setEdit(!edit)}
+          onButtonClick={(e) =>{e.preventDefault();setEdit(!edit)}}
         />
       </>
     );
@@ -68,38 +88,18 @@ function ScheduleCard({ schedule }) {
           className="btn-success-solid"
           style={{ marginRight: '10px' }}
           text="Save"
-          onButtonClick={handleScheduleEdit}
+          onButtonClick={handleSchedule}
         />
       </>
     );
   };
 
-  const scheduleEditBtn = () => {
-    return closed ? (
-      <>
-        <Button
-          className="btn-success-solid"
-          style={{ background: '#FFA001' }}
-          text="Re-Open"
-          onButtonClick={handleScheduleStatus}
-        />
-      </>
-    ) : (
-      <>
-        <Button
-          className="btn-danger-solid"
-          text="Close"
-          onButtonClick={handleScheduleStatus}
-        />
-      </>
-    );
-  };
   return (
     <Card styles={style}>
       <h2>
         <i className="mdi mdi-calendar-edit" /> {schedule.day}
       </h2>
-      <div className="new-dash-single-schedule-list">
+      <form className="new-dash-single-schedule-list">
         <InputField
           id="day"
           label="Day"
@@ -108,24 +108,30 @@ function ScheduleCard({ schedule }) {
           placeholder="Day"
           value={schedule.day}
           disabled={edit}
+          change={onChange}
         />
         <InputField
           id="from"
           label="From"
-          type="text"
+          type="time"
           name="from"
           placeholder="Available From"
-          value={schedule.time.from}
+          value={schedule.from}
           disabled={edit}
+          change={onChange}
+          required={true}
         />
         <InputField
           id="to"
           label="To"
-          type="text"
+          type="time"
           name="to"
           placeholder="To"
-          value={schedule.time.to}
+          value={schedule.to}
           disabled={edit}
+          change={onChange}
+          min={schedule.from}
+          required={true}
         />
         <InputField
           id="slots"
@@ -135,6 +141,7 @@ function ScheduleCard({ schedule }) {
           placeholder={5}
           value={schedule.slots}
           disabled={edit}
+          change={onChange}
         />
 
         <InputField
@@ -145,12 +152,20 @@ function ScheduleCard({ schedule }) {
           placeholder={15}
           value={schedule.poolSize}
           disabled={edit}
+          change={onChange}
         />
         <div className="new-dash-single-schedule-list-btns">
           {edit ? renderEditBtn() : renderSubmit()}
-          {edit ? '' : scheduleEditBtn()}
+          {edit ? '' : (
+            <Button
+              className={schedule.isClosed? "btn-danger-solid":"btn-success-solid"}
+              style={{ background:schedule.isClosed? '#FFA001':'red' }}
+              text={schedule.isClosed?"Re-Open": "Close"}
+              onButtonClick={closeSchedule}
+            />
+          )}
         </div>
-      </div>
+      </form>
     </Card>
   );
 }
