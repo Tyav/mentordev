@@ -24,24 +24,36 @@ function Users() {
           <TabPanel>
             <Tabs forceRenderTabPanel>
               <TabList>
-                <Tab>All Users</Tab>
+                <Tab>Active Users</Tab>
                 <Tab>Mentors</Tab>
                 <Tab>Mentees</Tab>
                 <Tab>Admins</Tab>
+                <Tab>Inactive Users</Tab>
               </TabList>
               <TabPanel>
                 <div className="admin-user-display">
-                  <Table />
+                  <Table role={"active"}/>
                 </div>
               </TabPanel>
               <TabPanel>
-                <p>Manage all Mentors</p>
+                <div className="admin-user-display">
+                  <Table role={"mentor"}/>
+                </div>
               </TabPanel>
               <TabPanel>
-                <p>Manage all Mentees</p>
+                <div className="admin-user-display">
+                  <Table role={"mentee"}/>
+                </div>
               </TabPanel>
               <TabPanel>
-                <p>Mange all registered admin</p>
+              <div className="admin-user-display">
+                  <Table role={"admin"}/>
+                </div>
+              </TabPanel>
+              <TabPanel>
+              <div className="admin-user-display">
+                  <Table role={"inactive"}/>
+                </div>
               </TabPanel>
             </Tabs>
           </TabPanel>
@@ -55,10 +67,10 @@ function Users() {
                 <Tab>Active</Tab>
               </TabList>
               <TabPanel>
-                <MentorshipTable />
+                <MentorshipTable complete={true}/>
               </TabPanel>
               <TabPanel>
-                <MentorshipTable />
+                <MentorshipTable complete={false}/>
               </TabPanel>
             </Tabs>
           </TabPanel>

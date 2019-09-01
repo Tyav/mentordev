@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './mentorshipTable.module.css';
 import { Link } from 'react-router-dom';
+import {sendGetRequest} from '../../actions'
 
-function MentorshipTable() {
+function MentorshipTable(props) {
+  const [contacts, setContacts] = useState([])
+  useEffect(() => {
+    sendGetRequest('/api/v1/contacts')
+    return () => {
+      
+    };
+  }, [])
   return (
     <table>
       <thead>
