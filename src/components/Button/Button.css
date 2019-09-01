@@ -28,6 +28,7 @@ button {
 .btn-danger-solid {
   background: #d64242;
   color: #fff;
+  margin: auto;
 }
 .btn-danger-outline {
   border: 2px solid #d64242;
