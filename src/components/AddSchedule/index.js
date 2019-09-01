@@ -14,7 +14,7 @@ const style = {
   marginBottom: '20px'
 };
 
-function ScheduleCard(props) {
+function AddSchedule(props) {
   let day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurday', 'Friday', 'Saturday',]
   // const [edit, setEdit] = useState(true);
   const [schedule, setSchedule] = useState({
@@ -33,7 +33,6 @@ function ScheduleCard(props) {
         })
 
   }
-  const [closed, setClosed] = useState(schedule.isClosed);
   const token = localStorage.getItem('token');
 
   const handleCreateSchedule = async () => {
@@ -68,23 +67,7 @@ function ScheduleCard(props) {
       console.log(error.message);
     }
   };
-  // const handleScheduleEdit = () => {
-  //   //edit logic goes here
-  //   setEdit(!edit);
-  // };
 
-  // const renderEditBtn = () => {
-  //   return (
-  //     <>
-  //       <Button
-  //         className="btn-success-solid"
-  //         style={{ marginRight: '10px' }}
-  //         text="Edit"
-  //         onButtonClick={() => setEdit(!edit)}
-  //       />
-  //     </>
-  //   );
-  // };
   const renderSubmit = () => {
     return (
       <>
@@ -98,32 +81,12 @@ function ScheduleCard(props) {
     );
   };
 
-  // const scheduleEditBtn = () => {
-  //   return 'closed' ? (
-  //     <>
-  //       <Button
-  //         className="btn-success-solid"
-  //         style={{ background: '#FFA001' }}
-  //         text="Re-Open"
-  //         onButtonClick={'handleScheduleStatus'}
-  //       />
-  //     </>
-  //   ) : (
-  //     <>
-  //       <Button
-  //         className="btn-danger-solid"
-  //         text="Close"
-  //         onButtonClick={'handleScheduleStatus'}
-  //       />
-  //     </>
-  //   );
-  // };
   return (
     <Card styles={style}>
       <h2>
         <i className="mdi mdi-calendar-edit" /> {schedule.day || day[new Date(Date.now()).getDay()]}
       </h2>
-      <div className="new-dash-single-schedule-list">
+      <form className="new-dash-single-schedule-list" onSubmit={handleCreateSchedule}>
         <InputField
           id="day"
           label="Day"
@@ -132,7 +95,7 @@ function ScheduleCard(props) {
           placeholder="Day"
           value={schedule.day}
           change={onChange}
-          // disabled={edit}
+          required={true}
         />
         <InputField
           id="from"
@@ -141,8 +104,8 @@ function ScheduleCard(props) {
           name="from"
           placeholder="Available From"
           value={schedule.from}
-          // disabled={edit}
           change={onChange}
+          required={true}
         />
         <InputField
           id="to"
@@ -152,6 +115,8 @@ function ScheduleCard(props) {
           placeholder="To"
           value={schedule.to}
           change={onChange}
+          min={schedule.from}
+          required={true}
           // disabled={edit}
         />
         <InputField
@@ -162,7 +127,6 @@ function ScheduleCard(props) {
           placeholder={5}
           value={schedule.slots}
           change={onChange}
-// disabled={edit}
         />
 
         <InputField
@@ -173,7 +137,7 @@ function ScheduleCard(props) {
           placeholder={15}
           value={schedule.poolSize}
           change={onChange}
-// disabled={edit}
+          required={true}
         />
         <div className="new-dash-single-schedule-list-btns"
           style={{width: '100%'}}
@@ -188,15 +152,12 @@ function ScheduleCard(props) {
             className="btn-success-solid"
             style={{ marginRight: '10px', float: 'right'}}
             text="Create"
-            onButtonClick={handleCreateSchedule}
+            type="submit"
           />
-
-          {/* {edit ? renderEditBtn() : renderSubmit()}
-          {edit ? '' : scheduleEditBtn()} */}
         </div>
-      </div>
+      </form>
     </Card>
   );
 }
 
-export default ScheduleCard;
+export default AddSchedule;
