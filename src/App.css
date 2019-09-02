@@ -305,6 +305,7 @@ i.lg-green-ic {
 .new-dash-single-schedule-list {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .new-dash-single-schedule-list-btns {

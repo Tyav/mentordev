@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { sendGetRequest } from '../../actions';
 
-function Table({ name, email, role }) {
+function Table({ name, email, role}) {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,19 @@ function Table({ name, email, role }) {
         </tr>
       </thead>
       <tbody>
-        {userList.map(user => {
+        {userList.filter((user)=> {
+          if (role === 'mentor'){
+           return user['isMentor'] && !user['isAdmin'] && user['isVerified'];
+          } else if (role === 'mentee'){
+            return !user['isMentor'] && !user['isAdmin'] && user['isVerified'];
+          } else if (role === 'admin'){
+            return user['isAdmin'] && user['isVerified'];
+          } else if (role === 'inactive'){
+            return !user['isVerified'];
+          } else {
+            return user['isVerified'];
+          }
+        }).map(user => {
           return (
             <tr>
               <td>{user.name}</td>

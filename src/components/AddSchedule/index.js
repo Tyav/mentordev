@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button';
 import InputField from '../InputField';
+import TimeField from '../TimeField';
 import Card from '../Card';
 import axios from 'axios';
 
@@ -13,74 +14,60 @@ const style = {
   marginBottom: '20px'
 };
 
-function ScheduleCard(props) {
-  const [edit, setEdit] = useState(true);
-  const token = localStorage.getItem('token');
-  // const [schedule, ] 
-  const schedul= props.schedule;
+function AddSchedule(props) {
+  let day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurday', 'Friday', 'Saturday',]
+  // const [edit, setEdit] = useState(true);
   const [schedule, setSchedule] = useState({
-    day: schedul.day,
-    from: schedul.time.from,
-    to: schedul.time.to,
-    slots: schedul.slots,
-    poolSize: schedul.poolSize,
-    isClosed: schedul.isClosed
+    day: '',
+    from: '',
+    to: '',
+    slots: 1,
+    poolSize: 16,
+    isClosed: false
   })
-  const closeSchedule = (e)=>{
-    e.preventDefault();
-    setSchedule({
-      ...schedule, isClosed: !schedule.isClosed
-    })
-  }
+
+
   function onChange(e){
-    setSchedule({
-      ...schedule, [e.target.name]: e.target.value
-    })
-}  const handleSchedule = async () => {
+        setSchedule({
+          ...schedule, [e.target.name]: e.target.value
+        })
+
+  }
+  const token = localStorage.getItem('token');
+
+  const handleCreateSchedule = async () => {
     //this function handles closing and reopening os schedule
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     };
-
+    
     const body = {
       ...schedule, time: {to: schedule.to, from: schedule.from}
     };
     delete body.from;
     delete body.to;
-    // const body = JSON.stringify({
-    //   isClosed: !closed
-    // });
-    setEdit(!edit);
+    console.log(body)
+    
     try {
-      const res = await axios({
-        method: 'PUT',
-        url: `http://localhost:6060/api/v1/schedule/${schedul._id}`,
+      axios({
+        method: 'POST',
+        url: `http://localhost:6060/api/v1/schedule`,
         data: body,
         headers
+      }).then((res)=>{
+        console.log(res.data)
+        props.close()
+      }).catch(()=>{
+        alert('Error occured')
       });
+
 
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const handleScheduleEdit = () => {
-    //edit logic goes here
-  };
-
-  const renderEditBtn = () => {
-    return (
-      <>
-        <Button
-          className="btn-success-solid"
-          style={{ marginRight: '10px' }}
-          text="Edit"
-          onButtonClick={(e) =>{e.preventDefault();setEdit(!edit)}}
-        />
-      </>
-    );
-  };
   const renderSubmit = () => {
     return (
       <>
@@ -88,7 +75,7 @@ function ScheduleCard(props) {
           className="btn-success-solid"
           style={{ marginRight: '10px' }}
           text="Save"
-          onButtonClick={handleSchedule}
+          onButtonClick={'handleScheduleEdit'}
         />
       </>
     );
@@ -97,9 +84,9 @@ function ScheduleCard(props) {
   return (
     <Card styles={style}>
       <h2>
-        <i className="mdi mdi-calendar-edit" /> {schedule.day}
+        <i className="mdi mdi-calendar-edit" /> {schedule.day || day[new Date(Date.now()).getDay()]}
       </h2>
-      <form className="new-dash-single-schedule-list">
+      <form className="new-dash-single-schedule-list" onSubmit={handleCreateSchedule}>
         <InputField
           id="day"
           label="Day"
@@ -107,8 +94,8 @@ function ScheduleCard(props) {
           name="day"
           placeholder="Day"
           value={schedule.day}
-          disabled={edit}
           change={onChange}
+          required={true}
         />
         <InputField
           id="from"
@@ -117,7 +104,6 @@ function ScheduleCard(props) {
           name="from"
           placeholder="Available From"
           value={schedule.from}
-          disabled={edit}
           change={onChange}
           required={true}
         />
@@ -128,10 +114,10 @@ function ScheduleCard(props) {
           name="to"
           placeholder="To"
           value={schedule.to}
-          disabled={edit}
           change={onChange}
           min={schedule.from}
           required={true}
+          // disabled={edit}
         />
         <InputField
           id="slots"
@@ -140,7 +126,6 @@ function ScheduleCard(props) {
           name="slots"
           placeholder={5}
           value={schedule.slots}
-          disabled={edit}
           change={onChange}
         />
 
@@ -151,23 +136,28 @@ function ScheduleCard(props) {
           name="poolSize"
           placeholder={15}
           value={schedule.poolSize}
-          disabled={edit}
           change={onChange}
+          required={true}
         />
-        <div className="new-dash-single-schedule-list-btns">
-          {edit ? renderEditBtn() : renderSubmit()}
-          {edit ? '' : (
-            <Button
-              className={schedule.isClosed? "btn-danger-solid":"btn-success-solid"}
-              style={{ background:schedule.isClosed? '#FFA001':'red' }}
-              text={schedule.isClosed?"Re-Open": "Close"}
-              onButtonClick={closeSchedule}
-            />
-          )}
+        <div className="new-dash-single-schedule-list-btns"
+          style={{width: '100%'}}
+        >
+          <Button
+            className="btn-danger-solid"
+            text="cancel"
+            style={{float: 'right' }}
+            onButtonClick={props.close}
+          />
+          <Button
+            className="btn-success-solid"
+            style={{ marginRight: '10px', float: 'right'}}
+            text="Create"
+            type="submit"
+          />
         </div>
       </form>
     </Card>
   );
 }
 
-export default ScheduleCard;
+export default AddSchedule;
