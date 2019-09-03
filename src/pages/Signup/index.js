@@ -7,6 +7,8 @@ import FormHeader from '../../components/FormHeader';
 import Checkbox from '../../components/Checkbox';
 import Navbar from '../../components/Navbar';
 import FormAlert from '../../components/Alerts/FormAlert';
+import SocialLogin from '../../components/SocialLogin';
+
 import axios from 'axios';
 
 import './Signup.css';
@@ -121,7 +123,7 @@ function Signup() {
       <Redirect
         to={{
           pathname: '/getstarted',
-          state: { email: values.email }
+          state: { email: values.email },
         }}
       />
     );
@@ -183,6 +185,7 @@ function Signup() {
           <p>
             Already have an account? <Link to="/login">Login</Link>
           </p>
+          <SocialLogin heading="Or register with"></SocialLogin>
         </form>
       </div>
     </>
