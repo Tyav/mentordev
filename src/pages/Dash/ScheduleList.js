@@ -10,10 +10,12 @@ import axios from 'axios';
 import UserDashHeading from '../../components/UserDashHeading';
 import ScheduleCard from '../../components/ScheduleCard';
 import AddSchedule from '../../components/AddSchedule';
+import { readCookie } from '../../helper/cookie';
+
 
 function ScheduleList() {
   const [schedules, setSchedules] = useState([]);
-  const token = localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
   const [open, setOpen] = React.useState(false);
   useEffect(() => {
     async function fetchData() {
