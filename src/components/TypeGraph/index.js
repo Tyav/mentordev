@@ -14,6 +14,8 @@ function TypeGraph(props) {
     borderRadius: '4px',
     flexDirection: 'column',
     flex: '0 0 31%',
+    justifyContent: 'center',
+    alignItems: 'center',
   };
   let data = {
     datasets: [
@@ -27,7 +29,12 @@ function TypeGraph(props) {
 
   return (
     <Card styles={parentCardStyle}>
-      <p className="admin-main-card-label">Mentors/Mentees Chart</p>
+      <p
+        className="admin-main-card-label"
+        style={{ textAlign: 'left', width: '100%' }}
+      >
+        Mentors/Mentees Chart
+      </p>
       <Doughnut data={data} width="40%" height="40%"></Doughnut>
     </Card>
   );
