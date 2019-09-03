@@ -12,6 +12,11 @@ body {
   border-radius: 4px;
   background: #fff;
   margin-top: 100px;
+  margin-bottom: 50px !important;
+  text-align: center;
+}
+#loginForm label {
+  text-align: left;
 }
 form {
   width: 70%;
@@ -32,6 +37,9 @@ form button {
   #loginForm {
     width: 80%;
     margin-top: 70px;
+  }
+  form {
+    width: 90% !important;
   }
 }
 @media only screen and (min-width: 450px) and (max-width: 750px) {
