@@ -9,10 +9,12 @@ import UserDashHeading from '../../components/UserDashHeading';
 import { UserObject } from '../../Context';
 import { formatBeforeUpdate, formatLocalUser } from '../../helper/formatUpdateData';
 import ChangePassword from '../../components/ChangePassword';
+import { readCookie } from '../../helper/cookie';
 
 function EditProfile() {
+  const [showPassword, setShowPassword] = useState(false)
   const [edit, setEdit] = useState(true);
-  const token = window.localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
   const { user, setUser } = useContext(UserObject);
   const [values, setValues] = useState({
     ...user,
@@ -87,6 +89,10 @@ function EditProfile() {
     return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
 
+  function passwordToggle () {
+    setShowPassword(!showPassword);
+  }
+
   const style = {
     width: '100%',
     background: '#fff',
@@ -124,12 +130,12 @@ function EditProfile() {
               label="Email"
               type="email"
               id="email"
-              placeholder="Eg. xyz@abc.com"
+              placeholder="Email required"
               value={values.email}
               change={handleChange}
               name="email"
               onBlur={handleBlur}
-              disabled={edit}
+              disabled={edit || values.email}
             />
           </div>
           <div className="new-half-input">
@@ -226,8 +232,8 @@ function EditProfile() {
           <Button className="btn-success-solid center-element" text="Save Changes" />
         </Card>
       </form>
-
-      <ChangePassword />
+      {showPassword ? <ChangePassword hide={passwordToggle}/>:
+      <Button className="center-element btn-success-solid" text="Change Password" onButtonClick={passwordToggle}/>}
     </>
   );
 }
