@@ -13,10 +13,16 @@ import Search from '../Search';
 import AllMentorRequests from '../../components/AllMentorRequests';
 import ScheduleList from './ScheduleList';
 import Request from './Request';
+import { readCookie } from '../../helper/cookie';
+
+  
+
+
 
 function Dashboard() {
+
   const [sideNavState, setSideNavState] = useState(false);
-  const token = localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
   const isMentor = localStorage.getItem('validateType');
 
   const sideNavHandler = e => {

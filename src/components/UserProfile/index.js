@@ -43,7 +43,7 @@ function Userprofile() {
         <i className="mdi mdi-dots-vertical" />
       </div>
       <p className="new-dash-username">{user.fullname}</p>
-      <p className="new-dash-username">{user.email}</p>
+      <p className="new-dash-username">{user.email || 'Email required'}</p>
       <p className="new-dash-account-brief">
         <span>
           1K <i>requests</i>

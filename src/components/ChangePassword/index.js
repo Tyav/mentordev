@@ -6,7 +6,7 @@ import Card from '../Card';
 import InputField from '../InputField';
 import Button from '../Button';
 
-const ChangePassword = () => {
+const ChangePassword = (props) => {
   const token = window.localStorage.getItem('token');
   const [values, setValues] = useState({
     currentPassword: '',
@@ -59,10 +59,14 @@ const ChangePassword = () => {
           });
           setTimeout(() => {
             setValues({
-              ...values,
+              currentPassword: '',
+              newPassword: '',
+              confirmNewPassword: '',
+              errors: '',
               success: ''
             });
           }, 3000);
+          props.hide();
           return;
         }
         setValues({
@@ -94,8 +98,8 @@ const ChangePassword = () => {
     <form style={style} onSubmit={changePassword}>
       <Card styles={style}>
         <h2 className="center-element">Change Password</h2>
-        <p style={{ color: 'red', marginBottom: '5px' }}>{values.errors}</p>
-        <p style={{ color: '#45cc89', marginBottom: '5px' }}>{values.success}</p>
+        <p style={{ color: 'red', marginBottom: '5px',textAlign: 'center' }}>{values.errors}</p>
+        <p style={{ color: 'white', marginBottom: '5px', backgroundColor: '#45cc89', width: '100%', textAlign: 'center'}}>{values.success}</p>
         <InputField
           label="Current Password"
           type="password"

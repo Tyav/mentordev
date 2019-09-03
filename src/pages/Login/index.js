@@ -11,7 +11,7 @@ import SocialLogin from '../../components/SocialLogin';
 
 import { formatLocalUser } from '../../helper/formatUpdateData';
 import { UserObject } from '../../Context';
-
+import { readCookie } from '../../helper/cookie';
 //Stylings
 import './Login.css';
 
@@ -76,7 +76,7 @@ function Login() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = readCookie('mentordev_token');
     if (token) {
       setAuth(true);
     }
@@ -117,7 +117,7 @@ function Login() {
           <Button className="btn-success-solid" text="Login" />
           <SocialLogin heading="Or Login with"></SocialLogin>
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> or{' '}
+            Don't have an account? <Link to="/register">Singup</Link> or { }
             <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
         </form>

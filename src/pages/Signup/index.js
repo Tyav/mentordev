@@ -182,6 +182,12 @@ function Signup() {
             change={handleCheck}
           />
           <Button className="btn-success-solid register" text="Register" />
+
+              <a href="https://github.com/login/oauth/authorize?client_id=59a761c57c054d36a80d&scope=user"><p>
+                Github
+              </p>
+              </a>
+          
           <p>
             Already have an account? <Link to="/login">Login</Link>
           </p>
