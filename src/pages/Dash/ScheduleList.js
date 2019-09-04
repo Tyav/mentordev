@@ -14,6 +14,7 @@ import { readCookie } from '../../helper/cookie';
 
 
 function ScheduleList() {
+  
   const [schedules, setSchedules] = useState([]);
   const token = readCookie('mentordev_token');
   const [open, setOpen] = React.useState(false);
@@ -60,17 +61,6 @@ function ScheduleList() {
       <Dialog open={open} onClose={handleClose1} >
         <center><DialogTitle id="">Add Schedule</DialogTitle></center>
         <AddSchedule close={handleClose}/>
-        {/* <DialogContent>
-          <DialogContentText id=""></DialogContentText>
-        </DialogContent> */}
-        {/* <DialogActions>
-          <Button onClick={handleClose1} style={getStyle(!'button')} >
-            No
-          </Button>
-          <Button onClick={handleClose} style={getStyle('button')} >
-            Yes
-          </Button>
-        </DialogActions> */}
       </Dialog>    
     </>
   );

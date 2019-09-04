@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 import UserProfile from '../../components/UserProfile';
 import UserSearch from '../../components/UserSearch';
 import UserMenu from '../../components/UserMenu';
@@ -13,16 +20,18 @@ import Search from '../Search';
 import AllMentorRequests from '../../components/AllMentorRequests';
 import ScheduleList from './ScheduleList';
 import Request from './Request';
-import { readCookie } from '../../helper/cookie';
+import { readCookie, eraseCookie } from '../../helper/cookie';
 
   
 
 
 
 function Dashboard() {
-
+  const [open, setOpen] = React.useState(true);
   const [sideNavState, setSideNavState] = useState(false);
   const token = readCookie('mentordev_token');
+  const sS = readCookie('s_s')
+  const socialSignUp = readCookie('social_signup')
   const isMentor = localStorage.getItem('validateType');
 
   const sideNavHandler = e => {
@@ -44,6 +53,16 @@ function Dashboard() {
   if (!token) {
     return <Redirect to="/login" />;
   }
+  function handleClose(e){
+    e.preventDefault()
+    sS? setOpen(true): setOpen(false);
+    return open
+  }
+  function handleClose1(e){
+    e.preventDefault();
+    eraseCookie('s_s')
+  }
+
 
   return (
     <>
@@ -89,6 +108,11 @@ function Dashboard() {
           </div>
         </div>
       </main>
+      <Dialog open={sS?true: false} >
+        <center><DialogTitle id="">Complete {sS}</DialogTitle></center>
+        <center><button onClick={handleClose1}>Close</button></center>
+      </Dialog>    
+
     </>
   );
 }
