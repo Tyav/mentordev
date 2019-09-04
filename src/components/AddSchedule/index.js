@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../Button';
 import InputField from '../InputField';
-import TimeField from '../TimeField';
 import Card from '../Card';
 import axios from 'axios';
 
@@ -47,7 +46,6 @@ function AddSchedule(props) {
     };
     delete body.from;
     delete body.to;
-    console.log(body)
     
     try {
       axios({
