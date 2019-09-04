@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import AdminPageTitle from '../../components/AdminPageTitle';
 import ActivitySummary from '../../components/ActivitySummary';
 import TypeGraph from '../../components/TypeGraph';
+import Table from '../../components/Table/table';
+import Card from '../../components/Card';
 
 import { sendGetRequest } from '../../actions';
 
@@ -16,6 +18,20 @@ function AnalyticsSummary() {
       setUsers(response.data.payload);
     });
   }, []);
+
+  const parentCardStyle = {
+    display: 'flex',
+    background: '#fff',
+    padding: '10px 30px',
+    margin: '10px auto 30px auto',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    width: '98%',
+    borderRadius: '4px',
+    flexDirection: 'column',
+    flex: '0 0 31%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
 
   return (
     <main id="admin-main-page">
@@ -38,6 +54,9 @@ function AnalyticsSummary() {
           menteesamount={mentees.length}
         ></TypeGraph>
       </div>
+      <Card styles={parentCardStyle}>
+        <Table></Table>
+      </Card>
     </main>
   );
 }
