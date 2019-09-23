@@ -44,7 +44,7 @@ const ChangePassword = (props) => {
 
     axios({
       method: 'PUT',
-      url: `http://localhost:6060/api/v1/auth/change-password`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/auth/change-password`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`

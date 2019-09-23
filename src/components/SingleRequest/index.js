@@ -7,7 +7,7 @@ import Tag from '../Tag';
 function SingleRequest(props) {
   const cancleRequestHandler = e => {
     e.preventDefault();
-    sendPutRequest(`/api/v1/request/${props.requestId}?status=Cancelled`);
+    sendPutRequest(`/request/${props.requestId}?status=Cancelled`);
   };
   return (
     <>
@@ -27,12 +27,12 @@ function SingleRequest(props) {
               return <Tag tagname={tag} />;
             })}
           </p>
-          <a href="/">
+          {(props.status === 'pending') && <a href="/">
             <i
               className="mdi mdi-close-circle"
               onClick={cancleRequestHandler}
             />
-          </a>
+          </a>}
         </div>
         <br />
       </div>

@@ -37,7 +37,7 @@ function Login() {
     e.preventDefault();
     axios({
       method: 'POST',
-      url: 'http://localhost:6060/api/v1/auth/login',
+      url: `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
       data: { ...values },
     }).then(response => {
       if (response.data.statusCode !== 200) {

@@ -8,7 +8,7 @@ function Table({ name, email, role}) {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    sendGetRequest('/api/v1/user').then(res => {
+    sendGetRequest('/user').then(res => {
       setUserList(res.data.payload);
     });
   }, []);

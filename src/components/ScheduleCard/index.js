@@ -56,7 +56,7 @@ function ScheduleCard(props) {
     try {
       const res = await axios({
         method: 'PUT',
-        url: `http://localhost:6060/api/v1/schedule/${schedul._id}`,
+        url: `${process.env.REACT_APP_BACKEND_URL}/schedule/${schedul._id}`,
         data: body,
         headers
       });

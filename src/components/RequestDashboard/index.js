@@ -20,7 +20,7 @@ const RequestDashboard = () => {
   const getMentors = () => {
     return axios({
       method: 'GET',
-      url: `http://localhost:6060/api/v1/user`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/user`,
       headers
     })
       .then(response => {

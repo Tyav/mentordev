@@ -70,18 +70,17 @@ function Dashboard() {
       Authorization: `Bearer ${token}`,
     };
 
-    axios({
-      method: 'PUT',
-      url: `http://localhost:6060/api/v1/user/signupUpdate`,
-      headers,
-      data: { ...signupUpdate },
-    }).then(({ data }) => {
-      alert(JSON.stringify(data));
-      eraseCookie('s_s');
-      if (data.payload.isMentor)
-        createCookie('validateType', data.payload.isMentor);
-      setOpen(false);
-    });
+      axios({
+        method: 'PUT',
+        url: `${process.env.REACT_APP_BACKEND_URL}/user/signupUpdate`,
+        headers,
+        data: { ...signupUpdate }
+      }).then(({data})=>{
+        alert(JSON.stringify(data))
+        eraseCookie('s_s');
+        if (data.payload.isMentor) createCookie('validateType', data.payload.isMentor)
+        setOpen(false);
+      })
   }
   function updateHandler(e) {
     // e.preventDefault();
@@ -97,7 +96,6 @@ function Dashboard() {
       [e.target.name]: value,
     });
   }
-  console.log(signupUpdate);
   const handleLogOut = event => {
     event.preventDefault();
     eraseCookie('mentordev_token');

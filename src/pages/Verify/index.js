@@ -35,7 +35,7 @@ function Verify() {
     }
     axios({
       method: 'PUT',
-      url: 'http://localhost:6060/api/v1/auth/verify',
+      url: `${process.env.REACT_APP_BACKEND_URL}/auth/verify`,
       headers,
     })
       .then(response => {

@@ -11,7 +11,7 @@ export default function ScheduleList(props) {
   function handleRequest(e) {
     e.preventDefault();
     axios({
-      url: `http://localhost:6060/api/v1/request/`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/request/`,
       method: 'post',
       data,
       headers: {

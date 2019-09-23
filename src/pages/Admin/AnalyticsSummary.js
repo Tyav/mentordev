@@ -14,7 +14,7 @@ function AnalyticsSummary() {
   const mentees = users.filter(user => !user.isMentor);
 
   useEffect(() => {
-    sendGetRequest('/api/v1/user').then(response => {
+    sendGetRequest('/user').then(response => {
       setUsers(response.data.payload);
     });
   }, []);

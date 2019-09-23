@@ -29,6 +29,10 @@ function MainAbout() {
             <Link to="/register">
               <Button className="btn-success-solid" text="Get Started" />
             </Link>
+            {'       '}
+            <Link to="/login">
+              <Button className="btn-success-solid" text="Login" />
+            </Link>
           </p>
         </div>
         <div className="main-about-card-img">

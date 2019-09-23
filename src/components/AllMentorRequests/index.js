@@ -33,7 +33,7 @@ function AllScheduleRequests({ location }) {
   const getAllRequests = () => {
     return axios({
       method: 'GET',
-      url: `http://localhost:6060/api/v1/schedule/requests/?scheduleIds=${scheduleIds}`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/schedule/requests/?scheduleIds=${scheduleIds}`,
       headers
     })
       .then(response => {

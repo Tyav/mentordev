@@ -11,7 +11,7 @@ function Request() {
   const [status, setStatus] = useState([])
   
   useEffect(() => {
-    sendGetRequest('/api/v1/request').then(response => {
+    sendGetRequest('/request').then(response => {
       if (response.data.payload) {
         if (status.length){
           let results = response.data.payload.filter(request => {
@@ -28,7 +28,7 @@ function Request() {
   }, []);
 
   function filterRequest (){
-      sendGetRequest('/api/v1/request').then(response => {
+      sendGetRequest('/request').then(response => {
         if (response.data.payload) {
           if (status.length){
             let results = response.data.payload.filter(request => {

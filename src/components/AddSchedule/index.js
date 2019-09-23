@@ -59,7 +59,7 @@ function AddSchedule(props) {
     try {
       axios({
         method: 'POST',
-        url: `http://localhost:6060/api/v1/schedule`,
+        url: `${process.env.REACT_APP_BACKEND_URL}/schedule`,
         data: body,
         headers,
       })

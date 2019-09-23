@@ -67,7 +67,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        'http://localhost:6060/api/v1/user',
+        `${process.env.REACT_APP_BACKEND_URL}/user`,
         body,
         config,
       );
