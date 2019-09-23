@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import UserDashHeading from '../../components/UserDashHeading';
 import UserLatestConnect from '../../components/UserLatestConnects';
-import { readCookie } from '../../helper/cookie'
+import { readCookie } from '../../helper/cookie';
 
 function Search() {
   const [searchResults, setSearchResults] = useState([{}]);
@@ -21,7 +21,7 @@ function Search() {
     }).then(response => {
       setSearchResults([...response.data.payload]);
     });
-  }, [queryParams, window.location.href]);
+  }, [queryParams]);
 
   return (
     <>
