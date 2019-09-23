@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 
 import getParams from '../../helper/getParams';
-import { readCookie } from '../../helper/cookie'
+// import { readCookie } from '../../helper/cookie'
 
 function Verify() {
   const token = getParams('token');

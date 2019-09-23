@@ -1,0 +1,108 @@
+.scheduleList form {
+  width: 100% !important;
+  display: flex;
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px auto;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(69, 65, 78, 0.06) 0px 1px 15px 1px;
+}
+.scheduleList button {
+  background: #45cc89;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.mentorScheduleDetails {
+  display: flex;
+}
+.mentorScheduleDetails p {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #74788d;
+}
+.mentorScheduleDetails p span {
+  color: #74788d;
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+.mentorMainDet {
+  display: none;
+}
+@media screen and (min-width: 780px) {
+  .mentorMainDet {
+    display: block;
+  }
+  .scheduleList form {
+    width: 100% !important;
+    display: flex;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px auto;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(69, 65, 78, 0.06) 0px 1px 15px 1px;
+  }
+  .scheduleList button {
+    background: #45cc89;
+    color: #fff;
+    padding: 10px;
+  }
+  .mentorScheduleDetails {
+    display: flex;
+  }
+  .mentorScheduleDetails p {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #74788d;
+  }
+  .mentorScheduleDetails p span {
+    color: #74788d;
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+}
+@media screen and (min-width: 823px) and (max-width: 1000px) {
+  .scheduleList form {
+    width: 100% !important;
+    display: flex;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px auto;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(69, 65, 78, 0.06) 0px 1px 15px 1px;
+  }
+  .scheduleList button {
+    background: #45cc89;
+    color: #fff;
+    padding: 10px;
+  }
+  .mentorScheduleDetails {
+    display: flex;
+  }
+  .mentorScheduleDetails p {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #74788d;
+  }
+  .mentorScheduleDetails p span {
+    color: #74788d;
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+}

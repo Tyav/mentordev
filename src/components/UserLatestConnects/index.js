@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Tag from '../Tag';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
@@ -7,8 +7,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import MentorSchedule from '../MentorSchedule'
-
+import MentorSchedule from '../MentorSchedule';
 
 function UserLatestConnect({
   image,
@@ -23,48 +22,63 @@ function UserLatestConnect({
   id,
   buttons,
   requestId, //bringing in the requestId as a prop
-  requestApproval //the function that handles the approval in the parent object...
+  requestApproval, //the function that handles the approval in the parent object...
 }) {
   const [open, setOpen] = useState(false);
+  const [fullWidth, setFullWidth] = React.useState(true);
 
-  function handleClose(){
-    setOpen(false)
+  function handleClose() {
+    setOpen(false);
   }
-  function handleOpen(){
-    setOpen(true)
+  function handleOpen() {
+    setOpen(true);
   }
   tags = tags || [];
   return (
     <>
-    <div className="new-dash-user-profile" key={id} >
-      <div className="new-dash-card-header">
-        <img src={image} alt="user profile" />
-        <i className="mdi mdi-dots-vertical" />
+      <div className="new-dash-user-profile" key={id}>
+        <div className="new-dash-card-header">
+          <img src={image} alt="user profile" />
+          <i className="mdi mdi-dots-vertical" />
+        </div>
+        <p className="new-dash-username">{name}</p>
+        <p className="new-dash-username">{email}</p>
+        <div className="new-dash-user-tags">
+          {tags.map((tag, index) => (
+            <Tag tagname={tag} key={index} />
+          ))}
+        </div>
+        <p className="new-dash-user-mentor-sch">
+          <span>{schedule}</span>
+        </p>
+        <p>{userlocation}</p>
+        <div className="conditional-buttons">
+          {buttons ? addButtons(buttons, requestId, requestApproval) : ''}
+        </div>
+        {search && (
+          <center>
+            <a
+              href="#"
+              onClick={handleOpen}
+              className={'new-dash-profile-link'}
+            >
+              View Schedules
+            </a>
+          </center>
+        )}
       </div>
-      <p className="new-dash-username">{name}</p>
-      <p className="new-dash-username">{email}</p>
-      <div className="new-dash-user-tags">
-        {tags.map((tag, index) => (
-          <Tag tagname={tag} key={index} />
-        ))}
-      </div>
-      <p className="new-dash-user-mentor-sch">
-        <span>{schedule}</span>
-      </p>
-      <p>{userlocation}</p>
-      <div className="conditional-buttons">
-        {buttons ? addButtons(buttons, requestId, requestApproval) : ''}
-      </div>
-      {search && <center><a href="#" onClick={handleOpen} className={'new-dash-profile-link'}>View Schedules</a></center>}
-    </div>
-    <Dialog open={open} >
+      <Dialog open={open} fullWidth={fullWidth}>
         {/* <center><DialogTitle id="">Complete {id}</DialogTitle></center> */}
         <DialogContent>
-          <MentorSchedule id={id}/>
+          <MentorSchedule id={id} />
         </DialogContent>
-        <center><a href="#" onClick={handleClose} className={'new-dash-profile-link'}>Close</a></center>
-        <DialogActions/>
-    </Dialog>    
+        <center>
+          <a href="#" onClick={handleClose} className={'new-dash-profile-link'}>
+            Close
+          </a>
+        </center>
+        <DialogActions />
+      </Dialog>
     </>
   );
 }

@@ -39,17 +39,17 @@ function AnalyticsSummary() {
       <AdminPageTitle title="Dashboard"></AdminPageTitle>
       <div className="admin-full-summary">
         <ActivitySummary
-          usersamount={mentors.length}
+          usersamount={users.length}
           mentorsamount={mentors.length}
           menteesamount={mentees.length}
         ></ActivitySummary>
         <TypeGraph
-          usersamount={mentors.length}
+          usersamount={users.length}
           mentorsamount={mentors.length}
           menteesamount={mentees.length}
         ></TypeGraph>
         <TypeGraph
-          usersamount={mentors.length}
+          usersamount={users.length}
           mentorsamount={mentors.length}
           menteesamount={mentees.length}
         ></TypeGraph>

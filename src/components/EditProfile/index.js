@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -11,13 +11,13 @@ import InputField from '../InputField';
 import '../InputField/InputField.css';
 import Fieldset from '../FieldSet';
 import Button from '../Button';
-import { UserObject } from '../../Context';
+// import { UserObject } from '../../Context';
 
 const EditProfile = ({ edit }) => {
   const token = window.localStorage.getItem('token');
   let localUser = JSON.parse(window.localStorage.getItem('user'));
   const userValue = formatLocalUser({ ...localUser });
-  const { user, setUser } = useContext(UserObject);
+  // const { user, setUser } = useContext(UserObject);
   const [values, setValues] = useState({
     ...userValue,
     errors: {
