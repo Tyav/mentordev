@@ -450,7 +450,7 @@ a.new-dash-nav-logo span {
 ul.new-dash-menu {
   position: fixed;
   background: #fff;
-  left: -80%;
+  left: -150%;
   top: 70px;
   min-height: 100vh;
   height: fit-content;
@@ -919,7 +919,7 @@ Desktop 1
   Desktop 2
 ==================
 */
-@media screen and (min-width: 823px) and (max-width: 1275px){
+@media screen and (min-width: 823px) and (max-width: 1275px) {
   .admin-sub-search-nav {
     width: auto;
     margin: 0 20px;
