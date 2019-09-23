@@ -1,7 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { eraseCookie } from '../../helper/cookie';
 
 function UserMenu({ validateType }) {
+  const handleLogOut = event => {
+    event.preventDefault();
+    eraseCookie('mentordev_token');
+  };
+
   return (
     <ul className="new-dash-menu">
       <NavLink exact to="/dashboard" activeClassName="new-dash-menu-active">
@@ -39,6 +45,9 @@ function UserMenu({ validateType }) {
           <i className="mdi mdi-wrench" /> Profile Settings
         </li>
       </NavLink>
+      <button onClick={handleLogOut} className="generalLogOut">
+        <i className="mdi mdi-logout-variant"></i> Log out
+      </button>
     </ul>
   );
 }

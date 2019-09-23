@@ -31,8 +31,8 @@ function Dashboard() {
   const [sideNavState, setSideNavState] = useState(false);
   const [signupUpdate, setSignupUpdate] = useState({
     skills: [],
-    isMentor: false
-  })
+    isMentor: false,
+  });
   const token = readCookie('mentordev_token');
   const sS = readCookie('s_s');
   const socialSignUp = readCookie('social_signup');
@@ -67,34 +67,41 @@ function Dashboard() {
     //update user info with signupUpdate
     const headers = {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     };
 
-      axios({
-        method: 'PUT',
-        url: `http://localhost:6060/api/v1/user/signupUpdate`,
-        headers,
-        data: { ...signupUpdate }
-      }).then(({data})=>{
-        alert(JSON.stringify(data))
-        eraseCookie('s_s');
-        if (data.payload.isMentor) createCookie('validateType', data.payload.isMentor)
-        setOpen(false);
-      })
+    axios({
+      method: 'PUT',
+      url: `http://localhost:6060/api/v1/user/signupUpdate`,
+      headers,
+      data: { ...signupUpdate },
+    }).then(({ data }) => {
+      alert(JSON.stringify(data));
+      eraseCookie('s_s');
+      if (data.payload.isMentor)
+        createCookie('validateType', data.payload.isMentor);
+      setOpen(false);
+    });
   }
-  function updateHandler (e) {
+  function updateHandler(e) {
     // e.preventDefault();
     setSignupUpdate({
-      ...signupUpdate,[e.target.name]: e.target.value.split(', ')
-    })
+      ...signupUpdate,
+      [e.target.name]: e.target.value.split(', '),
+    });
   }
-  function updateHandlerT (e,value) {
+  function updateHandlerT(e, value) {
     //e.preventDefault();
     setSignupUpdate({
-      ...signupUpdate,[e.target.name]: value
-    })
+      ...signupUpdate,
+      [e.target.name]: value,
+    });
   }
-  console.log(signupUpdate)
+  console.log(signupUpdate);
+  const handleLogOut = event => {
+    event.preventDefault();
+    eraseCookie('mentordev_token');
+  };
 
   return (
     <>
@@ -106,8 +113,15 @@ function Dashboard() {
         <a href="/" className="new-dash-nav-logo">
           Mentor <span>/>ev</span>
         </a>
-        {!isMentor ? <UserSearch /> : <span className="admin-sub-search-nav"></span>}
+        {!isMentor ? (
+          <UserSearch />
+        ) : (
+          <span className="admin-sub-search-nav"></span>
+        )}
         <UserMenu validateType={isMentor} />
+        <button onClick={handleLogOut} className="generalLogOut2">
+          <i className="mdi mdi-logout-variant"></i> Log out
+        </button>
       </nav>
       <main className="new-dash-body">
         <div className="new-dash-left">
@@ -121,7 +135,10 @@ function Dashboard() {
           <Route path="/dashboard/profile" component={EditProfile} />
           <Route path="/dashboard/schedule" component={ScheduleList} />
           <Route exact path="/dashboard/search" component={Search} />
-          <Route path="/dashboard/mentor/requests/:scheduleId" component={ScheduleRequests} />
+          <Route
+            path="/dashboard/mentor/requests/:scheduleId"
+            component={ScheduleRequests}
+          />
           <Route
             // path="/dashboard/mentor/allRequests"
             path="/dashboard/mentor/all-requests"
@@ -137,55 +154,58 @@ function Dashboard() {
           </div>
         </div>
       </main>
-      <Dialog open={sS? true: false}>
-        <form style={{width: '100%'}} onSubmit={handleClose1}>
+      <Dialog open={sS ? true : false}>
+        <form style={{ width: '100%' }} onSubmit={handleClose1}>
           <center>
             <DialogTitle id="">Complete your registration</DialogTitle>
           </center>
           <DialogContent>
-            <div className="complete-reg-signup" style={{ minHeight: '200px', minWidth: '400px' }}>
+            <div
+              className="complete-reg-signup"
+              style={{ minHeight: '200px', minWidth: '400px' }}
+            >
               <center>
                 <p>Just a little more information from you</p>
               </center>
 
-            <InputField
-              label="Skills"
-              type="text"
-              id="skills"
-              placeholder="Eg. Javascript, React, PHP..."
-              value={signupUpdate.skills.join(', ')}
-              change={updateHandler}
-              name="skills"
-              disabled={false}
-              required={true}
-            />
-        <div id="inputField" className={'mentor'}>
-        <p>{'Are you a mentor?'}</p>
-        <span>
-          <span>Yes</span>
-          <input
-            className="mentor-slt-radio"
-            type={'radio'}
-            name={'isMentor'}
-            onChange={(e)=> updateHandlerT(e,true)}
-            required
-            checked={signupUpdate.isMentor}
-          />
-        <span>No</span>
-        <input
-          className="mentor-slt-radio"
-          type={'radio'}
-          name={'isMentor'}
-          onChange={(e)=>updateHandlerT(e,false)}
-          required
-          checked={!signupUpdate.isMentor}
-        />
-        </span>
-      </div>
+              <InputField
+                label="Skills"
+                type="text"
+                id="skills"
+                placeholder="Eg. Javascript, React, PHP..."
+                value={signupUpdate.skills.join(', ')}
+                change={updateHandler}
+                name="skills"
+                disabled={false}
+                required={true}
+              />
+              <div id="inputField" className={'mentor'}>
+                <p>{'Are you a mentor?'}</p>
+                <span>
+                  <span>Yes</span>
+                  <input
+                    className="mentor-slt-radio"
+                    type={'radio'}
+                    name={'isMentor'}
+                    onChange={e => updateHandlerT(e, true)}
+                    required
+                    checked={signupUpdate.isMentor}
+                  />
+                  <span>No</span>
+                  <input
+                    className="mentor-slt-radio"
+                    type={'radio'}
+                    name={'isMentor'}
+                    onChange={e => updateHandlerT(e, false)}
+                    required
+                    checked={!signupUpdate.isMentor}
+                  />
+                </span>
+              </div>
             </div>
           </DialogContent>
           <center>
-            <button type='submit'>Submit</button>
+            <button type="submit">Submit</button>
           </center>
         </form>
       </Dialog>
