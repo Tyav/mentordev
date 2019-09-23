@@ -41,7 +41,7 @@ const EditProfile = ({ edit }) => {
     const data = formatBeforeUpdate(values);
     axios({
       method: 'PUT',
-      url: `http://localhost:6060/api/v1/user/me`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/me`,
       headers,
       data: { ...data },
     })

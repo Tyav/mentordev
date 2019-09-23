@@ -9,7 +9,7 @@ const headers = {
 
 export function sendGetRequest(endpoint) {
   return axios({
-    url: `http://localhost:6060${endpoint}`,
+    url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
     method: 'GET',
     headers,
   });
@@ -17,7 +17,7 @@ export function sendGetRequest(endpoint) {
 
 export function sendPostRequest(endpoint) {
   return axios({
-    url: `http://localhost:6060${endpoint}`,
+    url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
     method: 'POST',
     headers,
   });
@@ -25,7 +25,7 @@ export function sendPostRequest(endpoint) {
 
 export function sendPutRequest(endpoint) {
   return axios({
-    url: `http://localhost:6060${endpoint}`,
+    url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
     method: 'PUT',
     headers,
   });

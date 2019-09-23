@@ -20,7 +20,7 @@ function Userprofile() {
   const fetchUser = token => {
     return axios({
       method: 'GET',
-      url: `http://localhost:6060/api/v1/user/me`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/me`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`

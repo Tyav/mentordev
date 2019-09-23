@@ -29,7 +29,7 @@ function ScheduleList() {
 
       try {
         const res = await axios.get(
-          'http://localhost:6060/api/v1/schedule',
+          `${process.env.REACT_APP_BACKEND_URL}/schedule`,
           config
         );
         setSchedules([...res.data.payload]);

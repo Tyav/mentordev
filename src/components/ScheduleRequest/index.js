@@ -42,7 +42,7 @@ function ScheduleRequests({ match }) {
 
     axios({
       method: 'PUT',
-      url: `http://localhost:6060/api/v1/request/${requestId}?status=${action}`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/request/${requestId}?status=${action}`,
       headers
     })
       .then(response => {
@@ -59,7 +59,7 @@ function ScheduleRequests({ match }) {
   const getRequests = () => {
     return axios({
       method: 'GET',
-      url: `http://localhost:6060/api/v1/schedule/${scheduleId}/requests`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/schedule/${scheduleId}/requests`,
       headers
     })
       .then(response => {

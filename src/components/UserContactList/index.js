@@ -23,7 +23,7 @@ function UserContactList() {
 
       try {
         const response = await axios.get(
-          'http://localhost:6060/api/v1/contact',
+          `${process.env.REACT_APP_BACKEND_URL}/contact`,
           config
         );
         setContacts([...response.data.payload]);

@@ -26,7 +26,7 @@ function GetStarted(props) {
 
     try {
       const response = await axios.post(
-        'http://localhost:6060/api/v1/auth/verify-link',
+        `${process.env.REACT_APP_BACKEND_URL}/auth/verify-link`,
         body,
         config
       );

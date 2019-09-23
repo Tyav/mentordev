@@ -7,7 +7,7 @@ export default function MentorSchedule({ id }) {
   const [schedules, setSchedules] = useState([]);
   useEffect(()=>{
     axios({
-      url: `http://localhost:6060/api/v1/user/${id}/schedules`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/${id}/schedules`,
       method: 'get',
       headers: {
         'Content-Type': 'application/json',

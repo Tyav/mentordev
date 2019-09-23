@@ -6,7 +6,7 @@ import {sendGetRequest} from '../../actions'
 function MentorshipTable(props) {
   const [contacts, setContacts] = useState([])
   useEffect(() => {
-    sendGetRequest('/api/v1/contacts')
+    sendGetRequest('/contacts')
     return () => {
       
     };

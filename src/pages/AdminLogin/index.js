@@ -36,7 +36,7 @@ function Login() {
     e.preventDefault();
     axios({
       method: 'POST',
-      url: 'http://localhost:6060/api/v1/auth/admin-login',
+      url: `${process.env.REACT_APP_BACKEND_URL}/auth/admin-login`,
       data: { ...values }
     }).then(response => {
       if (response.data.statusCode !== 200) {
@@ -114,7 +114,7 @@ function Login() {
           />
           <Button className="btn-success-solid" text="Login" />
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> or{' '}
+            Don't have an account? <Link to="/register">Singup</Link> or 
             <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
         </form>

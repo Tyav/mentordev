@@ -32,7 +32,7 @@ function ForgotPassword() {
     }
     axios({
       method: 'POST',
-      url: 'http://localhost:6060/api/v1/auth/forgot-password',
+      url: `${process.env.REACT_APP_BACKEND_URL}/auth/forgot-password`,
       data: { email: value.email },
     }).then(response => {
       setValue({

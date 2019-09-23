@@ -15,7 +15,7 @@ function UserSingleContact(props) {
   const deleteContactHandler = () => {
     const contactId = props.contactId;
     axios({
-      url: `http://localhost:6060/api/v1/contact/${contactId}`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/contact/${contactId}`,
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

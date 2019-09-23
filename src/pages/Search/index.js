@@ -13,7 +13,7 @@ function Search() {
   useEffect(() => {
     axios({
       method: 'POST',
-      url: `http://localhost:6060/api/v1/user/search?search=${queryParams}`,
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/search?search=${queryParams}`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${readCookie('mentordev_token')}`,
