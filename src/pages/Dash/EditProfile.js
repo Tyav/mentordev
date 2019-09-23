@@ -42,7 +42,7 @@ function EditProfile() {
   };
 
   const handleSubmit = event => {
-    event.preventDefault();
+    //event.preventDefault();
     const data = formatBeforeUpdate(values);
     axios({
       method: 'PUT',
@@ -229,7 +229,7 @@ function EditProfile() {
             style={edit ? {} : { borderBottom: '1px solid rgb(128, 120, 120)' }}
           />
           <br />
-          <Button className="btn-success-solid center-element" text="Save Changes" />
+          {!edit && <Button className="btn-success-solid center-element" text="Save Changes" />}
         </Card>
       </form>
       {showPassword ? <ChangePassword hide={passwordToggle}/>:

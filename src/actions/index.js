@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { readCookie } from '../helper/cookie'
 
-const token = localStorage.getItem('token');
+const token = readCookie('mentordev_token');
 const headers = {
   'Content-Type': 'application/json',
   Authorization: `Bearer ${token}`,

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import UserLatestConnect from '../UserLatestConnects';
 import UserDashHeading from '../UserDashHeading';
+import { readCookie } from '../../helper/cookie'
 // import viewRequests from '../ScheduleRequest';
 
 /**
@@ -16,7 +17,7 @@ import UserDashHeading from '../UserDashHeading';
  */
 function AllScheduleRequests({ location }) {
   const { scheduleIds } = location.state;
-  const token = window.localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
   const [requests, setRequests] = useState({ data: [], loading: true });
 
   useEffect(() => {
@@ -36,7 +37,8 @@ function AllScheduleRequests({ location }) {
       headers
     })
       .then(response => {
-        setRequests(() => ({ data: response.data.payload, loading: false }));
+        let data = response.data.payload.filter(info=> info.status === 'Pending')
+        setRequests(() => ({ data: data, loading: false }));
       })
       .catch(error => {
         console.log(error);
@@ -44,7 +46,7 @@ function AllScheduleRequests({ location }) {
   };
   return (
     <>
-      <UserDashHeading text="Your most recent Requests" icon="checkbox-marked-circle-outline" />
+      <UserDashHeading text="All requests for your schedule" icon="checkbox-marked-circle-outline" />
       {requests.loading ? <p>loading...</p> : viewRequests(requests)}
     </>
   );
@@ -53,7 +55,7 @@ function AllScheduleRequests({ location }) {
 function viewRequests({ data }) {
   if (!data) return;
   if (data.length < 1) {
-    return <p>No request today</p>;
+    return <center><p>No request today</p></center>;
   }
 
   return (
@@ -68,6 +70,7 @@ function viewRequests({ data }) {
             request.schedule.time.from
           } to ${request.schedule.time.to}`}
           key={index}
+          id={request._id}
           buttons={['Approve', 'Reject']}
           requestId={request._id}
         />

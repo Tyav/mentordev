@@ -13,7 +13,7 @@ function SingleRequest(props) {
     <>
       <div className="mentee-request">
         <div className="single-mentee-request">
-          <p className="request-pending">{props.status} &nbsp;</p>
+          <p className="request-pending" >{props.status} &nbsp;</p>
           <p className="request-mentor">
             &nbsp;<span>Mentor</span>: {props.mentor} &nbsp;
           </p>

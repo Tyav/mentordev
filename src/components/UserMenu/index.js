@@ -20,17 +20,16 @@ function UserMenu({ validateType }) {
           </li>
         </NavLink>
       ) : (
-        ''
+        <NavLink
+          exact
+          to="/dashboard/request"
+          activeClassName="new-dash-menu-active"
+        >
+          <li>
+            <i className="mdi mdi-bell" /> Manage Requests
+          </li>
+        </NavLink>
       )}
-      <NavLink
-        exact
-        to="/dashboard/request"
-        activeClassName="new-dash-menu-active"
-      >
-        <li>
-          <i className="mdi mdi-bell" /> Manage Requests
-        </li>
-      </NavLink>
       <NavLink
         exact
         to="/dashboard/profile"

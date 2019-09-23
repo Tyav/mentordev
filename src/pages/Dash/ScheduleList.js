@@ -32,7 +32,6 @@ function ScheduleList() {
           'http://localhost:6060/api/v1/schedule',
           config
         );
-
         setSchedules([...res.data.payload]);
       } catch (error) {
         console.log(error.message);

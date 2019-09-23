@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import UserLatestConnect from '../UserLatestConnects';
 import UserDashHeading from '../UserDashHeading';
+import { readCookie } from '../../helper/cookie'
 
 /**
  * This component is for showing the list of schedule requests
@@ -16,7 +17,7 @@ import UserDashHeading from '../UserDashHeading';
 
 function ScheduleRequests({ match }) {
   const { scheduleId } = match.params;
-  const token = window.localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
   const [requests, setRequests] = useState({ data: [], loading: true });
 
   useEffect(() => {
@@ -30,9 +31,7 @@ function ScheduleRequests({ match }) {
   };
 
   const requestApproval = e => {
-   
     e.preventDefault();
-    const token = window.localStorage.getItem('token');
     const requestId = e.target.id;
     const action = e.target.classList[1] === 'Approve' ? 'Approved' : 'Rejected';
 
@@ -74,7 +73,7 @@ function ScheduleRequests({ match }) {
   return (
     <>
       <UserDashHeading
-        text="Your most recent Requests"
+        text="Pending Requests"
         icon="checkbox-marked-circle-outline"
       />
       {requests.loading ? (
