@@ -11,7 +11,7 @@ import SocialLogin from '../../components/SocialLogin';
 
 import { formatLocalUser } from '../../helper/formatUpdateData';
 import { UserObject } from '../../Context';
-import { readCookie } from '../../helper/cookie';
+import { readCookie, createCookie } from '../../helper/cookie';
 //Stylings
 import './Login.css';
 
@@ -55,8 +55,10 @@ function Login() {
         }, 4000);
         return;
       }
-      localStorage.setItem('validateType', response.data.payload.isMentor);
-      localStorage.setItem('token', response.data.token);
+      // set mentor type
+      if (response.data.payload.isMentor) createCookie('validateType', response.data.payload.isMentor);
+      // set cookie for user login
+      createCookie('mentordev_token', response.data.token);
       setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
 
       setLoginResponse({
@@ -115,12 +117,12 @@ function Login() {
             change={handleChange}
           />
           <Button className="btn-success-solid" text="Login" />
+        </form>
           <SocialLogin heading="Or Login with"></SocialLogin>
           <p>
             Don't have an account? <Link to="/register">Singup</Link> or { }
             <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
-        </form>
       </div>
     </>
   );

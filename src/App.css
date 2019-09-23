@@ -455,7 +455,7 @@ ul.new-dash-menu {
   min-height: 100vh;
   height: fit-content;
   z-index: 1;
-  width: 80%;
+  width: 500px !important;
   padding: 20px 0 20px 50px;
   border-right: 1px solid #e6ecf5;
   border-top: 1px solid #e6ecf5;
@@ -492,7 +492,7 @@ ul.new-dash-menu li {
   font-size: 0.8rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   color: #515365;
   border: 1px solid #e6ecf5;
   border-radius: 4px;
@@ -553,9 +553,12 @@ p.request-pending {
 .google-social {
   color: #ea4335;
 }
+.mentor-slt-radio {
+  width: 50px !important;
+}
 /* 
 ===============
-Desktop
+Desktop 1
 ===============
 */
 @media screen and (min-width: 780px) {
@@ -753,7 +756,7 @@ Desktop
     min-height: 0;
     height: fit-content;
     z-index: 1;
-    width: auto;
+    width: 500px !important;
     padding: 0;
     border: none;
     margin-left: 10px;
@@ -784,6 +787,12 @@ Desktop
     width: auto;
     border: 1px solid #e6ecf5;
     border-radius: 4px;
+    margin: 0 20px;
+    width: 40%;
+    display: block;
+  }
+  .admin-sub-search-nav {
+    width: auto;
     margin: 0 20px;
     width: 40%;
     display: block;
@@ -905,10 +914,54 @@ Desktop
     color: #ea4335;
   }
 }
+/* 
+==================
+  Desktop 2
+==================
+*/
+@media screen and (min-width: 823px) and (max-width: 1275px){
+  .admin-sub-search-nav {
+    width: auto;
+    margin: 0 20px;
+    width: 20%;
+    display: block;
+  }
+  ul.new-dash-menu {
+    position: relative;
+    background: none;
+    left: 0;
+    top: 0;
+    min-height: 0;
+    height: fit-content;
+    z-index: 1;
+    width: 500px !important;
+    padding: 0;
+    border: none;
+    margin-left: 10px;
+  }
+}
+/* 
+==================
+  Mobile
+==================
+*/
 @media screen and (min-width: 823px) and (max-width: 1000px) {
   .new-dash-body {
     display: flex;
     flex-direction: column;
+  }
+  ul.new-dash-menu {
+    position: relative;
+    background: none;
+    left: 0;
+    top: 0;
+    min-height: 0;
+    height: fit-content;
+    z-index: 1;
+    width: 500px !important;
+    padding: 0;
+    border: none;
+    margin-left: 10px;
   }
 }
 

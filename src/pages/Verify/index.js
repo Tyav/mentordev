@@ -7,6 +7,7 @@ import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 
 import getParams from '../../helper/getParams';
+import { readCookie } from '../../helper/cookie'
 
 function Verify() {
   const token = getParams('token');
@@ -50,9 +51,6 @@ function Verify() {
           }, 9000);
           return;
         }
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('tokenID', response.data.payload.id);
-        localStorage.setItem('auth', true);
         setAlert({
           message: 'Redirecting...',
           show: true,

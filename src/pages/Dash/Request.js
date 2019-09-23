@@ -5,23 +5,57 @@ import SingleRequest from '../../components/SingleRequest';
 
 import { sendGetRequest } from '../../actions';
 
+// requests for mentor
 function Request() {
   const [requests, setRequests] = useState([]);
-
+  const [status, setStatus] = useState([])
+  
   useEffect(() => {
     sendGetRequest('/api/v1/request').then(response => {
-      let results = [];
       if (response.data.payload) {
-        response.data.payload.forEach(request => {
-          if (request.status === 'Pending') {
-            results.push(request);
-          }
-        });
-        setRequests(results);
-        return;
+        if (status.length){
+          let results = response.data.payload.filter(request => {
+            console.log(status.includes(request.status))
+            return status.includes(request.status)
+          });
+          setRequests([...results]);
+        } else {
+          setRequests([...response.data.payload]);
+        }
       }
+      // setRequests([...response.data.payload]);
     });
   }, []);
+
+  function filterRequest (){
+      sendGetRequest('/api/v1/request').then(response => {
+        if (response.data.payload) {
+          if (status.length){
+            let results = response.data.payload.filter(request => {
+              console.log(status.includes(request.status))
+              return status.includes(request.status)
+            });
+            setRequests([...results]);
+          } else {
+            setRequests([...response.data.payload]);
+          }
+        }
+        // setRequests([...response.data.payload]);
+      });
+    
+  }
+  function statusHandler (e){
+    if (!e.target.checked){
+      let result = status.filter((stat)=>{
+        return stat !== e.target.value
+      })
+      setStatus([...result])
+    } else {
+      setStatus([...status, e.target.value])
+    }
+    console.log(status)
+    filterRequest()
+  }
 
   const style = {
     width: '100%',
@@ -33,7 +67,20 @@ function Request() {
   };
   return (
     <>
-      <UserDashHeading text="Pending Requests" icon="message-alert" />
+      <UserDashHeading text="Your most recent Requests" icon="message-alert" />
+      {/* <input type="checkbox" onChange={statusHandler} value="Pending" />Pending
+      <input type="checkbox" onChange={statusHandler} value="Approved" />Approved
+      <input type="checkbox" onChange={statusHandler} value="Cancelled" />Cancelled
+      <input type="checkbox" onChange={statusHandler} value="Rejected" />Rejected */}
+      <label for="status">View: </label>
+      <select id="status" onChange={(e)=>console.log(e.target.value)} >
+        <option selected value={'All'}>All</option>
+        <option value={'Approved'} >Approved</option>
+        <option value={'Rejected'} >Rejected</option>
+        <option value={'Pending'} >Pending</option>
+        <option value={'Cancelled'} >Cancelled</option>
+      </select>
+
       <Card styles={style}>
         {requests.map(request => {
           return (

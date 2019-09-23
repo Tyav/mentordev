@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import UserSingleContact from '../UserSingleContact';
+import { readCookie } from '../../helper/cookie'
 
 /**
  * This component is for showing a user's contact list
@@ -9,7 +10,7 @@ import UserSingleContact from '../UserSingleContact';
 
 function UserContactList() {
   const [contacts, setContacts] = useState([]);
-  const token = localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
 
   useEffect(() => {
     async function fetchData() {
@@ -44,8 +45,9 @@ function UserContactList() {
             image={user.avatar}
             name={user.name}
             email={user.email}
-            schedule={<span>
-                    {schedule.day} {schedule.time.from} to {schedule.time.to}
+            schedule={<span style={{color:'black'}}><center>{schedule.day}</center>
+                    {`From: `}<input type="time" value={schedule.time.from} disabled style={timeStyle}/>{`To: `}
+                    <input type="time" value={schedule.time.to} disabled style={timeStyle}/>
                   </span>}
           />
         );
@@ -55,3 +57,11 @@ function UserContactList() {
 }
 
 export default UserContactList;
+
+let timeStyle = {
+  width: '81px',
+  border: 'none',
+  fontFamily: 'fantasy',
+  fontSize: '11px',
+  color:'black'
+}

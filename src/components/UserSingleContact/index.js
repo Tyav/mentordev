@@ -61,7 +61,7 @@ function UserSingleContact(props) {
               </div>
             </i>
             <br /> <span>{props.email}</span>
-            <br /> {props.schedule}
+            {props.schedule}
           </p>
         </div>
       </div>

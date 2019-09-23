@@ -6,9 +6,10 @@ import { formatLocalUser } from '../../helper/formatUpdateData';
 import { UserObject } from '../../Context';
 import Tag from '../Tag';
 import { isArray } from 'util';
+import { readCookie } from '../../helper/cookie'
 
 function Userprofile() {
-  const token = window.localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
   const { user, setUser } = useContext(UserObject);
 
   useEffect(() => {

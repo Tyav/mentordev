@@ -14,7 +14,7 @@ import { UserObject } from '../../Context';
 import './Login.css';
 
 function Login() {
-  const { user, setUser } = useContext(UserObject);
+  const { setUser } = useContext(UserObject);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const [loginResponse, setLoginResponse] = useState({

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Button from '../Button';
 import InputField from '../InputField';
 import Card from '../Card';
-import axios from 'axios';
+import { readCookie } from '../../helper/cookie'
 
 const style = {
   width: '100%',
@@ -15,7 +16,7 @@ const style = {
 
 function ScheduleCard(props) {
   const [edit, setEdit] = useState(true);
-  const token = localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
   // const [schedule, ] 
   const schedul= props.schedule;
   const [schedule, setSchedule] = useState({

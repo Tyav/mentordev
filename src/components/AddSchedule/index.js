@@ -3,6 +3,7 @@ import Button from '../Button';
 import InputField from '../InputField';
 import Card from '../Card';
 import axios from 'axios';
+import { readCookie } from '../../helper/cookie'
 
 const style = {
   width: '100%',
@@ -17,7 +18,7 @@ function AddSchedule(props) {
   let day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thurday', 'Friday', 'Saturday',]
   // const [edit, setEdit] = useState(true);
   const [schedule, setSchedule] = useState({
-    day: '',
+    day: day[new Date(Date.now()).getDay()],
     from: '',
     to: '',
     slots: 1,
@@ -32,9 +33,9 @@ function AddSchedule(props) {
         })
 
   }
-  const token = localStorage.getItem('token');
+  const token = readCookie('mentordev_token');
 
-  const handleCreateSchedule = async () => {
+  const handleCreateSchedule = async (e) => {
     //this function handles closing and reopening os schedule
     const headers = {
       'Content-Type': 'application/json',
@@ -54,7 +55,6 @@ function AddSchedule(props) {
         data: body,
         headers
       }).then((res)=>{
-        console.log(res.data)
         props.close()
       }).catch(()=>{
         alert('Error occured')
@@ -125,6 +125,7 @@ function AddSchedule(props) {
           placeholder={5}
           value={schedule.slots}
           change={onChange}
+          max={schedule.poolSize}
         />
 
         <InputField
@@ -136,6 +137,7 @@ function AddSchedule(props) {
           value={schedule.poolSize}
           change={onChange}
           required={true}
+          min={schedule.slots}
         />
         <div className="new-dash-single-schedule-list-btns"
           style={{width: '100%'}}

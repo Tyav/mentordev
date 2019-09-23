@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import UserDashHeading from '../../components/UserDashHeading';
 import UserLatestConnect from '../../components/UserLatestConnects';
+import { readCookie } from '../../helper/cookie'
 
 function Search() {
   const [searchResults, setSearchResults] = useState([{}]);
@@ -15,7 +16,7 @@ function Search() {
       url: `http://localhost:6060/api/v1/user/search?search=${queryParams}`,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${readCookie('mentordev_token')}`,
       },
     }).then(response => {
       setSearchResults([...response.data.payload]);
@@ -40,6 +41,9 @@ function Search() {
               email={result.email}
               tags={result.skills}
               userlocation={result.location}
+              isMentor={result.isMentor}
+              id={result._id}
+              search={true}
             />
           );
         })}

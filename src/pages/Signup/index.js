@@ -183,16 +183,11 @@ function Signup() {
           />
           <Button className="btn-success-solid register" text="Register" />
 
-              <a href="https://github.com/login/oauth/authorize?client_id=59a761c57c054d36a80d&scope=user"><p>
-                Github
-              </p>
-              </a>
-          
+        </form>
           <p>
             Already have an account? <Link to="/login">Login</Link>
           </p>
           <SocialLogin heading="Or register with"></SocialLogin>
-        </form>
       </div>
     </>
   );
