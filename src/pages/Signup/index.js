@@ -132,7 +132,7 @@ function Signup() {
     <>
       <Navbar />
       <div id="loginForm">
-        <FormHeader title="Register" />
+        <FormHeader title="Sign Up to Mentor Dev" />
         {signupResponse.show ? (
           <FormAlert type={signupResponse.type}>
             {signupResponse.message}
@@ -182,12 +182,11 @@ function Signup() {
             change={handleCheck}
           />
           <Button className="btn-success-solid register" text="Register" />
-
         </form>
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
-          <SocialLogin heading="Or register with"></SocialLogin>
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+        <SocialLogin heading="Or register with"></SocialLogin>
       </div>
     </>
   );
