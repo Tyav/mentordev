@@ -13,7 +13,7 @@ function Navbar(props) {
       </div>
       <div className="navLogo">
         <a className="navLogo" href="/">
-          Mentor />ev
+          Mentor <span className="logoDev">/>ev</span>
         </a>
       </div>
       <div className="navLinks">
