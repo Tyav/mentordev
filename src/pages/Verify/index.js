@@ -7,7 +7,7 @@ import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 
 import getParams from '../../helper/getParams';
-// import { readCookie } from '../../helper/cookie'
+import { readCookie, createCookie } from '../../helper/cookie'
 
 function Verify() {
   const token = getParams('token');
@@ -50,7 +50,12 @@ function Verify() {
             setLoading(false);
           }, 9000);
           return;
-        }
+        } 
+      // set mentor type
+      if (response.data.payload.isMentor) createCookie('validateType', response.data.payload.isMentor);
+      // set cookie for user login
+      createCookie('mentordev_token', response.data.token);
+        
         setAlert({
           message: 'Redirecting...',
           show: true,
@@ -112,6 +117,7 @@ function Verify() {
   //     return <Redirect to="/register" />;
   //   }
   if (redirectDashboard) {
+    
     return <Redirect to="/dashboard/profile" />;
   }
 
