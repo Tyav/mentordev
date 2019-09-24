@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -24,7 +25,8 @@ import { readCookie, eraseCookie, createCookie } from '../../helper/cookie';
 // import Button from '../../components/Button';
 import InputField from '../../components/InputField';
 import Card from '../../components/Card';
-import axios from 'axios';
+import getParams from '../../helper/getParams';
+
 
 function Dashboard() {
   const [opener, setOpen] = useState(true);
@@ -35,7 +37,6 @@ function Dashboard() {
   });
   const token = readCookie('mentordev_token');
   const sS = readCookie('s_s');
-  const socialSignUp = readCookie('social_signup');
   const isMentor = readCookie('validateType');
 
   const sideNavHandler = e => {
