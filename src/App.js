@@ -12,6 +12,7 @@ import Verify from './pages/Verify';
 import MainAbout from './pages/MainAbout';
 import Dash from './pages/Dash';
 import Admin from './pages/Admin/Dashboard';
+import MentorApplication from './pages/MentorApplication';
 import { UserObject } from './Context';
 
 import './App.css';
@@ -24,6 +25,7 @@ function App() {
       <Router>
         <Route path="/" exact component={MainAbout} />
         <Route path="/register" component={Signup} />
+        <Route path="/mentorapplication" component={MentorApplication} />
         <Route path="/about" component={MainAbout} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/admin/login" component={AdminLogin} />
