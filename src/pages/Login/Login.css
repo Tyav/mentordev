@@ -2,8 +2,8 @@ body {
   background: #e8edf1; /* Tega change bg color */
 }
 #loginForm {
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-  width: 35%;
+  box-shadow: 0 10px 21px #e7eeef;
+  width: 45%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,9 @@ form button {
   font-size: 12px;
   color: rgb(85, 85, 85);
   margin: 20px 0 0 -10px;
+  border-top: 1px solid #edf2f6;
+  padding-top: 20px;
+  width: 100%;
 }
 #loginForm p a {
   color: #3d3de0;
