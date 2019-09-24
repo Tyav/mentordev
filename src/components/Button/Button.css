@@ -1,10 +1,11 @@
 button {
-  padding: 10px 40px;
+  padding: 10px 30px;
   border: none;
   border-radius: 4px;
   font-size: 0.8rem;
   outline: none;
   cursor: pointer;
+  border-radius: 50px;
 }
 
 .btn-success-solid {

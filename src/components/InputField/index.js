@@ -3,10 +3,12 @@ import React from 'react';
 import './InputField.css';
 
 function InputField(props) {
-
   return (
     <div id="inputField" className={props.style}>
-      <label htmlFor={props.id}>{props.label}</label>
+      <label htmlFor={props.id}>
+        <i className={`mdi mdi-${props.icon}`}></i>
+        {props.label}
+      </label>
       <input
         id={props.id}
         type={props.type}
@@ -16,7 +18,7 @@ function InputField(props) {
         onChange={props.change}
         onBlur={props.onBlur}
         disabled={props.disabled}
-        style={props.disabled ? {} : { borderBottom: '1px solid #a7a7a7' }}
+        style={props.disabled ? {} : {}}
         onFocus={props.onFocus}
         autoComplete={props.label}
         min={props.min}

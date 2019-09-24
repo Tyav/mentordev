@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 8px 8px -8px rgba(69, 90, 100, 0.08);
+  border-bottom: 1px solid #f2f2f2;
 }
 #navbar img {
   width: 40px;
@@ -22,8 +23,7 @@
 #navbar a.navLogo {
   font-family: 'Poppins', sans-serif;
   text-transform: none;
-  font-size: 1.9rem;
-  font-weight: bold;
+  font-size: 1.2rem;
 }
 .navTog {
   flex: 0 0 20%;

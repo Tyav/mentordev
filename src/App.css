@@ -1,6 +1,8 @@
+html,
 body {
   /* background: #edf2f6; */
-  background: #fff;
+  height: 100%;
+  background: #f5f6f7;
 }
 
 .verify-page {
@@ -366,6 +368,12 @@ i.lg-green-ic {
 p.contact-deleted {
   font-size: 0.8rem;
   color: #45cc89;
+}
+.logoDev {
+  background: #45cc89;
+  padding: 5px;
+  color: #fff;
+  border-radius: 4px;
 }
 .unhide {
   display: block !important;
@@ -916,7 +924,7 @@ Desktop 1
     align-items: center;
     flex: 0 0 49%;
     border: 1px solid #edf2f6;
-    padding: 1px 5px 1px 10px;
+    padding: 1px 40px;
     margin-bottom: 10px;
   }
   .social-login button:hover {

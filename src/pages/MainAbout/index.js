@@ -2,21 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '../../components/Button';
+import Navbar from '../../components/Navbar';
+import AboutHeader from '../../components/AboutHeader';
 
 function MainAbout() {
   return (
     <>
-      <nav className="main-about-nav">
+      <Navbar></Navbar>
+      <AboutHeader imagePath="/assets/img/mentors.jpg" />
+      {/* <nav className="main-about-nav">
         <div className="main-about-nav-logo">
           <img src="/assets/img/logo.png" alt="logo" />
           <p>Mentor />ev</p>
-        </div>
-        {/* <div className="main-about-nav-buttons">
+        </div> */}
+      {/* <div className="main-about-nav-buttons">
         <Button className="btn-success-outline" text="Login" />
         <Button className="btn-success-solid" text="Register" />
       </div> */}
-      </nav>
-      <div className="main-about-card">
+      {/* </nav> */}
+      {/* <div className="main-about-card">
         <div className="main-about-side-content">
           <h1>
             Mentor a <br />
@@ -38,7 +42,7 @@ function MainAbout() {
         <div className="main-about-card-img">
           <img src="/assets/img/frustrated.png" alt="mentee" />
         </div>
-      </div>
+      </div> */}
       '
       <div className="main-about-card">
         <h1 className="about-main-h1">How it Works</h1>

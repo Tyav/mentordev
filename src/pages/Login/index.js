@@ -56,7 +56,8 @@ function Login() {
         return;
       }
       // set mentor type
-      if (response.data.payload.isMentor) createCookie('validateType', response.data.payload.isMentor);
+      if (response.data.payload.isMentor)
+        createCookie('validateType', response.data.payload.isMentor);
       // set cookie for user login
       createCookie('mentordev_token', response.data.token);
       setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
@@ -89,40 +90,43 @@ function Login() {
 
   return (
     <>
-      <Navbar />
-      <div id="loginForm">
-        <FormHeader title="Login" />
-        {loginResponse.show ? (
-          <FormAlert type={loginResponse.type}>
-            {loginResponse.message}
-          </FormAlert>
-        ) : (
-          ''
-        )}
-        <form onSubmit={loginFormHandler}>
-          <InputField
-            label="Email"
-            type="email"
-            id="email"
-            placeholder="Eg. xyz@abc.com"
-            value={values.email}
-            change={handleChange}
-          />
-          <InputField
-            label="Password"
-            type="password"
-            id="password"
-            placeholder="Eg. pasword"
-            value={values.password}
-            change={handleChange}
-          />
-          <Button className="btn-success-solid" text="Login" />
-        </form>
+      <div className="gray-layout">
+        <Navbar />
+        <div id="loginForm">
+          <FormHeader title="Log In to Mentor Dev" />
+          {loginResponse.show ? (
+            <FormAlert type={loginResponse.type}>
+              {loginResponse.message}
+            </FormAlert>
+          ) : (
+            ''
+          )}
+          <form onSubmit={loginFormHandler}>
+            <InputField
+              label="Email Address"
+              type="email"
+              id="email"
+              placeholder="Eg. xyz@abc.com"
+              value={values.email}
+              change={handleChange}
+            />
+            <InputField
+              label="Password"
+              type="password"
+              id="password"
+              placeholder="Eg. pasword"
+              value={values.password}
+              change={handleChange}
+            />
+            <Button className="btn-success-solid" text="Login" />
+          </form>
           <SocialLogin heading="Or Login with"></SocialLogin>
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> or { }
+            Don't have an account? <Link to="/register">Singup</Link> |{' '}
+            <Link to="/mentorapplication">Become a mentor</Link> or {}
             <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
+        </div>
       </div>
     </>
   );
