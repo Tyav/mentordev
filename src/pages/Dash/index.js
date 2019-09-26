@@ -29,12 +29,13 @@ import getParams from '../../helper/getParams';
 
 
 function Dashboard() {
+  // 
+  const mentor = getParams('auth')
+  if (mentor === 'true') createCookie('validateType', true)
+  if (getParams('token'))createCookie('mentordev_token', getParams('token'))
   const [opener, setOpen] = useState(true);
   const [sideNavState, setSideNavState] = useState(false);
-  const [signupUpdate, setSignupUpdate] = useState({
-    skills: [],
-    isMentor: false,
-  });
+  const [linkedin, setLinkedin] = useState('');
   const token = readCookie('mentordev_token');
   const sS = readCookie('s_s');
   const isMentor = readCookie('validateType');
@@ -65,7 +66,7 @@ function Dashboard() {
   }
   function handleClose1(e) {
     e.preventDefault();
-    //update user info with signupUpdate
+    //update user info with linkedin
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -75,25 +76,24 @@ function Dashboard() {
         method: 'PUT',
         url: `${process.env.REACT_APP_BACKEND_URL}/user/signupUpdate`,
         headers,
-        data: { ...signupUpdate }
+        data: { ...linkedin }
       }).then(({data})=>{
         alert(JSON.stringify(data))
-        eraseCookie('s_s');
         if (data.payload.isMentor) createCookie('validateType', data.payload.isMentor)
         setOpen(false);
       })
   }
   function updateHandler(e) {
     // e.preventDefault();
-    setSignupUpdate({
-      ...signupUpdate,
+    setLinkedin({
+      ...linkedin,
       [e.target.name]: e.target.value.split(', '),
     });
   }
   function updateHandlerT(e, value) {
     //e.preventDefault();
-    setSignupUpdate({
-      ...signupUpdate,
+    setLinkedin({
+      ...linkedin,
       [e.target.name]: value,
     });
   }
@@ -168,39 +168,16 @@ function Dashboard() {
               </center>
 
               <InputField
-                label="Skills"
+                label="Linkedin"
                 type="text"
-                id="skills"
-                placeholder="Eg. Javascript, React, PHP..."
-                value={signupUpdate.skills.join(', ')}
+                id="linkedin"
+                placeholder="Eg. https://www.linkedin.com/in/johndoe/"
+                value={linkedin}
                 change={updateHandler}
-                name="skills"
+                name="linkedin"
                 disabled={false}
                 required={true}
               />
-              <div id="inputField" className={'mentor'}>
-                <p>{'Are you a mentor?'}</p>
-                <span>
-                  <span>Yes</span>
-                  <input
-                    className="mentor-slt-radio"
-                    type={'radio'}
-                    name={'isMentor'}
-                    onChange={e => updateHandlerT(e, true)}
-                    required
-                    checked={signupUpdate.isMentor}
-                  />
-                  <span>No</span>
-                  <input
-                    className="mentor-slt-radio"
-                    type={'radio'}
-                    name={'isMentor'}
-                    onChange={e => updateHandlerT(e, false)}
-                    required
-                    checked={!signupUpdate.isMentor}
-                  />
-                </span>
-              </div>
             </div>
           </DialogContent>
           <center>
