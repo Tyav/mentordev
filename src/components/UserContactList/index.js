@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import UserSingleContact from '../UserSingleContact';
-import { readCookie } from '../../helper/cookie'
+import { readCookie } from '../../helper/cookie';
 
 /**
  * This component is for showing a user's contact list
@@ -17,14 +17,14 @@ function UserContactList() {
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
 
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/contact`,
-          config
+          config,
         );
         setContacts([...response.data.payload]);
       } catch (error) {
@@ -45,10 +45,25 @@ function UserContactList() {
             image={user.avatar}
             name={user.name}
             email={user.email}
-            schedule={<span style={{color:'black'}}><center>{schedule.day}</center>
-                    {`From: `}<input type="time" value={schedule.time.from} disabled style={timeStyle}/>{`To: `}
-                    <input type="time" value={schedule.time.to} disabled style={timeStyle}/>
-                  </span>}
+            schedule={
+              <span style={{ color: 'black' }}>
+                <center>{schedule.day}</center>
+                {`From: `}
+                <input
+                  type="time"
+                  value={schedule.time.from}
+                  disabled
+                  style={timeStyle}
+                />
+                {`To: `}
+                <input
+                  type="time"
+                  value={schedule.time.to}
+                  disabled
+                  style={timeStyle}
+                />
+              </span>
+            }
           />
         );
       })}
@@ -63,5 +78,5 @@ let timeStyle = {
   border: 'none',
   fontFamily: 'fantasy',
   fontSize: '11px',
-  color:'black'
-}
+  color: 'black',
+};
