@@ -2,6 +2,8 @@ import React from 'react';
 import UserLatestConnect from '../UserLatestConnects';
 import UserDashHeading from '../UserDashHeading';
 
+import { readCookie } from '../../helper/cookie';
+
 /**
  * This component is for showing the list of recent connections
  * image => the user's profile image
@@ -12,9 +14,21 @@ import UserDashHeading from '../UserDashHeading';
  * The list below should be converted to a single loop on db data
  */
 function UserConnects() {
+  const isMentor = readCookie('validateType');
   return (
     <>
-      <UserDashHeading text="Your most recent Mentors" icon="checkbox-marked-circle-outline" />
+      {!isMentor ? (
+        <UserDashHeading
+          text="Your most recent Mentors"
+          icon="checkbox-marked-circle-outline"
+        />
+      ) : (
+        <UserDashHeading
+          text="Your most recent Mentees"
+          icon="checkbox-marked-circle-outline"
+        />
+      )}
+
       <div className="new-recent-mentor-list">
         <UserLatestConnect
           image="/assets/img/frustrated.png"
