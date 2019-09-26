@@ -23,6 +23,7 @@ function InputField(props) {
         autoComplete={props.label}
         min={props.min}
         required={props.required}
+        onClick={props.click}
       />
     </div>
   );
