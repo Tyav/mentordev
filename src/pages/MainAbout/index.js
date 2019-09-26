@@ -76,7 +76,7 @@ function MainAbout() {
           </div>
         </div>
       </div>
-      <div className="main-about-card">
+      <div className="main-about-card white">
         <div className="main-about-side-content">
           <h1>
             Find a <br />
@@ -93,7 +93,7 @@ function MainAbout() {
         </div>
         <div className="main-about-card-img">
           <img
-            src="/assets/img/celebrate.png"
+            src="/assets/img/menteeimg.jpg"
             alt="celebrate with your mentor"
           />
         </div>

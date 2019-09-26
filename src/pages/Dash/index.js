@@ -27,12 +27,11 @@ import InputField from '../../components/InputField';
 import Card from '../../components/Card';
 import getParams from '../../helper/getParams';
 
-
 function Dashboard() {
-  // 
-  const mentor = getParams('auth')
-  if (mentor === 'true') createCookie('validateType', true)
-  if (getParams('token'))createCookie('mentordev_token', getParams('token'))
+  //
+  const mentor = getParams('auth');
+  if (mentor === 'true') createCookie('validateType', true);
+  if (getParams('token')) createCookie('mentordev_token', getParams('token'));
   const [opener, setOpen] = useState(true);
   const [sideNavState, setSideNavState] = useState(false);
   const [linkedin, setLinkedin] = useState('');
@@ -72,16 +71,17 @@ function Dashboard() {
       Authorization: `Bearer ${token}`,
     };
 
-      axios({
-        method: 'PUT',
-        url: `${process.env.REACT_APP_BACKEND_URL}/user/signupUpdate`,
-        headers,
-        data: { ...linkedin }
-      }).then(({data})=>{
-        alert(JSON.stringify(data))
-        if (data.payload.isMentor) createCookie('validateType', data.payload.isMentor)
-        setOpen(false);
-      })
+    axios({
+      method: 'PUT',
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/signupUpdate`,
+      headers,
+      data: { ...linkedin },
+    }).then(({ data }) => {
+      alert(JSON.stringify(data));
+      if (data.payload.isMentor)
+        createCookie('validateType', data.payload.isMentor);
+      setOpen(false);
+    });
   }
   function updateHandler(e) {
     // e.preventDefault();
@@ -148,7 +148,12 @@ function Dashboard() {
         <div className="new-dash-right">
           {!isMentor ? '' : <UserScheduleList />}
           <div className="new-dash-contact-list">
-            <UserDashHeading text="Your Contact List" icon="contacts" />
+            {!isMentor ? (
+              <UserDashHeading text="Your Mentors List" icon="contacts" />
+            ) : (
+              <UserDashHeading text="Your Mentees List" icon="contacts" />
+            )}
+
             <UserContactList />
           </div>
         </div>

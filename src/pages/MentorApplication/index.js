@@ -49,20 +49,22 @@ function MentorApplication() {
         'Content-Type': 'application/json',
       },
     };
-    const { fullname: name, email, password, isMentor } = {
+    const { fullname: name, email, stacks, linkedin, password, isMentor } = {
       ...values,
       isMentor: true,
     };
     const body = JSON.stringify({
       name,
       email,
+      skills: stacks.split(','),
+      connection: { linkedin },
       password,
       isMentor,
     });
 
     try {
       const response = await axios.post(
-        'http://localhost:6060/api/v1/user',
+        `${process.env.REACT_APP_BACKEND_URL}/user`,
         body,
         config,
       );
@@ -133,7 +135,7 @@ function MentorApplication() {
           <h1>Mentor a Developer</h1>
           <p>
             Mentor the next generation of World Class Developers. Register on
-            the platform and create scheduled time for when they would be
+            the platform and create scheduled time for when you would be
             available.
           </p>
         </div>
@@ -205,7 +207,10 @@ function MentorApplication() {
             <p>
               Already have an account? <Link to="/login">Login</Link>
             </p>
-            <SocialLogin heading="Or register with" gitUrl={`client_id=59a761c57c054d36a80d&scope=user`}></SocialLogin>
+            <SocialLogin
+              heading="Or register with"
+              gitUrl={`client_id=59a761c57c054d36a80d&scope=user`}
+            ></SocialLogin>
           </div>
         </div>
       </div>

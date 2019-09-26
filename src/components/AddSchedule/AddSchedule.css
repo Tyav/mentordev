@@ -1,0 +1,29 @@
+.scheduleType {
+  display: flex;
+  width: 100%;
+  padding: 20px 0;
+  font-size: 12px;
+  /* border-top: 1px solid rgb(230, 236, 245); */
+  /* margin-top: 10px; */
+  color: #47505e;
+}
+p.isInstantWarning {
+  font-size: 13px;
+  background: #fff3cd;
+  padding: 10px;
+  border-radius: 4px;
+  color: #856404;
+  margin: 10px 0;
+}
+.scheduleType p {
+  margin-right: 10px;
+  font-weight: 500;
+}
+.radioInput {
+  margin-right: 10px;
+  font-size: 12px;
+}
+#scheduleSlots,
+#schedulePoolSize {
+  display: none;
+}

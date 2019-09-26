@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import Button from '../Button';
 import InputField from '../InputField';
 import Card from '../Card';
+import FormAlert from '../Alerts/FormAlert';
 import axios from 'axios';
 import { readCookie } from '../../helper/cookie';
+
+import './AddSchedule.css';
 
 const style = {
   width: '100%',
@@ -34,7 +37,32 @@ function AddSchedule(props) {
     isClosed: false,
   });
 
+  const [createScheduleResponse, setCreateScheduleResponse] = useState({
+    message: '',
+    show: false,
+    type: '',
+  });
+
+  function addTime(str) {
+    if (!str) return str;
+    let time = str.split(':');
+    time[0] = `${parseInt(time[0]) + 1}`;
+    if (time[0].length === 1) time[0] = '0' + time[0];
+    return time.join(':');
+  }
+
   function onChange(e) {
+    const slotInput = document.getElementById('scheduleSlots');
+    const poolInput = document.getElementById('schedulePoolSize');
+    const isInstant = document.getElementById('isInstant');
+
+    if (isInstant.checked) {
+      slotInput.style.display = 'block';
+      poolInput.style.display = 'none';
+    } else {
+      poolInput.style.display = 'block';
+      slotInput.style.display = 'block';
+    }
     setSchedule({
       ...schedule,
       [e.target.name]: e.target.value,
@@ -43,14 +71,18 @@ function AddSchedule(props) {
   const token = readCookie('mentordev_token');
 
   const handleCreateSchedule = async e => {
+    e.preventDefault();
     //this function handles closing and reopening os schedule
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
 
+    const { slots } = schedule;
+
     const body = {
       ...schedule,
+      slots: parseInt(slots),
       time: { to: schedule.to, from: schedule.from },
     };
     delete body.from;
@@ -64,7 +96,23 @@ function AddSchedule(props) {
         headers,
       })
         .then(res => {
-          props.close();
+          if (res.data.statusCode === 200) {
+            props.close();
+          } else {
+            console.log(res.data);
+            setCreateScheduleResponse({
+              message: res.data.message,
+              show: true,
+              type: 'form-alert-danger',
+            });
+            setTimeout(() => {
+              setCreateScheduleResponse({
+                message: '',
+                show: false,
+                type: '',
+              });
+            }, 4000);
+          }
         })
         .catch(() => {
           alert('Error occured');
@@ -93,10 +141,14 @@ function AddSchedule(props) {
         <i className="mdi mdi-calendar-edit" />{' '}
         {schedule.day || day[new Date(Date.now()).getDay()]}
       </h2>
-      <form
-        className="new-dash-single-schedule-list"
-        onSubmit={handleCreateSchedule}
-      >
+      <form className="new-dash-single-schedule-list">
+        {createScheduleResponse.show ? (
+          <FormAlert type={createScheduleResponse.type}>
+            {createScheduleResponse.message}
+          </FormAlert>
+        ) : (
+          ''
+        )}
         <InputField
           id="day"
           label="Day"
@@ -123,49 +175,79 @@ function AddSchedule(props) {
           type="time"
           name="to"
           placeholder="To"
-          value={schedule.to}
+          value={schedule.to || addTime(schedule.from)}
           change={onChange}
           min={schedule.from}
           required={true}
           // disabled={edit}
         />
-        <InputField
-          id="slots"
-          label="Slots"
-          type="Number"
-          name="slots"
-          placeholder={5}
-          value={schedule.slots}
-          change={onChange}
-          max={schedule.poolSize}
-        />
-
-        <InputField
-          id="poolSize"
-          label="Pool Size"
-          type="Number"
-          name="poolSize"
-          placeholder={15}
-          value={schedule.poolSize}
-          change={onChange}
-          required={true}
-          min={schedule.slots}
-        />
+        <p className="isInstantWarning">
+          <i className="mdi mdi-info"></i> Mentee Requests are automatically
+          approved for instant schedule type
+        </p>
+        <div className="scheduleType">
+          <p>Select Approval Type</p>
+          <div className="radioInput">
+            <input
+              type="radio"
+              name="isInstant"
+              id="isInstant"
+              onChange={onChange}
+              value={true}
+            />{' '}
+            Instant Approval
+          </div>
+          <div className="radioInput">
+            <input
+              type="radio"
+              name="isInstant"
+              id="onRequest"
+              onChange={onChange}
+              value={false}
+            />{' '}
+            Require Approval
+          </div>
+        </div>
+        <div id="scheduleSlots">
+          <InputField
+            id="slots"
+            label="Slots"
+            type="Number"
+            name="slots"
+            placeholder={5}
+            value={schedule.slots}
+            change={onChange}
+            max={schedule.poolSize}
+          />
+        </div>
+        <div id="schedulePoolSize">
+          <InputField
+            id="poolSize"
+            label="Pool Size"
+            type="Number"
+            name="poolSize"
+            placeholder={15}
+            value={schedule.poolSize}
+            change={onChange}
+            required={true}
+            min={schedule.slots}
+          />
+        </div>
         <div
           className="new-dash-single-schedule-list-btns"
           style={{ width: '100%' }}
         >
           <Button
-            className="btn-danger-solid"
-            text="cancel"
-            style={{ float: 'right' }}
-            onButtonClick={props.close}
-          />
-          <Button
             className="btn-success-solid"
-            style={{ marginRight: '10px', float: 'right' }}
             text="Create"
             type="submit"
+            onButtonClick={handleCreateSchedule}
+            style={{ marginRight: '10px' }}
+          />
+          <Button
+            className="btn-danger-solid"
+            text="cancel"
+            onButtonClick={props.close}
           />
         </div>
       </form>
