@@ -122,8 +122,8 @@ function Login() {
           </form>
           <SocialLogin heading="Or Login with"  gitUrl={`client_id=3f6909c4ef2e4f58f4f8&scope=user`}></SocialLogin>
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> | {  }
-            <Link to="/mentorapplication">Become a mentor</Link> or {}
+            Don't have an account? <Link to="/register">Singup</Link> |{' '}
+            <Link to="/mentorapplication">Become a mentor</Link> or{' '}
             <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
         </div>

@@ -133,7 +133,7 @@ function MentorApplication() {
           <h1>Mentor a Developer</h1>
           <p>
             Mentor the next generation of World Class Developers. Register on
-            the platform and create scheduled time for when they would be
+            the platform and create scheduled time for when you would be
             available.
           </p>
         </div>
