@@ -8,7 +8,12 @@ function UserSearch({ history }) {
     history.push(`/dashboard/search?search=${query}`);
   };
   return (
-    <form method="get" action="/dashboard/search" onSubmit={searchFormHandler}>
+    <form
+      method="get"
+      action="/dashboard/search"
+      id="home-search-nav"
+      onSubmit={searchFormHandler}
+    >
       <input
         type="text"
         name="search"

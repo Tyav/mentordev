@@ -46,22 +46,24 @@ function UserContactList() {
             name={user.name}
             email={user.email}
             schedule={
-              <span style={{ color: 'black' }}>
-                <center>{schedule.day}</center>
-                {`From: `}
-                <input
+              <span style={{ color: '#47505e' }}>
+                <br />
+                {`Day : ${schedule.day}`}
+                <br />
+                {`From: ${schedule.time.from}`}
+                {/* <input
                   type="time"
                   value={schedule.time.from}
                   disabled
                   style={timeStyle}
-                />
-                {`To: `}
-                <input
+                /> */}
+                {` To: ${schedule.time.to}`}
+                {/* <input
                   type="time"
                   value={schedule.time.to}
                   disabled
                   style={timeStyle}
-                />
+                /> */}
               </span>
             }
           />
