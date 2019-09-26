@@ -7,12 +7,15 @@ import InputField from '../../components/InputField';
 import Button from '../../components/Button';
 import UserDashHeading from '../../components/UserDashHeading';
 import { UserObject } from '../../Context';
-import { formatBeforeUpdate, formatLocalUser } from '../../helper/formatUpdateData';
+import {
+  formatBeforeUpdate,
+  formatLocalUser,
+} from '../../helper/formatUpdateData';
 import ChangePassword from '../../components/ChangePassword';
 import { readCookie } from '../../helper/cookie';
 
 function EditProfile() {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const [edit, setEdit] = useState(true);
   const token = readCookie('mentordev_token');
   const { user, setUser } = useContext(UserObject);
@@ -20,9 +23,9 @@ function EditProfile() {
     ...user,
     errors: {
       fullname: '',
-      email: ''
+      email: '',
     },
-    success: ''
+    success: '',
   });
 
   useEffect(() => {
@@ -38,30 +41,33 @@ function EditProfile() {
 
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
+    Authorization: `Bearer ${token}`,
   };
 
   const handleSubmit = event => {
-    //event.preventDefault();
+    event.preventDefault();
     const data = formatBeforeUpdate(values);
     axios({
       method: 'PUT',
       url: `${process.env.REACT_APP_BACKEND_URL}/user/me`,
       headers,
-      data: { ...data }
+      data: { ...data },
     })
       .then(response => {
         if (response.data.statusCode === 200) {
-          const responseUser = formatLocalUser({ ...user, ...response.data.payload });
+          const responseUser = formatLocalUser({
+            ...user,
+            ...response.data.payload,
+          });
           setUser(prev => ({ ...prev, ...responseUser }));
           setValues({
             ...responseUser,
-            success: 'Profile Updated Successfully'
+            success: 'Profile Updated Successfully',
           });
           setTimeout(() => {
             setValues({
               ...responseUser,
-              success: ''
+              success: '',
             });
           }, 3000);
           return <Redirect to="/dashboard/profile" />;
@@ -77,19 +83,19 @@ function EditProfile() {
     if (!value)
       return setValues({
         ...values,
-        errors: { ...values.errors, [name]: `${name} is required` }
+        errors: { ...values.errors, [name]: `${name} is required` },
       });
 
     const emailRegexp = /\S+@\S+\.\S+/;
     if (name === 'email' && emailRegexp.test(value) === false)
       return setValues({
         ...values,
-        errors: { ...values.errors, [name]: `${name} is not valid.` }
+        errors: { ...values.errors, [name]: `${name} is not valid.` },
       });
     return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
 
-  function passwordToggle () {
+  function passwordToggle() {
     setShowPassword(!showPassword);
   }
 
@@ -99,18 +105,29 @@ function EditProfile() {
     borderRadius: '4px',
     border: '1px solid #e6ecf5',
     padding: '20px',
-    marginBottom: '20px'
+    marginBottom: '20px',
   };
   return (
     <>
       <UserDashHeading text="Edit Profile" icon="account-edit" />
-      <form style={{ width: '100%' }} onSubmit={handleSubmit}>
+      <form style={{ width: '100%' }}>
         <Card styles={style}>
           <div className="new-edit-form-toggle">
-            <input type="checkbox" id="form-toggle" className="offscreen" onClick={handleEdit} />
+            <input
+              type="checkbox"
+              id="form-toggle"
+              className="offscreen"
+              onClick={handleEdit}
+            />
             Enable Editing <label htmlFor="form-toggle" className="switch" />
           </div>
-          <p style={{ color: '#45cc89', textAlign: 'center', marginBottom: '5px' }}>
+          <p
+            style={{
+              color: '#45cc89',
+              textAlign: 'center',
+              marginBottom: '5px',
+            }}
+          >
             {values.success}
           </p>
 
@@ -229,11 +246,24 @@ function EditProfile() {
             style={edit ? {} : { borderBottom: '1px solid rgb(128, 120, 120)' }}
           />
           <br />
-          {!edit && <Button className="btn-success-solid center-element" text="Save Changes" />}
+          {!edit && (
+            <Button
+              className="btn-success-solid center-element"
+              text="Save Changes"
+              onButtonClick={handleSubmit}
+            />
+          )}
         </Card>
       </form>
-      {showPassword ? <ChangePassword hide={passwordToggle}/>:
-      <Button className="center-element btn-success-solid" text="Change Password" onButtonClick={passwordToggle}/>}
+      {showPassword ? (
+        <ChangePassword hide={passwordToggle} />
+      ) : (
+        <Button
+          className="center-element btn-success-solid"
+          text="Change Password"
+          onButtonClick={passwordToggle}
+        />
+      )}
     </>
   );
 }
