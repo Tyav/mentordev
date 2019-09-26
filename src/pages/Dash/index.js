@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
@@ -28,7 +28,6 @@ import Card from '../../components/Card';
 import getParams from '../../helper/getParams';
 
 function Dashboard() {
-  //
   const mentor = getParams('auth');
   if (mentor === 'true') createCookie('validateType', true);
   if (getParams('token')) createCookie('mentordev_token', getParams('token'));
@@ -100,6 +99,7 @@ function Dashboard() {
   const handleLogOut = event => {
     event.preventDefault();
     eraseCookie('mentordev_token');
+    eraseCookie('validateType');
   };
 
   return (
