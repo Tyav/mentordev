@@ -186,7 +186,7 @@ function Signup() {
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
-        <SocialLogin heading="Or register with"></SocialLogin>
+        <SocialLogin heading="Or register with"  gitUrl={`client_id=3f6909c4ef2e4f58f4f8&scope=user`}></SocialLogin>
       </div>
     </>
   );
