@@ -9,7 +9,7 @@ function SocialLogin(props) {
           <button
             onClick={() =>
               (window.location.href =
-                'https://github.com/login/oauth/authorize?client_id=59a761c57c054d36a80d&scope=user')
+                `https://github.com/login/oauth/authorize?${props.gitUrl}`)
             }
           >
             <i className="mdi mdi-github-circle" /> GitHub
