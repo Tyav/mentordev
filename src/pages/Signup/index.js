@@ -21,14 +21,10 @@ function Signup() {
   });
 
   const [values, setValues] = useState({});
-  const [checked, setChecked] = useState(false);
   const [getstarted, setGetstarted] = useState(false);
 
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
-  };
-  const handleCheck = e => {
-    setChecked(!checked);
   };
 
   const signUpFormHandler = async e => {
@@ -56,7 +52,7 @@ function Signup() {
     };
     const { fullname: name, email, password, isMentor } = {
       ...values,
-      isMentor: checked,
+      isMentor: false,
     };
     const body = JSON.stringify({
       name,
@@ -176,14 +172,6 @@ function Signup() {
             placeholder=""
             change={handleChange}
             value={values.cpassword || ''}
-          />
-          <Checkbox
-            label="I am a mentor"
-            type="checkbox"
-            id="ismentor"
-            placeholder=""
-            value={checked}
-            change={handleCheck}
           />
           <Button className="btn-success-solid register" text="Register" />
         </form>
