@@ -118,9 +118,6 @@ function Dashboard() {
           <span className="admin-sub-search-nav"/>
         )}
         <UserMenu validateType={isMentor} />
-        <button onClick={handleLogOut} className="generalLogOut2">
-          <i className="mdi mdi-logout-variant"/> Log out
-        </button>
       </nav>
       <main className="new-dash-body">
         <div className="new-dash-left">
@@ -132,7 +129,7 @@ function Dashboard() {
         <div className="new-dash-mentor-list">
           <Route exact path="/dashboard" component={UserConnects} />
           <Route path="/dashboard/profile" component={EditProfile} />
-          <Route path="/dashboard/schedule" component={ScheduleList} />
+          <Route path="/dashboard/time-slot" component={ScheduleList} />
           <Route exact path="/dashboard/search" component={Search} />
           <Route
             path="/dashboard/mentor/requests/:scheduleId"
