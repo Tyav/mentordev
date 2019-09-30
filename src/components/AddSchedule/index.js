@@ -29,7 +29,7 @@ function AddSchedule(props) {
   ];
   // const [edit, setEdit] = useState(true);
   const [schedule, setSchedule] = useState({
-    day: day[new Date(Date.now()).getDay()],
+    day: props.day[new Date(Date.now()).getDay()],
     from: '',
     to: '',
     slots: 1,
@@ -158,7 +158,9 @@ function AddSchedule(props) {
           value={schedule.day}
           change={onChange}
           required={true}
+          list="slot-days"
         />
+
         <InputField
           id="from"
           label="From"
