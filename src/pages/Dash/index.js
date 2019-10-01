@@ -115,11 +115,11 @@ function Dashboard() {
         {!isMentor ? (
           <UserSearch />
         ) : (
-          <span className="admin-sub-search-nav"></span>
+          <span className="admin-sub-search-nav"/>
         )}
         <UserMenu validateType={isMentor} />
         <button onClick={handleLogOut} className="generalLogOut2">
-          <i className="mdi mdi-logout-variant"></i> Log out
+          <i className="mdi mdi-logout-variant"/> Log out
         </button>
       </nav>
       <main className="new-dash-body">

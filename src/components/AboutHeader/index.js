@@ -15,8 +15,6 @@ function AboutHeader(props) {
         className="new-about-image-area"
         style={{
           backgroundImage: `url(${props.imagePath})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
         }}
       >
         <div className="new-header-textarea">
