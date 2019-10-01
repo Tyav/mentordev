@@ -140,6 +140,10 @@ function Signup() {
         ) : (
           ''
         )}
+        <SocialLogin
+          heading="Click th ebutton below to register with Github or fill the form"
+          gitUrl={`client_id=3f6909c4ef2e4f58f4f8&scope=user`}
+        ></SocialLogin>
         <form onSubmit={signUpFormHandler}>
           <InputField
             label="Fullname"
@@ -186,7 +190,6 @@ function Signup() {
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>
-        <SocialLogin heading="Or register with"  gitUrl={`client_id=3f6909c4ef2e4f58f4f8&scope=user`}></SocialLogin>
       </div>
     </>
   );

@@ -149,6 +149,10 @@ function MentorApplication() {
             ) : (
               ''
             )}
+            <SocialLogin
+              heading="Click th ebutton below to register with Github or fill the form"
+              gitUrl={`client_id=59a761c57c054d36a80d&scope=user`}
+            ></SocialLogin>
             <form onSubmit={signUpFormHandler}>
               <InputField
                 label="Fullname"
@@ -207,10 +211,6 @@ function MentorApplication() {
             <p>
               Already have an account? <Link to="/login">Login</Link>
             </p>
-            <SocialLogin
-              heading="Or register with"
-              gitUrl={`client_id=59a761c57c054d36a80d&scope=user`}
-            ></SocialLogin>
           </div>
         </div>
       </div>
