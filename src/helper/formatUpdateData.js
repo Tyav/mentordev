@@ -9,7 +9,7 @@ export function formatBeforeUpdate(values) {
     facebook,
     twitter,
     github,
-    linkedIn
+    linkedin
   } = values;
   skills = skills ? trimSkills(skills) : [];
   const data = {
@@ -19,7 +19,7 @@ export function formatBeforeUpdate(values) {
     location,
     skills,
     bio,
-    connection: { facebook, twitter, github, linkedIn }
+    connection: { facebook, twitter, github, linkedin }
   };
   return data;
 }
@@ -30,7 +30,7 @@ export function formatLocalUser(user) {
   const facebook = !connection ? '' : connection.facebook,
     twitter = !connection ? '' : connection.twitter,
     github = !connection ? '' : connection.github,
-    linkedIn = !connection ? '' : connection.linkedIn;
+    linkedIn = !connection ? '' : connection.linkedin;
 
   skills = skills.length === 0 ? '' : skills.join(', ');
   return {
