@@ -53,19 +53,19 @@ function MentorApplication() {
       ...values,
       isMentor: true,
     };
-    const body = JSON.stringify({
+    const data = {
       name,
       email,
       skills: stacks.split(','),
       connection: { linkedin },
       password,
       isMentor,
-    });
+    };
 
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/user`,
-        body,
+        data,
         config,
       );
 

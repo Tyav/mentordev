@@ -12,11 +12,15 @@ import {
   formatLocalUser,
 } from '../../helper/formatUpdateData';
 import ChangePassword from '../../components/ChangePassword';
-import { readCookie } from '../../helper/cookie';
+import { readCookie, eraseCookie } from '../../helper/cookie';
+import getParams from '../../helper/getParams';
+
+
 
 function EditProfile() {
+  const nue_prof = readCookie('nue_prof')
   const [showPassword, setShowPassword] = useState(false);
-  const [edit, setEdit] = useState(true);
+  const [edit, setEdit] = useState(nue_prof? false:true);
   const token = readCookie('mentordev_token');
   const { user, setUser } = useContext(UserObject);
   const [values, setValues] = useState({
@@ -33,7 +37,7 @@ function EditProfile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  const handleEdit = () => setEdit(() => !edit);
+  const handleEdit = () => {setEdit(() => !edit);}
   const handleChange = event => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
@@ -43,9 +47,10 @@ function EditProfile() {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   };
-
+  
   const handleSubmit = event => {
-    event.preventDefault();
+    eraseCookie('nue_prof')
+    //event.preventDefault();
     const data = formatBeforeUpdate(values);
     axios({
       method: 'PUT',
@@ -117,6 +122,7 @@ function EditProfile() {
               type="checkbox"
               id="form-toggle"
               className="offscreen"
+              checked={!edit}
               onClick={handleEdit}
             />
             Enable Editing <label htmlFor="form-toggle" className="switch" />

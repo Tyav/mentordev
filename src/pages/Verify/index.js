@@ -11,6 +11,7 @@ import { readCookie, createCookie } from '../../helper/cookie'
 
 function Verify() {
   const token = getParams('token');
+  const nueProf = getParams('nue_prof')
   const [alert, setAlert] = useState({
     message: '',
     show: false,
@@ -55,7 +56,7 @@ function Verify() {
       if (response.data.payload.isMentor) createCookie('validateType', response.data.payload.isMentor);
       // set cookie for user login
       createCookie('mentordev_token', response.data.token);
-        
+      createCookie('nue_prof', nueProf, 0.001);
         setAlert({
           message: 'Redirecting...',
           show: true,
