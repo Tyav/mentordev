@@ -5,7 +5,7 @@ import './ScheduleList.css';
 
 export default function ScheduleList(props) {
   const [data, setData] = useState({
-    message: 'Hi, add me to your schedule',
+    message: 'Hi, add me to your time slot',
     schedule: props.id,
   });
   function handleRequest(e) {
@@ -24,7 +24,6 @@ export default function ScheduleList(props) {
       })
       .catch(err => {});
   }
-
   return (
     <div className="scheduleList">
       <form>

@@ -56,7 +56,7 @@ function UserSchedule() {
   return (
     <div className="new-dash-user-schedule">
       <div className="new-dash-user-profile">
-        <h2>Current Schedules / Requests</h2>
+        <h2>Current Time Slot / Requests</h2>
         {schedules.loading ? <p>loading...</p> : viewSchedule(schedules,{handleClose1,handleClose,handleClickOpen, open})}
       </div>
     </div>
@@ -82,13 +82,13 @@ function viewSchedule({ data }, {handleClose1,handleClose,handleClickOpen, open}
           className="new-dash-user-mentor-sch"
           style={{ marginTop: '3rem', marginBottom: '1rem' }}
         >
-          <span>You currently Dont have a Schedule </span>
+          <span>You currently Dont have a Time Slot </span>
         </p>
         <a className="new-dash-schedule-link" href="#" onClick={handleClickOpen}>
-          <i className="mdi mdi-plus lg-green-ic" /> Add Schedule
+          <i className="mdi mdi-plus lg-green-ic" /> Add Time Slot
         </a>
         <Dialog open={open} onClose={handleClose1} >
-          <center><DialogTitle id="">Add Schedule</DialogTitle></center>
+          <center><DialogTitle id="">Add Time Slot</DialogTitle></center>
           <AddSchedule close={handleClose}/>
         </Dialog>    
 

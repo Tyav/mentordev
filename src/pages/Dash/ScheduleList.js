@@ -67,7 +67,7 @@ function ScheduleList() {
         return <ScheduleCard key = {schedule._id} schedule={schedule} day={day}/>;
       })}
       <Dialog open={open} onClose={handleClose1} >
-        <center><DialogTitle id="">Add Schedule</DialogTitle></center>
+        <center><DialogTitle id="">Create a Time Slot</DialogTitle></center>
         <AddSchedule day={day} close={handleClose}/>
       </Dialog>    
     </>
