@@ -20,7 +20,7 @@ export default function ScheduleList(props) {
       },
     })
       .then(resp => {
-        console.log(resp);
+        props.close()
       })
       .catch(err => {});
   }

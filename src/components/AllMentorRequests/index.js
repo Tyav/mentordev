@@ -22,42 +22,68 @@ function AllScheduleRequests({ location }) {
 
   useEffect(() => {
     getAllRequests();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [scheduleIds]);
 
   const headers = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`
   };
-
+  
+  
   const getAllRequests = () => {
     return axios({
       method: 'GET',
       url: `${process.env.REACT_APP_BACKEND_URL}/schedule/requests/?scheduleIds=${scheduleIds}`,
       headers
     })
+    .then(response => {
+      let data = response.data.payload.filter(info=> info.status === 'Pending')
+      setRequests(() => ({ data: data, loading: false }));
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  };
+  const requestApproval = e => {
+    e.preventDefault();
+    const requestId = e.target.id;
+    const action = e.target.classList[1] === 'Approve' ? 'Approved' : 'Rejected';
+  
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    };
+  
+    axios({
+      method: 'PUT',
+      url: `${process.env.REACT_APP_BACKEND_URL}/request/${requestId}?status=${action}`,
+      headers
+    })
       .then(response => {
-        let data = response.data.payload.filter(info=> info.status === 'Pending')
-        setRequests(() => ({ data: data, loading: false }));
+        const newArray = requests.data.filter(
+          request => request._id !== requestId
+        );
+        setRequests({ ...requests, data: newArray });
       })
       .catch(error => {
-        console.log(error);
+        
       });
   };
   return (
     <>
       <UserDashHeading text="All requests for your schedule" icon="checkbox-marked-circle-outline" />
-      {requests.loading ? <p>loading...</p> : viewRequests(requests)}
+      {requests.loading ? <p>loading...</p> : viewRequests(requests, requestApproval)}
     </>
   );
 }
 
-function viewRequests({ data }) {
+function viewRequests({ data },cb) {
   if (!data) return;
   if (data.length < 1) {
     return <center><p>No request today</p></center>;
   }
-
+  
   return (
     <div className="new-recent-mentor-list">
       {data.map((request, index) => (
@@ -73,6 +99,7 @@ function viewRequests({ data }) {
           id={request._id}
           buttons={['Approve', 'Reject']}
           requestId={request._id}
+          requestApproval={cb}
         />
       ))}
     </div>

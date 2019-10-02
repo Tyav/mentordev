@@ -5,6 +5,7 @@ import Card from '../Card';
 import FormAlert from '../Alerts/FormAlert';
 import axios from 'axios';
 import { readCookie } from '../../helper/cookie';
+import SelectField from '../SelectField'
 
 import './AddSchedule.css';
 
@@ -35,7 +36,7 @@ function AddSchedule(props) {
     slots: 1,
     poolSize: 16,
     isClosed: false,
-    "isInstant": true
+    isInstant: true
   });
 
   const [createScheduleResponse, setCreateScheduleResponse] = useState({
@@ -56,7 +57,7 @@ function AddSchedule(props) {
 
     return time.join(':');
   }
-
+  
   function onChange(e) {
     const slotInput = document.getElementById('scheduleSlots');
     const poolInput = document.getElementById('schedulePoolSize');
@@ -105,7 +106,6 @@ function AddSchedule(props) {
           if (res.data.statusCode === 200) {
             props.close();
           } else {
-            console.log(res.data);
             setCreateScheduleResponse({
               message: res.data.message,
               show: true,
@@ -155,7 +155,7 @@ function AddSchedule(props) {
         ) : (
           ''
         )}
-        <InputField
+        {/* <InputField
           id="day"
           label="Day"
           type="text"
@@ -165,6 +165,18 @@ function AddSchedule(props) {
           change={onChange}
           required={true}
           list="slot-days"
+        /> */}
+        <SelectField 
+          id="day"
+          label="Day"
+          type="text"
+          name="day"
+          //placeholder="Day"
+          value={schedule.day}
+          change={onChange}
+          day={day}
+          // list="slot-days"
+
         />
 
         <InputField

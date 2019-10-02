@@ -3,7 +3,7 @@ import axios from 'axios';
 import { readCookie } from '../../helper/cookie';
 import ScheduleList from '../ScheduleList'
 
-export default function MentorSchedule({ id }) {
+export default function MentorSchedule({ id, close }) {
   const [schedules, setSchedules] = useState([]);
   useEffect(()=>{
     axios({
@@ -32,6 +32,7 @@ export default function MentorSchedule({ id }) {
               to={schedule.time.to}
               day={schedule.day}
               id={schedule._id}
+              close={close}
             />
           );
         })}

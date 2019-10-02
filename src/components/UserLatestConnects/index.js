@@ -70,7 +70,7 @@ function UserLatestConnect({
       <Dialog open={open} fullWidth={fullWidth}>
         {/* <center><DialogTitle id="">Complete {id}</DialogTitle></center> */}
         <DialogContent>
-          <MentorSchedule id={id} />
+          <MentorSchedule id={id} close={handleClose}/>
         </DialogContent>
         <center>
           <a href="#" onClick={handleClose} className={'new-dash-profile-link'}>

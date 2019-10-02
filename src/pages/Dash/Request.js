@@ -15,7 +15,6 @@ function Request() {
       if (response.data.payload) {
         if (status.length){
           let results = response.data.payload.filter(request => {
-            console.log(status.includes(request.status))
             return status.includes(request.status)
           });
           setRequests([...results]);
@@ -32,7 +31,6 @@ function Request() {
         if (response.data.payload) {
           if (status.length){
             let results = response.data.payload.filter(request => {
-              console.log(status.includes(request.status))
               return status.includes(request.status)
             });
             setRequests([...results]);
@@ -63,7 +61,7 @@ function Request() {
     borderRadius: '4px',
     border: '1px solid #e6ecf5',
     padding: '20px',
-    marginBottom: '20px',
+    marginBottom: '20px'
   };
   return (
     <>

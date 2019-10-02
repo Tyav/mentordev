@@ -1,0 +1,53 @@
+#selectField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+}
+#selectField select,
+#selectField label {
+  width: 100%;
+}
+/* #selectField label {
+  margin-left: -17px;
+} */
+#selectField select {
+  font-size: 0.8rem;
+}
+#selectField select {
+  /* padding: 10px;
+  border: none;
+  border-bottom: 1px solid #e6e6e6;
+  color: rgb(85, 85, 85);
+  font-weight: 500;
+  transition: all linear 0.3s; */
+  outline: none;
+  padding: 5px 10px;
+  height: 40px;
+  font-weight: 200;
+  /* margin-bottom: 14px; */
+  transition: all 0.3s ease;
+  background-color: rgb(232, 240, 254);
+  border: 0;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px 0px #e6e9ec;
+}
+#selectField select:focus {
+  border-bottom: 1px solid #45cc89 !important;
+  transition: all linear 0.3s;
+}
+#selectField label {
+  color: #47505e;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
