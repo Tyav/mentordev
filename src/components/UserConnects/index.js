@@ -104,15 +104,15 @@ function UserConnects() {
                 <>
                   <div>
                     <i className="mdi mdi-clock-outline"></i>
-                    <h3>Create Schedules</h3>
+                    <h3>Create your Time slots</h3>
                     <p>
-                      Create schedules and slots. This would be listed for
+                      Create Time slots. This would be listed for
                       mentees to request.
                     </p>
-                    <Link to="/dashboard/schedule">
+                    <Link to="/dashboard/time-slot">
                       <Button
                         className="btn-success-outline"
-                        text="Add Schedules"
+                        text="Add a Time Slot"
                       ></Button>
                     </Link>
                   </div>

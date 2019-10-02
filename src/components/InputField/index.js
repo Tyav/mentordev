@@ -24,6 +24,7 @@ function InputField(props) {
         min={props.min}
         required={props.required}
         onClick={props.click}
+        list={props.list}
       />
     </div>
   );

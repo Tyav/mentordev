@@ -14,7 +14,16 @@ import { readCookie } from '../../helper/cookie';
 
 
 function ScheduleList() {
-  
+  let day = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thurday',
+    'Friday',
+    'Saturday',
+  ];
+
   const [schedules, setSchedules] = useState([]);
   const token = readCookie('mentordev_token');
   const [open, setOpen] = React.useState(false);
@@ -53,13 +62,13 @@ function ScheduleList() {
   }
   return (
     <>
-      <UserDashHeading text="Mange Schedule" icon="clock" add={handleClickOpen}/>
+      <UserDashHeading text="Manage Time Slots" icon="clock" add={handleClickOpen}/>
       {schedules.map(schedule => {
-        return <ScheduleCard key = {schedule._id} schedule={schedule} />;
+        return <ScheduleCard key = {schedule._id} schedule={schedule} day={day}/>;
       })}
       <Dialog open={open} onClose={handleClose1} >
-        <center><DialogTitle id="">Add Schedule</DialogTitle></center>
-        <AddSchedule close={handleClose}/>
+        <center><DialogTitle id="">Create a Time Slot</DialogTitle></center>
+        <AddSchedule day={day} close={handleClose}/>
       </Dialog>    
     </>
   );

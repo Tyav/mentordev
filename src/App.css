@@ -581,6 +581,9 @@ p.request-pending {
 #home-search-nav {
   transition: 0.2s;
 }
+.smallInputField {
+  width: 70px !important;
+}
 /* 
 ===============
 Desktop 1
@@ -590,6 +593,9 @@ Desktop 1
   #home-search-nav {
     transition: 0.2s;
   }
+.smallInputField {
+  width: 70px !important;
+}
   .verify-page {
     width: 100%;
     height: 300px;

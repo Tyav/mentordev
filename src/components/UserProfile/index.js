@@ -45,7 +45,7 @@ function Userprofile() {
       </div>
       <p className="new-dash-username">{user.fullname}</p>
       <p className="new-dash-username">{user.email || 'Email required'}</p>
-      <p className="new-dash-account-brief">
+      {/* <p className="new-dash-account-brief">
         <span>
           1K <i>requests</i>
         </span>{' '}
@@ -55,7 +55,7 @@ function Userprofile() {
         <span>
           5 <i>messages</i>
         </span>
-      </p>
+      </p> */}
       <p className="new-dash-user-description">{user.bio}</p>
       <div className="new-dash-user-tags">{displayTags(user)}</div>
       <NavLink className="new-dash-profile-link" to="/dashboard/profile">

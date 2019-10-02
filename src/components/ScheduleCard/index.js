@@ -17,7 +17,6 @@ const style = {
 function ScheduleCard(props) {
   const [edit, setEdit] = useState(true);
   const token = readCookie('mentordev_token');
-  // const [schedule, ] 
   const schedul= props.schedule;
   const [schedule, setSchedule] = useState({
     day: schedul.day,
@@ -25,7 +24,8 @@ function ScheduleCard(props) {
     to: schedul.time.to,
     slots: schedul.slots,
     poolSize: schedul.poolSize,
-    isClosed: schedul.isClosed
+    isClosed: schedul.isClosed,
+    isInstant: schedul.isInstant
   })
   const closeSchedule = (e)=>{
     e.preventDefault();
@@ -37,7 +37,14 @@ function ScheduleCard(props) {
     setSchedule({
       ...schedule, [e.target.name]: e.target.value
     })
-}  const handleSchedule = async () => {
+
+}  
+function handleChecked(e, val) {
+  setSchedule({
+    ...schedule, [e.target.name]: val
+  })
+}
+const handleSchedule = async () => {
     //this function handles closing and reopening os schedule
     const headers = {
       'Content-Type': 'application/json',
@@ -110,7 +117,15 @@ function ScheduleCard(props) {
           value={schedule.day}
           disabled={edit}
           change={onChange}
+          list="slot-days"
         />
+        <datalist id="slot-days">
+          {props.day.map((day)=>{
+            return (
+              <option>{day}</option>
+            )
+          })}
+        </datalist>
         <InputField
           id="from"
           label="From"
@@ -136,7 +151,8 @@ function ScheduleCard(props) {
         />
         <InputField
           id="slots"
-          label="Slots"
+          style="smallInputField"
+          label="Slot size"
           type="Number"
           name="slots"
           placeholder={5}
@@ -145,16 +161,41 @@ function ScheduleCard(props) {
           change={onChange}
         />
 
-        <InputField
+        {(!schedule.isInstant && (<InputField
           id="poolSize"
           label="Pool Size"
           type="Number"
+          style="smallInputField"
           name="poolSize"
           placeholder={15}
           value={schedule.poolSize}
           disabled={edit}
           change={onChange}
-        />
+        />))}
+                <div className="scheduleType">
+          <p>Select Approval Type</p>
+          { (!edit && (<><div className="radioInput">
+            <input
+              type="radio"
+              name="isInstant"
+              id="isInstant"
+              onChange={(e)=>handleChecked(e, true)}
+              checked={schedule.isInstant}
+            />{' '}
+            Instant Approval
+          </div>
+          <div className="radioInput">
+            <input
+              type="radio"
+              name="isInstant"
+              id="onRequest"
+              onChange={(e)=>handleChecked(e, false)}
+              checked={!schedule.isInstant}
+            />{' '}
+            Require Approval
+          </div></>)) || `: ${schedul.isInstant? 'Instant Approval': 'Require Approval'}` }
+        </div>
+
         <div className="new-dash-single-schedule-list-btns">
           {edit ? renderEditBtn() : renderSubmit()}
           {edit ? '' : (

@@ -11,6 +11,7 @@ function CheckBox(props) {
         placeholder={props.placeholder}
         checked={props.value}
         onChange={props.change}
+        hidden={props.hidden}
       />
       <label htmlFor={props.id}>{props.label}</label>
     </div>

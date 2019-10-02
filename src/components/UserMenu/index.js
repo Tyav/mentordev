@@ -6,6 +6,7 @@ function UserMenu({ validateType }) {
   const handleLogOut = event => {
     event.preventDefault();
     eraseCookie('mentordev_token');
+    eraseCookie('validateType');
   };
 
   return (
@@ -18,11 +19,11 @@ function UserMenu({ validateType }) {
       {validateType ? (
         <NavLink
           exact
-          to="/dashboard/schedule"
+          to="/dashboard/time-slot"
           activeClassName="new-dash-menu-active"
         >
           <li>
-            <i className="mdi mdi-clock" /> Manage Schedule
+            <i className="mdi mdi-clock" /> Manage Time Slots
           </li>
         </NavLink>
       ) : (
