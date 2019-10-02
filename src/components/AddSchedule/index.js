@@ -35,6 +35,7 @@ function AddSchedule(props) {
     slots: 1,
     poolSize: 16,
     isClosed: false,
+    "isInstant": true
   });
 
   const [createScheduleResponse, setCreateScheduleResponse] = useState({
@@ -48,6 +49,11 @@ function AddSchedule(props) {
     let time = str.split(':');
     time[0] = `${parseInt(time[0]) + 1}`;
     if (time[0].length === 1) time[0] = '0' + time[0];
+    setSchedule({
+      ...schedule,
+      to: time.join(':'),
+    });
+
     return time.join(':');
   }
 
@@ -55,7 +61,7 @@ function AddSchedule(props) {
     const slotInput = document.getElementById('scheduleSlots');
     const poolInput = document.getElementById('schedulePoolSize');
     const isInstant = document.getElementById('isInstant');
-
+    
     if (isInstant.checked) {
       slotInput.style.display = 'block';
       poolInput.style.display = 'none';
@@ -69,7 +75,6 @@ function AddSchedule(props) {
     });
   }
   const token = readCookie('mentordev_token');
-
   const handleCreateSchedule = async e => {
     e.preventDefault();
     //this function handles closing and reopening os schedule
@@ -79,11 +84,12 @@ function AddSchedule(props) {
     };
 
     const { slots } = schedule;
-
     const body = {
       ...schedule,
       slots: parseInt(slots),
-      time: { to: schedule.to, from: schedule.from },
+      time: { 
+        to: schedule.to || document.getElementById('to').value, 
+        from: schedule.from },
     };
     delete body.from;
     delete body.to;
@@ -141,7 +147,7 @@ function AddSchedule(props) {
         <i className="mdi mdi-calendar-edit" />{' '}
         {schedule.day || day[new Date(Date.now()).getDay()]}
       </h2>
-      <form className="new-dash-single-schedule-list">
+      <form className="new-dash-single-schedule-list" onSubmit={handleCreateSchedule}>
         {createScheduleResponse.show ? (
           <FormAlert type={createScheduleResponse.type}>
             {createScheduleResponse.message}
@@ -185,7 +191,7 @@ function AddSchedule(props) {
         />
         <p className="isInstantWarning">
           <i className="mdi mdi-info"></i> Mentee Requests are automatically
-          approved for instant schedule type
+          approved for instant time slot type
         </p>
         <div className="scheduleType">
           <p>Select Approval Type</p>
@@ -196,6 +202,8 @@ function AddSchedule(props) {
               id="isInstant"
               onChange={onChange}
               value={true}
+              checked={schedule.isInstant === 'false'? false: true}
+              required={true}
             />{' '}
             Instant Approval
           </div>
@@ -206,6 +214,8 @@ function AddSchedule(props) {
               id="onRequest"
               onChange={onChange}
               value={false}
+              required={true}
+              // checked={schedule.isInstant === 'false'? false: true}
             />{' '}
             Require Approval
           </div>
@@ -243,7 +253,6 @@ function AddSchedule(props) {
             className="btn-success-solid"
             text="Create"
             type="submit"
-            onButtonClick={handleCreateSchedule}
             style={{ marginRight: '10px' }}
           />
           <Button
