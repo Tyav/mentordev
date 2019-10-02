@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Button from '../Button';
 import InputField from '../InputField';
+import SelectField from '../SelectField'
 import Card from '../Card';
 import { readCookie } from '../../helper/cookie'
 
@@ -108,7 +109,7 @@ const handleSchedule = async () => {
         <i className="mdi mdi-calendar-edit" /> {schedule.day}
       </h2>
       <form className="new-dash-single-schedule-list">
-        <InputField
+        {/* <InputField
           id="day"
           label="Day"
           type="text"
@@ -118,7 +119,35 @@ const handleSchedule = async () => {
           disabled={edit}
           change={onChange}
           list="slot-days"
+        /> */}
+        <SelectField 
+          id="day"
+          label="Day"
+          type="text"
+          name="day"
+          placeholder="Day"
+          value={schedule.day}
+          disabled={edit}
+          change={onChange}
+          day={props.day}
+          // list="slot-days"
+
         />
+        {/* <div id="inputField" className={props.style}>
+      <label htmlFor={props.id}>
+        <i className={`mdi mdi-${props.icon}`}></i>
+        {"Day"}
+      </label>
+
+        <select className="day-select" onChange={onChange} value={schedule.day} name="day">
+          {props.day.map((day)=>{
+            return (
+              <option value={day}>{day}</option>
+            )
+          })}
+        </select>
+    </div> */}
+
         <datalist id="slot-days">
           {props.day.map((day)=>{
             return (

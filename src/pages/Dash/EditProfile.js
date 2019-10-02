@@ -99,7 +99,7 @@ function EditProfile() {
       });
     return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
-
+  
   function passwordToggle() {
     setShowPassword(!showPassword);
   }

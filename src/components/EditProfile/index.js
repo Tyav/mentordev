@@ -46,7 +46,6 @@ const EditProfile = ({ edit }) => {
       data: { ...data },
     })
       .then(response => {
-        console.log(response);
         if (response.data.payload.statusCode !== 200) {
           localUser = { ...localUser, ...response.data.payload };
           window.localStorage.setItem('user', JSON.stringify(localUser));

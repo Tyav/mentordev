@@ -55,6 +55,5 @@ function trimSkills(arr) {
     let item = arr[i].trim();
     if (item) result.push(item);
   }
-  console.log(result);
   return result;
 }
