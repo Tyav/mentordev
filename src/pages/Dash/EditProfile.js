@@ -32,6 +32,10 @@ function EditProfile() {
     success: '',
   });
 
+  const [image, setImage] = useState({
+    file: ''
+  })
+
   useEffect(() => {
     setValues({ ...values, ...user });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -112,6 +116,35 @@ function EditProfile() {
     padding: '20px',
     marginBottom: '20px',
   };
+
+  function handleUpload(e){
+    setImage({
+      file: e.target.files[0]
+    })
+
+  }
+  //upload image
+  function upload (e){
+    e.preventDefault()
+    // set form
+    let form = new FormData();
+    form.append('avatar',image.file);
+    axios({
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/${user.id}/images`,
+      data: form,
+      headers: {
+        'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'put'
+    }).then((resp)=>{
+      const responseUser = formatLocalUser({
+        ...user,
+        ...resp.data.payload,
+      });
+      setUser(prev => ({ ...prev, ...responseUser }));
+    })
+  }
   return (
     <>
       <UserDashHeading text="Edit Profile" icon="account-edit" />
@@ -136,7 +169,16 @@ function EditProfile() {
           >
             {values.success}
           </p>
+          {/* create upload input for images */}
+            {!edit && (<form encType="multipart/form-data" onSubmit={upload}>
+            <label htmlFor={'upload'}>
+              <i className={`mdi mdi-avatar`}></i>
+              {'Change avatar'}
+            </label>
+            <input type="file" id='upload' accept="image/png, image/jpeg, image/jpg" onChange={handleUpload} capture={true}/>
+            <button type='submit'>Submit</button>
 
+            </form>)}
           <div className="new-half-input">
             <InputField
               label="Fullname"
