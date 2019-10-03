@@ -1,11 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Button from '../../components/Button';
 import Navbar from '../../components/Navbar';
 import AboutHeader from '../../components/AboutHeader';
-
+import { readCookie } from '../../helper/cookie'
 function MainAbout() {
+  const token = readCookie('mentordev_token');
+  if (token) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <>
       <Navbar></Navbar>

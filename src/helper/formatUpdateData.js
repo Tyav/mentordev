@@ -25,15 +25,16 @@ export function formatBeforeUpdate(values) {
 }
 
 export function formatLocalUser(user) {
-  let { name: fullname, email, phone, location, skills, bio, connection, avatar } = user || '';
+  let { name: fullname, email, phone, location, skills, bio, connection, avatar, id } = user || '';
 
   const facebook = !connection ? '' : connection.facebook,
     twitter = !connection ? '' : connection.twitter,
     github = !connection ? '' : connection.github,
-    linkedIn = !connection ? '' : connection.linkedin;
+    linkedin = !connection ? '' : connection.linkedin;
 
   skills = skills.length === 0 ? '' : skills.join(', ');
   return {
+    id,
     fullname,
     email,
     phone,
@@ -43,7 +44,7 @@ export function formatLocalUser(user) {
     facebook,
     twitter,
     github,
-    linkedIn,
+    linkedin,
     avatar
   };
 }
