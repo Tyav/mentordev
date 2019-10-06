@@ -15,12 +15,10 @@ import ChangePassword from '../../components/ChangePassword';
 import { readCookie, eraseCookie } from '../../helper/cookie';
 import getParams from '../../helper/getParams';
 
-
-
 function EditProfile() {
-  const nue_prof = readCookie('nue_prof')
+  const nue_prof = readCookie('nue_prof');
   const [showPassword, setShowPassword] = useState(false);
-  const [edit, setEdit] = useState(nue_prof? false:true);
+  const [edit, setEdit] = useState(nue_prof ? false : true);
   const token = readCookie('mentordev_token');
   const { user, setUser } = useContext(UserObject);
   const [values, setValues] = useState({
@@ -33,15 +31,17 @@ function EditProfile() {
   });
 
   const [image, setImage] = useState({
-    file: ''
-  })
+    file: '',
+  });
 
   useEffect(() => {
     setValues({ ...values, ...user });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  const handleEdit = () => {setEdit(() => !edit);}
+  const handleEdit = () => {
+    setEdit(() => !edit);
+  };
   const handleChange = event => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
@@ -51,9 +51,9 @@ function EditProfile() {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   };
-  
-  const handleSubmit = event => {
-    eraseCookie('nue_prof')
+
+  const handleSubmit = () => {
+    eraseCookie('nue_prof');
     //event.preventDefault();
     const data = formatBeforeUpdate(values);
     axios({
@@ -103,7 +103,7 @@ function EditProfile() {
       });
     return setValues({ ...values, errors: { ...values.errors, [name]: '' } });
   };
-  
+
   function passwordToggle() {
     setShowPassword(!showPassword);
   }
@@ -117,18 +117,25 @@ function EditProfile() {
     marginBottom: '20px',
   };
 
-  function handleUpload(e){
+  function handleUpload(e) {
+    //Image Preview
+    let previewImg = document.getElementById('currentAndPreviewImage');
+    previewImg.src = URL.createObjectURL(e.target.files[0]);
+    let uploadButton = document.querySelector('#changeUserProfileImage button');
+    uploadButton.innerHTML = 'Save Profile Image';
     setImage({
-      file: e.target.files[0]
-    })
-
+      file: e.target.files[0],
+    });
   }
   //upload image
-  function upload (e){
-    e.preventDefault()
+  function upload(e) {
+    e.preventDefault();
+    //Image upload Button
+    let uploadButton = document.querySelector('#changeUserProfileImage button');
+    uploadButton.innerHTML = 'Saving Image ...';
     // set form
     let form = new FormData();
-    form.append('avatar',image.file);
+    form.append('avatar', image.file);
     axios({
       url: `${process.env.REACT_APP_BACKEND_URL}/user/${user.id}/images`,
       data: form,
@@ -136,19 +143,24 @@ function EditProfile() {
         'content-type': 'multipart/form-data',
         Authorization: `Bearer ${token}`,
       },
-      method: 'put'
-    }).then((resp)=>{
+      method: 'put',
+    }).then(resp => {
+      if (resp.data.statusCode === 200) {
+        uploadButton.innerHTML =
+          '<i class="mdi mdi-checkbox-marked-circle-outline" style="font-size: 20px"></i>';
+      }
       const responseUser = formatLocalUser({
         ...user,
         ...resp.data.payload,
       });
       setUser(prev => ({ ...prev, ...responseUser }));
-    })
+    });
   }
+
   return (
     <>
       <UserDashHeading text="Edit Profile" icon="account-edit" />
-      <form style={{ width: '100%' }}>
+      <form style={{ width: '100%' }} id="editProfileForm">
         <Card styles={style}>
           <div className="new-edit-form-toggle">
             <input
@@ -170,15 +182,31 @@ function EditProfile() {
             {values.success}
           </p>
           {/* create upload input for images */}
-            {!edit && (<form encType="multipart/form-data" onSubmit={upload}>
-            <label htmlFor={'upload'}>
-              <i className={`mdi mdi-avatar`}></i>
-              {'Change avatar'}
-            </label>
-            <input type="file" id='upload' accept="image/png, image/jpeg, image/jpg" onChange={handleUpload} capture={true}/>
-            <button type='submit'>Submit</button>
-
-            </form>)}
+          {!edit && (
+            <>
+              <div className="updateProfileImageDisplay">
+                <img src={user.avatar} id="currentAndPreviewImage" />
+                <label htmlFor="upload">
+                  <i className="mdi mdi-camera"></i>
+                </label>
+              </div>
+              <form
+                encType="multipart/form-data"
+                onSubmit={upload}
+                id="changeUserProfileImage"
+              >
+                <input
+                  type="file"
+                  id="upload"
+                  accept="image/png, image/jpeg, image/jpg"
+                  onChange={handleUpload}
+                  capture={true}
+                  style={{ display: 'none' }}
+                />
+                <button type="submit">Save Profile Image</button>
+              </form>
+            </>
+          )}
           <div className="new-half-input">
             <InputField
               label="Fullname"
