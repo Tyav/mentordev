@@ -51,10 +51,9 @@ function EditProfile() {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   };
-
+  
   const handleSubmit = () => {
     eraseCookie('nue_prof');
-    //event.preventDefault();
     const data = formatBeforeUpdate(values);
     axios({
       method: 'PUT',
@@ -62,7 +61,7 @@ function EditProfile() {
       headers,
       data: { ...data },
     })
-      .then(response => {
+    .then(response => {
         if (response.data.statusCode === 200) {
           const responseUser = formatLocalUser({
             ...user,
@@ -148,13 +147,22 @@ function EditProfile() {
       if (resp.data.statusCode === 200) {
         uploadButton.innerHTML =
           '<i class="mdi mdi-checkbox-marked-circle-outline" style="font-size: 20px"></i>';
+        setTimeout(()=>{
+          uploadButton.innerHTML = `Save Profile Image`
+        }, 4000)
       }
       const responseUser = formatLocalUser({
         ...user,
         ...resp.data.payload,
       });
       setUser(prev => ({ ...prev, ...responseUser }));
-    });
+    }).catch(()=>{
+      uploadButton.innerHTML =
+      'error saving profile image';
+    setTimeout(()=>{
+      uploadButton.innerHTML = `Save Profile Image`
+    }, 4000)
+});
   }
 
   return (
