@@ -30,3 +30,11 @@ export function sendPutRequest(endpoint) {
     headers,
   });
 }
+
+export function sendDeleteRequest(endpoint) {
+  return axios({
+    url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
+    method: 'DELETE',
+    headers,
+  });
+}

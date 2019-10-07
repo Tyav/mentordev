@@ -5,10 +5,11 @@ import { sendPutRequest } from '../../actions';
 import Tag from '../Tag';
 
 function SingleRequest(props) {
-  const cancleRequestHandler = e => {
+  const cancelRequestHandler = e => {
     e.preventDefault();
     sendPutRequest(`/request/${props.requestId}?status=Cancelled`);
   };
+  
   return (
     <>
       <div className="mentee-request">
@@ -27,12 +28,17 @@ function SingleRequest(props) {
               return <Tag tagname={tag} />;
             })}
           </p>
-          {(props.status === 'pending') && <a href="/">
+          {((props.status === 'Pending') && <a href="/">
             <i
               className="mdi mdi-close-circle"
-              onClick={cancleRequestHandler}
+              onClick={(e)=> {e.preventDefault(); props.cancelRequestHandler(props.requestId)}}
             />
-          </a>}
+          </a>) || ((props.status !== 'Pending') && <a href="/">
+            <i
+              className="mdi mdi-delete"
+              onClick={(e)=> {e.preventDefault(); props.deleteRequestHandler(props.requestId)}}
+            />
+          </a>) }
         </div>
         <br />
       </div>
