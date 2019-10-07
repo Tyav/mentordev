@@ -3,7 +3,7 @@ import UserDashHeading from '../../components/UserDashHeading';
 import Card from '../../components/Card';
 import SingleRequest from '../../components/SingleRequest';
 
-import { sendGetRequest } from '../../actions';
+import { sendGetRequest, sendPutRequest, sendDeleteRequest } from '../../actions';
 
 // requests for mentor
 function Request() {
@@ -25,6 +25,44 @@ function Request() {
       // setRequests([...response.data.payload]);
     });
   }, []);
+  const cancelRequestHandler = id => {
+    sendPutRequest(`/request/${id}?status=Cancelled`)
+      .then(response => {
+        if (response.data.payload) {
+          sendGetRequest('/request').then(response => {
+            if (response.data.payload) {
+              if (status.length){
+                let results = response.data.payload.filter(request => {
+                  return status.includes(request.status)
+                });
+                setRequests([...results]);
+              } else {
+                setRequests([...response.data.payload]);
+              }
+            }
+          }
+        );
+      };
+      })
+    }
+
+    // delete request
+    const deleteRequestHandler = id => {
+      sendDeleteRequest(`/request/${id}`)
+        .then(response => {
+          if (response.data.statusCode === 200) {
+                  let results = requests.filter(request => {
+                    if (request._id === id){
+                      request.delete = false;
+                      return false;
+                    }
+                    return true;
+                  });
+                  setRequests([...results]);
+                } 
+              }) 
+              
+      }
 
   function filterRequest (){
       sendGetRequest('/request').then(response => {
@@ -38,7 +76,6 @@ function Request() {
             setRequests([...response.data.payload]);
           }
         }
-        // setRequests([...response.data.payload]);
       });
     
   }
@@ -66,10 +103,6 @@ function Request() {
   return (
     <>
       <UserDashHeading text="Your most recent Requests" icon="message-alert" />
-      {/* <input type="checkbox" onChange={statusHandler} value="Pending" />Pending
-      <input type="checkbox" onChange={statusHandler} value="Approved" />Approved
-      <input type="checkbox" onChange={statusHandler} value="Cancelled" />Cancelled
-      <input type="checkbox" onChange={statusHandler} value="Rejected" />Rejected */}
       <label for="status">View: </label>
       <select id="status" onChange={(e)=>console.log(e.target.value)} >
         <option selected value={'All'}>All</option>
@@ -91,6 +124,8 @@ function Request() {
               fromTime={request.schedule.time.from}
               toTime={request.schedule.time.to}
               mentorTags={request.schedule.mentor.skills}
+              cancelRequestHandler={cancelRequestHandler}
+              deleteRequestHandler={deleteRequestHandler}
             />
           );
         })}
