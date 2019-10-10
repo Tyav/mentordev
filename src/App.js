@@ -36,6 +36,7 @@ function App() {
         <Route path="/getstarted" component={GetStarted} />
         <Route path="/verify" component={Verify} />
         <Route path="/dashboard" component={Dash} />
+        <Route path="/admin-register" component={CreateAdmin} />
         <Route path="/admin" component={Admin} />
       </Router>
     </UserObject.Provider>
