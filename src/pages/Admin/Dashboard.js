@@ -5,7 +5,6 @@ import { Route } from 'react-router-dom';
 import Users from './Users';
 import AdminSideNav from '../../components/AdminSideNav';
 
-import Login from './login';
 import AnalyticsSummary from './AnalyticsSummary';
 import Analytics from './Analytics';
 import Settings from './Settings';
@@ -59,9 +58,9 @@ function Dashboard() {
         </div>
       </nav>
       <Route exact path="/admin" component={AnalyticsSummary}></Route>
-      <Route path="/admin/users" component={Users}></Route>
-      <Route path="/admin/analytics" component={Analytics}></Route>
-      <Route path="/admin/settings" component={Settings}></Route>
+      <Route exact path="/admin/users" component={Users}></Route>
+      <Route exact path="/admin/analytics" component={Analytics}></Route>
+      <Route exact path="/admin/settings" component={Settings}></Route>
     </div>
   );
 }

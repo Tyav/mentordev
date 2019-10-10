@@ -10,6 +10,7 @@ import AdminLogin from './pages/AdminLogin';
 import GetStarted from './pages/GetStarted';
 import Verify from './pages/Verify';
 import MainAbout from './pages/MainAbout';
+import CreateAdmin from './pages/Admin/CreateAdmin';
 import Dash from './pages/Dash';
 import Admin from './pages/Admin/Dashboard';
 import MentorApplication from './pages/MentorApplication';
@@ -28,13 +29,14 @@ function App() {
         <Route path="/mentorapplication" component={MentorApplication} />
         <Route path="/about" component={MainAbout} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/admin/login" component={AdminLogin} />
         <Route path="/forgot-password" component={Forgot} />
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/formerdashboard" component={Dashboard} />
         <Route path="/getstarted" component={GetStarted} />
         <Route path="/verify" component={Verify} />
         <Route path="/dashboard" component={Dash} />
+        <Route exact path="/admin-login" component={AdminLogin} />
+        <Route exact path="/admin-register" component={CreateAdmin}></Route>
         <Route path="/admin" component={Admin}></Route>
       </Router>
     </UserObject.Provider>

@@ -4,12 +4,21 @@ import AdminPageTitle from '../../components/AdminPageTitle';
 import Table from '../../components/Table/table';
 import MentorshipTable from '../../components/MentorshipTable';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Button from '../../components/Button';
+import { Link } from 'react-router-dom';
 
 function Users() {
   return (
     <main id="admin-main-page">
       <header className="admin-nav-header" />
       <AdminPageTitle title="Manage Users"></AdminPageTitle>
+      <Link to="/admin-register">
+        <Button
+          text="Create Admin"
+          className="btn-success-solid"
+          style={{ margin: '10px', width: '150px' }}
+        ></Button>
+      </Link>
       <div className="admin-dash-tabs">
         <Tabs defaultIndex={0}>
           <div className="tab">
@@ -32,27 +41,27 @@ function Users() {
               </TabList>
               <TabPanel>
                 <div className="admin-user-display">
-                  <Table role={"active"}/>
+                  <Table role={'active'} />
                 </div>
               </TabPanel>
               <TabPanel>
                 <div className="admin-user-display">
-                  <Table role={"mentor"}/>
+                  <Table role={'mentor'} />
                 </div>
               </TabPanel>
               <TabPanel>
                 <div className="admin-user-display">
-                  <Table role={"mentee"}/>
+                  <Table role={'mentee'} />
                 </div>
               </TabPanel>
               <TabPanel>
-              <div className="admin-user-display">
-                  <Table role={"admin"}/>
+                <div className="admin-user-display">
+                  <Table role={'admin'} />
                 </div>
               </TabPanel>
               <TabPanel>
-              <div className="admin-user-display">
-                  <Table role={"inactive"}/>
+                <div className="admin-user-display">
+                  <Table role={'inactive'} />
                 </div>
               </TabPanel>
             </Tabs>
@@ -67,10 +76,10 @@ function Users() {
                 <Tab>Active</Tab>
               </TabList>
               <TabPanel>
-                <MentorshipTable complete={true}/>
+                <MentorshipTable complete={true} />
               </TabPanel>
               <TabPanel>
-                <MentorshipTable complete={false}/>
+                <MentorshipTable complete={false} />
               </TabPanel>
             </Tabs>
           </TabPanel>
