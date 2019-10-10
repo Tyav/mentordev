@@ -28,14 +28,14 @@ function App() {
         <Route path="/mentorapplication" component={MentorApplication} />
         <Route path="/about" component={MainAbout} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/admin/login" component={AdminLogin} />
+        <Route exact path="/adminlogin" component={AdminLogin} />
         <Route path="/forgot-password" component={Forgot} />
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/formerdashboard" component={Dashboard} />
         <Route path="/getstarted" component={GetStarted} />
         <Route path="/verify" component={Verify} />
         <Route path="/dashboard" component={Dash} />
-        <Route path="/admin" component={Admin}></Route>
+        <Route path="/admin" component={Admin} />
       </Router>
     </UserObject.Provider>
   );

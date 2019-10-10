@@ -3,12 +3,13 @@ import { Route, Redirect } from 'react-router-dom';
 
 import Login from './login';
 import Dashboard from './Dashboard';
+import { readCookie } from '../../helper/cookie'
 
 function Admin() {
-  const token = localStorage.getItem('token');
+  const token = readCookie('mlt');
 
   if (!token) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/adminlogin" />;
   }
 
   return (

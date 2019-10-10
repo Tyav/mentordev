@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import Users from './Users';
 import AdminSideNav from '../../components/AdminSideNav';
+import { readCookie } from '../../helper/cookie'
 
 import Login from './login';
 import AnalyticsSummary from './AnalyticsSummary';
@@ -14,6 +15,11 @@ import './css/main.css';
 
 function Dashboard() {
   const [showToggle, setShowToggle] = useState(false);
+  // get admin token from cookie
+  const token = readCookie('mlt');
+  if (!token) {
+    return <Redirect to="/adminlogin" />;
+  }
 
   const handleNavToggle = e => {
     e.preventDefault();
@@ -59,9 +65,9 @@ function Dashboard() {
         </div>
       </nav>
       <Route exact path="/admin" component={AnalyticsSummary}></Route>
-      <Route path="/admin/users" component={Users}></Route>
-      <Route path="/admin/analytics" component={Analytics}></Route>
-      <Route path="/admin/settings" component={Settings}></Route>
+      <Route exact path="/admin/users" component={Users}></Route>
+      <Route exact path="/admin/analytics" component={Analytics}></Route>
+      <Route exact path="/admin/settings" component={Settings}></Route>
     </div>
   );
 }

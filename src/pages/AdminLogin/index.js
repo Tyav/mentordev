@@ -9,6 +9,7 @@ import Navbar from '../../components/Navbar';
 import FormAlert from '../../components/Alerts/FormAlert';
 import { formatLocalUser } from '../../helper/formatUpdateData';
 import { UserObject } from '../../Context';
+import { createCookie, readCookie } from '../../helper/cookie'
 
 //Stylings
 import './Login.css';
@@ -54,8 +55,8 @@ function Login() {
         }, 4000);
         return;
       }
-      localStorage.setItem('validateType', response.data.payload.isMentor);
-      localStorage.setItem('token', response.data.token);
+      createCookie('fleg3402nf045nv9245n34ve044242', true);
+      createCookie('mlt', response.data.token);
       setIsAdmin(response.data.payload.isAdmin);
       setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
 
@@ -76,7 +77,7 @@ function Login() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = readCookie('mlt');
     if (token) {
       setAuth(true);
     }
@@ -114,7 +115,6 @@ function Login() {
           />
           <Button className="btn-success-solid" text="Login" />
           <p>
-            Don't have an account? <Link to="/register">Singup</Link> or 
             <Link to="/forgot-password"> Forgot your Password?</Link>
           </p>
         </form>
