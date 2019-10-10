@@ -4,7 +4,7 @@ import './Checkbox.css';
 
 function CheckBox(props) {
   return (
-    <div id="checkboxField">
+    <div id="checkboxField" style={props.styles}>
       <input
         id={props.id}
         type={props.type}
@@ -12,6 +12,7 @@ function CheckBox(props) {
         checked={props.value}
         onChange={props.change}
         hidden={props.hidden}
+        name={props.id}
       />
       <label htmlFor={props.id}>{props.label}</label>
     </div>

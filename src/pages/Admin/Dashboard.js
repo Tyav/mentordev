@@ -6,7 +6,6 @@ import Users from './Users';
 import AdminSideNav from '../../components/AdminSideNav';
 import { readCookie } from '../../helper/cookie'
 
-import Login from './login';
 import AnalyticsSummary from './AnalyticsSummary';
 import Analytics from './Analytics';
 import Settings from './Settings';

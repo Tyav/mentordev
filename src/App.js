@@ -10,6 +10,7 @@ import AdminLogin from './pages/AdminLogin';
 import GetStarted from './pages/GetStarted';
 import Verify from './pages/Verify';
 import MainAbout from './pages/MainAbout';
+import CreateAdmin from './pages/Admin/CreateAdmin';
 import Dash from './pages/Dash';
 import Admin from './pages/Admin/Dashboard';
 import MentorApplication from './pages/MentorApplication';

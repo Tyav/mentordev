@@ -21,14 +21,14 @@ function Login() {
   const [loginResponse, setLoginResponse] = useState({
     message: '',
     show: false,
-    type: ''
+    type: '',
   });
 
   const [auth, setAuth] = useState(false);
 
   const [values, setValues] = useState({
     email: '',
-    password: ''
+    password: '',
   });
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -38,19 +38,19 @@ function Login() {
     axios({
       method: 'POST',
       url: `${process.env.REACT_APP_BACKEND_URL}/auth/admin-login`,
-      data: { ...values }
+      data: { ...values },
     }).then(response => {
       if (response.data.statusCode !== 200) {
         setLoginResponse({
           message: 'Email or password incorrect',
           show: true,
-          type: 'form-alert-danger'
+          type: 'form-alert-danger',
         });
         setTimeout(() => {
           setLoginResponse({
             message: '',
             show: false,
-            type: ''
+            type: '',
           });
         }, 4000);
         return;
@@ -63,13 +63,13 @@ function Login() {
       setLoginResponse({
         message: 'Login Successful',
         show: true,
-        type: 'form-alert-success'
+        type: 'form-alert-success',
       });
       setTimeout(() => {
         setLoginResponse({
           message: '',
           show: false,
-          type: ''
+          type: '',
         });
         setAuth(true);
       }, 4000);
@@ -88,11 +88,13 @@ function Login() {
 
   return (
     <>
-      <Navbar />
+      <Navbar></Navbar>
       <div id="loginForm">
         <FormHeader title="Login" />
         {loginResponse.show ? (
-          <FormAlert type={loginResponse.type}>{loginResponse.message}</FormAlert>
+          <FormAlert type={loginResponse.type}>
+            {loginResponse.message}
+          </FormAlert>
         ) : (
           ''
         )}

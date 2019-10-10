@@ -327,4 +327,19 @@ p.adminSummaryCount {
     color: #fff;
     margin-top: 10px;
   }
+  #adminAccountType {
+    width: 97.9%;
+    height: 40px;
+    background-color: rgb(232, 240, 254);
+    border: none;
+    margin: 20px 0 20px -2%;
+    box-shadow: 0px 1px 1px 0px #e6e9ec;
+    outline: none;
+    font-size: 14px;
+    padding: 10px;
+  }
+  #adminAccountType select:focus {
+    border-bottom: 1px solid #45cc89 !important;
+    transition: all linear 0.3s;
+  }
 }
