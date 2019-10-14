@@ -52,7 +52,8 @@ function EditProfile() {
     Authorization: `Bearer ${token}`,
   };
   
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    //e.preventDefault()
     eraseCookie('nue_prof');
     const data = formatBeforeUpdate(values);
     axios({
@@ -168,7 +169,7 @@ function EditProfile() {
   return (
     <>
       <UserDashHeading text="Edit Profile" icon="account-edit" />
-      <form style={{ width: '100%' }} id="editProfileForm">
+      <form style={{ width: '100%' }} id="editProfileForm" onSubmit={handleSubmit}>
         <Card styles={style}>
           <div className="new-edit-form-toggle">
             <input
@@ -285,11 +286,11 @@ function EditProfile() {
               />
               <InputField
                 type="text"
-                id="linkedIn"
-                label="LinkedIn"
-                value={values.linkedIn}
+                id="linkedin"
+                label="Linkedin"
+                value={values.linkedin}
                 change={handleChange}
-                name="linkedIn"
+                name="linkedin"
                 disabled={edit}
               />
             </div>
@@ -334,7 +335,6 @@ function EditProfile() {
             <Button
               className="btn-success-solid center-element"
               text="Save Changes"
-              onButtonClick={handleSubmit}
             />
           )}
         </Card>
