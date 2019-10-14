@@ -53,7 +53,7 @@ function CreateAdmin() {
         return;
       }
       setLoginResponse({
-        message: 'Admin successfully created',
+        message: data.message || 'Admin successfully created',
         show: true,
         type: 'form-alert-success',
       });
