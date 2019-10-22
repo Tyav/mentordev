@@ -118,5 +118,98 @@ p.pHeadings img {
   font-size: 0.8rem;
   margin-left: 10px;
 }
+.main-eidtor-area {
+  padding: 10px 20px;
+  background: #fff;
+  width: 50%;
+  height: fit-content;
+  min-height: 300px;
+  margin-left: 13%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+.main-eidtor-area p {
+  color: #5d5b6f;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+.main-eidtor-area input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #eef0f5;
+  font-size: 1rem;
+}
+.user-development-plan-eidtor {
+  padding: 10px;
+  background: #fff;
+  width: 100%;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #eef0f5;
+  border-top: none;
+  min-height: 200px;
+}
+
+.editor-area {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.editor-toolbar {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #eef0f5;
+}
+.editor-toolbar button {
+  background: none;
+  padding: 10px;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+.editor-toolbar button:hover {
+  font-size: 1.2rem;
+  transition: 0.2s;
+}
+.user-plan-section-button-area {
+  width: 100%;
+  margin-top: 10px;
+}
+.user-plan-section-button-area button {
+  padding: 10px;
+  color: #5d5b6f;
+  border: 1px solid #0bdaac;
+  transition: 0.2s;
+  font-size: 0.7rem;
+  margin-left: 10px;
+}
+.user-plan-section-button-area button:hover {
+  color: #fff;
+  background: #0bdaac;
+  transition: 0.2s;
+  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); */
+}
+button.idpSaveButton {
+  border: 1px solid #0bdaac;
+  width: auto;
+  margin-top: 10px;
+  margin-left: auto;
+  color: #5d5b6f;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+}
+button.idpSaveButton:hover {
+  color: #fff;
+  background: #0bdaac;
+  transition: 0.2s;
+}
 @media screen and (min-width: 780px) {
 }
