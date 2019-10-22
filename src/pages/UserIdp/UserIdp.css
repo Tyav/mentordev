@@ -180,20 +180,47 @@ p.pHeadings img {
 .user-plan-section-button-area {
   width: 100%;
   margin-top: 10px;
+  display: flex;
+  align-items: center;
 }
 .user-plan-section-button-area button {
   padding: 10px;
   color: #5d5b6f;
-  border: 1px solid #0bdaac;
   transition: 0.2s;
   font-size: 0.7rem;
-  margin-left: 10px;
 }
-.user-plan-section-button-area button:hover {
+.user-plan-section-button-area label {
+  color: #d1d3d7;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d1d3d7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.user-plan-section-button-area label:hover,
+.user-plan-section-button-area label.active {
+  color: #0bdaac;
+  border: 1px solid #0bdaac;
+  transition: 0.2s;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+}
+.user-plan-section-button-area label.done {
   color: #fff;
+  border: 1px solid #0bdaac;
   background: #0bdaac;
   transition: 0.2s;
-  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-plan-section-button-area label i {
+  font-size: 1rem;
 }
 button.idpSaveButton {
   border: 1px solid #0bdaac;

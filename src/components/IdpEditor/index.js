@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 //Helper Function
 import {
@@ -15,15 +15,45 @@ import {
 
 function IdpEditor() {
   const [plan, setPlan] = useState({
-    moA: '',
-    atO: '',
-    acO: '',
-    exR: '',
+    title: '',
+    goal: '',
+    outcome: '',
+    doc: '',
   });
+
+  const [formFieldIndex, setFormFieldIndex] = useState(0);
+  const formFields = ['goal', 'outcome', 'doc', 'submit'];
+
+  const buttonText = [
+    'Set Goal',
+    'Set Anticipated Outcome',
+    'Set Date',
+    'Save Plan',
+  ];
 
   const createPlanHandler = e => {
     e.preventDefault();
-    console.log(e.target.name);
+    if (!plan.title && !plan.goal && !plan.outcome && !plan.doc) {
+      return alert('All fields are important');
+    }
+    const allLabels = [
+      ...document.querySelectorAll('.user-plan-section-button-area label'),
+    ];
+    allLabels[formFieldIndex].classList.add('done');
+    allLabels[formFieldIndex].innerHTML = '<i class="mdi mdi-check-all"></i>';
+    setFormFieldIndex(formFieldIndex + 1);
+    const text = document.getElementById('user-development-plan-eidtor')
+      .innerHTML;
+    setPlan({ ...plan, [e.target.name]: text });
+    document.getElementById('user-development-plan-eidtor').innerHTML = '';
+    if (e.target.name === 'submit') {
+      setFormFieldIndex(0);
+      console.log(plan);
+    }
+  };
+
+  const handleTitleChange = e => {
+    setPlan({ ...plan, [e.target.name]: e.target.value });
   };
 
   return (
@@ -32,20 +62,26 @@ function IdpEditor() {
         <p>IDP Editor</p>
         <input
           type="text"
-          name="idpTitle"
-          id="idpTitle"
+          name="title"
+          id="title"
           placeholder="Plan Title"
+          onChange={handleTitleChange}
         />
         <div className="user-plan-section-button-area">
-          <button onClick={createPlanHandler} name="moA">
-            Method of Assesment
+          <label className="active" htmlFor={formFields[0]}>
+            1
+          </label>
+          <button name="moA" id={formFields[0]}>
+            Your Goal
           </button>
-          <button>Anticipated Outcome</button>
-          <button>Acheived Outcome</button>
-          <button>Expected Result</button>
+          <label htmlFor={formFields[1]}>2</label>
+          <button id={formFields[1]}>Anticipated Outcome</button>
+          <label htmlFor={formFields[2]}>3</label>
+          <button id={formFields[2]}>Expected Date of Completion</button>
         </div>
         <div className="editor-toolbar">
           {/**Come Back here to redesing form flow experiemce */}
+          <label></label>
           <button className="toobar-button" onClick={makeBold}>
             <i className="mdi mdi-format-bold"></i>
           </button>
@@ -79,11 +115,15 @@ function IdpEditor() {
         </div>
         <div
           className="user-development-plan-eidtor"
+          id="user-development-plan-eidtor"
           contentEditable="true"
         ></div>
-        <button className="idpSaveButton">
-          <i className="mdi mdi-checkbox-marked-circle-outline"></i>&nbsp;Save
-          Plan
+        <button
+          className="idpSaveButton"
+          onClick={createPlanHandler}
+          name={formFields[formFieldIndex]}
+        >
+          {buttonText[formFieldIndex]}
         </button>
       </div>
     </>
