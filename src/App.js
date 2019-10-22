@@ -14,6 +14,9 @@ import CreateAdmin from './pages/Admin/CreateAdmin';
 import Dash from './pages/Dash';
 import Admin from './pages/Admin/Dashboard';
 import MentorApplication from './pages/MentorApplication';
+import UserDashboard from './pages/UserDashboard';
+
+//Context
 import { UserObject } from './Context';
 
 import './App.css';
@@ -36,8 +39,10 @@ function App() {
         <Route path="/getstarted" component={GetStarted} />
         <Route path="/verify" component={Verify} />
         <Route path="/dashboard" component={Dash} />
-        <Route path="/admin-register" component={CreateAdmin} />
-        <Route path="/admin" component={Admin} />
+        <Route exact path="/admin-login" component={AdminLogin} />
+        <Route exact path="/admin-register" component={CreateAdmin}></Route>
+        <Route path="/admin" component={Admin}></Route>
+        <Route path="/dash" component={UserDashboard}></Route>
       </Router>
     </UserObject.Provider>
   );

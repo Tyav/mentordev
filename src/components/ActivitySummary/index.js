@@ -35,27 +35,43 @@ function ActivitySummary(props) {
 
       <Card styles={userSummaryStyle}>
         <Card styles={singleSummaryStyle}>
-          <img className="summaryCardImg" src="/assets/img/users.svg"></img>
+          <img
+            className="summaryCardImg"
+            src="/assets/img/users.svg"
+            alt="users"
+          ></img>
           <p className="adminSummaryTitle">Users</p>
           <p className="adminSummaryCount">
             {props.usersamount} users in total
           </p>
         </Card>
         <Card styles={singleSummaryStyle}>
-          <img className="summaryCardImg" src="/assets/img/contacts.svg"></img>
+          <img
+            className="summaryCardImg"
+            src="/assets/img/contacts.svg"
+            alt="contacts"
+          ></img>
           <p className="adminSummaryTitle">Contacts</p>
         </Card>
       </Card>
       <Card styles={userSummaryStyle}>
         <Card styles={singleSummaryStyle}>
-          <img className="summaryCardImg" src="/assets/img/mentors.svg"></img>
+          <img
+            className="summaryCardImg"
+            src="/assets/img/mentors.svg"
+            alt="mentors"
+          ></img>
           <p className="adminSummaryTitle">Mentors</p>
           <p className="adminSummaryCount">
             {props.mentorsamount} mentors in total
           </p>
         </Card>
         <Card styles={singleSummaryStyle}>
-          <img className="summaryCardImg" src="/assets/img/mentees.svg"></img>
+          <img
+            className="summaryCardImg"
+            src="/assets/img/mentees.svg"
+            alt="mentees"
+          ></img>
           <p className="adminSummaryTitle">Mentees</p>
           <p className="adminSummaryCount">
             {props.menteesamount} mentees in total

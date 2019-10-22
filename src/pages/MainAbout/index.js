@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import Button from '../../components/Button';
 import Navbar from '../../components/Navbar';
 import AboutHeader from '../../components/AboutHeader';
-import { readCookie } from '../../helper/cookie'
+import { readCookie } from '../../helper/cookie';
 function MainAbout() {
   const token = readCookie('mentordev_token');
   if (token) {
@@ -47,7 +47,7 @@ function MainAbout() {
           <img src="/assets/img/frustrated.png" alt="mentee" />
         </div>
       </div> */}
-      '
+
       <div className="main-about-card">
         <h1 className="about-main-h1">How it Works</h1>
         <div className="main-about-sm-card-area">

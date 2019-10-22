@@ -1,0 +1,122 @@
+.user-existing-plan-area {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+}
+.user-plan-table {
+  width: 57%;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.user-plan-table p,
+p.pHeadings {
+  color: #5d5b6f;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #eef0f5;
+  padding: 10px;
+}
+.user-plan-table p img,
+p.pHeadings img {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 5px;
+}
+.user-plan-page-request-snippet {
+  width: 42.5%;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-left: 0.5%;
+}
+.user-plan-table-header {
+  display: flex;
+  width: 100%;
+}
+.user-plan-table-head {
+  padding: 10px;
+  border-bottom: 1px solid #eef0f5;
+  font-size: 0.7rem;
+  color: #5d5b6f;
+}
+.user-plan-table-title {
+  width: 60%;
+}
+.user-plan-table-action {
+  width: 40%;
+  display: flex;
+}
+.user-plan-table-sn {
+  width: 5%;
+}
+.user-plan-table-body {
+  display: flex;
+  flex-direction: column;
+}
+.user-plan-table-body div {
+  display: flex;
+}
+.user-plan-table-action button {
+  margin-right: 5px;
+  text-transform: uppercase;
+  padding: 0;
+  font-size: 0.64rem;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  transition: 0.2s;
+  border-radius: 30px;
+  padding: 5px 10px;
+}
+.user-plan-table-action button.user-plan-action-edit {
+  color: #5d5b6f;
+  transition: 0.2s;
+}
+.user-plan-table-action button.user-plan-action-edit:hover {
+  border: 1px solid #0bdaac;
+  color: #0bdaac;
+}
+.user-plan-table-action button.user-plan-action-delete {
+  color: #5d5b6f;
+  transition: 0.2s;
+}
+.user-plan-table-action button.user-plan-action-delete:hover {
+  color: #dd0d0d;
+  border: 1px solid #dd0d0d;
+}
+.user-upcoming-area {
+  display: flex;
+  flex-direction: row;
+}
+.user-upcoming-area-list {
+  border: 1px solid #eef0f5;
+  padding: 5px;
+  margin: 10px 0;
+  width: 65%;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+.user-single-upcoming {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+.user-single-upcoming img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eef0f5;
+}
+.user-single-upcoming p {
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+@media screen and (min-width: 780px) {
+}
