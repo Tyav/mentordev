@@ -32,6 +32,7 @@ function App() {
         <Route path="/mentorapplication" component={MentorApplication} />
         <Route path="/about" component={MainAbout} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/adminlogin" component={AdminLogin} />
         <Route path="/forgot-password" component={Forgot} />
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/formerdashboard" component={Dashboard} />
