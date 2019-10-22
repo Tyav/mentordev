@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { eraseCookie } from '../../helper/cookie'
 function AdminSideNav() {
+  const handleLogout = () => {
+    eraseCookie('mlt');
+  }
   return (
     <ul className="admin-nav-menu-item">
       <Link to="/admin">
@@ -30,6 +34,14 @@ function AdminSideNav() {
           <i className="mdi mdi-wrench" />
           <span>
             Settings <sup className="beta">BETA</sup>
+          </span>
+        </li>
+      </Link>
+      <Link to="/adminlogin" onClick={handleLogout}>
+        <li>
+          <i className="mdi mdi-logout" />
+          <span>
+            Logout
           </span>
         </li>
       </Link>

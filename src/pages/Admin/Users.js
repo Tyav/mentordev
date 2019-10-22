@@ -1,9 +1,9 @@
 import React from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import AdminPageTitle from '../../components/AdminPageTitle';
 import Table from '../../components/Table/table';
 import MentorshipTable from '../../components/MentorshipTable';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
 
