@@ -1,0 +1,15 @@
+.new-mentor-request {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  width: 100%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+.new-mentor-request section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
