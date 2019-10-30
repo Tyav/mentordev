@@ -112,11 +112,7 @@ function Dashboard() {
         <a href="/" className="new-dash-nav-logo">
           Mentor <span>/>ev</span>
         </a>
-        {!isMentor ? (
-          <UserSearch />
-        ) : (
-          <span className="admin-sub-search-nav"/>
-        )}
+        {!isMentor ? <UserSearch /> : <span className="admin-sub-search-nav" />}
         <UserMenu validateType={isMentor} />
       </nav>
       <main className="new-dash-body">
@@ -127,10 +123,10 @@ function Dashboard() {
           <UserProfile />
         </div>
         <div className="new-dash-mentor-list">
-          <Route exact path="/dashboard" component={UserConnects} />
-          <Route path="/dashboard/profile" component={EditProfile} />
-          <Route path="/dashboard/time-slot" component={ScheduleList} />
-          <Route exact path="/dashboard/search" component={Search} />
+          <Route exact path="/formerdash" component={UserConnects} />
+          <Route path="/formerdash/profile" component={EditProfile} />
+          <Route path="/formerdash/time-slot" component={ScheduleList} />
+          <Route exact path="/formerdash/search" component={Search} />
           <Route
             path="/dashboard/mentor/requests/:scheduleId"
             component={ScheduleRequests}
