@@ -123,6 +123,12 @@ ul.user-admin-nav-menu-item li img {
   right: -20%;
   border-left: 1px solid #eef0f5;
   padding: 10px 0;
+  transition: 0.2s;
+  z-index: 99999999999999999999;
+}
+.show-contact-list {
+  right: 0% !important;
+  transition: 0.2s;
 }
 .user-dash-content-content {
   width: 100%;
