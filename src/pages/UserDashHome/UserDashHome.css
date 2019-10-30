@@ -1,0 +1,177 @@
+.user-dash-intro {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.user-dash-intro-banner {
+  width: 49.5%;
+  background: url('/assets/img/mentors.jpg') center no-repeat #fff;
+  background-size: cover;
+  height: 450px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+.user-dash-intro-banner .dim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+.user-dash-intro-textarea {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+.user-dash-intro-textarea p {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.user-dash-intro-textarea a {
+  color: #fff !important;
+  margin-right: 0 !important;
+  margin: 10px 0;
+}
+.user-dash-intro-textarea h1 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.user-dash-intro-textarea button {
+  border: 2px solid #0bdaac;
+  background: none;
+  color: #0bdaac;
+  margin: 10px 0;
+  transition: 0.2s;
+}
+
+.user-dash-intro-textarea button:hover {
+  background: #0bdaac;
+  color: #fff;
+  transition: 0.2s;
+  box-shadow: 0 0 14px rgba(219, 219, 219, 0.5);
+}
+
+.mentor-dev-site-analytics {
+  width: 49.5%;
+  background: #fff;
+  height: 100%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-evenly;
+}
+.mentor-dev-site-analytics div {
+  width: 45%;
+  height: 45%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 10px;
+}
+.br-right {
+  border-right: 1px solid #eef0f5;
+}
+.br-top {
+  border-top: 1px solid #eef0f5;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row !important;
+}
+.mentor-dev-site-analytics div.w-100 {
+  width: 93%;
+}
+.mentor-dev-site-analytics div span {
+  font-size: 0.8rem;
+  color: #5d5b6f;
+  margin: 10px 0;
+}
+.mentor-dev-site-analytics div p {
+  padding: 5px 10px;
+  text-align: center;
+  color: #5d5b6f;
+  font-size: 0.9rem;
+}
+.new-user-stages {
+  justify-content: center;
+}
+.new-user-stages button {
+  padding: 0;
+  margin: 0 5px;
+  color: #5d5b6f;
+}
+.new-user-stages label {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #0bdaac;
+  background: #0bdaac;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.user-dash-users-list {
+  display: flex;
+  margin-top: 10px;
+  background: #fff;
+  width: 100%;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  flex-direction: column;
+}
+
+.user-dash-users-list p.user-section-heading {
+  padding: 10px 0;
+  color: #5d5b6f;
+  border-bottom: 1px solid #eef0f5;
+  margin-bottom: 10px;
+  display: flex;
+  font-size: 0.9rem;
+  align-items: center;
+}
+
+.user-dash-users-list p.user-section-heading div {
+  margin: 0 10px;
+  border-radius: 4px;
+  border: 1px solid #eef0f5;
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+}
+.user-dash-users-list p.user-section-heading div input {
+  font-size: 0.9rem;
+  width: 90%;
+  padding: 10px;
+  border: none;
+  color: #5d5b6f;
+  outline: none;
+}
+.user-dash-users-list p.user-section-heading div img {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.user-dash-users-list p.user-section-heading img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 5px;
+}
+
+.user-dash-users-list .users-listing {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
