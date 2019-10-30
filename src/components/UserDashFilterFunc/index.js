@@ -4,7 +4,7 @@ function UserDashFilterFunc() {
   return (
     <div className="user-filter-area">
       <p>
-        <img src="/assets/img/funnel.svg" />
+        <img alt="filter" src="/assets/img/funnel.svg" />
         Filter Results :
       </p>
       &nbsp;
