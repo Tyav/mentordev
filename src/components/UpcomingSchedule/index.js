@@ -4,7 +4,7 @@ function UpcomingSchedule() {
   return (
     <div className="user-plan-page-request-snippet">
       <p className="pHeadings">
-        <img src="/assets/img/punctuality.svg" />
+        <img alt="schedule" src="/assets/img/punctuality.svg" />
         Upcoming Schedules
       </p>
       <div className="user-upcoming-area">
