@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 
 //Helper Function
 import {
@@ -18,11 +19,11 @@ function IdpEditor() {
     title: '',
     goal: '',
     outcome: '',
-    doc: '',
+    deadline: '',
   });
 
   const [formFieldIndex, setFormFieldIndex] = useState(0);
-  const formFields = ['goal', 'outcome', 'doc', 'submit'];
+  const formFields = ['goal', 'outcome', 'deadline', 'submit'];
 
   const buttonText = [
     'Set Goal',
@@ -33,14 +34,17 @@ function IdpEditor() {
 
   const createPlanHandler = e => {
     e.preventDefault();
-    if (!plan.title && !plan.goal && !plan.outcome && !plan.doc) {
-      return alert('All fields are important');
-    }
     const allLabels = [
       ...document.querySelectorAll('.user-plan-section-button-area label'),
     ];
-    allLabels[formFieldIndex].classList.add('done');
-    allLabels[formFieldIndex].innerHTML = '<i class="mdi mdi-check-all"></i>';
+    //Fix all this issues later
+    try {
+      allLabels[formFieldIndex].classList.add('done');
+      allLabels[formFieldIndex + 1].classList.add('active');
+      allLabels[formFieldIndex].innerHTML = '<i class="mdi mdi-check-all"></i>';
+    } catch (error) {
+      console.log(error);
+    }
     setFormFieldIndex(formFieldIndex + 1);
     const text = document.getElementById('user-development-plan-eidtor')
       .innerHTML;
@@ -49,6 +53,11 @@ function IdpEditor() {
     if (e.target.name === 'submit') {
       setFormFieldIndex(0);
       console.log(plan);
+      axios({
+        method: 'POST',
+        url: '',
+        data: plan,
+      });
     }
   };
 
@@ -56,10 +65,23 @@ function IdpEditor() {
     setPlan({ ...plan, [e.target.name]: e.target.value });
   };
 
+  const IdpEditorCloseHandler = e => {
+    e.preventDefault();
+    const editor = document.querySelector('.editor-area');
+    editor.classList.remove('show');
+  };
+
   return (
     <>
       <div className="main-eidtor-area">
-        <p>IDP Editor</p>
+        <p>
+          IDP Editor{' '}
+          <img
+            onClick={IdpEditorCloseHandler}
+            src="/assets/img/cross.svg"
+            alt="close"
+          />
+        </p>
         <input
           type="text"
           name="title"
