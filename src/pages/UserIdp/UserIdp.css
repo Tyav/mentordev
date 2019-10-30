@@ -61,6 +61,10 @@ p.pHeadings img {
 .user-plan-table-body div {
   display: flex;
 }
+.user-plan-table-body div a {
+  width: 100%;
+  color: #5d5b6f;
+}
 .user-plan-table-action button {
   margin-right: 5px;
   text-transform: uppercase;
@@ -135,6 +139,15 @@ p.pHeadings img {
   color: #5d5b6f;
   padding: 10px 0;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eef0f5;
+}
+.main-eidtor-area p img {
+  width: 1rem;
+  height: 1rem;
+  margin-left: auto;
+  cursor: pointer;
 }
 .main-eidtor-area input {
   padding: 10px;
@@ -160,6 +173,12 @@ p.pHeadings img {
   position: fixed;
   width: 100%;
   height: 100%;
+  display: none;
+  transition: 0.2s;
+}
+.show {
+  display: block;
+  transition: 0.2s;
 }
 .editor-toolbar {
   margin-top: 10px;
@@ -236,6 +255,21 @@ button.idpSaveButton {
 button.idpSaveButton:hover {
   color: #fff;
   background: #0bdaac;
+  transition: 0.2s;
+}
+.user-dash-logout-button {
+  border: 2px solid #0bdaac;
+  color: #5d5b6f;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+}
+.user-dash-logout-button i {
+  padding-top: 5px;
+}
+.user-dash-logout-button:hover {
+  background: #0bdaac;
+  color: #fff;
   transition: 0.2s;
 }
 @media screen and (min-width: 780px) {
