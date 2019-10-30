@@ -56,12 +56,13 @@ function Login() {
         return;
       }
       // set mentor type
-      if (response.data.payload.isMentor)
+      if (response.data.payload.isMentor) {
         createCookie('validateType', response.data.payload.isMentor);
+      }
       // set cookie for user login
       createCookie('mentordev_token', response.data.token);
-      setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
 
+      setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
       setLoginResponse({
         message: 'Login Successful',
         show: true,
@@ -120,7 +121,10 @@ function Login() {
             />
             <Button className="btn-success-solid" text="Login" />
           </form>
-          <SocialLogin heading="Or Login with"  gitUrl={`client_id=3f6909c4ef2e4f58f4f8&scope=user`}></SocialLogin>
+          <SocialLogin
+            heading="Or Login with"
+            gitUrl={`client_id=3f6909c4ef2e4f58f4f8&scope=user`}
+          ></SocialLogin>
           <p>
             Don't have an account? <Link to="/register">Singup</Link> |{' '}
             <Link to="/mentorapplication">Become a mentor</Link> or{' '}
