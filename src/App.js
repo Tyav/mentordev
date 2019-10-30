@@ -38,11 +38,13 @@ function App() {
         <Route path="/formerdashboard" component={Dashboard} />
         <Route path="/getstarted" component={GetStarted} />
         <Route path="/verify" component={Verify} />
-        <Route path="/dashboard" component={Dash} />
+        <Route path="/dashboard" component={UserDashboard} />
+        <Route path="/formerdash" component={Dash} />
+
         <Route exact path="/admin-login" component={AdminLogin} />
         <Route exact path="/admin-register" component={CreateAdmin}></Route>
         <Route path="/admin" component={Admin}></Route>
-        <Route path="/dash" component={UserDashboard}></Route>
+        {/* <Route path="/dash" component={UserDashboard}></Route> */}
       </Router>
     </UserObject.Provider>
   );
