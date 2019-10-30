@@ -1,13 +1,13 @@
 import React from 'react';
 
-function UserDashContentHeader() {
+function UserDashContentHeader({ onclick }) {
   return (
     <header className="user-dash-content-header">
-      <div className="user-dash-contact-toggle">
+      <button className="user-dash-contact-toggle" onClick={onclick}>
         <img alt="menu toggler" src="/assets/img/menu.svg" />
         <span>Contacts</span>&nbsp;
         <img alt="menu toggler" src="/assets/img/contact.svg" />
-      </div>
+      </button>
     </header>
   );
 }
