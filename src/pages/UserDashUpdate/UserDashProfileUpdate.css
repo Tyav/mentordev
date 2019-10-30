@@ -1,0 +1,143 @@
+.user-dash-profile-update {
+  width: 100%;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 4px;
+}
+.profile-image-area {
+  width: 100%;
+  height: 300px;
+  border-radius: 4px;
+  position: relative;
+}
+.profile-cover-image-area {
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.profile-form-area {
+  padding: 10px;
+  height: fit-content;
+}
+
+.profile-avatar-image-area {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  bottom: -35px;
+  left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-avatar-image-area form {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  bottom: 5px;
+  right: -5px;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+}
+.profile-avatar-image-area form label {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.profile-avatar-image-area form label i {
+  margin-top: 5px;
+  color: #5b5d6f;
+}
+.profile-avatar-image-area img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+#coverImage,
+#avatar {
+  display: none;
+}
+.profile-cover-image-area form {
+  padding: 20px;
+}
+.profile-cover-image-area label {
+  background: #000;
+  opacity: 0.5;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 0.7rem;
+  color: #fff;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  font-weight: 500;
+}
+.profile-cover-image-area label i {
+  font-size: 0.6rem;
+}
+.profile-form-area {
+  width: 100%;
+  margin-top: 50px;
+}
+.user-update-form-area {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.user-update-account-info,
+.user-update-social-info {
+  width: 49%;
+  margin-right: 1%;
+  padding: 10px;
+}
+.user-update-account-info {
+  border-right: 1px solid #eef0f5;
+}
+.user-update-account-info p,
+.user-update-social-info p,
+.update-password-area p {
+  color: #5b5d6f;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #eef0f5;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.update-password-area p img,
+.user-update-social-info p img,
+.user-update-account-info p img {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 5px;
+}
+.user-update-account-info label {
+  color: #5d5b6f;
+  font-size: 0.7rem;
+}
+.user-update-account-info textarea {
+  border-radius: 4px;
+  padding: 10px !important;
+}
+.update-password-area {
+  width: 97%;
+  padding: 20px 10px;
+  background: #fff;
+  border-radius: 4px;
+  margin: 10px auto;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+}
+.input-half {
+  display: flex;
+  justify-content: space-between;
+}
+.input-half .user-new-input {
+  width: 49%;
+}
+@media screen and (min-width: 780px) {
+}
