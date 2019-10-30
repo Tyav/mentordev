@@ -2,4 +2,6 @@ import React from 'react';
 
 const UserObject = React.createContext({});
 
-export { UserObject };
+const DashContext = React.createContext({});
+
+export { UserObject, DashContext };
