@@ -4,7 +4,6 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import InputField from '../../components/InputField';
 import Button from '../../components/Button';
 import FormHeader from '../../components/FormHeader';
-import Checkbox from '../../components/Checkbox';
 import Navbar from '../../components/Navbar';
 import FormAlert from '../../components/Alerts/FormAlert';
 import SocialLogin from '../../components/SocialLogin';
