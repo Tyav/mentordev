@@ -1,0 +1,19 @@
+.user-new-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.user-new-input label {
+  color: #5d5b6f;
+  font-size: 0.7rem;
+}
+.user-new-input input {
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border: 1px solid #eef0f5;
+  border-radius: 2px;
+  outline: none;
+}
