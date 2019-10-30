@@ -12,6 +12,7 @@ function NewInputField({
   inputLable,
   isEnabled,
   style,
+  inputClick,
 }) {
   return (
     <>
@@ -26,6 +27,7 @@ function NewInputField({
           placeholder={inputPlaceholder}
           disabled={isEnabled}
           style={style}
+          onClick={inputClick}
         />
       </div>
     </>
