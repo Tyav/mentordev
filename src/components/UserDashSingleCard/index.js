@@ -1,6 +1,14 @@
 import React from 'react';
 
-function UserDashSingleCard() {
+function UserDashSingleCard({
+  username,
+  briefDescription,
+  email,
+  location,
+  stacks,
+  coverImage,
+  profileImage,
+}) {
   const backgroundImage =
     'https://images.unsplash.com/photo-1472437774355-71ab6752b434?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80';
   return (
@@ -8,27 +16,26 @@ function UserDashSingleCard() {
       <div
         className="user-single-card-image"
         style={{
-          background: `url(${backgroundImage})`,
+          background: `url(${coverImage})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <img src={`${backgroundImage}`} />
+        <img src={`${profileImage}`} />
       </div>
       <div className="user-single-card-content">
-        <p>Oke Tega</p>
-        <p className="user-single-card-content-p">
-          I am an aspiring Sofware Engineer from Lagos, Nigeria
+        <p>{username}</p>
+        <p className="user-single-card-content-p">{briefDescription}</p>
+        <p className="user-single-card-extra">
+          <img src="/assets/img/email.svg" /> &nbsp; {email}
         </p>
         <p className="user-single-card-extra">
-          <img src="/assets/img/email.svg" /> &nbsp; oketegah@gmail.com
-        </p>
-        <p className="user-single-card-extra">
-          <img src="/assets/img/location-pin.svg" /> &nbsp; Lagos, Nigeria
+          <img src="/assets/img/location-pin.svg" /> &nbsp; {location}
         </p>
         <div className="user-single-card-stack">
-          <p>PHP</p>
-          <p>JavaScript</p>
+          {stacks.map(stack => (
+            <p>{stack}</p>
+          ))}
         </div>
       </div>
     </div>
