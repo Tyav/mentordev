@@ -14,40 +14,6 @@ function MainAbout() {
     <>
       <Navbar></Navbar>
       <AboutHeader imagePath="/assets/img/mentors.jpg" />
-      {/* <nav className="main-about-nav">
-        <div className="main-about-nav-logo">
-          <img src="/assets/img/logo.png" alt="logo" />
-          <p>Mentor />ev</p>
-        </div> */}
-      {/* <div className="main-about-nav-buttons">
-        <Button className="btn-success-outline" text="Login" />
-        <Button className="btn-success-solid" text="Register" />
-      </div> */}
-      {/* </nav> */}
-      {/* <div className="main-about-card">
-        <div className="main-about-side-content">
-          <h1>
-            Mentor a <br />
-            <span>/>eveloper</span>
-          </h1>
-          <p>
-            Trainee students find and connect with Willing Mentors for
-            mentorship relationships.
-            <br />
-            <Link to="/register">
-              <Button className="btn-success-solid" text="Get Started" />
-            </Link>
-            {'       '}
-            <Link to="/login">
-              <Button className="btn-success-solid" text="Login" />
-            </Link>
-          </p>
-        </div>
-        <div className="main-about-card-img">
-          <img src="/assets/img/frustrated.png" alt="mentee" />
-        </div>
-      </div> */}
-
       <div className="main-about-card">
         <h1 className="about-main-h1">How it Works</h1>
         <div className="main-about-sm-card-area">
