@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 //Helpers
 import getParams from '../../helper/getParams';
@@ -20,6 +21,8 @@ import { createCookie, readCookie } from '../../helper/cookie';
 import UserDashHome from '../UserDashHome';
 import { sendGetRequest } from '../../actions';
 import { formatLocalUser } from '../../helper/formatUpdateData';
+import UserScheduleList from '../UserScheduleList';
+import UserDashRequest from '../UserDashRequest';
 
 function UserDashboard() {
   const mentor = getParams('auth');
@@ -31,21 +34,46 @@ function UserDashboard() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    fetchUser(token);
+    fetchUser();
   }, [token]);
 
-  const fetchUser = token => {
+  const fetchUser = () => {
     return sendGetRequest('/user/me')
       .then(response => {
         if (response.data.statusCode === 200) {
           const userValue = formatLocalUser(response.data.payload);
-          setUser(userValue);
+          // setUser({ ...user, ...userValue });
+          return userValue;
         }
       })
       .catch(error => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    fetchUser();
+    async function fetchContact() {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/contact`,
+          config,
+        );
+        const userDetails = await fetchUser();
+        setUser({ ...userDetails, contacts: response.data.payload });
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    fetchContact();
+  }, [token]);
 
   const ContactListToggleHandler = e => {
     e.preventDefault();
@@ -81,13 +109,23 @@ function UserDashboard() {
                 ></Route>
                 <Route
                   exact
-                  path="/dash/idp"
+                  path="/dashboard/idp"
                   component={DevelopmentPlan}
                 ></Route>
                 <Route
                   exact
                   path="/dashboard/profile"
                   component={ProfileUpdate}
+                ></Route>
+                <Route
+                  exact
+                  path="/dashboard/schedule"
+                  component={UserScheduleList}
+                ></Route>
+                <Route
+                  exact
+                  path="/dashboard/request"
+                  component={UserDashRequest}
                 ></Route>
               </DashContext.Provider>
             </div>
