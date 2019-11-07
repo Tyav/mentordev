@@ -28,18 +28,27 @@ function UserDashHeader() {
               <span>Home</span>
             </li>
           </NavLink>
-          <li>
-            <img src="/assets/img/approval.svg" />
-            <span>Manage Requests</span>
-          </li>
+          <NavLink exact to="/dashboard/request">
+            <li>
+              <img src="/assets/img/approval.svg" />
+              <span>Manage Requests</span>
+            </li>
+          </NavLink>
 
           <h5>SCHEDULES</h5>
-          <li>
-            <img src="/assets/img/punctuality.svg" />
-            <span>Manage Schedules</span>
-          </li>
-
+          <NavLink exact to="/dashboard/schedule">
+            <li>
+              <img src="/assets/img/punctuality.svg" />
+              <span>Manage Schedules</span>
+            </li>
+          </NavLink>
           <h5>DEVELOPMENT PLANS</h5>
+          <NavLink exact to="/dashboard/idp">
+            <li>
+              <img src="/assets/img/planning.svg" />
+              <span>Mentees IDPs</span>
+            </li>
+          </NavLink>
           <li>
             <img src="/assets/img/performance.svg" />
             <span>Mentees Report</span>
