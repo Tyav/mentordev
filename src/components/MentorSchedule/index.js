@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { readCookie } from '../../helper/cookie';
-import ScheduleList from '../ScheduleList'
+import ScheduleList from '../ScheduleList';
+
+import './MentorSchedule.css';
 
 export default function MentorSchedule({ id, close }) {
   const [schedules, setSchedules] = useState([]);
-  useEffect(()=>{
+
+  useEffect(() => {
     axios({
       url: `${process.env.REACT_APP_BACKEND_URL}/user/${id}/schedules`,
       method: 'get',
@@ -16,17 +19,17 @@ export default function MentorSchedule({ id, close }) {
     })
       .then(resp => {
         setSchedules([...resp.data.payload]);
+        console.log(resp.data.payload);
       })
       .catch(err => {});
-  
-  }, [])
+  }, [id]);
 
   return (
     <>
-      <div>
+      <div className="user-mentor-schedule-list">
         {schedules.map(schedule => {
           return (
-            <ScheduleList 
+            <ScheduleList
               key={schedule._id}
               from={schedule.time.from}
               to={schedule.time.to}
