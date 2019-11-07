@@ -5,7 +5,7 @@ function UserDashIntro({ username }) {
     <section className="user-dash-intro">
       <div className="user-dash-intro-banner">
         <div className="user-dash-intro-textarea">
-          <a href="/" class="user-new-dash-nav-logo">
+          <a href="/" className="user-new-dash-nav-logo">
             Mentor <span>/&gt;ev</span>
           </a>
           <p>Welcome</p>
