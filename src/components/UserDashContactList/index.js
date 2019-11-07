@@ -27,7 +27,7 @@ function UserDashContactList() {
       }
     }
     fetchData();
-  }, token);
+  }, [token]);
 
   return (
     <aside className="user-dash-contact-list">
