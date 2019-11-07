@@ -41,7 +41,6 @@ function UserDashboard() {
       .then(response => {
         if (response.data.statusCode === 200) {
           const userValue = formatLocalUser(response.data.payload);
-          // setUser({ ...user, ...userValue });
           return userValue;
         }
       })
