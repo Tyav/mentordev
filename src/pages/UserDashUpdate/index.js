@@ -63,7 +63,7 @@ function ProfileUpdate() {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     eraseCookie('nue_prof');
     const data = formatBeforeUpdate(values);
     axios({
