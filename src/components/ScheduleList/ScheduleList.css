@@ -1,28 +1,45 @@
+.scheduleList {
+  margin-right: 15px;
+  width: 14%;
+}
 .scheduleList form {
   width: 100% !important;
   display: flex;
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
   padding: 10px;
+  flex-direction: column;
+  padding: 10px;
   border-radius: 4px;
   margin: 10px auto;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid #f8fafd;
   box-shadow: rgba(69, 65, 78, 0.06) 0px 1px 15px 1px;
 }
 .scheduleList button {
-  background: #45cc89;
-  color: #fff;
-  padding: 10px;
-  display: flex;
+  color: #0bdaac !important;
+  padding: 10px 20px !important;
+  display: flex !important;
   justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+  background: none !important;
+  transition: 0.2s;
+  border-radius: 0;
+}
+.scheduleList button:hover {
+  border-bottom: 1px solid #0bdaac;
+  transition: 0.2s;
 }
 .mentorScheduleDetails {
   display: flex;
+  flex-direction: column;
 }
 .mentorScheduleDetails p {
   display: flex;
   flex-direction: column;
   margin-right: 10px;
+  padding: 10px;
   font-size: 0.9rem;
   font-weight: 500;
   color: #74788d;
