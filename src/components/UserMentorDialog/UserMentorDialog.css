@@ -1,0 +1,74 @@
+.user-mentor-dialog {
+  width: 78.5%;
+  height: 100%;
+  position: fixed;
+  z-index: 999999999999;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  top: 10px;
+}
+.user-dialog-brief-details {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  display: flex;
+}
+
+.user-dialog-brief-details .user-image-area {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.user-dialog-brief-details .user-image-area img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.user-details-area,
+.user-bio-area {
+  margin-left: 20px;
+  border-left: 1px solid #eef0f5;
+  padding: 20px;
+}
+.user-details-area p:first-child {
+  display: flex;
+  flex-direction: column;
+}
+.user-details-area p span {
+  color: #b7b7b7;
+  font-size: 0.8rem;
+}
+
+.user-bio-area {
+  border-left: none;
+  width: 60%;
+}
+
+.user-bio-area h2 {
+  color: #c7c9ca;
+}
+.user-bio-area p {
+  font-size: 0.8rem;
+  color: #5d5b6f;
+  white-space: pre-wrap;
+}
+.user-mentor-dialog-schedule {
+  overflow-y: scroll;
+  height: fit-content;
+  max-height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.available-schedules-heading {
+  padding: 10px;
+  color: #9e95c3;
+  border-bottom: 1px solid #eef0f5;
+  margin-bottom: 10px;
+
+}
