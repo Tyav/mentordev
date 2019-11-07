@@ -1,0 +1,18 @@
+.user-single-card-content a {
+  color: #5d5b6f;
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+  margin-left: 10px;
+  color: #3d3de0;
+}
+.user-single-card-content a i {
+  padding-top: 5px;
+}
+
+p.user-single-card-content-p {
+  width: 300px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
