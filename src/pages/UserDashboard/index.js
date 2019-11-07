@@ -30,7 +30,6 @@ function UserDashboard() {
   if (getParams('token')) createCookie('mentordev_token', getParams('token'));
   const [toggleState, setToggleState] = useState(false);
   const token = readCookie('mentordev_token');
-  const isMentor = readCookie('validateType');
   const [user, setUser] = useState({});
 
   useEffect(() => {
