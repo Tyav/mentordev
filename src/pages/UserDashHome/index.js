@@ -12,13 +12,30 @@ import DashHomeList from '../../components/DashHomeList';
 import UserDashIntro from '../../components/UserDashIntro';
 import MentorRequest from '../MentorRequest';
 
+import { sendGetRequest } from '../../actions';
+import { formatLocalUser } from '../../helper/formatUpdateData';
+
 function UserDashHome() {
   const isMentor = readCookie('validateType');
   const token = readCookie('mentordev_token');
   const [latestConnect, setLatestConnect] = useState([]);
   const { user, setUser } = useContext(DashContext);
 
+  const fetchUser = () => {
+    return sendGetRequest('/user/me')
+      .then(response => {
+        if (response.data.statusCode === 200) {
+          const userValue = formatLocalUser(response.data.payload);
+          setUser(userValue);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
+    fetchUser();
     async function fetchContact() {
       const config = {
         headers: {
@@ -39,10 +56,29 @@ function UserDashHome() {
     }
     fetchContact();
   }, [token]);
+
+  useEffect(() => {
+    setUser({ ...user, connects: latestConnect });
+  }, [latestConnect]);
+
+  console.log(latestConnect);
+
   return (
     <>
       {latestConnect.length ? (
-        <UserDashSingleCard />
+        latestConnect.map(connection => {
+          let contact = connection.contact;
+          return (
+            <UserDashSingleCard
+              profileImage={contact.avatar}
+              coverImage={contact.avatar}
+              username={contact.name}
+              email={contact.email}
+              stacks={contact.skills}
+              schedule={connection.schedule}
+            />
+          );
+        })
       ) : (
         <>
           <UserDashIntro username={user.fullname} />
