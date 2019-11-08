@@ -19,6 +19,7 @@ function UserDashHome() {
   const isMentor = readCookie('validateType');
   const token = readCookie('mentordev_token');
   const [latestConnect, setLatestConnect] = useState([]);
+  const [userIdp, setUserIdp] = useState([]);
   const { user, setUser } = useContext(DashContext);
 
   const fetchUser = () => {
@@ -54,31 +55,37 @@ function UserDashHome() {
         console.log(error.message);
       }
     }
+    const fetchUserIdp = async () => {
+      let response = await sendGetRequest('/idp');
+      setUserIdp(response.data.payload);
+    };
     fetchContact();
+    fetchUserIdp();
   }, [token]);
 
   useEffect(() => {
-    setUser({ ...user, connects: latestConnect });
-  }, [latestConnect]);
-
-  console.log(latestConnect);
+    setUser({ ...user, connects: latestConnect, idps: userIdp });
+  }, [latestConnect, userIdp]);
 
   return (
     <>
       {latestConnect.length ? (
-        latestConnect.map(connection => {
-          let contact = connection.contact;
-          return (
-            <UserDashSingleCard
-              profileImage={contact.avatar}
-              coverImage={contact.avatar}
-              username={contact.name}
-              email={contact.email}
-              stacks={contact.skills}
-              schedule={connection.schedule}
-            />
-          );
-        })
+        <>
+          {latestConnect.map(connection => {
+            let contact = connection.contact;
+            return (
+              <UserDashSingleCard
+                profileImage={contact.avatar}
+                coverImage={contact.avatar}
+                username={contact.name}
+                email={contact.email}
+                stacks={contact.skills}
+                schedule={connection.schedule}
+              />
+            );
+          })}
+          <DashHomeList />
+        </>
       ) : (
         <>
           <UserDashIntro username={user.fullname} />
