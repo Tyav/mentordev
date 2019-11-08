@@ -1,6 +1,6 @@
 .scheduleList {
   margin-right: 15px;
-  width: 14%;
+  width: 20%;
 }
 .scheduleList form {
   width: 100% !important;
@@ -34,6 +34,7 @@
 .mentorScheduleDetails {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .mentorScheduleDetails p {
   display: flex;
@@ -51,6 +52,13 @@
 }
 .mentorMainDet {
   display: none;
+}
+.user-request-select-options select {
+  height: 30px;
+  display: block;
+  background: #fff;
+  border: 1px solid #eef0f5;
+  outline: none;
 }
 @media screen and (min-width: 780px) {
   .mentorMainDet {

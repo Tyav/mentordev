@@ -1,0 +1,9 @@
+.user-plan-table section {
+  border-bottom: 1px solid #eef0f5;
+}
+.user-plan-table section button {
+  border-radius: 0;
+}
+.user-plan-table section button.active {
+  border-bottom: 2px solid #0bdaac;
+}

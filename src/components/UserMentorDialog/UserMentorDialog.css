@@ -60,7 +60,7 @@
 }
 .user-mentor-dialog-schedule {
   overflow-y: scroll;
-  height: fit-content;
+  height: calc(100% - 450px);
   max-height: 600px;
   display: flex;
   flex-wrap: wrap;
@@ -70,5 +70,4 @@
   color: #9e95c3;
   border-bottom: 1px solid #eef0f5;
   margin-bottom: 10px;
-
 }
