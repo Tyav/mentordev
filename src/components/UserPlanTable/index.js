@@ -1,13 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function UserPlanTable({ heading, isTitle, showActions, isLink, data }) {
+//Styling
+import './UserPlanTable.css';
+
+function UserPlanTable({
+  heading,
+  isTitle,
+  showActions,
+  isLink,
+  data,
+  filterTied,
+  filterDraft,
+}) {
   return (
     <div className="user-plan-table">
       <p>
         <img alt="planning" src="/assets/img/planning.svg" />
         {heading}
       </p>
+      <section>
+        <button className="active" onClick={filterTied}>
+          Tied
+        </button>
+        <button onClick={filterDraft}>Draft</button>
+      </section>
       <div className="user-plan-table-header">
         <div className="user-plan-table-head user-plan-table-sn">S/N</div>
         <div className="user-plan-table-head user-plan-table-title">
@@ -32,9 +49,9 @@ function UserPlanTable({ heading, isTitle, showActions, isLink, data }) {
                   {!isLink ? (
                     <p className="user-plan-table-title">{item.title}</p>
                   ) : (
-                    <p className="user-plan-table-title">
-                      <Link to={item.id}>{item.name}</Link>
-                    </p>
+                    <Link to={`/dashboard/idp/${item._id}`}>
+                      <p className="user-plan-table-title">{item.title}</p>
+                    </Link>
                   )}
                   <p className="user-plan-table-action">
                     {showActions ? (
