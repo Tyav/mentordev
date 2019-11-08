@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { readCookie } from '../../helper/cookie';
 import './ScheduleList.css';
+import { DashContext } from '../../Context';
+import { sendGetRequest } from '../../actions';
 
 export default function ScheduleList(props) {
   const [data, setData] = useState({
