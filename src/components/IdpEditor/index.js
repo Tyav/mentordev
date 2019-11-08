@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
 
 //Helper Function
 import {
@@ -14,7 +13,10 @@ import {
   redoChange,
 } from '../../helper/textEditor';
 
-function IdpEditor() {
+import { verifyDate } from '../../helper/formatEditorDate';
+import { sendPostRequest } from '../../actions';
+
+function IdpEditor({ fetchIdps }) {
   const [plan, setPlan] = useState({
     title: '',
     goal: '',
@@ -22,6 +24,7 @@ function IdpEditor() {
     deadline: '',
   });
 
+  const [editorError, setEditorError] = useState('');
   const [formFieldIndex, setFormFieldIndex] = useState(0);
   const formFields = ['goal', 'outcome', 'deadline', 'submit'];
 
@@ -38,25 +41,34 @@ function IdpEditor() {
       ...document.querySelectorAll('.user-plan-section-button-area label'),
     ];
     //Fix all this issues later
+    //TRY TO MAKE THIS HAPPEN WITHOUT THAT TRYCATCH BLOCK
     try {
       allLabels[formFieldIndex].classList.add('done');
       allLabels[formFieldIndex + 1].classList.add('active');
       allLabels[formFieldIndex].innerHTML = '<i class="mdi mdi-check-all"></i>';
-    } catch (error) {
-      console.log(error);
+    } catch (error) {}
+
+    let text = document.getElementById('user-development-plan-eidtor')
+      .innerHTML;
+
+    if (e.target.name === 'deadline') {
+      let theDate = verifyDate(text);
+      if (!theDate.isValid) {
+        setEditorError(theDate.result);
+        return;
+      }
+      text = theDate.result;
     }
     setFormFieldIndex(formFieldIndex + 1);
-    const text = document.getElementById('user-development-plan-eidtor')
-      .innerHTML;
+
     setPlan({ ...plan, [e.target.name]: text });
+
     document.getElementById('user-development-plan-eidtor').innerHTML = '';
+
     if (e.target.name === 'submit') {
       setFormFieldIndex(0);
-      console.log(plan);
-      axios({
-        method: 'POST',
-        url: '',
-        data: plan,
+      sendPostRequest('/idp', plan).then(response => {
+        if (response.status === 200) fetchIdps(true);
       });
     }
   };
@@ -134,6 +146,7 @@ function IdpEditor() {
           <button className="toobar-button" onClick={redoChange}>
             <i className="mdi mdi-code-tags"></i>
           </button>
+          <p className="idp-editor-errors">{editorError}</p>
         </div>
         <div
           className="user-development-plan-eidtor"
