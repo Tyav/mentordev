@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { readCookie } from '../helper/cookie'
+import { readCookie } from '../helper/cookie';
 
 const token = readCookie('mentordev_token');
 const headers = {
@@ -15,19 +15,21 @@ export function sendGetRequest(endpoint) {
   });
 }
 
-export function sendPostRequest(endpoint) {
+export function sendPostRequest(endpoint, body) {
   return axios({
     url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
     method: 'POST',
     headers,
+    data: body,
   });
 }
 
-export function sendPutRequest(endpoint) {
+export function sendPutRequest(endpoint, body) {
   return axios({
     url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
     method: 'PUT',
     headers,
+    data: body,
   });
 }
 
