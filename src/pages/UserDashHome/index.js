@@ -75,6 +75,7 @@ function UserDashHome() {
             let contact = connection.contact;
             return (
               <UserDashSingleCard
+                key={contact._id}
                 profileImage={contact.avatar}
                 coverImage={contact.avatar}
                 username={contact.name}
