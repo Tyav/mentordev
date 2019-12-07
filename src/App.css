@@ -910,6 +910,7 @@ Desktop 1
     border: 1px solid #e6ecf5;
     transition: 0.2s;
     border-radius: 4px;
+    background: #fff;
   }
   .single-mentee-request:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

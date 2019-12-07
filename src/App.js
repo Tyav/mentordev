@@ -17,7 +17,7 @@ import MentorApplication from './pages/MentorApplication';
 import UserDashboard from './pages/UserDashboard';
 
 //Context
-import { UserObject } from './Context';
+import { DashContext } from './Context';
 
 import './App.css';
 
@@ -25,7 +25,7 @@ function App() {
   const [user, setUser] = useState({});
 
   return (
-    <UserObject.Provider value={{ user, setUser }}>
+    <DashContext.Provider value={{ user, setUser }}>
       <Router>
         <Route path="/" exact component={MainAbout} />
         <Route path="/register" component={Signup} />
@@ -44,9 +44,8 @@ function App() {
         <Route exact path="/admin-login" component={AdminLogin} />
         <Route exact path="/admin-register" component={CreateAdmin}></Route>
         <Route path="/admin" component={Admin}></Route>
-        {/* <Route path="/dash" component={UserDashboard}></Route> */}
       </Router>
-    </UserObject.Provider>
+    </DashContext.Provider>
   );
 }
 

@@ -1,0 +1,21 @@
+.user-schedule-list-area {
+  width: 100%;
+}
+.user-schedule-list-area #selectField,
+.user-schedule-list-area #inputField {
+  width: 18% !important;
+  font-size: 12px !important;
+}
+.user-schedule-list-area #inputField input,
+.user-schedule-list-area #selectField select {
+  background: #fff !important;
+  border: 1px solid #eef0f5 !important;
+  box-shadow: none;
+}
+.danger-button {
+  border: 1px solid #dd0d0d;
+  color: #5d5b6f;
+  font-size: 0.7rem;
+  margin-top: 20px;
+  transition: 0.2s;
+}
