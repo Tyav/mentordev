@@ -22,6 +22,8 @@ function UserDashHome() {
   const [userIdp, setUserIdp] = useState([]);
   const { user, setUser } = useContext(DashContext);
 
+  console.log(user);
+
   const fetchUser = () => {
     return sendGetRequest('/user/me')
       .then(response => {
@@ -85,7 +87,7 @@ function UserDashHome() {
               />
             );
           })}
-          <DashHomeList />
+          {isMentor ? <MentorRequest /> : <DashHomeList />}
         </>
       ) : (
         <>

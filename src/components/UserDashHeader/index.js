@@ -24,13 +24,13 @@ function UserDashHeader() {
           <h5>MAIN NAVIGATION</h5>
           <NavLink exact to="/dashboard">
             <li>
-              <img src="/assets/img/dashboard.svg" />
+              <img src="/assets/img/dashboard.svg" alt="dashboard" />
               <span>Home</span>
             </li>
           </NavLink>
           <NavLink exact to="/dashboard/request">
             <li>
-              <img src="/assets/img/approval.svg" />
+              <img src="/assets/img/approval.svg" alt="" />
               <span>Manage Requests</span>
             </li>
           </NavLink>
@@ -38,31 +38,31 @@ function UserDashHeader() {
           <h5>SCHEDULES</h5>
           <NavLink exact to="/dashboard/schedule">
             <li>
-              <img src="/assets/img/punctuality.svg" />
+              <img src="/assets/img/punctuality.svg" alt="" />
               <span>Manage Schedules</span>
             </li>
           </NavLink>
           <h5>DEVELOPMENT PLANS</h5>
           <NavLink exact to="/dashboard/idp">
             <li>
-              <img src="/assets/img/planning.svg" />
+              <img src="/assets/img/planning.svg" alt="" />
               <span>Mentees IDPs</span>
             </li>
           </NavLink>
           <li>
-            <img src="/assets/img/performance.svg" />
+            <img src="/assets/img/performance.svg" alt="" />
             <span>Mentees Report</span>
           </li>
 
           <h5>Account Settings</h5>
           <NavLink exact to="/dashboard/profile">
             <li>
-              <img src="/assets/img/building.svg" />
+              <img src="/assets/img/building.svg" alt="" />
               <span>Edit Profile</span>
             </li>
           </NavLink>
           <li>
-            <img src="/assets/img/key.svg" />
+            <img src="/assets/img/key.svg" alt="" />
             <span>Change Password</span>
           </li>
           <li>

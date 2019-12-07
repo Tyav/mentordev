@@ -48,7 +48,9 @@ function UserDashContactList() {
                 <p className="single-user-detail-schedule">
                   <img alt="time" src="/assets/img/clock.svg" />
                   &nbsp;{' '}
-                  {`${schedule.day} ${schedule.time.from} - ${schedule.time.to}}`}
+                  {schedule
+                    ? `${schedule.day} ${schedule.time.from} - ${schedule.time.to}}`
+                    : null}
                 </p>
               </div>
             </div>

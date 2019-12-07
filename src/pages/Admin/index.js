@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Login from './login';
 import Dashboard from './Dashboard';
-import { readCookie } from '../../helper/cookie'
+import { readCookie } from '../../helper/cookie';
 
 function Admin() {
   const token = readCookie('mlt');

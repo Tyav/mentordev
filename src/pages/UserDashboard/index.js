@@ -5,6 +5,7 @@ import axios from 'axios';
 //Helpers
 import getParams from '../../helper/getParams';
 
+//Context
 import { DashContext } from '../../Context';
 
 //components
@@ -30,7 +31,7 @@ function UserDashboard() {
   if (getParams('token')) createCookie('mentordev_token', getParams('token'));
   const [toggleState, setToggleState] = useState(false);
   const token = readCookie('mentordev_token');
-  const [user, setUser] = useState({});
+  const { setUser } = React.useContext(DashContext);
 
   useEffect(() => {
     fetchUser();
@@ -98,34 +99,32 @@ function UserDashboard() {
           <div className="user-dash-content-display">
             <UserDashContactList />
             <div className="user-dash-content-content">
-              <DashContext.Provider value={{ user, setUser }}>
-                <Route exact path="/dashboard" component={UserDashHome}></Route>
-                <Route
-                  exact
-                  path="/dashboard/newrequest"
-                  component={MentorRequest}
-                ></Route>
-                <Route
-                  exact
-                  path="/dashboard/idp"
-                  component={DevelopmentPlan}
-                ></Route>
-                <Route
-                  exact
-                  path="/dashboard/profile"
-                  component={ProfileUpdate}
-                ></Route>
-                <Route
-                  exact
-                  path="/dashboard/schedule"
-                  component={UserScheduleList}
-                ></Route>
-                <Route
-                  exact
-                  path="/dashboard/request"
-                  component={UserDashRequest}
-                ></Route>
-              </DashContext.Provider>
+              <Route exact path="/dashboard" component={UserDashHome}></Route>
+              <Route
+                exact
+                path="/dashboard/newrequest"
+                component={MentorRequest}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/idp"
+                component={DevelopmentPlan}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/profile"
+                component={ProfileUpdate}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/schedule"
+                component={UserScheduleList}
+              ></Route>
+              <Route
+                exact
+                path="/dashboard/request"
+                component={UserDashRequest}
+              ></Route>
             </div>
           </div>
         </main>

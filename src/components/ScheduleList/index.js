@@ -15,6 +15,11 @@ export default function ScheduleList(props) {
   const { user } = useContext(DashContext);
 
   const [userIdp, setUserIdp] = useState([]);
+  /**
+   * ISSUES:
+   * IDP doesn't have default value
+   *
+   */
 
   function idpSelectHandler(e) {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -31,9 +36,7 @@ export default function ScheduleList(props) {
         Authorization: `Bearer ${readCookie('mentordev_token')}`,
       },
     })
-      .then(resp => {
-        props.close();
-      })
+      .then(resp => {})
       .catch(err => {
         console.log(err);
       });
@@ -66,22 +69,28 @@ export default function ScheduleList(props) {
           <div className="user-request-select-options">
             <p>Select IDP</p>
             <select onChange={idpSelectHandler} name="idp">
+              <option>---Select IDP---</option>
               {user.idps
                 ? user.idps.map(idp => {
                     if (!idp.isTied) {
                       return (
-                        <option key={idp._id} value={idp._id}>
-                          {idp.title}
-                        </option>
+                        <>
+                          <otpion>---Select IDP---</otpion>
+                          <option key={idp._id} value={idp._id}>
+                            {idp.title}
+                          </option>
+                        </>
                       );
                     }
                   })
                 : userIdp.map(idp => {
                     if (!idp.isTied) {
                       return (
-                        <option key={idp._id} value={idp._id}>
-                          {idp.title}
-                        </option>
+                        <>
+                          <option key={idp._id} value={idp._id}>
+                            {idp.title}
+                          </option>
+                        </>
                       );
                     }
                   })}

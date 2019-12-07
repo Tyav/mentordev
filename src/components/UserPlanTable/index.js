@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import { DashContext, UserObject } from '../../Context';
 
 //Styling
 import './UserPlanTable.css';
@@ -13,6 +15,12 @@ function UserPlanTable({
   filterTied,
   filterDraft,
 }) {
+  const { user, setUser } = React.useContext(DashContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, []);
+
   return (
     <div className="user-plan-table">
       <p>
@@ -41,36 +49,41 @@ function UserPlanTable({
         )}
       </div>
       <div className="user-plan-table-body">
-        {data.length
-          ? data.map((item, index) => {
-              return (
-                <div key={index}>
-                  <p className="user-plan-table-sn">{index + 1}</p>
-                  {!isLink ? (
+        {data.length ? (
+          data.map((item, index) => {
+            return (
+              <div key={index}>
+                <p className="user-plan-table-sn">{index + 1}</p>
+                {!isLink ? (
+                  <p className="user-plan-table-title">{item.title}</p>
+                ) : (
+                  <Link to={`/dashboard/idp/${item._id}`}>
                     <p className="user-plan-table-title">{item.title}</p>
+                  </Link>
+                )}
+                <p className="user-plan-table-action">
+                  {showActions ? (
+                    <>
+                      <button className="user-plan-action-edit">
+                        <i className="mdi mdi-pencil"></i>&nbsp;Edit
+                      </button>
+                      <button className="user-plan-action-delete">
+                        <i className="mdi mdi-delete"></i>&nbsp;Delete
+                      </button>{' '}
+                    </>
                   ) : (
-                    <Link to={`/dashboard/idp/${item._id}`}>
-                      <p className="user-plan-table-title">{item.title}</p>
-                    </Link>
+                    ''
                   )}
-                  <p className="user-plan-table-action">
-                    {showActions ? (
-                      <>
-                        <button className="user-plan-action-edit">
-                          <i className="mdi mdi-pencil"></i>&nbsp;Edit
-                        </button>
-                        <button className="user-plan-action-delete">
-                          <i className="mdi mdi-delete"></i>&nbsp;Delete
-                        </button>{' '}
-                      </>
-                    ) : (
-                      ''
-                    )}
-                  </p>
-                </div>
-              );
-            })
-          : 'None currently available'}
+                </p>
+              </div>
+            );
+          })
+        ) : (
+          <p>
+            Get Started. Create a Development Plan to be sent along with your
+            requests.
+          </p>
+        )}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import InputField from '../InputField';
 import SelectField from '../SelectField';
 import Card from '../Card';
 import { readCookie } from '../../helper/cookie';
+import './ScheduleCard.css';
 
 const style = {
   width: '100%',
@@ -84,7 +85,7 @@ function ScheduleCard(props) {
     return (
       <>
         <Button
-          className="btn-success-solid"
+          className="slot-user-submit-button"
           style={{ marginRight: '10px' }}
           text="Edit"
           onButtonClick={e => {
@@ -99,7 +100,7 @@ function ScheduleCard(props) {
     return (
       <>
         <Button
-          className="btn-success-solid"
+          className="slot-user-submit-button"
           style={{ marginRight: '10px' }}
           text="Save"
           onButtonClick={handleSchedule}
@@ -114,17 +115,6 @@ function ScheduleCard(props) {
         <i className="mdi mdi-calendar-edit" /> {schedule.day}
       </h2>
       <form className="new-dash-single-schedule-list">
-        {/* <InputField
-          id="day"
-          label="Day"
-          type="text"
-          name="day"
-          placeholder="Day"
-          value={schedule.day}
-          disabled={edit}
-          change={onChange}
-          list="slot-days"
-        /> */}
         <SelectField
           id="day"
           label="Day"
@@ -137,21 +127,6 @@ function ScheduleCard(props) {
           day={props.day}
           // list="slot-days"
         />
-        {/* <div id="inputField" className={props.style}>
-      <label htmlFor={props.id}>
-        <i className={`mdi mdi-${props.icon}`}></i>
-        {"Day"}
-      </label>
-
-        <select className="day-select" onChange={onChange} value={schedule.day} name="day">
-          {props.day.map((day)=>{
-            return (
-              <option value={day}>{day}</option>
-            )
-          })}
-        </select>
-    </div> */}
-
         <datalist id="slot-days">
           {props.day.map(day => {
             return <option key={day}>{day}</option>;
@@ -240,10 +215,13 @@ function ScheduleCard(props) {
             ''
           ) : (
             <Button
-              className={
-                schedule.isClosed ? 'btn-danger-solid' : 'btn-success-solid'
-              }
-              style={{ background: schedule.isClosed ? '#FFA001' : 'red' }}
+              className={schedule.isClosed ? 'danger-button' : 'danger-button'}
+              style={{
+                border: schedule.isClosed
+                  ? '1px solid #FFA001'
+                  : '1px solid #dd0d0d',
+                maringLeft: '10px',
+              }}
               text={schedule.isClosed ? 'Re-Open' : 'Close'}
               onButtonClick={closeSchedule}
             />

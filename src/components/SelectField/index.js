@@ -2,7 +2,7 @@ import React from 'react';
 
 import './SelectField.css';
 
-function InputField(props) {
+function SelectField(props) {
   return (
     <div id="selectField" className={props.style}>
       <label htmlFor={props.id}>
@@ -18,8 +18,8 @@ function InputField(props) {
       >
         {props.day.map(day => {
           return (
-            <option value={day.day} key={day.day}>
-              {day.day}
+            <option value={day.day || day} key={day.day || day}>
+              {day.day || day}
             </option>
           );
         })}
@@ -28,4 +28,4 @@ function InputField(props) {
   );
 }
 
-export default InputField;
+export default SelectField;

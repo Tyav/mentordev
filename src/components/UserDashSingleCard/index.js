@@ -32,28 +32,29 @@ function UserDashSingleCard({
         <p className="user-single-card-content-p">{briefDescription}</p>
         {email && schedule ? (
           <p className="user-single-card-extra">
-            <img src="/assets/img/email.svg" /> &nbsp; {email}
+            <img src="/assets/img/email.svg" alt="email" /> &nbsp; {email}
           </p>
         ) : null}
         {location ? (
           <p className="user-single-card-extra">
-            <img src="/assets/img/location-pin.svg" /> &nbsp; {location}
+            <img src="/assets/img/location-pin.svg" alt="location" /> &nbsp;{' '}
+            {location}
           </p>
         ) : null}
         {schedule ? (
           <p className="user-single-card-extra">
-            <img src="/assets/img/calendar.svg" /> &nbsp;{' '}
+            <img src="/assets/img/calendar.svg" alt="calendar" /> &nbsp;{' '}
             {schedule ? schedule.day : 'Day'}
           </p>
         ) : null}
         {schedule ? (
           <p className="user-single-card-extra">
-            <img src="/assets/img/clock.svg" /> &nbsp;{' '}
+            <img src="/assets/img/clock.svg" alt="clock" /> &nbsp;{' '}
             {schedule ? `${schedule.time.from} - ${schedule.time.to}` : 'Time'}
           </p>
         ) : null}
         <div className="user-single-card-stack">
-          {stacks ? stacks.map(stack => <p>{stack}</p>) : null}
+          {stacks ? stacks.map(stack => <p key={stack}>{stack}</p>) : null}
         </div>
         {viewMore ? (
           <Link to="/" onClick={viewMore} id={id}>

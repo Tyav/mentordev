@@ -10,13 +10,13 @@ import FormAlert from '../../components/Alerts/FormAlert';
 import SocialLogin from '../../components/SocialLogin';
 
 import { formatLocalUser } from '../../helper/formatUpdateData';
-import { UserObject } from '../../Context';
+import { DashContext } from '../../Context';
 import { readCookie, createCookie } from '../../helper/cookie';
 //Stylings
 import './Login.css';
 
 function Login() {
-  const { user, setUser } = useContext(UserObject);
+  const { user, setUser } = useContext(DashContext);
 
   const [loginResponse, setLoginResponse] = useState({
     message: '',
@@ -63,6 +63,7 @@ function Login() {
       createCookie('mentordev_token', response.data.token);
 
       setUser(formatLocalUser(response.data.payload)); // make user object available with usecontext
+
       setLoginResponse({
         message: 'Login Successful',
         show: true,

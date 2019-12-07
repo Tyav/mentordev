@@ -10,8 +10,6 @@ function UserMentorDialog({ data }) {
     setMentor({ ...data });
   }, [data]);
 
-  console.log(mentor);
-
   return (
     <div className="user-mentor-dialog">
       <div className="user-dialog-brief-details">

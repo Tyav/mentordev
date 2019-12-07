@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { readCookie } from '../../helper/cookie';
 
@@ -7,29 +7,42 @@ import ScheduleList from '../Dash/ScheduleList';
 
 import SelectField from '../../components/SelectField';
 import InputField from '../../components/InputField';
+import { sendGetRequest } from '../../actions';
+import { DashContext } from '../../Context';
+import UserAppointment from '../UserAppointments';
+
+/**
+ * ISSUES:
+ * Check for redundancies
+ * Working on the sorting algorithm for this schedule
+ * Work on the sortSchedules function
+ */
 
 function UserScheduleList({ id, close }) {
   let day = [
-    { day: 'Sunday', color: '#f1f1f1', count: 0 },
-    { day: 'Monday', color: '#bf00ff', count: 0 },
-    { day: 'Tuesday', color: '#ff2300', count: 0 },
-    { day: 'Wednesday', color: '#ffd300', count: 0 },
-    { day: 'Thursday', color: '#f50', count: 0 },
-    { day: 'Friday', color: '#0bdaac', count: 0 },
-    { day: 'Saturday', color: '#0080ff', count: 0 },
+    { day: 'Sunday', color: '#f1f1f1', count: 0, appointments: [] },
+    { day: 'Monday', color: '#bf00ff', count: 0, appointments: [] },
+    { day: 'Tuesday', color: '#ff2300', count: 0, appointments: [] },
+    { day: 'Wednesday', color: '#ffd300', count: 0, appointments: [] },
+    { day: 'Thursday', color: '#f50', count: 0, appointments: [] },
+    { day: 'Friday', color: '#0bdaac', count: 0, appointments: [] },
+    { day: 'Saturday', color: '#0080ff', count: 0, appointments: [] },
   ];
 
   const [days, setDays] = useState([
-    { day: 'Sunday', color: '#f1f1f1', count: 0 },
-    { day: 'Monday', color: '#bf00ff', count: 0 },
-    { day: 'Tuesday', color: '#ff2300', count: 0 },
-    { day: 'Wednesday', color: '#ffd300', count: 0 },
-    { day: 'Thursday', color: '#f50', count: 0 },
-    { day: 'Friday', color: '#0bdaac', count: 0 },
-    { day: 'Saturday', color: '#0080ff', count: 0 },
+    { day: 'Sunday', color: '#f1f1f1', count: 0, appointments: [] },
+    { day: 'Monday', color: '#bf00ff', count: 0, appointments: [] },
+    { day: 'Tuesday', color: '#ff2300', count: 0, appointments: [] },
+    { day: 'Wednesday', color: '#ffd300', count: 0, appointments: [] },
+    { day: 'Thursday', color: '#f50', count: 0, appointments: [] },
+    { day: 'Friday', color: '#0bdaac', count: 0, appointments: [] },
+    { day: 'Saturday', color: '#0080ff', count: 0, appointments: [] },
   ]);
 
   const [schedules, setSchedules] = useState([]);
+  const { user, setUser } = useContext(DashContext);
+  const [scheduleIds, setScheduleIds] = useState('');
+  const [showAppointments, setShowAppointments] = useState(false);
   const [userSchedule, setUserSchedule] = useState({
     day: new Date(Date.now()).getDay(),
     from: '',
@@ -39,34 +52,13 @@ function UserScheduleList({ id, close }) {
     isClosed: false,
     isInstant: true,
   });
-  const token = readCookie('mentordev_token');
   const [createScheduleResponse, setCreateScheduleResponse] = useState({
     message: '',
     show: false,
     type: '',
   });
 
-  useEffect(() => {
-    async function fetchData() {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/schedule`,
-          config,
-        );
-        setSchedules([...res.data.payload]);
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-    fetchData();
-  }, [token]);
+  const token = readCookie('mentordev_token');
 
   const headers = {
     'Content-Type': 'application/json',
@@ -84,9 +76,11 @@ function UserScheduleList({ id, close }) {
 
         let userSchedules = response.data.payload;
         let scheduleLength = userSchedules.length;
+        let ids = [];
 
         //Work on this sorting
         for (let index = 0; index < scheduleLength; index++) {
+          ids.push(userSchedules[index]._id);
           for (let j = 0; j < day.length; j++) {
             if (day[j].day === userSchedules[index].day) {
               ++day[j].count;
@@ -95,17 +89,29 @@ function UserScheduleList({ id, close }) {
             }
           }
         }
+
+        setScheduleIds(ids.join(','));
         setDays([...day]);
-        console.log(day);
       })
       .catch(error => {
         console.log(error);
       });
   };
 
+  const sortSchedules = () => {
+    for (let i in user.contacts) {
+      for (let j in day) {
+        if (day[j].day === user.contacts[i].schedule.day) {
+          day[j].appointments.push(user.contacts[i].schedule);
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     getSchedule();
-  }, []);
+    sortSchedules();
+  }, [user, scheduleIds]);
 
   function addTime(str) {
     if (!str) return str;
@@ -151,7 +157,6 @@ function UserScheduleList({ id, close }) {
           if (res.data.statusCode === 200) {
             console.log(res);
           } else {
-            console.log(res);
             setCreateScheduleResponse({
               message: res.data.message,
               show: true,
@@ -192,6 +197,12 @@ function UserScheduleList({ id, close }) {
     });
   }
 
+  function toggleScheduleHandler(e) {
+    e.target.name === 'schedule'
+      ? setShowAppointments(false)
+      : setShowAppointments(true);
+  }
+
   return (
     <>
       <div className="user-time-slot-creator">
@@ -207,7 +218,6 @@ function UserScheduleList({ id, close }) {
                 label="Day"
                 type="text"
                 name="day"
-                //placeholder="Day"
                 value={userSchedule.day}
                 change={onChange}
                 day={day}
@@ -232,7 +242,6 @@ function UserScheduleList({ id, close }) {
                 change={onChange}
                 min={userSchedule.from}
                 required={true}
-                // disabled={edit}
               />
             </div>
             <div className="time-slot-extra-field">
@@ -262,7 +271,6 @@ function UserScheduleList({ id, close }) {
                     onChange={onChange}
                     value={false}
                     required={true}
-                    // checked={schedule.isInstant === 'false'? false: true}
                   />
                   &nbsp; Require Approval
                 </div>
@@ -299,20 +307,23 @@ function UserScheduleList({ id, close }) {
           </form>
         </div>
       </div>
-      <div className="user-days-and-schedule">
-        <div className="schedule-day-heading">
-          {days.map((day, i) => {
-            return (
-              <p style={{ borderBottom: `3px solid ${day.color}` }} key={i}>
-                {day.day} <span>{day.count}</span>
-              </p>
-            );
-          })}
+      <div className="user-schedule-toggle-button">
+        <button name="schedule" onClick={toggleScheduleHandler}>
+          Schedules
+        </button>
+        <button name="appointments" onClick={toggleScheduleHandler}>
+          Appointments
+        </button>
+      </div>
+      {!showAppointments ? (
+        <div className="user-schedule-list-area">
+          <ScheduleList />
         </div>
-      </div>
-      <div className="user-schedule-list-area">
-        <ScheduleList />
-      </div>
+      ) : (
+        <div className="user-days-and-schedule">
+          <UserAppointment days={days} />
+        </div>
+      )}
     </>
   );
 }

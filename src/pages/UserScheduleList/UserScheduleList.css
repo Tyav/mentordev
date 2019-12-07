@@ -7,12 +7,20 @@
   border-radius: 4px;
   margin-bottom: 10px;
 }
-.user-days-and-schedule .schedule-day-heading {
+.user-days-and-schedule {
   display: flex;
-  justify-content: space-evenly;
+}
+.user-days-and-schedule .schedule-day-heading,
+.schedule-day-meeting {
+  display: flex;
+  /* justify-content: space-evenly; */
+}
+.schedule-day-heading {
+  justify-content: flex-start;
+  width: 14.3%;
+  flex-direction: column;
 }
 .user-days-and-schedule .schedule-day-heading p {
-  width: 14.3%;
   padding: 20px;
   justify-content: center;
   text-align: center;
@@ -94,4 +102,24 @@
   color: #fff;
   background: #0bdaac;
   transition: 0.2s;
+}
+p.user-single-appointment {
+  border: 1px solid #eef0f5;
+  padding: 15px 0 !important;
+  margin: 5px auto;
+  width: 90%;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 0.8rem !important;
+}
+.user-schedule-toggle-button {
+  padding: 10px 0;
+  background: #fff;
+  width: 100%;
+  margin: 10px 0;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.user-schedule-toggle-button button {
+  margin-right: 5px;
 }
