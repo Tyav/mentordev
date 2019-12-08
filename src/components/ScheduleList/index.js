@@ -28,18 +28,14 @@ export default function ScheduleList(props) {
   function handleRequest(e) {
     e.preventDefault();
     axios({
-      url: `${process.env.REACT_APP_BACKEND_URL}/request/`,
-      method: 'post',
+      url: `${process.env.REACT_APP_BACKEND_URL}/request`,
+      method: 'POST',
       data,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${readCookie('mentordev_token')}`,
       },
-    })
-      .then(resp => {})
-      .catch(err => {
-        console.log(err);
-      });
+    });
   }
 
   useEffect(() => {
@@ -74,23 +70,18 @@ export default function ScheduleList(props) {
                 ? user.idps.map(idp => {
                     if (!idp.isTied) {
                       return (
-                        <>
-                          <otpion>---Select IDP---</otpion>
-                          <option key={idp._id} value={idp._id}>
-                            {idp.title}
-                          </option>
-                        </>
+                        <option key={idp._id} value={idp._id}>
+                          {idp.title}
+                        </option>
                       );
                     }
                   })
                 : userIdp.map(idp => {
                     if (!idp.isTied) {
                       return (
-                        <>
-                          <option key={idp._id} value={idp._id}>
-                            {idp.title}
-                          </option>
-                        </>
+                        <option key={idp._id} value={idp._id}>
+                          {idp.title}
+                        </option>
                       );
                     }
                   })}
