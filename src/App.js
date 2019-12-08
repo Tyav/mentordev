@@ -1,5 +1,8 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+//ErrorBoundary
+import ErrorBoundary from './ErrorBoundary';
 
 import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/MenteeDashboard';
@@ -25,27 +28,29 @@ function App() {
   const [user, setUser] = useState({});
 
   return (
-    <DashContext.Provider value={{ user, setUser }}>
-      <Router>
-        <Route path="/" exact component={MainAbout} />
-        <Route path="/register" component={Signup} />
-        <Route path="/mentorapplication" component={MentorApplication} />
-        <Route path="/about" component={MainAbout} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/adminlogin" component={AdminLogin} />
-        <Route path="/forgot-password" component={Forgot} />
-        <Route path="/reset-password" component={ResetPassword} />
-        <Route path="/formerdashboard" component={Dashboard} />
-        <Route path="/getstarted" component={GetStarted} />
-        <Route path="/verify" component={Verify} />
-        <Route path="/dashboard" component={UserDashboard} />
-        <Route path="/formerdash" component={Dash} />
+    <ErrorBoundary>
+      <DashContext.Provider value={{ user, setUser }}>
+        <Router>
+          <Route path="/" exact component={MainAbout} />
+          <Route path="/register" component={Signup} />
+          <Route path="/mentorapplication" component={MentorApplication} />
+          <Route path="/about" component={MainAbout} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/adminlogin" component={AdminLogin} />
+          <Route path="/forgot-password" component={Forgot} />
+          <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/formerdashboard" component={Dashboard} />
+          <Route path="/getstarted" component={GetStarted} />
+          <Route path="/verify" component={Verify} />
+          <Route path="/dashboard" component={UserDashboard} />
+          <Route path="/formerdash" component={Dash} />
 
-        <Route exact path="/admin-login" component={AdminLogin} />
-        <Route exact path="/admin-register" component={CreateAdmin}></Route>
-        <Route path="/admin" component={Admin}></Route>
-      </Router>
-    </DashContext.Provider>
+          <Route exact path="/admin-login" component={AdminLogin} />
+          <Route exact path="/admin-register" component={CreateAdmin}></Route>
+          <Route path="/admin" component={Admin}></Route>
+        </Router>
+      </DashContext.Provider>
+    </ErrorBoundary>
   );
 }
 
