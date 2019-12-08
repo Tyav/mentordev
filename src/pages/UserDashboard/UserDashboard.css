@@ -16,6 +16,7 @@ nav.user-dash-header {
   height: 70px;
   position: fixed;
   width: 100%;
+  transition: 0.5s;
 }
 .user-dash-header-head {
   display: flex;
@@ -72,6 +73,8 @@ ul.user-admin-nav-menu-item li img {
   height: 100%;
   width: 70%;
   box-shadow: 14px 0 14px -14px rgba(0, 0, 0, 0.05);
+  left: -70%;
+  transition: 0.2s;
 }
 .user-dash-content-header {
   width: 100%;
@@ -129,6 +132,16 @@ ul.user-admin-nav-menu-item li img {
 .show-contact-list {
   right: 0% !important;
   transition: 0.2s;
+  width: 70%;
+}
+.hide-side-nav {
+  left: -20%;
+  transition: 0.2s !important;
+}
+.expand-content {
+  transition: 0.2s;
+  width: 100% !important;
+  margin-left: 0 !important;
 }
 .user-dash-content-content {
   width: 100%;
@@ -309,6 +322,16 @@ p.user-single-card-extra img {
   border-radius: 4px;
   border: 1px solid #eef0f5;
 }
+.mobile-toggle {
+  display: block;
+}
+.desktop-toggle {
+  display: none;
+}
+.show-mobile-nav {
+  left: 0;
+  transition: 0.2s;
+}
 @media screen and (min-width: 780px) {
   .user-dash-body {
     flex-direction: row;
@@ -325,6 +348,8 @@ p.user-single-card-extra img {
     padding: 10px 20px;
     position: fixed;
     width: 20%;
+    transition: 0.2s;
+    left: 0;
   }
   .user-dash-header-head {
     border-bottom: 1px solid #eef0f5;
@@ -335,6 +360,8 @@ p.user-single-card-extra img {
     position: relative;
     width: 100%;
     box-shadow: none;
+    left: 0;
+    transition: 0.2s;
   }
   .user-dash-contact-list {
     right: -20%;
@@ -344,5 +371,25 @@ p.user-single-card-extra img {
   }
   .user-single-card-image {
     height: 40%;
+  }
+  .hide-side-nav {
+    left: -20% !important;
+    transition: 0.2s !important;
+  }
+  .mobile-toggle {
+    display: none;
+  }
+  .desktop-toggle {
+    display: block;
+  }
+  .expand-content {
+    transition: 0.2s;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .show-contact-list {
+    right: 0% !important;
+    transition: 0.2s;
+    width: 20%;
   }
 }

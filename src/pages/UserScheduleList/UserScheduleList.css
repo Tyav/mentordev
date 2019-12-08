@@ -28,6 +28,7 @@
   /* color: #9e95c3; */
   color: #5d5b6f;
   font-size: 0.9rem;
+  overflow: hidden;
 }
 .user-days-and-schedule .schedule-day-heading p:last-child {
   border: none;
@@ -49,11 +50,12 @@
 }
 .time-slot-form-area form {
   display: flex;
-  width: 100%;
+  width: 100% !important;
+  flex-direction: column;
 }
 .time-slot-form-area form .time-slot-main-field {
-  width: 50%;
-  border-right: 1px solid #eef0f5;
+  width: 100%;
+  border-right: none;
   margin-top: 10px;
   padding-right: 20px;
 }
@@ -122,4 +124,14 @@ p.user-single-appointment {
 }
 .user-schedule-toggle-button button {
   margin-right: 5px;
+}
+@media screen and (min-width: 780px) {
+  .time-slot-form-area form {
+    display: flex;
+    flex-direction: row;
+  }
+  .time-slot-form-area form .time-slot-main-field {
+    width: 50%;
+    border-right: 1px solid #eef0f5;
+  }
 }

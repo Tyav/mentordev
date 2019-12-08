@@ -2,9 +2,10 @@
   width: 100%;
   margin-top: 10px;
   display: flex;
+  flex-direction: column;
 }
 .user-plan-table {
-  width: 57%;
+  width: 100%;
   background: #fff;
   padding: 10px;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
@@ -27,12 +28,12 @@ p.pHeadings img {
   margin-right: 5px;
 }
 .user-plan-page-request-snippet {
-  width: 42.5%;
+  width: 100%;
   background: #fff;
   padding: 10px;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  margin-left: 0.5%;
+  margin-top: 10px;
 }
 .user-plan-table-header {
   display: flex;
@@ -46,6 +47,12 @@ p.pHeadings img {
 }
 .user-plan-table-title {
   width: 60%;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #eef0f5;
+  padding: 10px;
 }
 .user-plan-table-action {
   width: 40%;
@@ -273,4 +280,15 @@ button.idpSaveButton:hover {
   transition: 0.2s;
 }
 @media screen and (min-width: 780px) {
+  .user-existing-plan-area {
+    flex-direction: row;
+  }
+  .user-plan-table {
+    width: 57%;
+  }
+  .user-plan-page-request-snippet {
+    width: 42.5%;
+    margin-left: 0.5%;
+    margin-top: 0;
+  }
 }

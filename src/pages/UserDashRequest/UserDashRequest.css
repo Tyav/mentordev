@@ -9,7 +9,7 @@
   flex-wrap: wrap;
 }
 .single-user-mentee-request {
-  width: 20%;
+  width: 100%;
   padding: 10px;
   background: #fff;
   border-radius: 4px;
@@ -17,7 +17,7 @@
   border: 1px solid #eef0f5;
   font-size: 0.8rem;
   color: #5d5b6f;
-  margin-right: 5%;
+  margin-right: 0;
   transition: all linear 0.2s;
 }
 .single-user-mentee-request:hover {
@@ -55,6 +55,16 @@
   height: 30px;
   background: #fff;
   border: 1px solid #eef0f5;
-  width: 20%;
+  width: 100%;
   outline: #0bdaac;
+}
+
+@media screen and (min-width: 780px) {
+  .mentee-request-filter select {
+    width: 20%;
+  }
+  .single-user-mentee-request {
+    width: 20%;
+    margin-right: 5%;
+  }
 }

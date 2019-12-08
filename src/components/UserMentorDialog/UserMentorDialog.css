@@ -1,5 +1,5 @@
 .user-mentor-dialog {
-  width: 78.5%;
+  width: 95%;
   height: 100%;
   position: fixed;
   z-index: 999999999999;
@@ -13,7 +13,7 @@
   width: 100%;
   padding: 20px;
   display: flex;
-  display: flex;
+  flex-direction: column;
 }
 
 .user-dialog-brief-details .user-image-area {
@@ -23,6 +23,7 @@
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.2);
   border: 1px solid #ccc;
   padding: 5px;
+  margin: auto;
 }
 
 .user-dialog-brief-details .user-image-area img {
@@ -47,7 +48,7 @@
 
 .user-bio-area {
   border-left: none;
-  width: 60%;
+  width: 100%;
 }
 
 .user-bio-area h2 {
@@ -70,4 +71,23 @@
   color: #9e95c3;
   border-bottom: 1px solid #eef0f5;
   margin-bottom: 10px;
+}
+.close-user-detail {
+  color: #dd0d0d;
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 780px) {
+  .user-mentor-dialog {
+    width: 78.5%;
+  }
+  .user-dialog-brief-details {
+    flex-direction: row;
+  }
+  .user-dialog-brief-details .user-image-area {
+    margin: 0;
+  }
+  .user-bio-area {
+    width: 60%;
+  }
 }
