@@ -22,8 +22,6 @@ function UserDashHome() {
   const [userIdp, setUserIdp] = useState([]);
   const { user, setUser } = useContext(DashContext);
 
-  console.log(user);
-
   const fetchUser = () => {
     return sendGetRequest('/user/me')
       .then(response => {
@@ -32,13 +30,13 @@ function UserDashHome() {
           setUser(userValue);
         }
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => {});
   };
 
   useEffect(() => {
-    fetchUser();
+    if (!user) {
+      fetchUser();
+    }
     async function fetchContact() {
       const config = {
         headers: {
@@ -53,9 +51,7 @@ function UserDashHome() {
           config,
         );
         setLatestConnect([...response.data.payload]);
-      } catch (error) {
-        console.log(error.message);
-      }
+      } catch (error) {}
     }
     const fetchUserIdp = async () => {
       let response = await sendGetRequest('/idp');
@@ -87,7 +83,7 @@ function UserDashHome() {
               />
             );
           })}
-          {isMentor ? <MentorRequest /> : <DashHomeList />}
+          {isMentor ? null : <DashHomeList />}
         </>
       ) : (
         <>
