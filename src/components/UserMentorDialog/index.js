@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './UserMentorDialog.css';
 import MentorSchedule from '../MentorSchedule';
 
-function UserMentorDialog({ data }) {
+function UserMentorDialog({ data, closeDialog }) {
   const [mentor, setMentor] = useState({});
 
   useEffect(() => {
@@ -12,6 +12,9 @@ function UserMentorDialog({ data }) {
 
   return (
     <div className="user-mentor-dialog">
+      <div className="close-btn" onClick={closeDialog}>
+        <i className="mdi mdi-close close-user-detail"></i>
+      </div>
       <div className="user-dialog-brief-details">
         <div className="user-image-area">
           <img src={mentor.avatar} />
@@ -33,7 +36,9 @@ function UserMentorDialog({ data }) {
           <p>{mentor.bio}</p>
         </div>
       </div>
-      <p className="available-schedules-heading">Available Schedules for {mentor.name}</p>
+      <p className="available-schedules-heading">
+        Available Schedules for {mentor.name}
+      </p>
       <div className="user-mentor-dialog-schedule">
         <MentorSchedule id={mentor.id} />
       </div>
