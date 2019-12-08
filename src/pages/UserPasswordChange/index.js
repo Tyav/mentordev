@@ -82,7 +82,7 @@ function UserPasswordChange({ edit, style }) {
   };
 
   return (
-    <div className="update-password-area">
+    <div className="update-password-area" id="update-password-area">
       <p>
         <img
           src="/assets/img/key.svg"
