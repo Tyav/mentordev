@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,22 +8,27 @@ import getParams from '../../helper/getParams';
 //Context
 import { DashContext } from '../../Context';
 
+//ErrorBoundary
+import ErrorBoundary from '../../ErrorBoundary';
+
 //components
 import UserDashHeader from '../../components/UserDashHeader';
 import UserDashContentHeader from '../../components/UserDashContentHeader';
 import UserDashContactList from '../../components/UserDashContactList';
-import MentorRequest from '../MentorRequest';
-import DevelopmentPlan from '../UserIdp';
 
 //Styling
 import './UserDashboard.css';
-import ProfileUpdate from '../UserDashUpdate';
 import { createCookie, readCookie } from '../../helper/cookie';
-import UserDashHome from '../UserDashHome';
 import { sendGetRequest } from '../../actions';
 import { formatLocalUser } from '../../helper/formatUpdateData';
-import UserScheduleList from '../UserScheduleList';
-import UserDashRequest from '../UserDashRequest';
+import Loading from '../../components/Loading';
+
+const UserDashHome = React.lazy(() => import('../UserDashHome'));
+const MentorRequest = React.lazy(() => import('../MentorRequest'));
+const DevelopmentPlan = React.lazy(() => import('../UserIdp'));
+const ProfileUpdate = React.lazy(() => import('../UserDashUpdate'));
+const UserScheduleList = React.lazy(() => import('../UserScheduleList'));
+const UserDashRequest = React.lazy(() => import('../UserDashRequest'));
 
 function UserDashboard() {
   const mentor = getParams('auth');
@@ -45,9 +50,7 @@ function UserDashboard() {
           return userValue;
         }
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => {});
   };
 
   useEffect(() => {
@@ -67,9 +70,7 @@ function UserDashboard() {
         );
         const userDetails = await fetchUser();
         setUser({ ...userDetails, contacts: response.data.payload });
-      } catch (error) {
-        console.log(error.message);
-      }
+      } catch (error) {}
     }
     fetchContact();
   }, [token]);
@@ -99,32 +100,45 @@ function UserDashboard() {
           <div className="user-dash-content-display">
             <UserDashContactList />
             <div className="user-dash-content-content">
-              <Route exact path="/dashboard" component={UserDashHome}></Route>
-              <Route
-                exact
-                path="/dashboard/newrequest"
-                component={MentorRequest}
-              ></Route>
-              <Route
-                exact
-                path="/dashboard/idp"
-                component={DevelopmentPlan}
-              ></Route>
-              <Route
-                exact
-                path="/dashboard/profile"
-                component={ProfileUpdate}
-              ></Route>
-              <Route
-                exact
-                path="/dashboard/schedule"
-                component={UserScheduleList}
-              ></Route>
-              <Route
-                exact
-                path="/dashboard/request"
-                component={UserDashRequest}
-              ></Route>
+              <ErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <Route
+                    exact
+                    path="/dashboard"
+                    component={UserDashHome}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/dashboard/newrequest"
+                    component={MentorRequest}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/dashboard/idp"
+                    component={DevelopmentPlan}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/dashboard/idp/:idpId"
+                    component={DevelopmentPlan}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/dashboard/profile"
+                    component={ProfileUpdate}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/dashboard/schedule"
+                    component={UserScheduleList}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/dashboard/request"
+                    component={UserDashRequest}
+                  ></Route>
+                </Suspense>
+              </ErrorBoundary>
             </div>
           </div>
         </main>
