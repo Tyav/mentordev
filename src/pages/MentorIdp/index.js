@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 //Dependencies
 import axios from 'axios';
 
+//Context
+import { DashContext } from '../../Context';
+
 //Styling
 import './MentorIdp.css';
 import UserPlanTable from '../../components/UserPlanTable';
+import UserMenteeIdp from '../../components/UserMenteeIdp';
 
-function MentorIdp() {
+function MentorIdp(props) {
+  const { menteeIdpId } = props;
   const [mentorComment, setMentorComment] = useState({
     comment: '',
   });
+
+  const [contacts, setContacts] = useState([]);
+  const { user } = useContext(DashContext);
+
+  React.useEffect(() => {
+    setContacts(user.contacts);
+  }, [user]);
 
   const mentorCommentHandler = e => {
     e.preventDefault();
@@ -24,37 +36,15 @@ function MentorIdp() {
   return (
     <>
       <section className="user-mentor-idp-view">
-        <p></p>
         <UserPlanTable
           showActions={false}
           heading="Your Mentees' IDP"
           isTitle={false}
-          data={[
-            { id: '978677567', name: 'Tolu Adesina' },
-            { id: '778787878', name: 'Adedayo Segun' },
-          ]}
+          data={contacts}
           isLink={true}
         />
         <div className="mentor-mentee-plan-display">
-          <div className="mentee-plan-details">
-            <p className="noLeftBorder">Tolu Adesina Development Plan</p>
-            <div className="mentee-plan-detail">
-              <p className="mentee-plan-detail-head">Goal</p>
-              <p>
-                I want to learn to code with Javascript and also build products
-                with it with this short period of time
-              </p>
-              <p className="mentee-plan-detail-head">Anticipated Outcome</p>
-              <p>
-                I want to learn to code with Javascript and also build products
-                with it with this short period of time
-              </p>
-              <p className="mentee-plan-detail-head">
-                Expected Time of Completion
-              </p>
-              <p>10/11/2020</p>
-            </div>
-          </div>
+          <UserMenteeIdp idpId={menteeIdpId} />
           <div className="mentor-plan-comment">
             <p className="noLeftBorder">Your Comment</p>
             <form>
