@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 //Styling
 import './UserIdp.css';
@@ -8,18 +8,28 @@ import UserPlanTable from '../../components/UserPlanTable';
 import UpcomingSchedule from '../../components/UpcomingSchedule';
 import IdpEditor from '../../components/IdpEditor';
 
+//Context
+import { DashContext } from '../../Context';
+
 //Helpers
 import MentorIdp from '../MentorIdp';
 import { readCookie } from '../../helper/cookie';
 import { sendGetRequest } from '../../actions';
 
-function UserIdp() {
+function UserIdp(props) {
   const validateType = readCookie('validateType');
+
+  const { user } = useContext(DashContext);
 
   const [idps, setIdps] = useState([]);
   const [fetchIdps, setFetchIpds] = useState(false);
   const [idpData, setIdpData] = useState([]);
   const [rowType, setRowType] = useState({ showActions: false, isLink: true });
+  const [idpId, setIdpId] = useState('');
+
+  useEffect(() => {
+    setIdpId(props.match.params.idpId);
+  }, [props.match.param]);
 
   const IdpEditorToggleHandler = e => {
     e.preventDefault();
@@ -28,23 +38,32 @@ function UserIdp() {
   };
 
   useEffect(() => {
-    sendGetRequest('/idp').then(response => {
-      setIdps(response.data.payload);
-      setIdpData(response.data.payload.filter(idp => idp.isTied));
-    });
-  }, [fetchIdps]);
+    sendGetRequest('/idp')
+      .then(response => {
+        setIdps(response.data.payload);
+        setIdpData(response.data.payload.filter(idp => idp.isTied));
+      })
+      .catch(error => {});
+  }, [fetchIdps, user]);
 
   function filterTiedHandler(e) {
-    e.target.classList.add('active');
-    e.target.nextElementSibling.classList.remove('active');
-    setIdpData(idps.filter(idp => idp.isTied));
-    setRowType({ showActions: false, isLink: true });
+    try {
+      if (idps) {
+        e.target.classList.add('active');
+        e.target.nextElementSibling.classList.remove('active');
+        setIdpData(idps.filter(idp => idp.isTied));
+        setRowType({ showActions: false, isLink: true });
+      }
+    } catch (error) {}
   }
+
   function filterDraftHandler(e) {
-    e.target.classList.add('active');
-    e.target.previousElementSibling.classList.remove('active');
-    setIdpData(idps.filter(idp => !idp.isTied));
-    setRowType({ showActions: true, isLink: false });
+    try {
+      e.target.classList.add('active');
+      e.target.previousElementSibling.classList.remove('active');
+      setIdpData(idps.filter(idp => !idp.isTied));
+      setRowType({ showActions: true, isLink: false });
+    } catch (error) {}
   }
 
   return (
@@ -66,12 +85,13 @@ function UserIdp() {
               isLink={rowType.isLink}
               filterTied={filterTiedHandler}
               filterDraft={filterDraftHandler}
+              showTableHead={validateType ? false : true}
             />
             <UpcomingSchedule />
           </div>
         </>
       ) : (
-        <MentorIdp />
+        <MentorIdp menteeIdpId={idpId} />
       )}
     </>
   );
