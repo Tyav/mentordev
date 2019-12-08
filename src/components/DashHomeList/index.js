@@ -20,13 +20,16 @@ function DashHomeList() {
       url: `${process.env.REACT_APP_BACKEND_URL}/user/mentors`,
     }).then(res => {
       setMentors(res.data.payload);
-      console.log(res.data.payload);
     });
   }, []);
 
   function openDialogHandler(e) {
     e.preventDefault();
     setOpenDialog({ ...openDialog, isOpen: true, id: e.target.id });
+  }
+
+  function closeDialog() {
+    setOpenDialog({ isOpen: false, id: '' });
   }
 
   useEffect(() => {
@@ -40,8 +43,8 @@ function DashHomeList() {
   return (
     <>
       {openDialog.isOpen ? (
-        <Suspense fallback={<h1>Loading</h1>}>
-          <MentorModal data={mentorData} />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <MentorModal data={mentorData} closeDialog={closeDialog} />
         </Suspense>
       ) : null}
       <section className="user-dash-users-list">
