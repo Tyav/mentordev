@@ -1,0 +1,70 @@
+.user-mentee-request {
+  width: 100%;
+  height: fit-content;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+}
+.single-user-mentee-request {
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #eef0f5;
+  font-size: 0.8rem;
+  color: #5d5b6f;
+  margin-right: 0;
+  transition: all linear 0.2s;
+}
+.single-user-mentee-request:hover {
+  transition: all linear 0.2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+.single-user-mentee-request p {
+  padding: 5px 0;
+}
+.single-user-mentee-request p span {
+  font-weight: 500;
+}
+.pending-request {
+  border-left: 3px solid rgb(255, 211, 0);
+}
+.approved-request {
+  border-left: 3px solid #0bdaac;
+}
+.cancelled-request {
+  border-left: 3px solid rgb(255, 35, 0);
+}
+.single-user-mentee-request button {
+  color: rgb(255, 35, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 10px 0;
+}
+.mentee-request-filter {
+  width: 100%;
+  margin: 10px 0;
+}
+.mentee-request-filter select {
+  height: 30px;
+  background: #fff;
+  border: 1px solid #eef0f5;
+  width: 100%;
+  outline: #0bdaac;
+}
+
+@media screen and (min-width: 780px) {
+  .mentee-request-filter select {
+    width: 20%;
+  }
+  .single-user-mentee-request {
+    width: 20%;
+    margin-right: 5%;
+  }
+}

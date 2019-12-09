@@ -4,7 +4,19 @@ body {
   height: 100%;
   background: #f5f6f7;
 }
-
+button {
+  background: none;
+}
+p.no-details-to-show {
+  padding: 10px;
+  color: #5d5b6f;
+}
+.mobile-toogle {
+  display: block;
+}
+.desktop-toogle {
+  display: none;
+}
 .verify-page {
   width: 100%;
   height: 300px;
@@ -907,6 +919,7 @@ Desktop 1
     border: 1px solid #e6ecf5;
     transition: 0.2s;
     border-radius: 4px;
+    background: #fff;
   }
   .single-mentee-request:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

@@ -1,0 +1,6 @@
+.user-mentor-schedule-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}

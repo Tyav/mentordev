@@ -261,11 +261,13 @@ p.adminSummaryCount {
     border-bottom: 1px solid #edf2f6;
   }
   .beta {
-    background: #dd0d0d;
-    color: #fff;
     font-size: 0.5rem;
     padding: 1px 5px;
     border-radius: 4px;
+    color: #0bdaac;
+    background: #fff;
+    border: 1px solid #0bdaac;
+    margin: 0 0 20px 5px;
   }
 
   .admin-user-display {

@@ -1,0 +1,73 @@
+.user-mentor-idp-view {
+  padding: 10px;
+  background: #fff;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+.mentor-mentee-plan-display {
+  margin-left: 1%;
+  width: 100%;
+  display: flex;
+}
+.mentor-mentee-plan-display p {
+  color: #5d5b6f;
+  font-size: 0.8rem;
+  padding: 10px;
+  border-bottom: 1px solid #eef0f5;
+  width: 100%;
+  border-left: 2px solid #0bdaac;
+}
+p.mentee-plan-detail-head {
+  border-bottom: none;
+  border: none;
+}
+p.noLeftBorder {
+  border-left: none;
+}
+.mentee-plan-details {
+  width: 48%;
+  margin-right: 2%;
+}
+.mentor-plan-comment {
+  width: 50%;
+}
+.mentor-plan-comment form {
+  width: 100%;
+}
+.mentor-plan-comment textarea {
+  width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid #eef0f5;
+  border-radius: 4px;
+  margin-top: 10px;
+  padding: 10px;
+  min-height: 150px;
+  resize: none;
+  font-size: 0.8rem;
+}
+.mentor-plan-comment button {
+  padding: 5px 30px;
+  font-size: 11px;
+  margin-right: 10px;
+  background: none;
+  border: 1px solid #0bdaac;
+  font-weight: 400;
+  color: #5d5b6f;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  float: right;
+}
+.mentor-plan-comment button:hover {
+  color: #fff;
+  background: #0bdaac;
+  transition: 0.2s;
+}
+.mentee-plan-detail-head {
+  font-weight: 500;
+}

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './DashboardHeader.module.css';
 const profile_avatar = '/assets/img/profile_three.jpg';
 
 const DashboardHeader = () => {
-  const [toggle, setToggle] = useState(false);
-
   return (
     <div className={styles.container}>
       <nav className={`${styles.navHeader}`}>
@@ -16,14 +14,22 @@ const DashboardHeader = () => {
           </li>
           <li className={styles.otherNav}>
             <p className={styles.bell}>
-              <a href="/" rel="noopener noreferrer" className={styles.bell_icon}>
+              <a
+                href="/"
+                rel="noopener noreferrer"
+                className={styles.bell_icon}
+              >
                 <i className={`far fa-bell ${styles.bell_icon}`} />
               </a>
             </p>
             <div className={styles.toggle}>
               <p>
                 <div className={styles.user_icon}>
-                  <img src={profile_avatar} alt="user avatar" className={styles.profile_avatar} />
+                  <img
+                    src={profile_avatar}
+                    alt="user avatar"
+                    className={styles.profile_avatar}
+                  />
                 </div>
               </p>
               <div className={styles.drop_down}>

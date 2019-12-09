@@ -1,0 +1,137 @@
+.user-days-and-schedule,
+.user-time-slot-creator {
+  width: 100%;
+  height: fit-content;
+  background: #fff;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.user-days-and-schedule {
+  display: flex;
+}
+.user-days-and-schedule .schedule-day-heading,
+.schedule-day-meeting {
+  display: flex;
+  /* justify-content: space-evenly; */
+}
+.schedule-day-heading {
+  justify-content: flex-start;
+  width: 14.3%;
+  flex-direction: column;
+}
+.user-days-and-schedule .schedule-day-heading p {
+  padding: 20px;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid #eef0f5;
+  /* color: #9e95c3; */
+  color: #5d5b6f;
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+.user-days-and-schedule .schedule-day-heading p:last-child {
+  border: none;
+}
+.user-time-slot-creator {
+  padding: 20px;
+}
+.user-time-slot-creator h1 {
+  color: #5d5b6f;
+  font-size: 0.9rem;
+  padding: 10px 0;
+  border-bottom: 1px solid #eef0f5;
+  display: flex;
+  align-items: center;
+}
+.user-time-slot-creator h1 img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.time-slot-form-area form {
+  display: flex;
+  width: 100% !important;
+  flex-direction: column;
+}
+.time-slot-form-area form .time-slot-main-field {
+  width: 100%;
+  border-right: none;
+  margin-top: 10px;
+  padding-right: 20px;
+}
+.time-slot-form-area form div div {
+  width: 100%;
+  padding: 0 !important;
+}
+.time-slot-form-area form div label {
+  font-weight: normal !important;
+  color: #5d5b6f !important;
+  font-size: 0.7rem !important;
+}
+.time-slot-form-area form div select,
+.time-slot-form-area form div input {
+  background: #fff !important;
+  box-shadow: none !important;
+  border: 1px solid #eef0f5 !important;
+}
+.time-slot-extra-field {
+  padding: 20px;
+}
+.time-slot-extra-field p {
+  color: #5d5b6f;
+  font-size: 0.8rem;
+  padding: 10px 0;
+}
+.time-slot-schedule-type {
+  display: flex;
+  flex-wrap: wrap;
+}
+.time-slot-schedule-type p {
+  width: 100%;
+}
+.time-slot-schedule-type .radioInput {
+  width: 30%;
+  color: #5d5b6f;
+}
+.slot-user-submit-button {
+  border: 1px solid #0bdaac;
+  color: #5d5b6f;
+  font-size: 0.7rem;
+  margin-top: 20px;
+  transition: 0.2s;
+}
+.slot-user-submit-button:hover {
+  color: #fff;
+  background: #0bdaac;
+  transition: 0.2s;
+}
+p.user-single-appointment {
+  border: 1px solid #eef0f5;
+  padding: 15px 0 !important;
+  margin: 5px auto;
+  width: 90%;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 0.8rem !important;
+}
+.user-schedule-toggle-button {
+  padding: 10px 0;
+  background: #fff;
+  width: 100%;
+  margin: 10px 0;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.user-schedule-toggle-button button {
+  margin-right: 5px;
+}
+@media screen and (min-width: 780px) {
+  .time-slot-form-area form {
+    display: flex;
+    flex-direction: row;
+  }
+  .time-slot-form-area form .time-slot-main-field {
+    width: 50%;
+    border-right: 1px solid #eef0f5;
+  }
+}

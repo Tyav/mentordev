@@ -1,0 +1,10 @@
+.loading-area {
+  width: 50%;
+  height: 50%;
+  left: 25%;
+  z-index: 9999999999999;
+}
+.loading-area img {
+  width: 50%;
+  height: 50%;
+}

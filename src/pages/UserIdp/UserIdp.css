@@ -2,9 +2,10 @@
   width: 100%;
   margin-top: 10px;
   display: flex;
+  flex-direction: column;
 }
 .user-plan-table {
-  width: 57%;
+  width: 100%;
   background: #fff;
   padding: 10px;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
@@ -27,12 +28,12 @@ p.pHeadings img {
   margin-right: 5px;
 }
 .user-plan-page-request-snippet {
-  width: 42.5%;
+  width: 100%;
   background: #fff;
   padding: 10px;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  margin-left: 0.5%;
+  margin-top: 10px;
 }
 .user-plan-table-header {
   display: flex;
@@ -46,6 +47,12 @@ p.pHeadings img {
 }
 .user-plan-table-title {
   width: 60%;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #eef0f5;
+  padding: 10px;
 }
 .user-plan-table-action {
   width: 40%;
@@ -60,6 +67,10 @@ p.pHeadings img {
 }
 .user-plan-table-body div {
   display: flex;
+}
+.user-plan-table-body div a {
+  width: 100%;
+  color: #5d5b6f;
 }
 .user-plan-table-action button {
   margin-right: 5px;
@@ -135,6 +146,15 @@ p.pHeadings img {
   color: #5d5b6f;
   padding: 10px 0;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eef0f5;
+}
+.main-eidtor-area p img {
+  width: 1rem;
+  height: 1rem;
+  margin-left: auto;
+  cursor: pointer;
 }
 .main-eidtor-area input {
   padding: 10px;
@@ -160,6 +180,12 @@ p.pHeadings img {
   position: fixed;
   width: 100%;
   height: 100%;
+  display: none;
+  transition: 0.2s;
+}
+.show {
+  display: block;
+  transition: 0.2s;
 }
 .editor-toolbar {
   margin-top: 10px;
@@ -180,20 +206,47 @@ p.pHeadings img {
 .user-plan-section-button-area {
   width: 100%;
   margin-top: 10px;
+  display: flex;
+  align-items: center;
 }
 .user-plan-section-button-area button {
   padding: 10px;
   color: #5d5b6f;
-  border: 1px solid #0bdaac;
   transition: 0.2s;
   font-size: 0.7rem;
-  margin-left: 10px;
 }
-.user-plan-section-button-area button:hover {
+.user-plan-section-button-area label {
+  color: #d1d3d7;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d1d3d7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.user-plan-section-button-area label:hover,
+.user-plan-section-button-area label.active {
+  color: #0bdaac;
+  border: 1px solid #0bdaac;
+  transition: 0.2s;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+}
+.user-plan-section-button-area label.done {
   color: #fff;
+  border: 1px solid #0bdaac;
   background: #0bdaac;
   transition: 0.2s;
-  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-plan-section-button-area label i {
+  font-size: 1rem;
 }
 button.idpSaveButton {
   border: 1px solid #0bdaac;
@@ -211,5 +264,31 @@ button.idpSaveButton:hover {
   background: #0bdaac;
   transition: 0.2s;
 }
+.user-dash-logout-button {
+  border: 2px solid #0bdaac;
+  color: #5d5b6f;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+}
+.user-dash-logout-button i {
+  padding-top: 5px;
+}
+.user-dash-logout-button:hover {
+  background: #0bdaac;
+  color: #fff;
+  transition: 0.2s;
+}
 @media screen and (min-width: 780px) {
+  .user-existing-plan-area {
+    flex-direction: row;
+  }
+  .user-plan-table {
+    width: 57%;
+  }
+  .user-plan-page-request-snippet {
+    width: 42.5%;
+    margin-left: 0.5%;
+    margin-top: 0;
+  }
 }

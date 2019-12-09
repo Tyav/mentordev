@@ -1,39 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import { readCookie } from '../../helper/cookie';
 
 function UserDashContactList() {
+  const [contacts, setContacts] = useState([]);
+  const token = readCookie('mentordev_token');
+
+  useEffect(() => {
+    async function fetchData() {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/contact`,
+          config,
+        );
+        setContacts([...response.data.payload]);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    fetchData();
+  }, [token]);
+
   return (
     <aside className="user-dash-contact-list">
-      <div className="user-dash-single-contact">
-        <img src="assets/img/profile_two.png" />
-        <div className="single-user-detail">
-          <p className="single-user-detail-name">
-            Ibrahim Joseph <i className="mdi mdi-dots-vertical"></i>
-          </p>
-          <p className="single-user-detail-email">
-            <img src="/assets/img/email.svg" /> &nbsp; josephibrahi@gmail.com
-          </p>
-          <p className="single-user-detail-schedule">
-            <img src="/assets/img/clock.svg" />
-            &nbsp; WED 13:10 - 14:10
-          </p>
-        </div>
-      </div>
-      <div className="user-dash-single-contact">
-        <img src="assets/img/profile_one.png" />
-        <div className="single-user-detail">
-          <p className="single-user-detail-name">
-            Oke Tega <i className="mdi mdi-dots-vertical"></i>
-          </p>
-          <p className="single-user-detail-email">
-            <img src="/assets/img/email.svg" />
-            &nbsp; oketegah@gmail.com
-          </p>
-          <p className="single-user-detail-schedule">
-            <img src="/assets/img/clock.svg" />
-            &nbsp; WED 13:00 - 17:00
-          </p>
-        </div>
-      </div>
+      {contacts.length ? (
+        contacts.map(contact => {
+          const { contact: user, schedule } = contact;
+          return (
+            <div key={contact.id} className="user-dash-single-contact">
+              <img alt="profile" src={`${user.avatar}`} />
+              <div className="single-user-detail">
+                <p className="single-user-detail-name">
+                  {user.name} <i className="mdi mdi-dots-vertical"></i>
+                </p>
+                <p className="single-user-detail-email">
+                  <img alt="email" src="/assets/img/email.svg" /> &nbsp;
+                  {user.email}
+                </p>
+                <p className="single-user-detail-schedule">
+                  <img alt="time" src="/assets/img/clock.svg" />
+                  &nbsp;{' '}
+                  {schedule
+                    ? `${schedule.day} ${schedule.time.from} - ${schedule.time.to}}`
+                    : null}
+                </p>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <p className="no-details-to-show">Connect to have Contacts</p>
+      )}
     </aside>
   );
 }
