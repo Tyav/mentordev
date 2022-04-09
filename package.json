@@ -9,7 +9,7 @@
     "chart.js": "^2.8.0",
     "eslint-plugin-react": "^7.16.0",
     "jest": "24.7.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-burger-menu": "^2.6.11",
